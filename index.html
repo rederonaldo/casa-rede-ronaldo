@@ -1,322 +1,243 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#ffffff">
-<title>Casa Rede Ronaldo · Copa 2026</title>
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f2f2f7"><title>Casa Rede Ronaldo</title>
 <style>
 :root{
-  --bg:#fff; --bg2:#f5f5f7; --ink:#1d1d1f; --gray:#6e6e73; --gray2:#86868b;
-  --line:#e8e8ed; --blue:#0033A0; --gold:#b8902b; --br:#009C3B;
+  --bg:#f2f2f7; --card:#fff; --ink:#1c1c1e; --gray:#8a8a8e; --gray2:#aeaeb2;
+  --line:#e5e5ea; --blue:#0033A0; --gold:#b8902b; --br:#009C3B;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{-webkit-text-size-adjust:100%}
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
-  background:var(--bg); color:var(--ink); line-height:1.5;
-  font-size:16px; -webkit-font-smoothing:antialiased; overflow-x:hidden;
-}
-.app{max-width:560px;margin:0 auto;min-height:100vh;position:relative}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.45;font-size:16px;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+.app{max-width:480px;margin:0 auto;min-height:100vh;background:var(--bg);position:relative;
+  padding-bottom:84px}
 
-/* ── TOP BAR (only inside sections) ── */
-.topbar{
-  position:sticky;top:0;z-index:100;display:none;align-items:center;gap:12px;
-  padding:14px 20px;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(20px);
-  border-bottom:.5px solid var(--line);
-}
-body.inside .topbar{display:flex}
-.tb-back{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;background:var(--bg2);border-radius:50%;cursor:pointer;flex-shrink:0;font-size:17px;color:var(--blue)}
-.tb-back:active{background:var(--line)}
-.tb-title{font-size:17px;font-weight:600;letter-spacing:-.02em}
+/* ── APP BAR ── */
+.appbar{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:10px;
+  padding:14px 18px;background:rgba(242,242,247,.8);backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:.5px solid var(--line);min-height:56px}
+.appbar .logo{font-size:17px;font-weight:800;letter-spacing:-.02em}
+.appbar .logo b{color:var(--gold)}
+.tb-back{display:none;align-items:center;justify-content:center;width:30px;height:30px;border:none;
+  background:var(--card);border-radius:50%;cursor:pointer;font-size:18px;color:var(--blue);flex-shrink:0}
+body.inside .tb-back{display:flex}
+body.inside .appbar .logo{display:none}
+.tb-title{font-size:17px;font-weight:700;letter-spacing:-.02em;display:none}
+body.inside .tb-title{display:block}
 
 /* ── PAGES ── */
-.page{display:none;animation:fade .35s ease}
-.page.on{display:block}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.wrap{padding:0 20px 60px}
+.page{display:none}.page.on{display:block;animation:fade .3s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.wrap{padding:6px 18px 30px}
 
-/* ── HERO GALLERY ── */
-.hero{position:relative;margin:0 0 8px}
-.gal{position:relative;overflow:hidden;border-radius:0 0 26px 26px}
+/* ── HERO (compact app banner) ── */
+.hero{margin:12px 14px 0;border-radius:20px;overflow:hidden;position:relative;
+  box-shadow:0 8px 24px rgba(0,0,0,.10)}
+.gal{position:relative;overflow:hidden}
 .gal-track{display:flex;transition:transform .45s cubic-bezier(.32,.72,0,1)}
-.slide{min-width:100%;aspect-ratio:4/5;position:relative;flex-shrink:0}
+.slide{min-width:100%;aspect-ratio:16/9;position:relative;flex-shrink:0}
 .slide img{width:100%;height:100%;object-fit:cover;display:block}
-.slide-cap{position:absolute;left:0;right:0;bottom:0;padding:60px 22px 22px;
-  background:linear-gradient(transparent,rgba(0,0,0,.55));color:#fff}
-.slide-cap h3{font-size:21px;font-weight:600;letter-spacing:-.02em}
-.slide-cap p{font-size:13px;opacity:.85;margin-top:2px}
-.dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:3}
-.dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.45);transition:.3s}
-.dot.on{background:#fff;width:20px;border-radius:3px}
+.slide-cap{position:absolute;left:0;right:0;bottom:0;padding:34px 16px 12px;
+  background:linear-gradient(transparent,rgba(0,0,0,.6));color:#fff}
+.slide-cap h3{font-size:16px;font-weight:700;letter-spacing:-.01em}
+.slide-cap p{font-size:11px;opacity:.85}
+.dots{position:absolute;bottom:9px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:3}
+.dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.5);transition:.3s}
+.dot.on{background:#fff;width:16px;border-radius:3px}
 
-/* ── HOME HEADER ── */
-.home-head{padding:26px 22px 8px;text-align:center}
-.kicker{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
-.home-head h1{font-size:32px;font-weight:700;letter-spacing:-.03em;margin:6px 0 4px;line-height:1.08}
-.home-head .sub{color:var(--gray);font-size:15px}
-.datepill{display:inline-block;margin-top:14px;padding:7px 16px;background:var(--bg2);border-radius:100px;font-size:13px;font-weight:600;color:var(--ink)}
+/* ── EVENT STRIP ── */
+.estrip{margin:14px 18px 0;background:var(--card);border-radius:16px;padding:14px 16px;
+  display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.estrip .et{font-size:13px;color:var(--gray)}
+.estrip .et b{display:block;font-size:16px;color:var(--ink);font-weight:700;letter-spacing:-.01em}
+.estrip .ed{text-align:right;font-size:12px;color:var(--gray)}
+.estrip .ed b{display:block;font-size:15px;color:var(--blue);font-weight:700}
 
-/* ── STATS ── */
-.stats{display:flex;justify-content:center;gap:8px;padding:22px 20px 8px}
-.stat{flex:1;max-width:120px;text-align:center;padding:16px 8px;background:var(--bg2);border-radius:16px}
-.stat b{display:block;font-size:22px;font-weight:700;letter-spacing:-.02em}
-.stat span{font-size:11px;color:var(--gray2);text-transform:uppercase;letter-spacing:.03em}
+/* ── APP ICON GRID (the buttons) ── */
+.grid-label{font-size:13px;font-weight:600;color:var(--gray);text-transform:uppercase;
+  letter-spacing:.05em;margin:24px 22px 12px}
+.appgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px 6px;padding:0 14px}
+.appicon{display:flex;flex-direction:column;align-items:center;gap:8px;border:none;background:none;
+  cursor:pointer;transition:transform .12s}
+.appicon:active{transform:scale(.9)}
+.appicon .ico{width:74px;height:74px;border-radius:20px;object-fit:cover;
+  box-shadow:0 4px 12px rgba(0,0,0,.16);background:#1a2744}
+.appicon .lbl{font-size:12.5px;font-weight:600;color:var(--ink);letter-spacing:-.01em;text-align:center}
 
-/* ── NAV LIST (home) ── */
-.navlist{padding:24px 20px 40px}
-.navlist h2{font-size:13px;font-weight:600;color:var(--gray2);text-transform:uppercase;letter-spacing:.06em;margin:0 4px 12px}
-.navcard{display:flex;align-items:center;gap:16px;width:100%;padding:17px 18px;background:var(--bg2);
-  border:none;border-radius:18px;margin-bottom:10px;cursor:pointer;text-align:left;transition:transform .15s,background .15s}
-.navcard:active{transform:scale(.98);background:var(--line)}
-.navcard .ic{font-size:24px;width:32px;text-align:center;flex-shrink:0}
-.navcard .nc-tx{flex:1}
-.navcard .nc-t{font-size:17px;font-weight:600;letter-spacing:-.01em}
-.navcard .nc-s{font-size:13px;color:var(--gray);margin-top:1px}
-.navcard .arr{color:var(--gray2);font-size:19px}
-
-/* ── SECTION HEADINGS ── */
-.sec-head{padding:30px 0 4px}
-.sec-head h1{font-size:30px;font-weight:700;letter-spacing:-.03em}
-.sec-head p{color:var(--gray);font-size:15px;margin-top:4px}
+/* ── SECTION HEAD ── */
+.sec-head{padding:14px 0 2px}
+.sec-head h1{font-size:28px;font-weight:800;letter-spacing:-.03em}
+.sec-head p{color:var(--gray);font-size:14px;margin-top:3px}
 
 /* ── PROGRAM CARDS ── */
-.prog{background:var(--bg2);border-radius:18px;padding:18px 18px;margin-top:12px;cursor:pointer;transition:.15s}
-.prog:active{background:var(--line)}
+.prog{background:var(--card);border-radius:16px;padding:16px;margin-top:11px;cursor:pointer;
+  box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .prog-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.prog h3{font-size:18px;font-weight:600;letter-spacing:-.01em}
-.prog .dur{font-size:12px;color:var(--gold);font-weight:600;white-space:nowrap}
-.prog .preview{font-size:14px;color:var(--gray);margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.prog .full{display:none;font-size:15px;color:#3a3a3c;margin-top:10px}
-.prog .full p{margin-bottom:9px}
-.prog.open .preview{display:none}
-.prog.open .full{display:block}
+.prog h3{font-size:17px;font-weight:700;letter-spacing:-.01em}
+.prog .dur{font-size:11px;color:var(--gold);font-weight:700;white-space:nowrap}
+.prog .preview{font-size:13.5px;color:var(--gray);margin-top:5px;display:-webkit-box;
+  -webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.prog .full{display:none;font-size:14.5px;color:#3a3a3c;margin-top:9px}
+.prog .full p{margin-bottom:8px}
+.prog.open .preview{display:none}.prog.open .full{display:block}
 
 /* ── CAST ── */
-.cast-tabs{display:flex;gap:8px;overflow-x:auto;padding:18px 0 6px;scrollbar-width:none}
+.cast-tabs{display:flex;gap:7px;overflow-x:auto;padding:14px 0 4px;scrollbar-width:none}
 .cast-tabs::-webkit-scrollbar{display:none}
-.ctab{padding:8px 16px;background:var(--bg2);border:none;border-radius:100px;font-size:14px;
-  font-weight:500;color:var(--gray);white-space:nowrap;cursor:pointer;flex-shrink:0}
+.ctab{padding:7px 15px;background:var(--card);border:none;border-radius:100px;font-size:13.5px;
+  font-weight:600;color:var(--gray);white-space:nowrap;cursor:pointer;flex-shrink:0}
 .ctab.on{background:var(--ink);color:#fff}
-.cast-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 10px;padding:16px 0 40px}
+.cast-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 10px;padding:14px 0 20px}
 .person{text-align:center;cursor:pointer}
-.ph{width:100%;aspect-ratio:1;border-radius:50%;object-fit:cover;object-position:top center;background:var(--bg2);display:block;margin-bottom:8px}
-.ph-emoji{width:100%;aspect-ratio:1;border-radius:50%;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:34px;margin-bottom:8px}
-.person .pn{font-size:13px;font-weight:600;line-height:1.2;letter-spacing:-.01em}
-.person .pt{font-size:11px;color:var(--gray2);margin-top:2px;line-height:1.2}
+.ph{width:100%;aspect-ratio:1;border-radius:50%;object-fit:cover;object-position:top center;
+  background:var(--card);display:block;margin-bottom:7px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.ph-emoji{width:100%;aspect-ratio:1;border-radius:50%;background:var(--card);display:flex;
+  align-items:center;justify-content:center;font-size:32px;margin-bottom:7px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.person .pn{font-size:12.5px;font-weight:600;line-height:1.2}
+.person .pt{font-size:10.5px;color:var(--gray2);margin-top:1px;line-height:1.2}
 
-/* ── TIMELINE (palco) ── */
-.week{margin-top:24px}
-.week-t{font-size:13px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
-.show{display:flex;gap:14px;padding:14px 0;border-bottom:.5px solid var(--line)}
+/* ── TIMELINE ── */
+.week{margin-top:20px}
+.week-t{font-size:12px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
+.show{display:flex;gap:13px;padding:13px 2px;border-bottom:.5px solid var(--line)}
 .show:last-child{border:none}
-.show .sd{font-size:12px;color:var(--gray2);font-weight:600;width:58px;flex-shrink:0;padding-top:2px}
-.show .sn{font-size:16px;font-weight:600;letter-spacing:-.01em}
-.show .ss{font-size:13px;color:var(--gray);margin-top:1px}
+.show .sd{font-size:11px;color:var(--gray2);font-weight:700;width:52px;flex-shrink:0;padding-top:2px}
+.show .sn{font-size:15px;font-weight:600}
+.show .ss{font-size:12.5px;color:var(--gray);margin-top:1px}
 .show.big .sn{color:var(--blue)}
 
-/* ── INFO BLOCKS ── */
-.block{background:var(--bg2);border-radius:18px;padding:20px;margin-top:14px}
-.block h3{font-size:17px;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
-.row{display:flex;gap:12px;padding:11px 0;border-bottom:.5px solid var(--line)}
-.row:last-child{border:none;padding-bottom:0}
-.row:first-child{padding-top:0}
-.row .rn{font-size:15px;font-weight:600}
-.row .rs{font-size:14px;color:var(--gray);margin-top:1px}
-.row .rt{font-size:12px;font-weight:700;color:var(--br);white-space:nowrap;padding-top:2px}
-.tag-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
-.tag-list span{font-size:13px;background:var(--bg);border:.5px solid var(--line);border-radius:100px;padding:5px 12px;color:var(--gray)}
-.lead{font-size:16px;color:#3a3a3c;margin-top:10px;line-height:1.55}
-
-/* ── BRASIL accent ── */
-.jogo{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:.5px solid var(--line)}
+/* ── BLOCKS ── */
+.block{background:var(--card);border-radius:16px;padding:18px;margin-top:13px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.block h3{font-size:16px;font-weight:700;margin-bottom:10px}
+.row{display:flex;gap:12px;justify-content:space-between;padding:11px 0;border-bottom:.5px solid var(--line)}
+.row:last-child{border:none;padding-bottom:0}.row:first-of-type{padding-top:0}
+.row .rn{font-size:14.5px;font-weight:600}.row .rs{font-size:13px;color:var(--gray);margin-top:1px}
+.row .rt{font-size:11px;font-weight:700;color:var(--br);white-space:nowrap;padding-top:2px}
+.lead{font-size:14.5px;color:#3a3a3c;margin-top:12px;line-height:1.55;padding:0 2px}
+.jogo{display:flex;gap:13px;align-items:center;padding:13px 0;border-bottom:.5px solid var(--line)}
 .jogo:last-child{border:none}
-.jogo .jn{width:30px;height:30px;border-radius:50%;background:var(--br);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.jogo .ji b{font-size:15px;font-weight:600}
-.jogo .ji .jd{font-size:13px;color:var(--gray)}
+.jogo .jn{width:28px;height:28px;border-radius:50%;background:var(--br);color:#fff;font-weight:700;
+  font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.jogo .ji b{font-size:14.5px;font-weight:600}.jogo .ji .jd{font-size:12.5px;color:var(--gray)}
+
+/* ── BOTTOM TAB BAR ── */
+.tabbar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;
+  display:flex;justify-content:space-around;padding:8px 6px calc(8px + env(safe-area-inset-bottom));
+  background:rgba(242,242,247,.92);backdrop-filter:saturate(180%) blur(20px);
+  border-top:.5px solid var(--line);z-index:100}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;border:none;background:none;
+  cursor:pointer;padding:4px 10px;color:var(--gray2);flex:1}
+.tab.on{color:var(--blue)}
+.tab .ti{font-size:21px;line-height:1}
+.tab .tl{font-size:10px;font-weight:600;letter-spacing:-.01em}
 
 /* ── MODAL ── */
 .modal{position:fixed;inset:0;z-index:300;display:none;align-items:flex-end;justify-content:center}
 .modal.on{display:flex}
 .modal-bg{position:absolute;inset:0;background:rgba(0,0,0,.4);animation:fade .25s}
-.modal-card{position:relative;background:#fff;width:100%;max-width:560px;border-radius:24px 24px 0 0;
-  padding:28px 24px 40px;animation:up .35s cubic-bezier(.32,.72,0,1);max-height:80vh;overflow-y:auto}
+.modal-card{position:relative;background:#fff;width:100%;max-width:480px;border-radius:22px 22px 0 0;
+  padding:26px 22px calc(34px + env(safe-area-inset-bottom));animation:up .35s cubic-bezier(.32,.72,0,1);
+  max-height:80vh;overflow-y:auto}
 @keyframes up{from{transform:translateY(100%)}to{transform:none}}
-.modal-card .mph{width:90px;height:90px;border-radius:50%;object-fit:cover;object-position:top center;margin:0 auto 16px;display:block}
-.modal-card h2{font-size:23px;font-weight:700;text-align:center;letter-spacing:-.02em}
-.modal-card .mt{font-size:14px;color:var(--gold);font-weight:600;text-align:center;margin-top:3px}
-.modal-card .mr{font-size:15px;color:#3a3a3c;text-align:center;margin-top:14px;line-height:1.55}
-.modal-close{position:absolute;top:16px;right:16px;width:30px;height:30px;border:none;background:var(--bg2);border-radius:50%;font-size:15px;color:var(--gray);cursor:pointer}
+.modal-card .mph{width:84px;height:84px;border-radius:50%;object-fit:cover;object-position:top center;margin:0 auto 14px;display:block}
+.modal-card h2{font-size:22px;font-weight:800;text-align:center;letter-spacing:-.02em}
+.modal-card .mt{font-size:13px;color:var(--gold);font-weight:700;text-align:center;margin-top:2px}
+.modal-card .mr{font-size:14.5px;color:#3a3a3c;text-align:center;margin-top:13px;line-height:1.55}
+.modal-close{position:absolute;top:14px;right:14px;width:28px;height:28px;border:none;background:var(--bg);border-radius:50%;font-size:14px;color:var(--gray);cursor:pointer}
+footer{text-align:center;padding:24px 20px;color:var(--gray2);font-size:11px;line-height:1.6}
+</style></head><body><div class="app">
 
-footer{text-align:center;padding:30px 20px 40px;color:var(--gray2);font-size:12px;line-height:1.6}
-</style>
-</head>
-<body>
-<div class="app">
+<div class="appbar"><button class="tb-back" onclick="go('home')">‹</button>
+  <span class="logo">CASA <b>RR</b></span><span class="tb-title" id="tbTitle"></span></div>
 
-  <div class="topbar">
-    <button class="tb-back" onclick="go('home')">‹</button>
-    <span class="tb-title" id="tbTitle"></span>
-  </div>
+<section class="page on" id="page-home">
+  <div class="hero"><div class="gal"><div class="gal-track" id="galTrack" ontouchstart="tStart(event)" ontouchend="tEnd(event)"><div class="slide"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/casa/casa_entrada.jpg" loading="eager"><div class="slide-cap"><h3>A Entrada</h3><p>Wynwood Marketplace · Miami</p></div></div><div class="slide"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/casa/casa_estudio.jpg" loading="lazy"><div class="slide-cap"><h3>Estúdio de Vidro</h3><p>ESPN no Disney+</p></div></div><div class="slide"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/casa/casa_quadra1.jpg" loading="lazy"><div class="slide-cap"><h3>Quadra Poliesportiva</h3><p>Showball · Futsal</p></div></div><div class="slide"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/casa/casa_noite.jpg" loading="lazy"><div class="slide-cap"><h3>À Noite</h3><p>Palco · Shows</p></div></div><div class="slide"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/casa/casa_aerial.jpg" loading="lazy"><div class="slide-cap"><h3>Wynwood, Miami</h3><p>11 Jun – 19 Jul</p></div></div></div><div class="dots"><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div></div>
+  <div class="estrip"><div class="et">Copa do Mundo 2026<b>Casa Rede Ronaldo</b></div><div class="ed">Wynwood · Miami<b>11 Jun – 19 Jul</b></div></div>
+  <div class="grid-label">Navegue</div>
+  <div class="appgrid"><button class="appicon" onclick="go('programacao')"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/programacao.png" alt="Programação"><span class="lbl">Programação</span></button><button class="appicon" onclick="go('elenco')"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/elenco.png" alt="Elenco"><span class="lbl">Elenco</span></button><button class="appicon" onclick="go('palco')"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/palco.png" alt="Palco"><span class="lbl">Palco</span></button><button class="appicon" onclick="go('quadra')"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/quadra.png" alt="Quadra"><span class="lbl">Quadra</span></button><button class="appicon" onclick="go('games')"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/games.png" alt="Games"><span class="lbl">Games</span></button><button class="appicon" onclick="go('brasil')"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/brasil.png" alt="Brasil"><span class="lbl">Brasil</span></button><button class="appicon" onclick="go('disney')"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/disney.png" alt="Disney+"><span class="lbl">Disney+</span></button></div>
+  <footer>Casa Rede Ronaldo · Copa do Mundo FIFA 2026<br>Wynwood Marketplace, Miami · Horários ET</footer>
+</section>
 
-  <!-- HOME -->
-  <section class="page on" id="page-home">
-    <div class="hero">
-      <div class="gal"><div class="gal-track" id="galTrack" ontouchstart="tStart(event)" ontouchend="tEnd(event)"><div class="slide"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/casa/casa_entrada.jpg" alt="A Entrada" loading="eager"><div class="slide-cap"><h3>A Entrada</h3><p>Wynwood Marketplace · Miami</p></div></div><div class="slide"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/casa/casa_estudio.jpg" alt="Estúdio de Vidro" loading="lazy"><div class="slide-cap"><h3>Estúdio de Vidro</h3><p>Transmissão ao vivo · ESPN no Disney+</p></div></div><div class="slide"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/casa/casa_quadra1.jpg" alt="Quadra Poliesportiva" loading="lazy"><div class="slide-cap"><h3>Quadra Poliesportiva</h3><p>Showball · Futsal · Basquete</p></div></div><div class="slide"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/casa/casa_quadra2.jpg" alt="Por Dentro" loading="lazy"><div class="slide-cap"><h3>Por Dentro</h3><p>5.000 m² de experiências</p></div></div><div class="slide"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/casa/casa_noite.jpg" alt="À Noite" loading="lazy"><div class="slide-cap"><h3>À Noite</h3><p>Palco · Shows · Copa 2026</p></div></div><div class="slide"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/casa/casa_aerial.jpg" alt="Wynwood, Miami" loading="lazy"><div class="slide-cap"><h3>Wynwood, Miami</h3><p>11 Jun – 19 Jul de 2026</p></div></div></div>
-      <div class="dots" id="dots"><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
-    </div>
-    <div class="home-head">
-      <div class="kicker">Copa do Mundo FIFA 2026</div>
-      <h1>Casa Rede Ronaldo</h1>
-      <div class="sub">Wynwood Marketplace · Miami</div>
-      <div class="datepill">11 Jun — 19 Jul · 39 dias</div>
-    </div>
-    <div class="stats">
-      <div class="stat"><b>39</b><span>dias</span></div>
-      <div class="stat"><b>5.000</b><span>m²</span></div>
-      <div class="stat"><b>+3.000</b><span>por dia</span></div>
-    </div>
-    <div class="navlist">
-      <h2>Explore</h2>
-      <button class="navcard" onclick="go('programacao')"><span class="ic">📺</span><span class="nc-tx"><span class="nc-t">Programação</span><span class="nc-s">Programas e grade ao vivo</span></span><span class="arr">›</span></button><button class="navcard" onclick="go('elenco')"><span class="ic">⭐</span><span class="nc-tx"><span class="nc-t">Elenco</span><span class="nc-s">Apresentadores, criadores e equipe</span></span><span class="arr">›</span></button><button class="navcard" onclick="go('palco')"><span class="ic">🎵</span><span class="nc-tx"><span class="nc-t">Palco</span><span class="nc-s">Shows ao vivo · 6 semanas</span></span><span class="arr">›</span></button><button class="navcard" onclick="go('quadra')"><span class="ic">⚽</span><span class="nc-tx"><span class="nc-t">Quadra</span><span class="nc-s">Showball e esportes</span></span><span class="arr">›</span></button><button class="navcard" onclick="go('games')"><span class="ic">🎮</span><span class="nc-tx"><span class="nc-t">Games</span><span class="nc-s">5 fases · torneios diários</span></span><span class="arr">›</span></button><button class="navcard" onclick="go('brasil')"><span class="ic">🇧🇷</span><span class="nc-tx"><span class="nc-t">Brasil</span><span class="nc-s">Jogos e programação especial</span></span><span class="arr">›</span></button><button class="navcard" onclick="go('disney')"><span class="ic">✨</span><span class="nc-tx"><span class="nc-t">Disney+</span><span class="nc-s">Parceiro de streaming · ESPN</span></span><span class="arr">›</span></button>
-    </div>
-    <footer>Casa Rede Ronaldo · Copa do Mundo FIFA 2026<br>Wynwood Marketplace, Miami · Horários ET</footer>
-  </section>
+<section class="page" id="page-programacao"><div class="wrap"><div class="sec-head"><h1>Programação</h1><p>Toque para ver os detalhes</p></div><div id="progList"></div><div class="block" style="margin-top:20px"><h3>Jogos do Brasil</h3><div class="jogo"><div class="jn">1</div><div class="ji"><b>🇧🇷 Brasil x Marrocos</b><div class="jd">13/06 · Sáb · 19h · Grupo C · Nova Jersey</div></div></div><div class="jogo"><div class="jn">2</div><div class="ji"><b>🇧🇷 Brasil x Haiti</b><div class="jd">19/06 · Sex · 19h · Grupo C · Miami</div></div></div><div class="jogo"><div class="jn">3</div><div class="ji"><b>🇧🇷 Escócia x Brasil</b><div class="jd">24/06 · Qua · 17h · Grupo C · Dallas</div></div></div></div></div></section>
 
-  <!-- PROGRAMAÇÃO -->
-  <section class="page" id="page-programacao"><div class="wrap">
-    <div class="sec-head"><h1>Programação</h1><p>Toque em um programa para ver os detalhes</p></div>
-    <div id="progList"></div>
-    <div class="block" style="margin-top:24px"><h3>Jogos do Brasil</h3><div class="jogo"><div class="jn">1</div><div class="ji"><b>13/06 · Sáb · 19h</b><div class="jd">🇧🇷 Brasil x 🇲🇦 Marrocos · Grupo C · Nova Jersey</div></div></div><div class="jogo"><div class="jn">2</div><div class="ji"><b>19/06 · Sex · 19h</b><div class="jd">🇧🇷 Brasil x 🇭🇹 Haiti · Grupo C · Miami</div></div></div><div class="jogo"><div class="jn">3</div><div class="ji"><b>24/06 · Qua · 17h</b><div class="jd">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Escócia x 🇧🇷 Brasil · Grupo C · Dallas</div></div></div></div>
-  </div></section>
+<section class="page" id="page-elenco"><div class="wrap"><div class="sec-head"><h1>Elenco</h1><p>Apresentadores, criadores e equipe</p></div><div class="cast-tabs" id="castTabs"></div><div class="cast-grid" id="castGrid"></div></div></section>
 
-  <!-- ELENCO -->
-  <section class="page" id="page-elenco"><div class="wrap">
-    <div class="sec-head"><h1>Elenco</h1><p>Apresentadores, criadores e equipe</p></div>
-    <div class="cast-tabs" id="castTabs"></div>
-    <div class="cast-grid" id="castGrid"></div>
-  </div></section>
+<section class="page" id="page-palco"><div class="wrap"><div class="sec-head"><h1>Palco</h1><p>Shows ao vivo · 10 Jun → 19 Jul</p></div><div class="week"><div class="week-t">Inauguração · 10–14 Jun</div><div class="show big"><div class="sd">10/06</div><div><div class="sn">Inauguração VIP</div><div class="ss">Convidados especiais</div></div></div><div class="show"><div class="sd">11/06</div><div><div class="sn">Abertura ao Público</div><div class="ss">Portas abertas</div></div></div><div class="show big"><div class="sd">12/06</div><div><div class="sn">Fábio Braza</div><div class="ss">Show ao vivo</div></div></div><div class="show big"><div class="sd">13/06</div><div><div class="sn">Ducell & Abdala — DNA</div><div class="ss">Noite especial</div></div></div><div class="show big"><div class="sd">14/06</div><div><div class="sn">Simoninha & Jairzinho</div><div class="ss">Show imperdível</div></div></div></div><div class="week"><div class="week-t">Segunda · 19–21 Jun</div><div class="show big"><div class="sd">19/06</div><div><div class="sn">Fábio Braza</div><div class="ss">Show ao vivo</div></div></div><div class="show big"><div class="sd">20/06</div><div><div class="sn">Ton Carfi</div><div class="ss">Música e emoção</div></div></div><div class="show big"><div class="sd">21/06</div><div><div class="sn">Jairzinho & Simoninha</div><div class="ss">Especial de domingo</div></div></div></div><div class="week"><div class="week-t">Terceira · 24–28 Jun</div><div class="show big"><div class="sd">24/06</div><div><div class="sn">Samba dos Pentas</div><div class="ss">Dia do Brasil</div></div></div><div class="show big"><div class="sd">26/06</div><div><div class="sn">Fábio Braza</div><div class="ss">Show ao vivo</div></div></div><div class="show big"><div class="sd">27/06</div><div><div class="sn">Capital Inicial</div><div class="ss">Grande atração</div></div></div><div class="show big"><div class="sd">28/06</div><div><div class="sn">Jairzinho & Simoninha</div><div class="ss">Encerramento</div></div></div></div><div class="week"><div class="week-t">Quarta · 03–05 Jul</div><div class="show big"><div class="sd">03/07</div><div><div class="sn">Fábio Braza</div><div class="ss">Abre o fim de semana</div></div></div><div class="show big"><div class="sd">04/07</div><div><div class="sn">DJ Ronald</div><div class="ss">Noite eletrônica</div></div></div><div class="show big"><div class="sd">05/07</div><div><div class="sn">Jairzinho & Simoninha</div><div class="ss">Especial</div></div></div></div><div class="week"><div class="week-t">Quinta · 10–12 Jul</div><div class="show big"><div class="sd">10/07</div><div><div class="sn">Fábio Braza</div><div class="ss">Show ao vivo</div></div></div><div class="show big"><div class="sd">11/07</div><div><div class="sn">Ducell & Abdala — DNA</div><div class="ss">De volta ao palco</div></div></div><div class="show big"><div class="sd">12/07</div><div><div class="sn">Jairzinho & Simoninha</div><div class="ss">Encerramento</div></div></div></div><div class="week"><div class="week-t">Semis & Final · 17–19 Jul</div><div class="show big"><div class="sd">17/07</div><div><div class="sn">Fábio Braza</div><div class="ss">Última semana</div></div></div><div class="show big"><div class="sd">18/07</div><div><div class="sn">DJ Ronald</div><div class="ss">Noite de ouro</div></div></div><div class="show big"><div class="sd">19/07</div><div><div class="sn">Jairzinho & Simoninha</div><div class="ss">Final da Copa</div></div></div></div></div></section>
 
-  <!-- PALCO -->
-  <section class="page" id="page-palco"><div class="wrap">
-    <div class="sec-head"><h1>Palco</h1><p>Shows ao vivo · 10 Jun → 19 Jul · Horários ET</p></div>
-    <div class="week"><div class="week-t">Inauguração · 10–14 Jun</div><div class="show big"><div class="sd">10/06</div><div><div class="sn">Inauguração VIP</div><div class="ss">Abertura exclusiva para convidados</div></div></div><div class="show"><div class="sd">11/06</div><div><div class="sn">Abertura ao Público</div><div class="ss">As portas se abrem para todos</div></div></div><div class="show big"><div class="sd">12/06</div><div><div class="sn">Fábio Braza</div><div class="ss">Show ao vivo</div></div></div><div class="show big"><div class="sd">13/06</div><div><div class="sn">Ducell & Abdala — DNA</div><div class="ss">Uma noite especial</div></div></div><div class="show big"><div class="sd">14/06</div><div><div class="sn">Simoninha & Jairzinho</div><div class="ss">Show imperdível</div></div></div></div><div class="week"><div class="week-t">Segunda Semana · 19–21 Jun</div><div class="show big"><div class="sd">19/06</div><div><div class="sn">Fábio Braza</div><div class="ss">Show ao vivo</div></div></div><div class="show big"><div class="sd">20/06</div><div><div class="sn">Ton Carfi</div><div class="ss">Uma noite de muita música e emoção</div></div></div><div class="show big"><div class="sd">21/06</div><div><div class="sn">Jairzinho & Simoninha</div><div class="ss">Show especial de domingo</div></div></div></div><div class="week"><div class="week-t">Terceira Semana · 24–28 Jun</div><div class="show big"><div class="sd">24/06</div><div><div class="sn">Samba dos Pentas</div><div class="ss">Celebração no dia do Brasil</div></div></div><div class="show big"><div class="sd">26/06</div><div><div class="sn">Fábio Braza</div><div class="ss">Show ao vivo</div></div></div><div class="show big"><div class="sd">27/06</div><div><div class="sn">Capital Inicial</div><div class="ss">A grande atração da semana</div></div></div><div class="show big"><div class="sd">28/06</div><div><div class="sn">Jairzinho & Simoninha</div><div class="ss">Encerramento da semana</div></div></div></div><div class="week"><div class="week-t">Quarta Semana · 03–05 Jul</div><div class="show big"><div class="sd">03/07</div><div><div class="sn">Fábio Braza</div><div class="ss">Abrindo o fim de semana</div></div></div><div class="show big"><div class="sd">04/07</div><div><div class="sn">DJ Ronald</div><div class="ss">Noite dançante eletrônica</div></div></div><div class="show big"><div class="sd">05/07</div><div><div class="sn">Jairzinho & Simoninha</div><div class="ss">Show especial</div></div></div></div><div class="week"><div class="week-t">Quinta Semana · 10–12 Jul</div><div class="show big"><div class="sd">10/07</div><div><div class="sn">Fábio Braza</div><div class="ss">Show ao vivo</div></div></div><div class="show big"><div class="sd">11/07</div><div><div class="sn">Ducell & Abdala — DNA</div><div class="ss">De volta ao palco da Casa RR</div></div></div><div class="show big"><div class="sd">12/07</div><div><div class="sn">Jairzinho & Simoninha</div><div class="ss">Show de encerramento</div></div></div></div><div class="week"><div class="week-t">Semis & Final · 17–19 Jul</div><div class="show big"><div class="sd">17/07</div><div><div class="sn">Fábio Braza</div><div class="ss">Abrindo a última semana</div></div></div><div class="show big"><div class="sd">18/07</div><div><div class="sn">DJ Ronald</div><div class="ss">Noite dançante de ouro</div></div></div><div class="show big"><div class="sd">19/07</div><div><div class="sn">Jairzinho & Simoninha</div><div class="ss">Grande encerramento · Final</div></div></div></div>
-  </div></section>
+<section class="page" id="page-quadra"><div class="wrap"><div class="sec-head"><h1>Quadra</h1><p>Showball, esportes e exibições</p></div>
+  <div class="block"><h3>Atrações diárias</h3>
+   <div class="row"><div><div class="rn">Showball</div><div class="rs">O esporte criado por Ronaldo</div></div></div>
+   <div class="row"><div><div class="rn">Desafios & Exibições</div><div class="rs">Partidas ao longo do dia</div></div></div>
+   <div class="row"><div><div class="rn">Poliesportiva</div><div class="rs">Futsal · basquete · ativações</div></div></div></div>
+  <p class="lead">A quadra é o coração físico da Casa — palco de showball e exibições nos 39 dias.</p></div></section>
 
-  <!-- QUADRA -->
-  <section class="page" id="page-quadra"><div class="wrap">
-    <div class="sec-head"><h1>Quadra</h1><p>Showball, esportes e exibições</p></div>
-    <div class="block"><h3>Atrações diárias</h3>
-      <div class="row"><div><div class="rn">Showball</div><div class="rs">O esporte criado por Ronaldo — futebol em quadra adaptada</div></div></div>
-      <div class="row"><div><div class="rn">Desafios & Exibições</div><div class="rs">Partidas e demonstrações ao longo do dia</div></div></div>
-      <div class="row"><div><div class="rn">Quadra Poliesportiva</div><div class="rs">Futsal · basquete · ações de marca</div></div></div>
-    </div>
-    <p class="lead">A quadra é o coração físico da Casa — palco de showball, exibições e ativações durante todos os 39 dias.</p>
-  </div></section>
+<section class="page" id="page-games"><div class="wrap"><div class="sec-head"><h1>Games</h1><p>5 fases · 13h–20h diariamente</p></div>
+  <div class="block"><h3>Arena PC · 10 estações</h3><p class="lead" style="margin-top:0">Free Play à tarde + Torneios Relâmpago 2v2 e X1.</p></div>
+  <div class="block"><h3>As 5 fases</h3>
+   <div class="row"><div><div class="rn">1 · O Pontapé Inicial</div><div class="rs">Jun 11–17 · EA FC</div></div></div>
+   <div class="row"><div><div class="rn">2 · FPS & Tática</div><div class="rs">Jun 18–24 · Valorant · CS2</div></div></div>
+   <div class="row"><div><div class="rn">3 · Luta & Comunidade</div><div class="rs">Jun 22–28 · Street Fighter · Tekken</div></div></div>
+   <div class="row"><div><div class="rn">4 · Mata-Mata</div><div class="rs">Jul 3–12 · eliminatórias</div></div></div>
+   <div class="row"><div><div class="rn">5 · A Grande Final</div><div class="rs">Jul 13–19 · Copa das Copas</div></div></div></div></div></section>
 
-  <!-- GAMES -->
-  <section class="page" id="page-games"><div class="wrap">
-    <div class="sec-head"><h1>Games</h1><p>5 fases ao longo da temporada · 13h–20h</p></div>
-    <div class="block"><h3>Arena PC · 10 estações</h3>
-      <p class="lead" style="margin-top:0">Free Play à tarde + Torneios Relâmpago 2v2 e X1. FPS, simuladores e os jogos mais populares do evento.</p></div>
-    <div class="block"><h3>As 5 fases</h3>
-      <div class="row"><div><div class="rn">1 · O Pontapé Inicial</div><div class="rs">Jun 11–17 · abertura da Copa · Torneio EA FC</div></div></div>
-      <div class="row"><div><div class="rn">2 · FPS & Tática</div><div class="rs">Jun 18–24 · Valorant · CS2 · Mario Kart</div></div></div>
-      <div class="row"><div><div class="rn">3 · Luta & Comunidade</div><div class="rs">Jun 22–28 · Street Fighter 6 · Tekken 8</div></div></div>
-      <div class="row"><div><div class="rn">4 · Mata-Mata</div><div class="rs">Jul 3–12 · torneios eliminatórios</div></div></div>
-      <div class="row"><div><div class="rn">5 · A Grande Final</div><div class="rs">Jul 13–19 · Copa das Copas · premiação</div></div></div>
-    </div>
-  </div></section>
+<section class="page" id="page-brasil"><div class="wrap"><div class="sec-head"><h1>Brasil na Copa</h1><p>Jogos e programação especial</p></div>
+  <div class="block"><h3>Grupo C</h3><div class="jogo"><div class="jn">1</div><div class="ji"><b>🇧🇷 Brasil x Marrocos</b><div class="jd">13/06 · Sáb · 19h · Grupo C · Nova Jersey</div></div></div><div class="jogo"><div class="jn">2</div><div class="ji"><b>🇧🇷 Brasil x Haiti</b><div class="jd">19/06 · Sex · 19h · Grupo C · Miami</div></div></div><div class="jogo"><div class="jn">3</div><div class="ji"><b>🇧🇷 Escócia x Brasil</b><div class="jd">24/06 · Qua · 17h · Grupo C · Dallas</div></div></div></div>
+  <div class="block"><h3>Nos dias de Brasil</h3>
+   <div class="row"><div><div class="rn">Cavaco Futebol Clube</div><div class="rs">Guido + Edilson + samba</div></div><div class="rt">2h antes</div></div>
+   <div class="row"><div><div class="rn">Hora do Raipe Especial</div><div class="rs">Cobertura com a torcida</div></div><div class="rt">Durante</div></div>
+   <div class="row"><div><div class="rn">Resenha ESPN Especial</div><div class="rs">André Plihal</div></div><div class="rt">Pós-jogo</div></div></div>
+  <p class="lead">Transmissão oficial pela ESPN no Disney+. Na Casa, a torcida vira conteúdo.</p></div></section>
 
-  <!-- BRASIL -->
-  <section class="page" id="page-brasil"><div class="wrap">
-    <div class="sec-head"><h1>Brasil na Copa</h1><p>Jogos e programação especial</p></div>
-    <div class="block"><h3>Jogos do Grupo C</h3><div class="jogo"><div class="jn">1</div><div class="ji"><b>13/06 · Sáb · 19h</b><div class="jd">🇧🇷 Brasil x 🇲🇦 Marrocos · Grupo C · Nova Jersey</div></div></div><div class="jogo"><div class="jn">2</div><div class="ji"><b>19/06 · Sex · 19h</b><div class="jd">🇧🇷 Brasil x 🇭🇹 Haiti · Grupo C · Miami</div></div></div><div class="jogo"><div class="jn">3</div><div class="ji"><b>24/06 · Qua · 17h</b><div class="jd">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Escócia x 🇧🇷 Brasil · Grupo C · Dallas</div></div></div></div>
-    <div class="block"><h3>Nos dias de Brasil</h3>
-      <div class="row"><div><div class="rn">Cavaco Futebol Clube</div><div class="rs">Guido + Edilson + samba — esquenta do jogo</div></div><div class="rt">2h antes</div></div>
-      <div class="row"><div><div class="rn">Hora do Raipe Especial</div><div class="rs">Cobertura ao vivo com a torcida</div></div><div class="rt">Durante</div></div>
-      <div class="row"><div><div class="rn">Resenha ESPN Especial</div><div class="rs">André Plihal · análise completa</div></div><div class="rt">Pós-jogo</div></div>
-    </div>
-    <p class="lead">A transmissão oficial dos jogos é do Disney+/ESPN. Na Casa, a torcida vira conteúdo.</p>
-  </div></section>
-
-  <!-- DISNEY -->
-  <section class="page" id="page-disney"><div class="wrap">
-    <div class="sec-head"><h1>Disney+ &amp; ESPN</h1><p>Parceiro de streaming da Copa 2026</p></div>
-    <p class="lead" style="margin-top:0">A ESPN no Disney+ é o lar da Copa do Mundo FIFA 2026. Do estúdio de vidro da Casa Rede Ronaldo saem transmissões ao vivo, o Resenha da Copa e coberturas especiais.</p>
-    <div class="block" style="margin-top:18px"><h3>Da Casa para o streaming</h3>
-      <div class="row"><div><div class="rn">Resenha da Copa</div><div class="rs">André Plihal · diário no YouTube + especiais na TV</div></div></div>
-      <div class="row"><div><div class="rn">Onde Está o FEURIPE</div><div class="rs">Quadro ao vivo · parceria Disney + ESPN + RR Games</div></div></div>
-      <div class="row"><div><div class="rn">Estúdio de Vidro</div><div class="rs">Transmissões ao vivo direto de Wynwood</div></div></div>
-    </div>
-  </div></section>
+<section class="page" id="page-disney"><div class="wrap"><div class="sec-head"><h1>Disney+ &amp; ESPN</h1><p>Parceiro de streaming da Copa</p></div>
+  <p class="lead" style="margin-top:4px">A ESPN no Disney+ é o lar da Copa do Mundo 2026. Do estúdio de vidro da Casa saem transmissões ao vivo e o Resenha da Copa.</p>
+  <div class="block" style="margin-top:16px"><h3>Da Casa para o streaming</h3>
+   <div class="row"><div><div class="rn">Resenha da Copa</div><div class="rs">André Plihal · diário + especiais</div></div></div>
+   <div class="row"><div><div class="rn">Onde Está o FEURIPE</div><div class="rs">Quadro ao vivo · Disney + ESPN + RR Games</div></div></div>
+   <div class="row"><div><div class="rn">Estúdio de Vidro</div><div class="rs">Ao vivo direto de Wynwood</div></div></div></div></div></section>
 
 </div>
 
-<!-- MODAL -->
+<nav class="tabbar" id="tabbar"><button class="tab on" data-tab="home" onclick="go('home')"><span class="ti">⌂</span><span class="tl">Início</span></button><button class="tab" data-tab="programacao" onclick="go('programacao')"><span class="ti">▶</span><span class="tl">Grade</span></button><button class="tab" data-tab="elenco" onclick="go('elenco')"><span class="ti">★</span><span class="tl">Elenco</span></button><button class="tab" data-tab="palco" onclick="go('palco')"><span class="ti">♪</span><span class="tl">Palco</span></button><button class="tab" data-tab="brasil" onclick="go('brasil')"><span class="ti">◆</span><span class="tl">Brasil</span></button></nav>
+
 <div class="modal" id="modal"><div class="modal-bg" onclick="closeModal()"></div>
-  <div class="modal-card"><button class="modal-close" onclick="closeModal()">✕</button>
-    <div id="modalBody"></div></div></div>
+  <div class="modal-card"><button class="modal-close" onclick="closeModal()">✕</button><div id="modalBody"></div></div></div>
 
 <script>
-var DATA = {"cast": {"fixos": [{"n": "Guido Nunes", "k": "guido_nunes", "t": "Âncora Principal", "r": "Apresenta todos os programas diários da Casa", "e": "🎙️"}, {"n": "Bibiana Bolson", "k": "bibiana", "t": "Jornalista · Rede Ronaldo", "r": "Credencial FIFA Miami + CBF New Jersey. Co-âncora e diretora de conteúdo", "e": "📰"}, {"n": "Patricia Liberato", "k": "patricia_liberato", "t": "Apresentadora / Editorial", "r": "Presença diária na Casa. Sai para fazer conteúdo externo em Miami", "e": "🎬"}, {"n": "Fábio Stefanini", "k": "fabio", "t": "Narrador · Rádio Exclusiva", "r": "Narra ao vivo os jogos exibidos nas telas e painéis LED da Casa. Interage com atores-jogadores no palco que encenam os replays das jogadas.", "e": "📣"}, {"n": "Edilson Capetinha", "k": "edilson_capetinha", "t": "Pentacampeão Mundial", "r": "Modo Raipe + Cavaco FC + Programa Pós-Brasil", "e": "⚽"}, {"n": "André Plihal", "k": "andre_plihal", "t": "ESPN · Resenha da Copa", "r": "Apresenta a Resenha ESPN diária e especiais pré/pós-Brasil ao vivo do estúdio de vidro", "e": "📺"}, {"n": "Daniel Cardoso Fontes", "k": "daniel", "t": "Animador de Torcida", "r": "Animador profissional de vôlei e basquete. Anima a Casa o dia inteiro, integrado ao vivo com a narração do Fábio.", "e": "🎤"}], "criadores": [{"n": "DJ Ronald", "k": "dj_ronald", "t": "DJ · Presidente da Rede Ronaldo", "r": "Shows, DJ sets, programas ao vivo. Credencial FIFA especial — acompanha a Seleção", "e": "👑"}, {"n": "Karoline Lima", "k": "karoline_lima", "t": "Rainha do Lifestyle", "r": "Looks com Karol + Boas de Miami. Credencial FIFA especial — viaja com a Seleção", "e": "🌟"}, {"n": "Feuripe (Felipe Mostapha)", "k": "feuripe", "t": "Embaixador de Torcida", "r": "\"Onde está o Feuripe?\" — 2 a 3 entradas ao vivo por dia. Jun/8 – Jul/11", "e": "🎸"}, {"n": "Milene Domingues", "k": "milene_domingues", "t": "Legend Futebol", "r": "As Embaixadoras + exibições especiais na quadra poliesportiva", "e": "⚽"}, {"n": "Lucas Freestyle", "k": "lucas_freestyle", "t": "Atleta Freestyle", "r": "Desafios diários na quadra · exibições · freestyle ao vivo", "e": "🔥"}, {"n": "Bernardo Cacella", "k": "bernardo_cacella", "t": "Fenômeno Jovem", "r": "Multi-esportista · desafios na quadra poliesportiva · Família Cacella", "e": "💪"}, {"n": "Daniela Cacella", "k": "daniela_cacella", "t": "Essência da Família", "r": "Família Cacella · presença e conteúdo na Casa", "e": "🎤"}, {"n": "Gabriel Cacella", "k": "gabriel_cacella", "t": "Talento Musical", "r": "Família Cacella · música e entretenimento", "e": "🎵"}, {"n": "Gui Tank", "k": "gui_tank", "t": "Chef do Feed", "r": "Conteúdo viral · receitas e experiências que viram tendência", "e": "😂"}, {"n": "Sofia Espanha", "k": "sofia_espanha", "t": "Rainha das Lives", "r": "Lives ao vivo da Casa · entretenimento e lifestyle", "e": "💃"}, {"n": "Douglas Viegas", "k": "douglas_viegas", "t": "Mestre da Resenha", "r": "Comentários, análises e resenha de futebol", "e": "🎙️"}, {"n": "Thiago Rosinhole", "k": "thiago_rosinhole", "t": "Artista", "r": "Conteúdo e entretenimento na Casa Rede Ronaldo", "e": "🌙"}, {"n": "Léo Chile", "k": "leo_chile", "t": "Voz do Esporte", "r": "Narração e comentários esportivos ao vivo", "e": "🏆"}, {"n": "Amaralzinho", "k": "amaralzinho", "t": "Volante de Fluxo", "r": "Conteúdo e entretenimento", "e": "🌊"}, {"n": "Priscila Souza", "k": "priscila_souza", "t": "Viajante Premium", "r": "Conteúdo de travel e lifestyle em Miami", "e": "✈️"}, {"n": "Dodô Mendonça", "k": "dodo_mendonca", "t": "Comentarista Digital", "r": "Bastidores, análise digital e invasão de ambientes especiais", "e": "📱"}, {"n": "Bil Araujo", "k": "bil_araujo", "t": "Competidor de Elite", "r": "Desafios e atividades competitivas na Casa", "e": "💪"}, {"n": "Duda Rubert", "k": "duda_rubert", "t": "Musa Geração Z", "r": "Moda, lifestyle e conteúdo para a Geração Z", "e": "👗"}, {"n": "Manoel Gomes", "k": "manoel_gomes", "t": "Lenda do Povo", "r": "Criador de conteúdo · Caneta Azul — entretenimento popular", "e": "🎩"}, {"n": "Belle Semile", "k": "belle_semile", "t": "Embaixadora & Criadora", "r": "As Embaixadoras · lifestyle e futebol feminino na Casa Rede Ronaldo", "e": "💫"}, {"n": "Cath Scala", "k": "cath_scala", "t": "Embaixadora · Futebol Feminino", "r": "As Embaixadoras · voz do futebol feminino ao vivo", "e": "⚽"}, {"n": "Luan Fiuza", "k": "luan_fiuza", "t": "Artista & Creator", "r": "Música, entretenimento e conteúdo ao vivo na Casa", "e": "🎵"}, {"n": "Nego Zara", "k": "nego_zara", "t": "Fenômeno do Funk", "r": "Conteúdo, entretenimento e presença ao vivo na Casa", "e": "🔥"}, {"n": "Fausto Carvalho", "k": "fausto_carvalho", "t": "Criador · Jorginho da Faria Lima", "r": "Criador do personagem Jorginho, o paulista da Faria Lima. 4M de seguidores.", "e": "🎭"}, {"n": "Catharina Scala", "k": "cath_scala", "t": "Apresentadora · Rede Ronaldo", "r": "Apresentadora de esportes e e-sports. Co-apresentadora do TouchDown Delas.", "e": "⚡"}, {"n": "Belle (Semile)", "k": "belle_semile", "t": "Narradora · E-sports", "r": "Narradora e apresentadora de e-sports. Faixa-preta de taekwondo. Advogada.", "e": "✨"}, {"n": "Luan Fiuza", "k": "luan_fiuza", "t": "Criador · Futebol", "r": "Criador de conteúdo de futebol com grande presença digital.", "e": "⚽"}, {"n": "Nego Zara", "k": "nego_zara", "t": "Humorista · Rancho do Maia", "r": "Humorista com mais de 1M de seguidores. Famoso pelo Rancho do Maia.", "e": "😂"}], "visitantes": [{"n": "Luva de Pedreiro", "k": "luva_de_pedreiro", "t": "Fenômeno Mundial", "r": "10 dias · conteúdo e interação com o público na Casa", "e": "🧤"}, {"n": "Cela Lopes", "k": "cela_lopes", "t": "Ícone Geração Z", "r": "10 dias · personalidade que vira viral", "e": "🎤"}], "equipe": [{"n": "Douglas Buiu", "k": "", "t": "CEO", "r": "Lidera o projeto Casa Rede Ronaldo.", "e": "⚙️"}, {"n": "Pablo", "k": "pablo", "t": "Produtor", "r": "Coordena toda a produção do projeto.", "e": "🎬"}, {"n": "Walhyson", "k": "walhyson", "t": "Equipe · \"O Urso\"", "r": "Equipe Casa Rede Ronaldo.", "e": "🐻"}, {"n": "Victor Rabitão", "k": "", "t": "Transmissão · Tecnologia · Engenharia", "r": "Dirige toda a infraestrutura técnica ao vivo.", "e": "📡"}, {"n": "Naliato", "k": "", "t": "Videomaker", "r": "Captação e produção de vídeo.", "e": "🎥"}, {"n": "George", "k": "", "t": "Social / Videomaker", "r": "Conteúdo para redes sociais e vídeo.", "e": "📱"}, {"n": "Luana", "k": "", "t": "Social / Videomaker", "r": "Conteúdo para redes sociais e vídeo.", "e": "📱"}, {"n": "Bruno De Luca", "k": "bruno_de_luca", "t": "Diretor de Criação", "r": "Dirige a criação, a programação e a produção geral do projeto.", "e": "🎯"}, {"n": "Ronald Nazário", "k": "", "t": "Presidente · Rede Ronaldo", "r": "Presidente da Rede Ronaldo. Filho de Ronaldo Fenômeno. DJ e criador de conteúdo.", "e": "👑"}, {"n": "Bruno Cunha", "k": "", "t": "Comercial", "r": "Responsável pela área comercial e parcerias da Casa Rede Ronaldo.", "e": "💼"}]}, "progs": {"Onde Está o FEURIPE": {"d": "3 a 8 min · 2-3x ao dia", "p": ["Quadro ao vivo inspirado no 'Onde Está o Wally?', adaptado para a Copa do Mundo, os EUA e a internet. Parceria Disney + ESPN + Rede Ronaldo Games.", "Enquanto o programa principal acontece no estúdio, os cortes ao vivo levam o público para algum lugar inesperado de Miami, acompanhando o Feuripe em experiências curiosas, engraçadas e visuais.", "Ninguém sabe onde o Feuripe estará na próxima entrada: Ocean Drive, Wynwood Walls, Bayside, Little Havana, Skyviews, Superblue, Hard Rock Stadium, Miami Beach ou até Orlando.", "Entradas ao vivo de 2 a 3 vezes por dia · 08 de junho a 11 de julho de 2026."]}, "Modo Raipe": {"d": "2 horas", "p": ["O “Modo Raipe” abre o dia na Casa Rede Ronaldo junto com a abertura dos portões.", "Guido Nunes, Karoline Lima e Edilson Capetinha vão trazer os assuntos mais quentes do dia de Copa, de forma leve, divertida, com muita resenha.", "Influenciadores da Rede Ronaldo espalhados por Miami entram ao vivo, e todo dia tem convidado especial."]}, "Hora do Raipe - Edição Especial Brasil": {"d": "1 hora", "p": ["Guido Nunes comanda o Hora do Raipe - Edição Especial Brasil para acompanhar em tempo real a rotina da Seleção Brasileira nos Estados Unidos.", "Entraremos no ar no mesmo horário dos treinos e das coletivas, trazendo todos os detalhes da preparação do Brasil para cada jogo da Copa do Mundo FIFA 2026."]}, "Hora do Raipe": {"d": "1 hora", "p": ["Guido Nunes comanda o Hora do Raipe — o programa que gira com os influenciadores da Rede Ronaldo espalhados por Miami e traz em primeira mão o que está bombando nas redes sociais quando o assunto é Copa do Mundo.", "Interações ao vivo com tudo que acontece na Casa Rede Ronaldo — direto das arquibancadas, dos corredores e do estúdio."]}, "As Embaixadoras": {"d": "1 hora", "p": ["Uma faixa da programação da Rede Ronaldo dedicada ao Futebol feminino. Feito por ELAS.", "Cultura, comportamento e entretenimento.", "As Embaixadoras vão encabeçar a conversa sobre futebol feminino através do olhar de 6 apresentadoras fixas.", "Posicionamento: cultura e comportamento via futebol + lifestyle + cobertura esportiva."]}, "ESPN | Resenha da Copa (Especial)": {"d": "1 hora", "p": ["André Plihal comanda a edição especial do Resenha ESPN, sempre na véspera e no pós-jogo da Seleção Brasileira na Copa do Mundo FIFA 2026.", "Transmitido para o canal de televisão e para o YouTube, direto do estúdio da Casa Rede Ronaldo em Miami.", "O programa reúne análises, destaques e os bastidores dos jogos do Brasil."]}, "ESPN | Resenha da Copa": {"d": "1 hora", "p": ["Edição diária do Resenha ESPN com transmissão apenas para o YouTube.", "Apanhado geral dos destaques do dia da Copa do Mundo FIFA 2026."]}, "Cavaco Futebol Clube": {"d": "2 horas", "p": ["Guido Nunes comanda o podcast Cavaco Futebol Clube do palco da Casa Rede Ronaldo, com participação especial do pentacampeão mundial Edilson Capetinha.", "Sempre um nome do samba/pagode junto com outros nomes do futebol brasileiro para agitar o pré-jogo de todas as partidas do Brasil na Copa do Mundo FIFA 2026.", "Samba e resenha de um jeito único para entreter o público da Casa e a audiência da Rede Ronaldo nas plataformas digitais."]}}};
-var RAW = "https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main";
-var TITLES = {programacao:'Programação',elenco:'Elenco',palco:'Palco',quadra:'Quadra',games:'Games',brasil:'Brasil',disney:'Disney+ & ESPN'};
-
+var DATA={"cast": {"fixos": [{"n": "Guido Nunes", "k": "guido_nunes", "t": "Âncora Principal", "r": "Apresenta todos os programas diários da Casa", "e": "🎙️"}, {"n": "Bibiana Bolson", "k": "bibiana", "t": "Jornalista · Rede Ronaldo", "r": "Credencial FIFA Miami + CBF New Jersey. Co-âncora e diretora de conteúdo", "e": "📰"}, {"n": "Patricia Liberato", "k": "patricia_liberato", "t": "Apresentadora / Editorial", "r": "Presença diária na Casa. Sai para fazer conteúdo externo em Miami", "e": "🎬"}, {"n": "Fábio Stefanini", "k": "fabio", "t": "Narrador · Rádio Exclusiva", "r": "Narra ao vivo os jogos exibidos nas telas e painéis LED da Casa. Interage com atores-jogadores no palco que encenam os replays das jogadas.", "e": "📣"}, {"n": "Edilson Capetinha", "k": "edilson_capetinha", "t": "Pentacampeão Mundial", "r": "Modo Raipe + Cavaco FC + Programa Pós-Brasil", "e": "⚽"}, {"n": "André Plihal", "k": "andre_plihal", "t": "ESPN · Resenha da Copa", "r": "Apresenta a Resenha ESPN diária e especiais pré/pós-Brasil ao vivo do estúdio de vidro", "e": "📺"}, {"n": "Daniel Cardoso Fontes", "k": "daniel", "t": "Animador de Torcida", "r": "Animador profissional de vôlei e basquete. Anima a Casa o dia inteiro, integrado ao vivo com a narração do Fábio.", "e": "🎤"}], "criadores": [{"n": "DJ Ronald", "k": "dj_ronald", "t": "DJ · Presidente da Rede Ronaldo", "r": "Shows, DJ sets, programas ao vivo. Credencial FIFA especial — acompanha a Seleção", "e": "👑"}, {"n": "Karoline Lima", "k": "karoline_lima", "t": "Rainha do Lifestyle", "r": "Looks com Karol + Boas de Miami. Credencial FIFA especial — viaja com a Seleção", "e": "🌟"}, {"n": "Feuripe (Felipe Mostapha)", "k": "feuripe", "t": "Embaixador de Torcida", "r": "\"Onde está o Feuripe?\" — 2 a 3 entradas ao vivo por dia. Jun/8 – Jul/11", "e": "🎸"}, {"n": "Milene Domingues", "k": "milene_domingues", "t": "Legend Futebol", "r": "As Embaixadoras + exibições especiais na quadra poliesportiva", "e": "⚽"}, {"n": "Lucas Freestyle", "k": "lucas_freestyle", "t": "Atleta Freestyle", "r": "Desafios diários na quadra · exibições · freestyle ao vivo", "e": "🔥"}, {"n": "Bernardo Cacella", "k": "bernardo_cacella", "t": "Fenômeno Jovem", "r": "Multi-esportista · desafios na quadra poliesportiva · Família Cacella", "e": "💪"}, {"n": "Daniela Cacella", "k": "daniela_cacella", "t": "Essência da Família", "r": "Família Cacella · presença e conteúdo na Casa", "e": "🎤"}, {"n": "Gabriel Cacella", "k": "gabriel_cacella", "t": "Talento Musical", "r": "Família Cacella · música e entretenimento", "e": "🎵"}, {"n": "Gui Tank", "k": "gui_tank", "t": "Chef do Feed", "r": "Conteúdo viral · receitas e experiências que viram tendência", "e": "😂"}, {"n": "Sofia Espanha", "k": "sofia_espanha", "t": "Rainha das Lives", "r": "Lives ao vivo da Casa · entretenimento e lifestyle", "e": "💃"}, {"n": "Douglas Viegas", "k": "douglas_viegas", "t": "Mestre da Resenha", "r": "Comentários, análises e resenha de futebol", "e": "🎙️"}, {"n": "Thiago Rosinhole", "k": "thiago_rosinhole", "t": "Artista", "r": "Conteúdo e entretenimento na Casa Rede Ronaldo", "e": "🌙"}, {"n": "Léo Chile", "k": "leo_chile", "t": "Voz do Esporte", "r": "Narração e comentários esportivos ao vivo", "e": "🏆"}, {"n": "Amaralzinho", "k": "amaralzinho", "t": "Volante de Fluxo", "r": "Conteúdo e entretenimento", "e": "🌊"}, {"n": "Priscila Souza", "k": "priscila_souza", "t": "Viajante Premium", "r": "Conteúdo de travel e lifestyle em Miami", "e": "✈️"}, {"n": "Dodô Mendonça", "k": "dodo_mendonca", "t": "Comentarista Digital", "r": "Bastidores, análise digital e invasão de ambientes especiais", "e": "📱"}, {"n": "Bil Araujo", "k": "bil_araujo", "t": "Competidor de Elite", "r": "Desafios e atividades competitivas na Casa", "e": "💪"}, {"n": "Duda Rubert", "k": "duda_rubert", "t": "Musa Geração Z", "r": "Moda, lifestyle e conteúdo para a Geração Z", "e": "👗"}, {"n": "Manoel Gomes", "k": "manoel_gomes", "t": "Lenda do Povo", "r": "Criador de conteúdo · Caneta Azul — entretenimento popular", "e": "🎩"}, {"n": "Belle Semile", "k": "belle_semile", "t": "Embaixadora & Criadora", "r": "As Embaixadoras · lifestyle e futebol feminino na Casa Rede Ronaldo", "e": "💫"}, {"n": "Cath Scala", "k": "cath_scala", "t": "Embaixadora · Futebol Feminino", "r": "As Embaixadoras · voz do futebol feminino ao vivo", "e": "⚽"}, {"n": "Luan Fiuza", "k": "luan_fiuza", "t": "Artista & Creator", "r": "Música, entretenimento e conteúdo ao vivo na Casa", "e": "🎵"}, {"n": "Nego Zara", "k": "nego_zara", "t": "Fenômeno do Funk", "r": "Conteúdo, entretenimento e presença ao vivo na Casa", "e": "🔥"}, {"n": "Fausto Carvalho", "k": "fausto_carvalho", "t": "Criador · Jorginho da Faria Lima", "r": "Criador do personagem Jorginho, o paulista da Faria Lima. 4M de seguidores.", "e": "🎭"}, {"n": "Catharina Scala", "k": "cath_scala", "t": "Apresentadora · Rede Ronaldo", "r": "Apresentadora de esportes e e-sports. Co-apresentadora do TouchDown Delas.", "e": "⚡"}, {"n": "Belle (Semile)", "k": "belle_semile", "t": "Narradora · E-sports", "r": "Narradora e apresentadora de e-sports. Faixa-preta de taekwondo. Advogada.", "e": "✨"}, {"n": "Luan Fiuza", "k": "luan_fiuza", "t": "Criador · Futebol", "r": "Criador de conteúdo de futebol com grande presença digital.", "e": "⚽"}, {"n": "Nego Zara", "k": "nego_zara", "t": "Humorista · Rancho do Maia", "r": "Humorista com mais de 1M de seguidores. Famoso pelo Rancho do Maia.", "e": "😂"}], "visitantes": [{"n": "Luva de Pedreiro", "k": "luva_de_pedreiro", "t": "Fenômeno Mundial", "r": "10 dias · conteúdo e interação com o público na Casa", "e": "🧤"}, {"n": "Cela Lopes", "k": "cela_lopes", "t": "Ícone Geração Z", "r": "10 dias · personalidade que vira viral", "e": "🎤"}], "equipe": [{"n": "Douglas Buiu", "k": "", "t": "CEO", "r": "Lidera o projeto Casa Rede Ronaldo.", "e": "⚙️"}, {"n": "Pablo", "k": "pablo", "t": "Produtor", "r": "Coordena toda a produção do projeto.", "e": "🎬"}, {"n": "Walhyson", "k": "walhyson", "t": "Equipe · \"O Urso\"", "r": "Equipe Casa Rede Ronaldo.", "e": "🐻"}, {"n": "Victor Rabitão", "k": "", "t": "Transmissão · Tecnologia · Engenharia", "r": "Dirige toda a infraestrutura técnica ao vivo.", "e": "📡"}, {"n": "Naliato", "k": "", "t": "Videomaker", "r": "Captação e produção de vídeo.", "e": "🎥"}, {"n": "George", "k": "", "t": "Social / Videomaker", "r": "Conteúdo para redes sociais e vídeo.", "e": "📱"}, {"n": "Luana", "k": "", "t": "Social / Videomaker", "r": "Conteúdo para redes sociais e vídeo.", "e": "📱"}, {"n": "Bruno De Luca", "k": "bruno_de_luca", "t": "Diretor de Criação", "r": "Dirige a criação, a programação e a produção geral do projeto.", "e": "🎯"}, {"n": "Ronald Nazário", "k": "", "t": "Presidente · Rede Ronaldo", "r": "Presidente da Rede Ronaldo. Filho de Ronaldo Fenômeno. DJ e criador de conteúdo.", "e": "👑"}, {"n": "Bruno Cunha", "k": "", "t": "Comercial", "r": "Responsável pela área comercial e parcerias da Casa Rede Ronaldo.", "e": "💼"}]}, "progs": {"Onde Está o FEURIPE": {"d": "3 a 8 min · 2-3x ao dia", "p": ["Quadro ao vivo inspirado no 'Onde Está o Wally?', adaptado para a Copa do Mundo, os EUA e a internet. Parceria Disney + ESPN + Rede Ronaldo Games.", "Enquanto o programa principal acontece no estúdio, os cortes ao vivo levam o público para algum lugar inesperado de Miami, acompanhando o Feuripe em experiências curiosas, engraçadas e visuais.", "Ninguém sabe onde o Feuripe estará na próxima entrada: Ocean Drive, Wynwood Walls, Bayside, Little Havana, Skyviews, Superblue, Hard Rock Stadium, Miami Beach ou até Orlando.", "Entradas ao vivo de 2 a 3 vezes por dia · 08 de junho a 11 de julho de 2026."]}, "Modo Raipe": {"d": "2 horas", "p": ["O “Modo Raipe” abre o dia na Casa Rede Ronaldo junto com a abertura dos portões.", "Guido Nunes, Karoline Lima e Edilson Capetinha vão trazer os assuntos mais quentes do dia de Copa, de forma leve, divertida, com muita resenha.", "Influenciadores da Rede Ronaldo espalhados por Miami entram ao vivo, e todo dia tem convidado especial."]}, "Hora do Raipe - Edição Especial Brasil": {"d": "1 hora", "p": ["Guido Nunes comanda o Hora do Raipe - Edição Especial Brasil para acompanhar em tempo real a rotina da Seleção Brasileira nos Estados Unidos.", "Entraremos no ar no mesmo horário dos treinos e das coletivas, trazendo todos os detalhes da preparação do Brasil para cada jogo da Copa do Mundo FIFA 2026."]}, "Hora do Raipe": {"d": "1 hora", "p": ["Guido Nunes comanda o Hora do Raipe — o programa que gira com os influenciadores da Rede Ronaldo espalhados por Miami e traz em primeira mão o que está bombando nas redes sociais quando o assunto é Copa do Mundo.", "Interações ao vivo com tudo que acontece na Casa Rede Ronaldo — direto das arquibancadas, dos corredores e do estúdio."]}, "As Embaixadoras": {"d": "1 hora", "p": ["Uma faixa da programação da Rede Ronaldo dedicada ao Futebol feminino. Feito por ELAS.", "Cultura, comportamento e entretenimento.", "As Embaixadoras vão encabeçar a conversa sobre futebol feminino através do olhar de 6 apresentadoras fixas.", "Posicionamento: cultura e comportamento via futebol + lifestyle + cobertura esportiva."]}, "ESPN | Resenha da Copa (Especial)": {"d": "1 hora", "p": ["André Plihal comanda a edição especial do Resenha ESPN, sempre na véspera e no pós-jogo da Seleção Brasileira na Copa do Mundo FIFA 2026.", "Transmitido para o canal de televisão e para o YouTube, direto do estúdio da Casa Rede Ronaldo em Miami.", "O programa reúne análises, destaques e os bastidores dos jogos do Brasil."]}, "ESPN | Resenha da Copa": {"d": "1 hora", "p": ["Edição diária do Resenha ESPN com transmissão apenas para o YouTube.", "Apanhado geral dos destaques do dia da Copa do Mundo FIFA 2026."]}, "Cavaco Futebol Clube": {"d": "2 horas", "p": ["Guido Nunes comanda o podcast Cavaco Futebol Clube do palco da Casa Rede Ronaldo, com participação especial do pentacampeão mundial Edilson Capetinha.", "Sempre um nome do samba/pagode junto com outros nomes do futebol brasileiro para agitar o pré-jogo de todas as partidas do Brasil na Copa do Mundo FIFA 2026.", "Samba e resenha de um jeito único para entreter o público da Casa e a audiência da Rede Ronaldo nas plataformas digitais."]}}};var RAW="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main";
+var TITLES={home:'',programacao:'Programação',elenco:'Elenco',palco:'Palco',quadra:'Quadra',games:'Games',brasil:'Brasil',disney:'Disney+ & ESPN'};
 function go(id){
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('on')});
-  var el=document.getElementById('page-'+id);
-  if(el)el.classList.add('on');
-  document.body.classList.toggle('inside', id!=='home');
-  var t=document.getElementById('tbTitle'); if(t)t.textContent=TITLES[id]||'';
+  var el=document.getElementById('page-'+id);if(el)el.classList.add('on');
+  document.body.classList.toggle('inside',id!=='home');
+  var t=document.getElementById('tbTitle');if(t)t.textContent=TITLES[id]||'';
+  document.querySelectorAll('.tab').forEach(function(b){b.classList.toggle('on',b.dataset.tab===id)});
   window.scrollTo(0,0);
 }
-
-// ── Gallery ──
-var gi=0, gn=6;
+var gi=0,gn=5;
 function gset(n){gi=((n%gn)+gn)%gn;document.getElementById('galTrack').style.transform='translateX(-'+(gi*100)+'%)';
-  var d=document.querySelectorAll('#dots .dot');d.forEach(function(x,j){x.classList.toggle('on',j===gi)});}
+  document.querySelectorAll('.dot').forEach(function(x,j){x.classList.toggle('on',j===gi)})}
 var tx=0;function tStart(e){tx=e.touches[0].clientX}
 function tEnd(e){var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40)gset(gi+(dx<0?1:-1))}
 setInterval(function(){gset(gi+1)},5000);
-
-// ── Programs ──
 function renderProgs(){
   var order=['Modo Raipe','As Embaixadoras','Hora do Raipe','Hora do Raipe - Edição Especial Brasil','Cavaco Futebol Clube','ESPN | Resenha da Copa','ESPN | Resenha da Copa (Especial)','Onde Está o FEURIPE'];
-  var c=document.getElementById('progList'), html='';
-  order.forEach(function(name){
-    var p=DATA.progs[name]; if(!p)return;
-    var prev=p.p[0]||'';
+  var html='';order.forEach(function(name){var p=DATA.progs[name];if(!p)return;
     var full=p.p.map(function(x){return '<p>'+x+'</p>'}).join('');
-    html+='<div class="prog" onclick="this.classList.toggle(\'open\')"><div class="prog-top"><h3>'+name+'</h3><span class="dur">'+p.d+'</span></div><div class="preview">'+prev+'</div><div class="full">'+full+'</div></div>';
-  });
-  c.innerHTML=html;
+    html+='<div class="prog" onclick="this.classList.toggle(\'open\')"><div class="prog-top"><h3>'+name+'</h3><span class="dur">'+p.d+'</span></div><div class="preview">'+p.p[0]+'</div><div class="full">'+full+'</div></div>';});
+  document.getElementById('progList').innerHTML=html;
 }
-
-// ── Cast ──
 var CTABS=[['fixos','Fixos'],['criadores','Criadores'],['visitantes','Visitantes'],['equipe','Equipe']];
-function renderCastTabs(){
-  document.getElementById('castTabs').innerHTML=CTABS.map(function(t,i){
-    return '<button class="ctab'+(i===0?' on':'')+'" onclick="showCast(\''+t[0]+'\',this)">'+t[1]+'</button>'}).join('');
-  showCast('fixos');
-}
-function showCast(key,btn){
-  if(btn){document.querySelectorAll('.ctab').forEach(function(b){b.classList.remove('on')});btn.classList.add('on');}
+function renderCastTabs(){document.getElementById('castTabs').innerHTML=CTABS.map(function(t,i){return '<button class="ctab'+(i===0?' on':'')+'" onclick="showCast(\''+t[0]+'\',this)">'+t[1]+'</button>'}).join('');showCast('fixos');}
+function showCast(key,btn){if(btn){document.querySelectorAll('.ctab').forEach(function(b){b.classList.remove('on')});btn.classList.add('on');}
   var arr=DATA.cast[key]||[];
-  document.getElementById('castGrid').innerHTML=arr.map(function(m){
-    var img=m.k?'<img class="ph" loading="lazy" src="'+RAW+'/fotos/'+m.k+'.jpg" alt="'+m.n+'">':'<div class="ph-emoji">'+m.e+'</div>';
-    return '<div class="person" onclick="showPerson(\''+key+'\','+arr.indexOf(m)+')">'+img+'<div class="pn">'+m.n+'</div><div class="pt">'+m.t+'</div></div>';
-  }).join('');
-}
-function showPerson(key,i){
-  var m=DATA.cast[key][i];
-  var img=m.k?'<img class="mph" src="'+RAW+'/fotos/'+m.k+'.jpg">':'';
+  document.getElementById('castGrid').innerHTML=arr.map(function(m,i){
+    var img=m.k?'<img class="ph" loading="lazy" src="'+RAW+'/fotos/'+m.k+'.jpg">':'<div class="ph-emoji">'+m.e+'</div>';
+    return '<div class="person" onclick="showPerson(\''+key+'\','+i+')">'+img+'<div class="pn">'+m.n+'</div><div class="pt">'+m.t+'</div></div>';}).join('');}
+function showPerson(key,i){var m=DATA.cast[key][i];var img=m.k?'<img class="mph" src="'+RAW+'/fotos/'+m.k+'.jpg">':'';
   document.getElementById('modalBody').innerHTML=img+'<h2>'+m.n+'</h2><div class="mt">'+m.t+'</div><div class="mr">'+m.r+'</div>';
-  document.getElementById('modal').classList.add('on');
-}
+  document.getElementById('modal').classList.add('on');}
 function closeModal(){document.getElementById('modal').classList.remove('on')}
-
-renderProgs(); renderCastTabs();
-</script>
-</body>
-</html>
+renderProgs();renderCastTabs();
+</script></body></html>
