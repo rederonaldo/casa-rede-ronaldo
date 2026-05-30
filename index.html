@@ -171,6 +171,12 @@ footer{text-align:center;padding:24px 20px;color:var(--gray2);font-size:11px;lin
 .gt{font-size:12px;font-weight:700;color:var(--gray2);width:42px;flex-shrink:0;padding-top:2px}
 .grow b{font-size:14px;font-weight:600;display:block;letter-spacing:-.01em}
 .gs{font-size:12px;color:var(--gray);display:block;margin-top:1px}
+.grow-prog{cursor:pointer;border-radius:8px;margin:0 -8px;padding-left:8px;padding-right:8px;transition:background .12s}
+.grow-prog:active{background:var(--bg)}
+.gprog-i{font-size:11px;color:var(--blue);font-weight:400;vertical-align:middle}
+.mprog-tag{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;text-align:center;margin-bottom:6px}
+.mr-left{text-align:left!important}
+.mr-left p{margin-bottom:10px}
 </style></head><body><div class="app">
 
 <div class="appbar"><button class="tb-back" onclick="go('home')">‹</button>
@@ -329,9 +335,15 @@ function showPerson(key,i){var m=DATA.cast[key][i];var img=m.k?'<img class="mph"
   document.getElementById('modal').classList.add('on');}
 function closeModal(){document.getElementById('modal').classList.remove('on')}
 var GRADE=DATA.grade;
+var PROGMAP={'Modo Raipe':'Modo Raipe','As Embaixadoras':'As Embaixadoras','Hora do Raipe':'Hora do Raipe','Hora do Raipe · Especial Brasil':'Hora do Raipe - Edição Especial Brasil','Cavaco Futebol Clube':'Cavaco Futebol Clube','ESPN · Resenha da Copa':'ESPN | Resenha da Copa','ESPN · Resenha (Especial)':'ESPN | Resenha da Copa (Especial)','Onde Está o FEURIPE':'Onde Está o FEURIPE'};
+function showProg(el){var key=el.getAttribute('data-prog'),p=DATA.progs[key];if(!p)return;
+  var title=key.replace(' | ',' · ').replace('(Especial)','· Especial');
+  var full=p.p.map(function(x){return '<p>'+x+'</p>'}).join('');
+  document.getElementById('modalBody').innerHTML='<div class="mprog-tag">Programa</div><h2>'+title+'</h2><div class="mt">⏱ '+p.d+'</div><div class="mr mr-left">'+full+'</div>';
+  document.getElementById('modal').classList.add('on');}
 function gtoggle(el){el.parentNode.classList.toggle('open');}
 function renderGrade(){document.getElementById('gradeTabs').innerHTML=GRADE.map(function(p,i){return '<button class="gtab'+(i===0?' on':'')+'" onclick="gradePhase('+i+',this)">'+p.l+'</button>'}).join('');gradePhase(0);}
-function row(r){return '<div class="grow"><span class="gt">'+r.t+'</span><div><b>'+r.n+'</b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div></div>';}
+function row(r){var pk=PROGMAP[r.n];if(pk){return '<div class="grow grow-prog" data-prog="'+pk+'" onclick="showProg(this)"><span class="gt">'+r.t+'</span><div><b>'+r.n+' <span class="gprog-i">ⓘ</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div></div>';}return '<div class="grow"><span class="gt">'+r.t+'</span><div><b>'+r.n+'</b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div></div>';}
 function gradePhase(i,btn){if(btn){document.querySelectorAll('.gtab').forEach(function(b){b.classList.remove('on')});btn.classList.add('on');}
   var p=GRADE[i],html='<div class="gphase-range">'+p.r+'</div>';
   p.days.forEach(function(d){
