@@ -1655,79 +1655,6 @@ function toggleProg(header){
   if(arrow) arrow.style.transform = item.classList.contains('open')?'rotate(180deg)':'';
 }
 
-// ─── MODALS ──────────────────────────────────────────────────────────────────
-
-function openCastModal(name, title, role){
-  document.getElementById('modal-content').innerHTML = `
-    <div style="font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px">Elenco</div>
-    <div class="modal-name">${name}</div>
-    <div class="modal-title">${title}</div>
-    <div class="modal-section">
-      <div class="modal-section-title">Papel na Casa</div>
-      <div class="modal-desc">${role}</div>
-    </div>`;
-  document.getElementById('modal-overlay').classList.add('open');
-}
-
-function openModal(id){
-  const contents = {
-    'showball-modal': `
-      <div style="font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px">Atração Especial</div>
-      <div class="modal-name" style="color:var(--rr-gold)">SHOWBALL</div>
-      <div class="modal-title">Futebol Indoor com Paredes de Acrílico</div>
-      <div class="modal-section">
-        <div class="modal-section-title">O que é</div>
-        <div class="modal-desc">Futebol jogado em quadra menor cercada por paredes de acrílico transparente. A bola nunca sai de jogo — vai na parede e volta. Duas equipes de 7 jogadores (6 + goleiro), substituições ilimitadas, dois tempos de 25 minutos.</div>
-      </div>
-      <div class="modal-section">
-        <div class="modal-section-title">Dimensões da Quadra</div>
-        <div class="modal-desc">42m a 44m de comprimento × 22m a 24m de largura. Gramado sintético obrigatório.</div>
-      </div>
-      <div class="modal-section">
-        <div class="modal-section-title">Na Casa</div>
-        <div class="modal-desc">Semana especial de 22/06. A quadra será montada no espaço da Casa Rede Ronaldo em Wynwood.</div>
-      </div>`
-  };
-  document.getElementById('modal-content').innerHTML = contents[id] || '';
-  document.getElementById('modal-overlay').classList.add('open');
-}
-
-function openProgModal(idx){
-  var data = [
-    {n:"Modo Raipe",c:"#0033A0",f:"2h diarios - 13h ET",cast:"Guido Nunes, Karoline Lima, Edilson Capetinha",d:"Abre o dia na Casa Rede Ronaldo. Os assuntos mais quentes da Copa de forma leve e divertida. Influenciadores ao vivo de Miami. Todo dia tem convidado especial."},
-    {n:"As Embaixadoras",c:"#C864FF",f:"1h diaria - 15h ET",cast:"Milene Domingues, Marilia Galvao, Roseli de Belo, Cath Scala, Semile, Stella Yeshua",d:"Faixa dedicada ao futebol feminino. Feito por ELAS. Cultura, comportamento e entretenimento."},
-    {n:"Hora do Raipe",c:"#64C8FF",f:"1h - ~17h ET entre jogos",cast:"Guido Nunes e influenciadores",d:"Gira com influenciadores espalhados por Miami. Traz o que esta bombando nas redes sobre a Copa."},
-    {n:"Hora do Raipe Especial Brasil",c:"#009C3B",f:"1h - Dias de jogo do Brasil",cast:"Guido Nunes, Bibiana",d:"Acompanha em tempo real a rotina da Selecao. Entra no ar no horario dos treinos e coletivas."},
-    {n:"Resenha ESPN",c:"#EF3340",f:"1h - ~19h ET - YouTube",cast:"Andre Plihal",d:"Edicao diaria do Resenha ESPN. Destaques do dia da Copa direto do estudio de vidro."},
-    {n:"Resenha ESPN Especial Brasil",c:"#EF3340",f:"Vespera e pos-jogo do Brasil - TV e YouTube",cast:"Andre Plihal",d:"Edicao especial sempre na vespera e pos-jogo da Selecao. TV e YouTube do estudio de vidro."},
-    {n:"Cavaco Futebol Clube",c:"#FFC700",f:"2h - Pre-jogo Brasil",cast:"Guido Nunes, Edilson Capetinha",d:"Podcast ao vivo do palco com Edilson Capetinha. Samba, pagode e futebol antes de cada jogo."},
-    {n:"Pos-Brasil: Edilson + Guido",c:"#4AE077",f:"Dia seguinte a cada jogo do Brasil",cast:"Edilson Capetinha, Guido Nunes",d:"Analise e resenha com o Pentacampeao Mundial. Exclusivo para o dia apos cada partida da Selecao."},
-    {n:"Onde esta o Feuripe?",c:"#64C8FF",f:"3-8 min por entrada - 2 a 3x por dia - Jun 8 a Jul 11",cast:"Feuripe - Felipe Mostapha",d:"Quadro ao vivo pela Miami e EUA. Ninguem sabe onde vai aparecer. Ocean Drive, Wynwood, Orlando, Hard Rock. Parceria Disney+ ESPN."},
-    {n:"Looks com Karol",c:"#C864FF",f:"A definir",cast:"Karoline Lima",d:"Moda e lifestyle com Karoline Lima em Miami durante a Copa."},
-    {n:"Boas de Miami com Karol",c:"#C864FF",f:"Noturno - A definir",cast:"Karoline Lima",d:"Baladas e nightlife em Miami com Karoline Lima."},
-    {n:"Especial Hostel",c:"#AA80FF",f:"Continuo",cast:"Elenco completo",d:"Reality, pegadinhas, games e videos no hostel da equipe. Alimenta os canais digitais."}
-  ];
-  var p = data[idx];
-  if(!p) return;
-  var cast = p.cast.split(', ').map(function(c){return '<span style="background:#1A2440;border-radius:20px;padding:3px 9px;font-size:12px;display:inline-block;margin:2px">'+c+'</span>';}).join('');
-  document.getElementById('modal-content').innerHTML = '<div style="font-size:10px;color:#5A6A8A;text-transform:uppercase;letter-spacing:1px">Programa</div><div class="modal-name" style="color:'+p.c+'">'+p.n+'</div><div style="font-size:12px;font-weight:700;color:'+p.c+';margin-bottom:12px;text-transform:uppercase;letter-spacing:.5px">'+p.f+'</div><div class="modal-section"><div class="modal-section-title">Resumo</div><div class="modal-desc">'+p.d+'</div></div><div class="modal-section"><div class="modal-section-title">Elenco</div><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px">'+cast+'</div></div>';
-  document.getElementById('modal-overlay').classList.add('open');
-}
-function closeModal(){
-  document.getElementById('modal-overlay').classList.remove('open');
-}
-
-// ─── INIT ────────────────────────────────────────────────────────────────────
-
-document.addEventListener('DOMContentLoaded', function(){
-  try {
-  renderCast();
-  renderPrograms();
-  renderPalco();
-  renderBrasil();
-  renderGames();
-  } catch(e){ console.log('init',e); }
-});
 
 function showDpPhase(id){
   document.querySelectorAll('[data-dphase]').forEach(function(b){b.classList.remove('on');});
@@ -1990,26 +1917,20 @@ function openProgModal(idx) {
   ];
   var p = data[idx]; if(!p) return;
   var cast = p.cast.split(', ').map(function(c){
-    return '<span style="background:var(--glass);border-radius:20px;padding:3px 9px;font-size:11px;display:inline-block;margin:2px">'+c+'</span>';
-  }).join('');
+    return c;
+  }).join(' · ');
   document.getElementById('modal-content').innerHTML =
     '<div style="font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px">Programa</div>' +
     '<div class="mn" style="color:'+p.c+'">'+p.n+'</div>' +
     '<div class="mtit">'+p.f+'</div>' +
     '<div class="ms"><div class="mst">Resumo</div><div class="md">'+p.d+'</div></div>' +
-    '<div class="ms"><div class="mst">Elenco</div><div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">'+cast+'</div></div>';
+    '<div class="ms"><div class="mst">Elenco</div><div style="margin-top:5px;font-size:13px;color:var(--text2);line-height:1.7">'+cast+'</div></div>';
   document.getElementById('mo').classList.add('on');
 }
 
 // ── INIT ─────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function() {
-  try { renderCast(); } catch(e){}
-  try { renderPrograms(); } catch(e){}
-  try { renderPalco(); } catch(e){}
-  try { renderBrasil(); } catch(e){}
-  try { renderGames(); } catch(e){}
   try { buildDays(); } catch(e){}
-  try { buildCast(CAST_FIXO,'cg-fixo'); buildCast(CAST_CRIA,'cg-cria'); buildCast(CAST_VISIT,'cg-visit'); buildCast(CAST_TEAM,'cast-team'); } catch(e){}
   try { buildPrograms(); } catch(e){}
   try { buildBrasil(); } catch(e){}
   try { buildGames(); } catch(e){}
