@@ -581,6 +581,70 @@ footer{text-align:center;padding:20px;color:var(--text3);font-size:10px;
   filter: drop-shadow(0 0 3px rgba(255,200,0,.4));
   border-radius: 4px;
 }
+
+/* ── 7 CAMADAS ─────────────────────────────────────────── */
+.camadas-wrapper{background:rgba(0,51,160,.12);border:1px solid rgba(0,51,160,.3);border-radius:16px;padding:16px;margin:16px 0}
+.camadas-titulo{font-size:15px;font-weight:800;color:var(--rr-gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.camadas-sub{font-size:11px;color:var(--text3);margin-bottom:12px}
+.camadas-grid{display:flex;flex-direction:column;gap:4px}
+.camada{display:flex;align-items:center;gap:10px;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,.04);border-left:3px solid var(--rr-blue)}
+.c-last{border-left-color:var(--rr-gold)}
+.c-num{width:22px;height:22px;border-radius:50%;background:var(--rr-blue);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.c-last .c-num{background:var(--rr-gold);color:#111}
+.c-nome{font-size:13px;font-weight:700;color:var(--text1)}
+.c-func{font-size:10px;color:var(--rr-gold);text-transform:uppercase;letter-spacing:.5px}
+
+/* ── NA ESTRADA ────────────────────────────────────────── */
+.naestrada-block{background:rgba(255,199,0,.08);border:1px solid rgba(255,199,0,.25);border-radius:12px;padding:12px;margin:12px 0}
+.ne-titulo{font-size:14px;font-weight:800;color:var(--rr-gold);margin-bottom:4px}
+.ne-rota{font-size:13px;color:var(--text1);font-weight:600;margin-bottom:8px}
+.ne-stats{display:flex;flex-wrap:wrap;gap:6px}
+.ne-stats span{font-size:11px;background:rgba(255,199,0,.15);border-radius:12px;padding:3px 8px;color:var(--text2)}
+
+/* ── PALCO PAGE ─────────────────────────────────────────── */
+.palco-note{font-size:12px;color:var(--text3);padding:8px;background:rgba(255,255,255,.04);border-radius:8px;margin-bottom:16px}
+.palco-semana{margin-bottom:20px}
+.ps-titulo{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--rr-gold);margin-bottom:8px;padding:4px 0;border-bottom:1px solid rgba(255,199,0,.2)}
+.ps-shows{display:flex;flex-direction:column;gap:6px}
+.ps-show{display:flex;flex-direction:column;gap:2px;padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.04);border-left:3px solid rgba(255,255,255,.1)}
+.ps-destaque{border-left-color:var(--rr-blue)}
+.ps-especial{border-left-color:var(--rr-gold);background:rgba(255,199,0,.06)}
+.ps-dia{font-size:10px;color:var(--text3);font-weight:600}
+.ps-nome{font-size:14px;font-weight:700;color:var(--text1)}
+.ps-desc{font-size:11px;color:var(--text3)}
+
+/* ── BRASIL PAGE ─────────────────────────────────────────── */
+.brasil-cred,.brasil-jogos,.brasil-especial{background:rgba(0,156,59,.08);border:1px solid rgba(0,156,59,.2);border-radius:12px;padding:12px;margin-bottom:14px}
+.bc-titulo,.bj-titulo,.be-titulo{font-size:13px;font-weight:800;color:#00c04b;margin-bottom:10px}
+.bc-items,.bj-lista,.be-items{display:flex;flex-direction:column;gap:8px}
+.bc-item,.be-item{padding:8px;background:rgba(255,255,255,.04);border-radius:8px;font-size:12px}
+.bc-item strong,.be-item strong{color:var(--text1);display:block;margin-bottom:2px}
+.bc-item p,.be-item p{color:var(--text3);margin:0;line-height:1.4}
+.be-hora{font-size:10px;background:#009C3B;color:#fff;border-radius:4px;padding:2px 6px;margin-bottom:4px;display:inline-block}
+.bj-jogo{display:flex;gap:10px;align-items:flex-start;padding:8px;background:rgba(255,255,255,.04);border-radius:8px}
+.bj-dia-jogo{border-left:3px solid #009C3B}
+.bj-n{width:24px;height:24px;border-radius:50%;background:#009C3B;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.bj-info{font-size:12px}.bj-info strong{color:var(--text1);display:block}
+.bj-info p{color:var(--text2);margin:2px 0;font-size:13px;font-weight:600}
+.bj-local{font-size:11px!important;color:var(--text3)!important;font-weight:400!important}
+.brasil-note{display:flex;gap:10px;align-items:flex-start;padding:10px;background:rgba(255,255,255,.04);border-radius:10px;margin-top:8px}
+.bn-ico{font-size:18px;flex-shrink:0}
+.bn-text{font-size:11px;color:var(--text3);line-height:1.5}
+
+/* ── GAMES EXTRA ─────────────────────────────────────────── */
+.gm-arenapc{background:rgba(100,200,255,.08);border:1px solid rgba(100,200,255,.2);border-radius:10px;padding:10px;margin-bottom:12px}
+.gm-arenapc .gm-titulo{font-size:13px;font-weight:800;color:#64c8ff;margin-bottom:4px}
+.gm-arenapc .gm-desc{font-size:11px;color:var(--text3)}
+.gm-fases-titulo{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--rr-gold);margin:14px 0 8px}
+.gm-fases{display:flex;flex-direction:column;gap:6px}
+.gm-fase{display:flex;gap:8px;align-items:flex-start;padding:7px 8px;background:rgba(255,255,255,.04);border-radius:8px;font-size:12px}
+.gf-n{width:20px;height:20px;border-radius:50%;background:var(--rr-blue);color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.gm-fase strong{color:var(--text1);display:block;margin-bottom:1px}
+.gm-fase p{color:var(--text3);margin:0;line-height:1.3}
+
+.squad-info-block{background:rgba(0,51,160,.1);border:1px solid rgba(0,51,160,.25);border-radius:12px;padding:12px;margin:12px 0}
+.si-titulo{font-size:13px;font-weight:800;color:var(--rr-gold);margin-bottom:4px}
+.si-desc{font-size:12px;color:var(--text3);line-height:1.5}
 </style>
 </head>
 <body>
@@ -747,7 +811,20 @@ footer{text-align:center;padding:20px;color:var(--text3);font-size:10px;
       <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
       <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
       <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
-      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      
+  <div class="gm-arenapc">
+    <div class="gm-titulo">🖥️ Arena PC · 10 Estações</div>
+    <div class="gm-desc">10 PCs gaming de alta performance · uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1 · Aim Lab · FPS · simuladores</div>
+  </div>
+  <div class="gm-fases-titulo">📅 5 Fases da Temporada</div>
+  <div class="gm-fases">
+    <div class="gm-fase"><span class="gf-n">1</span><strong>O Pontapé Inicial</strong><p>Jun 11–17 · Foco em esportes + abertura da Copa · Torneio EA FC Abertura Miami</p></div>
+    <div class="gm-fase"><span class="gf-n">2</span><strong>A Virada</strong><p>Jun 18–24 · Semana dos jogos do Brasil · Torneios temáticos</p></div>
+    <div class="gm-fase"><span class="gf-n">3</span><strong>Showbol Week</strong><p>Jun 22–28 · Semana especial de Showbol na quadra · Torneio de EA FC integrado</p></div>
+    <div class="gm-fase"><span class="gf-n">4</span><strong>Mata-Mata</strong><p>Jul 3–12 · Fase eliminatória da Copa · Torneios eliminatórios espelhando a Copa</p></div>
+    <div class="gm-fase"><span class="gf-n">5</span><strong>Final</strong><p>Jul 13–19 · Semana da Final · Grand Prix · Campeão recebe troféu exclusivo Casa RR</p></div>
+  </div>
+  <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
       <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
     </div>
       </div>
@@ -1944,14 +2021,69 @@ footer{text-align:center;padding:20px;color:var(--text3);font-size:10px;
 </section>
 
 <!-- PALCO -->
-<section id="page-palco" class="pg">
-  <div class="section-title">🎤 Palco</div>
-  <div class="section-sub">Grade de shows · 10 Jun → 19 Jul · Horários de Miami (ET)</div>
-  <div class="notice">🎤 Animador Daniel presente todos os dias com DJ, jogos e câmera do beijo</div>
-  <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
-    <table class="ptbl" id="palco-table"></table>
+<section <section id="page-palco" class="pg">
+  <div class="pg-title">🎤 Palco</div>
+  <div class="pg-sub">Grade de shows · 10 Jun → 19 Jul · Horários de Miami (ET)</div>
+  <p class="palco-note">🎤 Animador Daniel presente todos os dias · DJ de abertura diário · câmera do beijo · games ao vivo</p>
+
+  <div class="palco-semana">
+    <div class="ps-titulo">Semana de Inauguração · 10–14/06</div>
+    <div class="ps-shows">
+      <div class="ps-show ps-especial"><div class="ps-dia">10/06 Ter</div><div class="ps-nome">🎟️ Noite de Inauguração VIP</div><div class="ps-desc">Abertura exclusiva para convidados especiais</div></div>
+      <div class="ps-show"><div class="ps-dia">11/06 Qui</div><div class="ps-nome">🎉 Abertura ao Público</div><div class="ps-desc">Primeiro dia aberto para todos · DJ · Copa começa!</div></div>
+      <div class="ps-show ps-destaque"><div class="ps-dia">12/06 Sex</div><div class="ps-nome">🎸 Fábio Braza com Cavaco · 21h</div><div class="ps-desc">Show ao vivo</div></div>
+      <div class="ps-show ps-destaque"><div class="ps-dia">13/06 Sáb</div><div class="ps-nome">🎧 DJ Ronald · 21h</div><div class="ps-desc">Dia do primeiro jogo do Brasil · noite especial</div></div>
+      <div class="ps-show ps-destaque"><div class="ps-dia">14/06 Dom</div><div class="ps-nome">🎶 Simoninha & Jairzinho · 20h</div><div class="ps-desc">Show imperdível</div></div>
+    </div>
+  </div>
+
+  <div class="palco-semana">
+    <div class="ps-titulo">Segunda Semana · 19–21/06</div>
+    <div class="ps-shows">
+      <div class="ps-show ps-destaque"><div class="ps-dia">19/06 Sex</div><div class="ps-nome">🎸 Fábio Braza · 20h</div><div class="ps-desc">Show ao vivo com o cantor e compositor</div></div>
+      <div class="ps-show ps-destaque"><div class="ps-dia">20/06 Sáb</div><div class="ps-nome">✝️ Ton Carfi · 20h</div><div class="ps-desc">Uma noite de muita música e emoção</div></div>
+      <div class="ps-show ps-destaque"><div class="ps-dia">21/06 Dom</div><div class="ps-nome">🎶 Jairzinho & Simoninha · 20h</div><div class="ps-desc">Show especial de domingo</div></div>
+    </div>
+  </div>
+
+  <div class="palco-semana">
+    <div class="ps-titulo">Terceira Semana · 24–28/06</div>
+    <div class="ps-shows">
+      <div class="ps-show ps-destaque"><div class="ps-dia">24/06 Qua</div><div class="ps-nome">🥁 Samba dos Pentas · 20h</div><div class="ps-desc">Celebração especial — dia do 3º jogo do Brasil</div></div>
+      <div class="ps-show ps-destaque"><div class="ps-dia">26/06 Sex</div><div class="ps-nome">🎸 Fábio Braza · 20h</div><div class="ps-desc">Show ao vivo</div></div>
+      <div class="ps-show ps-especial"><div class="ps-dia">27/06 Sáb</div><div class="ps-nome">🎸 Capital Inicial · 21h</div><div class="ps-desc">A grande atração da semana</div></div>
+      <div class="ps-show ps-destaque"><div class="ps-dia">28/06 Dom</div><div class="ps-nome">🎶 Jairzinho & Simoninha · 20h</div><div class="ps-desc">Show de encerramento da semana</div></div>
+    </div>
+  </div>
+
+  <div class="palco-semana">
+    <div class="ps-titulo">Quarta Semana · 03–05/07</div>
+    <div class="ps-shows">
+      <div class="ps-show ps-destaque"><div class="ps-dia">03/07 Sex</div><div class="ps-nome">🎸 Fábio Braza · 20h</div><div class="ps-desc">Show ao vivo abrindo o fim de semana</div></div>
+      <div class="ps-show ps-especial"><div class="ps-dia">04/07 Sáb</div><div class="ps-nome">🎧 DJ Ronald · 21h</div><div class="ps-desc">Uma noite dançante com o melhor do som eletrônico</div></div>
+      <div class="ps-show ps-destaque"><div class="ps-dia">05/07 Dom</div><div class="ps-nome">🎶 Jairzinho & Simoninha · 20h</div><div class="ps-desc">Show especial para fechar o fim de semana</div></div>
+    </div>
+  </div>
+
+  <div class="palco-semana">
+    <div class="ps-titulo">Quinta Semana · 10–12/07</div>
+    <div class="ps-shows">
+      <div class="ps-show ps-destaque"><div class="ps-dia">10/07 Sex</div><div class="ps-nome">🎸 Fábio Braza · 20h</div><div class="ps-desc">Show ao vivo</div></div>
+      <div class="ps-show ps-especial"><div class="ps-dia">11/07 Sáb</div><div class="ps-nome">🎶 Ducell & Abdala — DNA · 20h</div><div class="ps-desc">De volta ao palco da Casa RR</div></div>
+      <div class="ps-show ps-destaque"><div class="ps-dia">12/07 Dom</div><div class="ps-nome">🎶 Jairzinho & Simoninha · 20h</div><div class="ps-desc">Show de encerramento</div></div>
+    </div>
+  </div>
+
+  <div class="palco-semana">
+    <div class="ps-titulo">Sexta Semana · Semis & Final · 17–19/07</div>
+    <div class="ps-shows">
+      <div class="ps-show ps-destaque"><div class="ps-dia">17/07 Sex</div><div class="ps-nome">🎸 Fábio Braza · 20h</div><div class="ps-desc">Show ao vivo para abrir a última semana</div></div>
+      <div class="ps-show ps-especial"><div class="ps-dia">18/07 Sáb</div><div class="ps-nome">🎧 DJ Ronald · 21h</div><div class="ps-desc">A melhor noite dançante para fechar com chave de ouro</div></div>
+      <div class="ps-show ps-especial"><div class="ps-dia">19/07 Dom</div><div class="ps-nome">🎶 Jairzinho & Simoninha · 21h</div><div class="ps-desc">🏆 Grande encerramento — Dia da Final da Copa</div></div>
+    </div>
   </div>
 </section>
+
 
 <section id="page-quadra" class="pg">
   <div class="section-title">🏟️ Quadra Poliesportiva</div>
@@ -2019,25 +2151,43 @@ footer{text-align:center;padding:20px;color:var(--text3);font-size:10px;
 
 <!-- ══ BRASIL ════════════════════════════════════ -->
 <section id="page-brasil" class="pg">
-  <div class="section-title">🇧🇷 Jogos do Brasil</div>
-  <div class="section-sub">Programação especial para cada jogo · Credenciais FIFA com a equipe</div>
+  <div class="pg-title">🇧🇷 Brasil na Copa 2026</div>
+  <div class="pg-sub">Programação especial para cada jogo · Credenciais FIFA com a equipe</div>
 
-  <div class="notice">📡 A Casa não transmite os jogos nos canais próprios — mas a <strong>câmera na plateia</strong> é conteúdo exclusivo e diferenciado</div>
-
-  <div class="brasil-games" id="brasil-games"></div>
-
-  <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin:20px 0 10px">Credenciais FIFA na Equipe</p>
-  <div class="grid-2">
-    <div style="background:var(--card);border:1px solid rgba(0,156,59,.3);border-radius:8px;padding:14px">
-      <p style="font-weight:700;font-size:14px;color:var(--rr-green)">🏟️ Credencial Estádios Miami</p>
-      <p style="font-size:12px;color:var(--text2);margin-top:6px">Bibiana · Fábio (narrador) · acesso a todos os ambientes FIFA em Miami</p>
-    </div>
-    <div style="background:var(--card);border:1px solid rgba(0,156,59,.5);border-radius:8px;padding:14px">
-      <p style="font-weight:700;font-size:14px;color:#4AE077">⭐ Credencial Especial · Acompanha a Seleção</p>
-      <p style="font-size:12px;color:var(--text2);margin-top:6px">Ronald · Karoline Lima · todos os jogos do Brasil em qualquer cidade</p>
+  <div class="brasil-cred">
+    <div class="bc-titulo">🏟️ Credenciamento FIFA</div>
+    <div class="bc-items">
+      <div class="bc-item"><strong>Credencial Estádios Miami</strong><p>Bibiana Bolson · Fábio Stefanini (narrador) · acesso a todos os ambientes FIFA em Miami</p></div>
+      <div class="bc-item"><strong>Credencial Especial · Acompanha a Seleção</strong><p>DJ Ronald · Karoline Lima · cobertura exclusiva dos treinos e bastidores da Seleção Brasileira</p></div>
+      <div class="bc-item"><strong>Autorização FIFA</strong><p>Site institucional · coberturas ao redor dos estádios · transmissão de TODOS os jogos na Casa com imagem oficial · www.rederonaldo.com</p></div>
     </div>
   </div>
+
+  <div class="brasil-jogos">
+    <div class="bj-titulo">⚽ Jogos do Brasil — Grupo C</div>
+    <div class="bj-lista">
+      <div class="bj-jogo bj-dia-jogo"><div class="bj-n">1</div><div class="bj-info"><strong>13/06 Sáb · 19h ET</strong><p>🇧🇷 Brasil x 🇲🇦 Marrocos</p><p class="bj-local">Grupo C · Nova Jersey — MetLife Stadium</p></div></div>
+      <div class="bj-jogo bj-dia-jogo"><div class="bj-n">2</div><div class="bj-info"><strong>19/06 Sex · 19h ET</strong><p>🇧🇷 Brasil x 🇭🇹 Haiti</p><p class="bj-local">Grupo C · Miami — Hard Rock Stadium</p></div></div>
+      <div class="bj-jogo bj-dia-jogo"><div class="bj-n">3</div><div class="bj-info"><strong>24/06 Qua · 17h ET</strong><p>🏴󠁧󠁢󠁳󠁣󠁴󠁿 Escócia x 🇧🇷 Brasil</p><p class="bj-local">Grupo C · Dallas — AT&amp;T Stadium</p></div></div>
+    </div>
+  </div>
+
+  <div class="brasil-especial">
+    <div class="be-titulo">📺 Programação Especial Dias de Brasil</div>
+    <div class="be-items">
+      <div class="be-item"><span class="be-hora">2h antes</span><strong>Cavaco Futebol Clube</strong><p>Guido Nunes + Edilson Capetinha + samba ao vivo — esquenta Brasil</p></div>
+      <div class="be-item"><span class="be-hora">Durante</span><strong>Hora do Raipe Especial Brasil</strong><p>Cobertura ao vivo com a torcida na Casa</p></div>
+      <div class="be-item"><span class="be-hora">Pós-jogo</span><strong>Resenha ESPN Especial Brasil</strong><p>André Plihal + análise completa do jogo</p></div>
+      <div class="be-item"><span class="be-hora">D-1</span><strong>ESPN Véspera</strong><p>Cobertura especial na véspera de cada jogo do Brasil</p></div>
+    </div>
+  </div>
+
+  <div class="brasil-note">
+    <div class="bn-ico">📡</div>
+    <div class="bn-text">A Casa não transmite os jogos nos canais próprios — mas a câmera na plateia é conteúdo exclusivo. A transmissão oficial é do Disney+/ESPN.</div>
+  </div>
 </section>
+
 
 <!-- ══ DISNEY+ ═══════════════════════════════════ -->
 <section id="page-disney" class="pg">
@@ -2163,6 +2313,10 @@ const CAST_CREATORS = [
   {emoji:'👗',name:'Duda Rubert',key:'duda_rubert',title:'Musa Geração Z',role:'Moda, lifestyle e conteúdo para a Geração Z',tag:'fixo'},
   {emoji:'🎩',name:'Manoel Gomes',key:'manoel_gomes',title:'Lenda do Povo',role:'Criador de conteúdo · Caneta Azul — entretenimento popular',tag:'fixo'},
 
+  {emoji:'💫',name:'Belle Semile',key:'belle_semile',title:'Embaixadora & Criadora',role:'As Embaixadoras · lifestyle e futebol feminino na Casa Rede Ronaldo',tag:'fixo'},
+  {emoji:'⚽',name:'Cath Scala',key:'cath_scala',title:'Embaixadora · Futebol Feminino',role:'As Embaixadoras · voz do futebol feminino ao vivo',tag:'fixo'},
+  {emoji:'🎵',name:'Luan Fiuza',key:'luan_fiuza',title:'Artista & Creator',role:'Música, entretenimento e conteúdo ao vivo na Casa',tag:'fixo'},
+  {emoji:'🔥',name:'Nego Zara',key:'nego_zara',title:'Fenômeno do Funk',role:'Conteúdo, entretenimento e presença ao vivo na Casa',tag:'fixo'},
   {emoji:'🎭',name:'Fausto Carvalho',key:'fausto_carvalho',title:'Criador · Jorginho da Faria Lima',role:'Criador do personagem Jorginho, o paulista da Faria Lima. 4M de seguidores.',tag:'especial'},
     {emoji:'⚡',name:'Catharina Scala',key:'cath_scala',title:'Apresentadora · Rede Ronaldo',role:'Apresentadora de esportes e e-sports. Co-apresentadora do TouchDown Delas.',tag:'especial'},
   {emoji:'✨',name:'Belle (Semile)',key:'belle_semile',title:'Narradora · E-sports',role:'Narradora e apresentadora de e-sports. Faixa-preta de taekwondo. Advogada.',tag:'especial'},
