@@ -539,6 +539,38 @@ footer{text-align:center;padding:20px;color:var(--text3);font-size:10px;
 .gp-desc{font-size:13px;color:#C8D2E8;line-height:1.6;margin-bottom:10px}
 .cast-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:9px;margin-top:12px;margin-bottom:8px}
 @media(max-width:400px){.cast-grid{grid-template-columns:1fr 1fr}}
+
+.er-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.er-raipe{background:#0033A0;color:#fff}
+.er-emb{background:#C864FF;color:#fff}
+.er-brasil{background:#009C3B;color:#fff}
+.er-espn{background:#EF3340;color:#fff}
+.er-espn-esp{background:#c0001f;color:#fff}
+.er-cavaco{background:#FFC700;color:#111}
+.phase{display:none}.phase.on{display:block}
+.tabs{display:flex;gap:4px;overflow-x:auto;padding:10px 0;scrollbar-width:none;margin-bottom:12px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;background:rgba(255,255,255,.08);color:var(--text2);border:none;cursor:pointer;white-space:nowrap;transition:all .2s}
+.tab.on,.tab:hover{background:var(--rr-blue);color:#fff}
+.tab.brasil.on{background:#009C3B}
+.warn-bar{background:rgba(255,200,0,.15);border:1px solid rgba(255,200,0,.3);border-radius:8px;padding:8px 12px;font-size:11px;color:var(--rr-gold);margin-bottom:12px}
+.chip.c-br{background:#009C3B;color:#fff}
+.chip.c-d1{background:#FFC700;color:#111}
+.chip.c-show{background:var(--rr-blue);color:#fff}
+.ed-grid{display:flex;flex-direction:column;gap:4px}
+.er{display:flex;align-items:flex-start;gap:8px;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,.03);border-left:3px solid transparent}
+.er-t{font-size:11px;font-weight:700;color:var(--text3);width:38px;flex-shrink:0;padding-top:3px}
+.er-c{flex:1;min-width:0}
+.er-name{font-size:13px;font-weight:600;color:var(--text1);margin:0;line-height:1.3}
+.er-sub{font-size:11px;color:var(--text3);margin:2px 0 0;line-height:1.3}
+.t-hyp{border-left-color:#0033A0}.t-hyp-cont{border-left-color:#0033A080}
+.t-emb{border-left-color:#C864FF}.t-grb{border-left-color:#009C3B}.t-cavaco{border-left-color:#FFC700}.t-cav-cont{border-left-color:#FFC70080}
+.t-resd,.t-espd1,.t-esp{border-left-color:#EF3340}
+.t-game{border-left-color:rgba(255,255,255,.1)}
+.t-br{border-left-color:#009C3B;background:rgba(0,156,59,.08)}
+.t-mm{border-left-color:rgba(100,200,255,.4)}
+.t-slot,.t-giro{border-left-color:rgba(255,255,255,.05)}
+.badge{font-size:10px;margin-left:4px;padding:1px 5px;border-radius:3px;background:#009C3B;color:#fff;vertical-align:middle}
 </style>
 </head>
 <body>
@@ -664,414 +696,1153 @@ footer{text-align:center;padding:20px;color:var(--text3);font-size:10px;
 <!-- ══ GRADE ═════════════════════════════════════ -->
 <section id="page-grade" class="pg">
   <div class="section-title">📅 Programação Dia a Dia</div>
-  <div class="section-sub">Clique em qualquer dia para ver a programação completa — estúdio, palco, quadra e games</div>
+  <div class="section-sub">Clique em qualquer dia para ver a grade completa · estúdio, palco e games</div>
+  <div class="notice">⚠️ Horários de Miami (ET) · Brasília = ET + 1h · Sujeito a ajustes</div>
 
-  <div class="notice">⚠️ Horários de Miami (ET) · Brasília = ET + 1h · Sujeito a ajustes nos dias de jogo</div>
+  <nav class="tabs">
+  <button class="tab on" onclick="go('r1',this)">1ª Rodada</button>
+  <button class="tab" onclick="go('r2',this)">2ª Rodada</button>
+  <button class="tab" onclick="go('r3',this)">3ª Rodada</button>
+  <button class="tab" onclick="go('av',this)">16 Avos</button>
+  <button class="tab" onclick="go('oi',this)">Oitavas</button>
+  <button class="tab" onclick="go('qa',this)">Quartas</button>
+  <button class="tab brasil" onclick="go('sf',this)">Semis &amp; Final</button>
+</nav>
 
-  <!-- Phase tabs -->
-  <div class="phase-tabs">
-    <button class="ptab active" onclick="showPhase('p-sem1',this)">Semana 1 · 10–14/06</button>
-    <button class="ptab" onclick="showPhase('p-sem2',this)">Semana 2 · 15–21/06</button>
-    <button class="ptab" onclick="showPhase('p-sem3',this)">Semana 3 · 22–28/06</button>
-    <button class="ptab" onclick="showPhase('p-avos',this)">16 Avos · 29/06–05/07</button>
-    <button class="ptab" onclick="showPhase('p-oitavas',this)">Oitavas · 06–12/07</button>
-    <button class="ptab brasil" onclick="showPhase('p-semis',this)">Semis + Final · 13–19/07</button>
+  <div class="wrap">
+
+  <!-- 1ª RODADA -->
+  <div id="r1" class="phase on">
+
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Qui · 11 de Junho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 2 · Abertura</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd11"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd11_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb001"></div></div><div class="er t-game"><span class="er-t">16h</span><div class="er-c"><p class="er-name">🇲🇽 México x 🇿🇦 África do Sul</p><p class="er-sub">Grupo A · Cidade do México — Est. Azteca</p></div></div><div class="er t-game"><span class="er-t">23h</span><div class="er-c"><p class="er-name">🇰🇷 Coreia do Sul x 🇨🇿 Rep. Tcheca</p><p class="er-sub">Grupo A · Guadalajara — Est. Akron</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resd11"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">19h</div><div class="pc"><div class="pn">DJ — Abertura ao Público</div><div class="psub">Primeiro dia aberto para todos!</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Sex · 12 de Junho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 3</span><span class="chip c-d1">D-1 🇧🇷</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd12"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd12_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb002"></div></div><div class="er t-game"><span class="er-t">16h</span><div class="er-c"><p class="er-name">🇨🇦 Canadá x 🇧🇦 Bósnia-Herzegovina</p><p class="er-sub">Grupo B · Toronto — BMO Field</p></div></div><div class="er t-game"><span class="er-t">22h</span><div class="er-c"><p class="er-name">🇺🇸 EUA x 🇵🇾 Paraguai</p><p class="er-sub">Grupo D · Los Angeles — SoFi Stadium</p></div></div><div class="er t-espd1"><span class="er-t">22h</span><div class="er-c" id="d112"></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resd12"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-show"><div class="pt">21h</div><div class="pc"><div class="pn">Fábio Braza com Cavaco</div><div class="psub">ver programação Cavaco FC</div></div></div><div class="pr p-show"><div class="pt">22h</div><div class="pc"><div class="pn">Vitor Kley</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day day-show day-brasil">
+      <div class="day-hd">
+        <strong class="day-name">Sáb · 13 de Junho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 4</span><span class="chip c-br">🇧🇷 Brasil</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd13"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd13_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb003"></div></div><div class="er t-cavaco"><span class="er-t">17h</span><div class="er-c" id="cavd13"></div></div><div class="er t-cav-cont"><span class="er-t"></span><div class="er-c"></div></div><div class="er t-game"><span class="er-t">16h</span><div class="er-c"><p class="er-name">🇶🇦 Catar x 🇨🇭 Suíça</p><p class="er-sub">Grupo B · San Francisco — Levi's Stadium</p></div></div><div class="er t-br"><span class="er-t">19h</span><div class="er-c"><p class="er-name">🇧🇷 Brasil x 🇲🇦 Marrocos<span class="badge">🇧🇷</span></p><p class="er-sub">Grupo C · BRASIL · Nova Jersey — MetLife Stadium</p></div></div><div class="er t-grb"><span class="er-t">~19h</span><div class="er-c" id="grbd1"></div></div><div class="er t-game"><span class="er-t">22h</span><div class="er-c"><p class="er-name">🇭🇹 Haiti x 🏴󠁧󠁢󠁳󠁣󠁴󠁿 Escócia</p><p class="er-sub">Grupo C · Boston — Gillette Stadium</p></div></div><div class="er t-game"><span class="er-t">01h</span><div class="er-c"><p class="er-name">🇦🇺 Austrália x 🇹🇷 Turquia</p><p class="er-sub">Grupo D · Vancouver — BC Place</p></div></div><div class="er t-esp"><span class="er-t">22h30</span><div class="er-c" id="espd13"></div></div><div class="er t-resd"><span class="er-t">21h</span><div class="er-c" id="resd13"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura da Casa</div></div></div><div class="pr p-especial"><div class="pt">21h</div><div class="pc"><div class="pn">DJ Ronald</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Dom · 14 de Junho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 5</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd14"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd14_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb004"></div></div><div class="er t-game"><span class="er-t">17h</span><div class="er-c"><p class="er-name">🇳🇱 Holanda x 🇯🇵 Japão</p><p class="er-sub">Grupo F · Dallas — AT&T Stadium</p></div></div><div class="er t-game"><span class="er-t">20h</span><div class="er-c"><p class="er-name">🇨🇮 Costa do Marfim x 🇪🇨 Equador</p><p class="er-sub">Grupo E · Filadélfia — Lincoln Financial</p></div></div><div class="er t-game"><span class="er-t">22h</span><div class="er-c"><p class="er-name">🇸🇪 Suécia x 🇹🇳 Tunísia</p><p class="er-sub">Grupo F · Monterrey — Est. BBVA</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resd14"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">12h</div><div class="pc"><div class="pn">DJ — Abertura da Casa</div></div></div><div class="pr p-show"><div class="pt">20h</div><div class="pc"><div class="pn">Simoninha / Jairzinho</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day">
+      <div class="day-hd">
+        <strong class="day-name">Seg · 15 de Junho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 6</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd15"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd15_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb005"></div></div><div class="er t-game"><span class="er-t">16h</span><div class="er-c"><p class="er-name">🇧🇪 Bélgica x 🇪🇬 Egito</p><p class="er-sub">Grupo G · Seattle — Lumen Field</p></div></div><div class="er t-game"><span class="er-t">19h</span><div class="er-c"><p class="er-name">🇸🇦 Arábia Saudita x 🇺🇾 Uruguai</p><p class="er-sub">Grupo H · Miami — Hard Rock Stadium</p></div></div><div class="er t-game"><span class="er-t">22h</span><div class="er-c"><p class="er-name">🇮🇷 Irã x 🇳🇿 Nova Zelândia</p><p class="er-sub">Grupo G · Los Angeles — SoFi Stadium</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resd15"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">12h</div><div class="pc"><div class="pn">DJ — Abertura da Casa</div></div></div><div class="pr p-dj"><div class="pt">20h</div><div class="pc"><div class="pn">DJ</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day">
+      <div class="day-hd">
+        <strong class="day-name">Ter · 16 de Junho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 7</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd16"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd16_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb006"></div></div><div class="er t-game"><span class="er-t">16h</span><div class="er-c"><p class="er-name">🇫🇷 França x 🇸🇳 Senegal</p><p class="er-sub">Grupo I · Nova Jersey — MetLife Stadium</p></div></div><div class="er t-game"><span class="er-t">19h</span><div class="er-c"><p class="er-name">🇮🇶 Iraque x 🇳🇴 Noruega</p><p class="er-sub">Grupo I · Boston — Gillette Stadium</p></div></div><div class="er t-game"><span class="er-t">22h</span><div class="er-c"><p class="er-name">🇦🇷 Argentina x 🇩🇿 Argélia</p><p class="er-sub">Grupo J · Kansas City — Arrowhead Stadium</p></div></div><div class="er t-game"><span class="er-t">01h</span><div class="er-c"><p class="er-name">🇦🇹 Áustria x 🇯🇴 Jordânia</p><p class="er-sub">Grupo J · San Francisco — Levi's Stadium</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resd16"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">12h</div><div class="pc"><div class="pn">DJ — Abertura da Casa</div></div></div><div class="pr p-dj"><div class="pt">20h</div><div class="pc"><div class="pn">DJ</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day">
+      <div class="day-hd">
+        <strong class="day-name">Qua · 17 de Junho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 8</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd17"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd17_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb007"></div></div><div class="er t-game"><span class="er-t">17h</span><div class="er-c"><p class="er-name">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra x 🇭🇷 Croácia</p><p class="er-sub">Grupo L · Dallas — AT&T Stadium</p></div></div><div class="er t-game"><span class="er-t">20h</span><div class="er-c"><p class="er-name">🇬🇭 Gana x 🇵🇦 Panamá</p><p class="er-sub">Grupo L · Toronto — BMO Field</p></div></div><div class="er t-game"><span class="er-t">21h</span><div class="er-c"><p class="er-name">🇺🇿 Uzbequistão x 🇨🇴 Colômbia</p><p class="er-sub">Grupo K · Cidade do México — Est. Azteca</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resd17"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">12h</div><div class="pc"><div class="pn">DJ — Abertura da Casa</div></div></div><div class="pr p-dj"><div class="pt">20h</div><div class="pc"><div class="pn">DJ</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
   </div>
 
-  <!-- SEMANA 1 -->
-  <div id="p-sem1" class="phase-content active">
+  <!-- 2ª RODADA -->
+  <div id="r2" class="phase">
 
-    <!-- 10 JUN -->
-    <div class="day-card">
-      <div class="day-header" onclick="toggleDay(this)">
-        <span class="day-date">10/06</span>
-        <span class="day-name">Terça-feira</span>
-        <div class="day-chips"><span class="chip chip-special">🎟️ VIP</span><span class="chip chip-special">Inauguração</span></div>
-        <span class="day-toggle">▼</span>
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Qui · 18 de Junho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 9</span><span class="chip c-d1">D-1 🇧🇷</span></span>
       </div>
-      <div class="day-body">
-        <div class="layer-tabs">
-          <div class="ltab active" onclick="showLayer(this,'est-0610')">📺 Estúdio</div>
-          <div class="ltab" onclick="showLayer(this,'palco-0610')">🎤 Palco</div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd18"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd18_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb008"></div></div><div class="er t-game"><span class="er-t">16h</span><div class="er-c"><p class="er-name">🇨🇭 Suíça x 🇧🇦 Bósnia-Herzegovina</p><p class="er-sub">Grupo B · Los Angeles — SoFi Stadium</p></div></div><div class="er t-game"><span class="er-t">19h</span><div class="er-c"><p class="er-name">🇨🇦 Canadá x 🇶🇦 Catar</p><p class="er-sub">Grupo B · Vancouver — BC Place</p></div></div><div class="er t-game"><span class="er-t">22h</span><div class="er-c"><p class="er-name">🇲🇽 México x 🇰🇷 Coreia do Sul</p><p class="er-sub">Grupo A · Guadalajara — Est. Akron</p></div></div><div class="er t-espd1"><span class="er-t">22h</span><div class="er-c" id="d118"></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resd18"></div></div>
         </div>
-        <div id="est-0610" class="layer-panel active">
-          <div class="sched-row t-programa"><span class="sr-time">Noite</span><div class="sr-content"><span class="sr-name">Abertura VIP — Convidados Especiais</span><span class="sr-sub">Evento fechado de inauguração da Casa Rede Ronaldo</span></div></div>
-        </div>
-        <div id="palco-0610" class="layer-panel">
-          <div class="sched-row t-show"><span class="sr-time">Noite</span><div class="sr-content"><span class="sr-name">DJ · Abertura da Temporada</span><span class="sr-sub">Celebração com convidados especiais</span></div></div>
-        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">11h</div><div class="pc"><div class="pn">DJ — Abertura da Casa</div></div></div><div class="pr p-show"><div class="pt">19h</div><div class="pc"><div class="pn">Noite Brasil</div><div class="psub">DJ João Brasil · Banda DNA</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
       </div>
     </div>
-
-    <!-- 11 JUN -->
-    <div class="day-card">
-      <div class="day-header" onclick="toggleDay(this)">
-        <span class="day-date">11/06</span>
-        <span class="day-name">Quinta-feira</span>
-        <div class="day-chips"><span class="chip chip-show">🎉 Abertura ao Público</span><span class="chip chip-default">Dia 1</span></div>
-        <span class="day-toggle">▼</span>
+    <div class="day day-show day-brasil">
+      <div class="day-hd">
+        <strong class="day-name">Sex · 19 de Junho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 10</span><span class="chip c-br">🇧🇷 Brasil</span></span>
       </div>
-      <div class="day-body">
-        <div class="layer-tabs">
-          <div class="ltab active" onclick="showLayer(this,'est-1106')">📺 Estúdio</div>
-          <div class="ltab" onclick="showLayer(this,'palco-1106')">🎤 Palco</div>
-          <div class="ltab" onclick="showLayer(this,'games-1106')">🎮 Games</div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd19"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd19_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb009"></div></div><div class="er t-cavaco"><span class="er-t">17h</span><div class="er-c" id="cavd19"></div></div><div class="er t-cav-cont"><span class="er-t"></span><div class="er-c"></div></div><div class="er t-game"><span class="er-t">14h</span><div class="er-c"><p class="er-name">🇺🇸 EUA x 🇦🇺 Austrália</p><p class="er-sub">Grupo D · Kansas City — Arrowhead Stadium</p></div></div><div class="er t-br"><span class="er-t">19h</span><div class="er-c"><p class="er-name">🇧🇷 Brasil x 🇭🇹 Haiti<span class="badge">🇧🇷</span></p><p class="er-sub">Grupo C · BRASIL · Miami — Hard Rock Stadium</p></div></div><div class="er t-grb"><span class="er-t">~19h</span><div class="er-c" id="grbd2"></div></div><div class="er t-game"><span class="er-t">22h</span><div class="er-c"><p class="er-name">🇦🇫 Afeganistão x 🇯🇴 Jordânia</p><p class="er-sub">Grupo J · San Francisco — Levi's Stadium</p></div></div><div class="er t-resd"><span class="er-t">21h</span><div class="er-c" id="resd19"></div></div>
         </div>
-        <div id="est-1106" class="layer-panel active">
-          <div class="sched-row t-programa"><span class="sr-time">13h</span><div class="sr-content"><span class="sr-name">Modo Raipe</span><span class="sr-sub">Guido Nunes · Karoline Lima · Edilson Capetinha · abertura da temporada</span></div></div>
-          <div class="sched-row t-programa"><span class="sr-time">15h</span><div class="sr-content"><span class="sr-name">As Embaixadoras</span><span class="sr-sub">Milene Domingues · Marília Galvão · Roseli de Belo · Cath Scala · Semile · Stella Yeshua</span></div></div>
-          <div class="sched-row t-feuripe"><span class="sr-time">~16h</span><div class="sr-content"><span class="sr-name">Onde está o Feuripe? 🔴 AO VIVO</span><span class="sr-sub">Entrada 1 de 3 — Wynwood Walls · Ocean Drive · surpresa</span></div></div>
-          <div class="sched-row t-programa"><span class="sr-time">17h</span><div class="sr-content"><span class="sr-name">Hora do Raipe</span><span class="sr-sub">Guido + influenciadores · cobertura da abertura</span></div></div>
-          <div class="sched-row t-feuripe"><span class="sr-time">~18h</span><div class="sr-content"><span class="sr-name">Onde está o Feuripe? 🔴 AO VIVO</span><span class="sr-sub">Entrada 2 de 3</span></div></div>
-          <div class="sched-row t-espn"><span class="sr-time">19h</span><div class="sr-content"><span class="sr-name">Resenha ESPN · Especial Abertura</span><span class="sr-sub">André Plihal · ao vivo do estúdio de vidro · TV + YouTube</span></div></div>
-          <div class="sched-row t-feuripe"><span class="sr-time">~20h</span><div class="sr-content"><span class="sr-name">Onde está o Feuripe? 🔴 AO VIVO</span><span class="sr-sub">Entrada 3 de 3</span></div></div>
-          <div class="sched-row t-programa"><span class="sr-time">21h</span><div class="sr-content"><span class="sr-name">🎥 Reação da Plateia · México x África do Sul</span><span class="sr-sub">Câmera no público da Casa — conteúdo exclusivo</span></div></div>
-        </div>
-        <div id="palco-1106" class="layer-panel">
-          <div class="sched-row t-daniel"><span class="sr-time">13h</span><div class="sr-content"><span class="sr-name">Daniel + DJ · Abertura ao Público</span><span class="sr-sub">Animação, jogos com o público, câmera do beijo</span></div></div>
-          <div class="sched-row t-show"><span class="sr-time">20h</span><div class="sr-content"><span class="sr-name">Samba dos Pentas</span></div></div>
-          <div class="sched-row t-show"><span class="sr-time">21h</span><div class="sr-content"><span class="sr-name">Atração Q2</span></div></div>
-        </div>
-        <div id="games-1106" class="layer-panel">
-          <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:8px">🏆 Fase 1 · O Pontapé Inicial</p>
-          <p style="font-size:13px;color:var(--text2);margin-bottom:8px">Abertura da temporada — foco em EA FC e esportes</p>
-          <div class="gp-games">
-            <span class="gp-game">EA FC · Torneio Abertura Miami</span>
-            <span class="gp-game">Party games · Baia 2</span>
-            <span class="gp-game">Free Play · Baia 2</span>
-          </div>
-        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-show"><div class="pt">20h</div><div class="pc"><div class="pn">Fábio Braza</div><div class="psub">Show ao vivo</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
       </div>
     </div>
-
-    <!-- 12 JUN -->
-    <div class="day-card">
-      <div class="day-header" onclick="toggleDay(this)">
-        <span class="day-date">12/06</span>
-        <span class="day-name">Sexta-feira</span>
-        <div class="day-chips"><span class="chip chip-show">🎸 Show</span><span class="chip chip-br">D-1 🇧🇷</span></div>
-        <span class="day-toggle">▼</span>
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Sáb · 20 de Junho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 11</span></span>
       </div>
-      <div class="day-body">
-        <div class="layer-tabs">
-          <div class="ltab active" onclick="showLayer(this,'est-1206')">📺 Estúdio</div>
-          <div class="ltab" onclick="showLayer(this,'palco-1206')">🎤 Palco</div>
-          <div class="ltab" onclick="showLayer(this,'games-1206')">🎮 Games</div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd20"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd20_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb010"></div></div><div class="er t-game"><span class="er-t">16h</span><div class="er-c"><p class="er-name">🇪🇨 Equador x 🇹🇳 Tunísia</p><p class="er-sub">Grupo E · Filadélfia — Lincoln Financial</p></div></div><div class="er t-game"><span class="er-t">19h</span><div class="er-c"><p class="er-name">🇳🇱 Holanda x 🇸🇪 Suécia</p><p class="er-sub">Grupo F · Dallas — AT&T Stadium</p></div></div><div class="er t-game"><span class="er-t">22h</span><div class="er-c"><p class="er-name">🇨🇮 Costa do Marfim x 🇯🇵 Japão</p><p class="er-sub">Grupo E · Seattle — Lumen Field</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resd20"></div></div>
         </div>
-        <div id="est-1206" class="layer-panel active">
-          <div class="sched-row t-programa"><span class="sr-time">13h</span><div class="sr-content"><span class="sr-name">Modo Raipe</span><span class="sr-sub">Guido · Karoline · Edilson + convidado especial</span></div></div>
-          <div class="sched-row t-programa"><span class="sr-time">15h</span><div class="sr-content"><span class="sr-name">As Embaixadoras</span></div></div>
-          <div class="sched-row t-feuripe"><span class="sr-time">~16h</span><div class="sr-content"><span class="sr-name">Onde está o Feuripe? 🔴 AO VIVO</span></div></div>
-          <div class="sched-row t-programa"><span class="sr-time">17h</span><div class="sr-content"><span class="sr-name">Hora do Raipe</span></div></div>
-          <div class="sched-row t-feuripe"><span class="sr-time">~18h30</span><div class="sr-content"><span class="sr-name">Onde está o Feuripe? 🔴 AO VIVO</span></div></div>
-          <div class="sched-row t-espn"><span class="sr-time">21h</span><div class="sr-content"><span class="sr-name">Resenha ESPN Especial · Véspera de Brasil x Marrocos</span><span class="sr-sub">André Plihal · TV + YouTube</span></div></div>
-          <div class="sched-row t-feuripe"><span class="sr-time">~22h</span><div class="sr-content"><span class="sr-name">Onde está o Feuripe? 🔴 AO VIVO</span></div></div>
-        </div>
-        <div id="palco-1206" class="layer-panel">
-          <div class="sched-row t-daniel"><span class="sr-time">13h</span><div class="sr-content"><span class="sr-name">Daniel + DJ · Animação de Público</span></div></div>
-          <div class="sched-row t-daniel"><span class="sr-time">18h</span><div class="sr-content"><span class="sr-name">Daniel + DJ</span></div></div>
-          <div class="sched-row t-show"><span class="sr-time">20h</span><div class="sr-content"><span class="sr-name">🎸 Fábio Braza</span><span class="sr-sub">Show ao vivo</span></div></div>
-          <div class="sched-row t-show"><span class="sr-time">22h</span><div class="sr-content"><span class="sr-name">🎸 Vitor Kley</span></div></div>
-        </div>
-        <div id="games-1206" class="layer-panel">
-          <p style="font-size:12px;font-weight:700;letter-spacing:1px;color:var(--text3);margin-bottom:6px">🏆 FASE 1 · Pontapé Inicial</p>
-          <div class="gp-games"><span class="gp-game">Happy Hour 2v2</span><span class="gp-game">Rocket League</span><span class="gp-game">CS2</span></div>
-        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-show"><div class="pt">20h</div><div class="pc"><div class="pn">Ton Carfi</div><div class="psub">Uma noite de muita música e emoção</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
       </div>
     </div>
-
-    <!-- 13 JUN - BRASIL -->
-    <div class="day-card" style="border-color:rgba(0,156,59,.4)">
-      <div class="day-header" onclick="toggleDay(this)">
-        <span class="day-date" style="color:var(--rr-green)">13/06</span>
-        <span class="day-name">Sábado</span>
-        <div class="day-chips"><span class="chip chip-br">🇧🇷 Brasil x Marrocos</span><span class="chip chip-show">🎉 Show</span></div>
-        <span class="day-toggle">▼</span>
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Dom · 21 de Junho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 12</span></span>
       </div>
-      <div class="day-body">
-        <div class="layer-tabs">
-          <div class="ltab active" onclick="showLayer(this,'est-1306')">📺 Estúdio</div>
-          <div class="ltab" onclick="showLayer(this,'palco-1306')">🎤 Palco</div>
-          <div class="ltab" onclick="showLayer(this,'quadra-1306')">🏟️ Quadra</div>
-          <div class="ltab" onclick="showLayer(this,'games-1306')">🎮 Games</div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd21"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd21_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb011"></div></div><div class="er t-game"><span class="er-t">16h</span><div class="er-c"><p class="er-name">🇧🇪 Bélgica x 🇺🇾 Uruguai</p><p class="er-sub">Grupo G · Miami — Hard Rock Stadium</p></div></div><div class="er t-game"><span class="er-t">19h</span><div class="er-c"><p class="er-name">🇸🇦 Arábia Saudita x 🇮🇷 Irã</p><p class="er-sub">Grupo H · Los Angeles — SoFi Stadium</p></div></div><div class="er t-game"><span class="er-t">22h</span><div class="er-c"><p class="er-name">🇳🇿 Nova Zelândia x 🇪🇬 Egito</p><p class="er-sub">Grupo G · Seattle — Lumen Field</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resd21"></div></div>
         </div>
-        <div id="est-1306" class="layer-panel active">
-          <div class="sched-row t-programa"><span class="sr-time">13h</span><div class="sr-content"><span class="sr-name">Modo Raipe</span><span class="sr-sub">Guido · Karoline · Edilson · aquecimento pré-Brasil</span></div></div>
-          <div class="sched-row t-programa"><span class="sr-time">15h</span><div class="sr-content"><span class="sr-name">As Embaixadoras</span></div></div>
-          <div class="sched-row t-cavaco"><span class="sr-time">17h</span><div class="sr-content"><span class="sr-name">Cavaco Futebol Clube</span><span class="sr-sub">Guido + Edilson Capetinha · Pré-jogo Brasil x Marrocos · termina às 18h30</span></div></div>
-          <div class="sched-row t-brasil"><span class="sr-time">19h</span><div class="sr-content"><span class="sr-name">🇧🇷 Brasil x 🇲🇦 Marrocos · Grupo C</span><span class="sr-sub">MetLife Stadium · Nova Jersey · 🎥 REAÇÃO DA PLATEIA ao vivo</span></div></div>
-          <div class="sched-row t-espn"><span class="sr-time">22h30</span><div class="sr-content"><span class="sr-name">Resenha ESPN Especial · Pós-Brasil</span><span class="sr-sub">André Plihal · análise imediata do jogo</span></div></div>
-        </div>
-        <div id="palco-1306" class="layer-panel">
-          <div class="sched-row t-daniel"><span class="sr-time">14h</span><div class="sr-content"><span class="sr-name">Daniel + DJ · Pré-Jogo</span></div></div>
-          <div class="sched-row t-show"><span class="sr-time">21h</span><div class="sr-content"><span class="sr-name">🎧 DJ Ronald</span><span class="sr-sub">Noite de festa pós-jogo</span></div></div>
-          <div class="sched-row t-show"><span class="sr-time">22h</span><div class="sr-content"><span class="sr-name">🎶 Ducell & Abdala · DNA</span><span class="sr-sub">Uma noite especial</span></div></div>
-        </div>
-        <div id="quadra-1306" class="layer-panel">
-          <div class="sched-row t-desafio"><span class="sr-time">15h</span><div class="sr-content"><span class="sr-name">Desafio Pré-Jogo Brasil</span><span class="sr-sub">Felipe · Lucas Freestyle · Bernardo Cacella · futebol e basquete</span></div></div>
-        </div>
-        <div id="games-1306" class="layer-panel">
-          <p style="font-size:12px;font-weight:700;letter-spacing:1px;color:var(--text3);margin-bottom:6px">🏆 FASE 1 · Watch Party & Finais</p>
-          <div class="gp-games"><span class="gp-game">EA FC</span><span class="gp-game">Watch Party Brasil</span></div>
-        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">12h</div><div class="pc"><div class="pn">DJ — Abertura da Casa</div></div></div><div class="pr p-show"><div class="pt">20h</div><div class="pc"><div class="pn">Jairzinho & Simoninha</div><div class="psub">Show especial de domingo</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
       </div>
     </div>
-
-    <!-- 14 JUN -->
-    <div class="day-card">
-      <div class="day-header" onclick="toggleDay(this)">
-        <span class="day-date">14/06</span>
-        <span class="day-name">Domingo</span>
-        <div class="day-chips"><span class="chip chip-show">🎵 Show</span></div>
-        <span class="day-toggle">▼</span>
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Seg · 22 de Junho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 13</span></span>
       </div>
-      <div class="day-body">
-        <div class="layer-tabs">
-          <div class="ltab active" onclick="showLayer(this,'est-1406')">📺 Estúdio</div>
-          <div class="ltab" onclick="showLayer(this,'palco-1406')">🎤 Palco</div>
-          <div class="ltab" onclick="showLayer(this,'games-1406')">🎮 Games</div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd22"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd22_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb012"></div></div><div class="er t-game"><span class="er-t">16h</span><div class="er-c"><p class="er-name">🇫🇷 França x 🇮🇶 Iraque</p><p class="er-sub">Grupo I · Boston — Gillette Stadium</p></div></div><div class="er t-game"><span class="er-t">19h</span><div class="er-c"><p class="er-name">🇦🇷 Argentina x 🇦🇹 Áustria</p><p class="er-sub">Grupo J · Kansas City — Arrowhead Stadium</p></div></div><div class="er t-game"><span class="er-t">22h</span><div class="er-c"><p class="er-name">🇸🇳 Senegal x 🇳🇴 Noruega</p><p class="er-sub">Grupo I · Nova Jersey — MetLife Stadium</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resd22"></div></div>
         </div>
-        <div id="est-1406" class="layer-panel active">
-          <div class="sched-row t-programa"><span class="sr-time">13h</span><div class="sr-content"><span class="sr-name">Modo Raipe</span></div></div>
-          <div class="sched-row t-programa"><span class="sr-time">15h</span><div class="sr-content"><span class="sr-name">As Embaixadoras</span></div></div>
-          <div class="sched-row t-feuripe"><span class="sr-time">~16h</span><div class="sr-content"><span class="sr-name">Onde está o Feuripe? 🔴 AO VIVO</span></div></div>
-          <div class="sched-row t-programa"><span class="sr-time">17h</span><div class="sr-content"><span class="sr-name">Hora do Raipe</span></div></div>
-          <div class="sched-row t-espn"><span class="sr-time">19h</span><div class="sr-content"><span class="sr-name">Resenha ESPN · Pós-Brasil (dia seguinte)</span><span class="sr-sub">André Plihal · Edilson Capetinha + Guido · Programa Especial Pós-Brasil</span></div></div>
-        </div>
-        <div id="palco-1406" class="layer-panel">
-          <div class="sched-row t-daniel"><span class="sr-time">12h</span><div class="sr-content"><span class="sr-name">Daniel + DJ · Abertura</span></div></div>
-          <div class="sched-row t-daniel"><span class="sr-time">16h</span><div class="sr-content"><span class="sr-name">Daniel + DJ</span></div></div>
-          <div class="sched-row t-show"><span class="sr-time">20h</span><div class="sr-content"><span class="sr-name">🎵 Simoninha & Jairzinho</span><span class="sr-sub">Show imperdível</span></div></div>
-        </div>
-        <div id="games-1406" class="layer-panel">
-          <p style="font-size:12px;font-weight:700;letter-spacing:1px;color:var(--text3);margin-bottom:6px">🏆 FASE 1</p>
-          <div class="gp-games"><span class="gp-game">EA FC</span><span class="gp-game">Watch Party</span></div>
-        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-abertura"><div class="pt">20h</div><div class="pc"><div class="pn">Showbol · Noite de Abertura</div><div class="psub">Semana Showbol · 22 a 28/06</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
       </div>
     </div>
-  </div><!-- /sem1 -->
-
-  <!-- SEMANA 2 -->
-  <div id="p-sem2" class="phase-content">
-    <p style="font-size:13px;color:var(--text2);background:var(--card);padding:14px;border-radius:8px;border-left:3px solid var(--rr-blue)">
-      ℹ️ Semana 2 — 15 a 21/06 · Inclui segundo jogo do Brasil (Haiti · 19/06) e Ton Carfi no sábado 20/06.<br>
-      <strong style="color:var(--rr-gold);margin-top:6px;display:block">→ Expanda abaixo para ver todos os dias</strong>
-    </p>
-    <!-- Days: 15-21/06 com todos os shows e programas -->
-    <div class="day-card">
-      <div class="day-header" onclick="toggleDay(this)">
-        <span class="day-date">15/06</span><span class="day-name">Segunda-feira</span>
-        <div class="day-chips"><span class="chip chip-default">X1 Rede Ronaldo</span></div>
-        <span class="day-toggle">▼</span>
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Ter · 23 de Junho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 14</span><span class="chip c-d1">D-1 🇧🇷</span></span>
       </div>
-      <div class="day-body">
-        <div class="layer-tabs"><div class="ltab active" onclick="showLayer(this,'est-1506')">📺 Estúdio</div><div class="ltab" onclick="showLayer(this,'palco-1506')">🎤 Palco</div></div>
-        <div id="est-1506" class="layer-panel active">
-          <div class="sched-row t-programa"><span class="sr-time">13h</span><div class="sr-content"><span class="sr-name">Modo Raipe</span></div></div>
-          <div class="sched-row t-programa"><span class="sr-time">15h</span><div class="sr-content"><span class="sr-name">As Embaixadoras</span></div></div>
-          <div class="sched-row t-feuripe"><span class="sr-time">2–3×</span><div class="sr-content"><span class="sr-name">Onde está o Feuripe? 🔴 AO VIVO</span></div></div>
-          <div class="sched-row t-programa"><span class="sr-time">17h</span><div class="sr-content"><span class="sr-name">Hora do Raipe</span></div></div>
-          <div class="sched-row t-espn"><span class="sr-time">19h</span><div class="sr-content"><span class="sr-name">Resenha ESPN</span></div></div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd23"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd23_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb013"></div></div><div class="er t-game"><span class="er-t">16h</span><div class="er-c"><p class="er-name">🇨🇴 Colômbia x 🇵🇦 Panamá</p><p class="er-sub">Grupo K · Toronto — BMO Field</p></div></div><div class="er t-game"><span class="er-t">19h</span><div class="er-c"><p class="er-name">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra x 🇬🇭 Gana</p><p class="er-sub">Grupo L · Boston — Gillette Stadium</p></div></div><div class="er t-game"><span class="er-t">22h</span><div class="er-c"><p class="er-name">🇺🇿 Uzbequistão x 🇭🇷 Croácia</p><p class="er-sub">Grupo K · Cidade do México — Est. Azteca</p></div></div><div class="er t-espd1"><span class="er-t">22h</span><div class="er-c" id="d123"></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resd23"></div></div>
         </div>
-        <div id="palco-1506" class="layer-panel">
-          <div class="sched-row t-daniel"><span class="sr-time">13h</span><div class="sr-content"><span class="sr-name">X1 Rede Ronaldo · Daniel anima</span><span class="sr-sub">Desafio com o público</span></div></div>
-          <div class="sched-row t-daniel"><span class="sr-time">18h</span><div class="sr-content"><span class="sr-name">Daniel + DJ</span></div></div>
-          <div class="sched-row t-show"><span class="sr-time">21h</span><div class="sr-content"><span class="sr-name">🌙 Noite Latina</span><span class="sr-sub">DJ Fabian · Banda Doctor Calavera</span></div></div>
-        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">12h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-dj"><div class="pt">19h</div><div class="pc"><div class="pn">DJ</div></div></div><div class="pr p-show"><div class="pt">20h</div><div class="pc"><div class="pn">Noite Latina</div><div class="psub">DJ · Show Grupo Solsis</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
       </div>
     </div>
-
-    <div class="day-card">
-      <div class="day-header" onclick="toggleDay(this)">
-        <span class="day-date">16/06</span><span class="day-name">Terça-feira</span>
-        <div class="day-chips"><span class="chip chip-show">⚡ Eletrônico</span></div>
-        <span class="day-toggle">▼</span>
+    <div class="day day-show day-brasil">
+      <div class="day-hd">
+        <strong class="day-name">Qua · 24 de Junho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 15</span><span class="chip c-br">🇧🇷 Brasil</span></span>
       </div>
-      <div class="day-body">
-        <div class="layer-tabs"><div class="ltab active" onclick="showLayer(this,'palco-1606')">🎤 Palco</div></div>
-        <div id="palco-1606" class="layer-panel active">
-          <div class="sched-row t-daniel"><span class="sr-time">14h</span><div class="sr-content"><span class="sr-name">Daniel + DJ</span></div></div>
-          <div class="sched-row t-show"><span class="sr-time">19h</span><div class="sr-content"><span class="sr-name">⚡ Noite Eletrônica</span><span class="sr-sub">DJ Rodrigo Vieira · DJ Ketryn · Allen Lima · Pedro Abdala</span></div></div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd24"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd24_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb014"></div></div><div class="er t-cavaco"><span class="er-t">15h</span><div class="er-c" id="cavd24"></div></div><div class="er t-cav-cont"><span class="er-t"></span><div class="er-c"></div></div><div class="er t-game"><span class="er-t">14h</span><div class="er-c"><p class="er-name">🇶🇦 Catar x 🇧🇦 Bósnia</p><p class="er-sub">Grupo B · Vancouver — BC Place</p></div></div><div class="er t-br"><span class="er-t">17h</span><div class="er-c"><p class="er-name">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Escócia x 🇧🇷 Brasil<span class="badge">🇧🇷</span></p><p class="er-sub">Grupo C · BRASIL · Dallas — AT&T Stadium</p></div></div><div class="er t-grb"><span class="er-t">~17h</span><div class="er-c" id="grbd3"></div></div><div class="er t-game"><span class="er-t">20h</span><div class="er-c"><p class="er-name">🇲🇽 México x 🇦🇫 a confirmar</p><p class="er-sub">Grupo A · Guadalajara — Est. Akron</p></div></div><div class="er t-esp"><span class="er-t">22h30</span><div class="er-c" id="espd24"></div></div><div class="er t-resd"><span class="er-t">21h</span><div class="er-c" id="resd24"></div></div>
         </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura da Casa</div></div></div><div class="pr p-show"><div class="pt">20h</div><div class="pc"><div class="pn">Samba dos Pentas</div></div></div><div class="pr p-show"><div class="pt">21h</div><div class="pc"><div class="pn">Atração Especial</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
       </div>
     </div>
+  </div>
 
-    <div class="day-card">
-      <div class="day-header" onclick="toggleDay(this)">
-        <span class="day-date">17/06</span><span class="day-name">Quarta-feira</span>
-        <div class="day-chips"><span class="chip chip-show">🥁 Samba</span></div>
-        <span class="day-toggle">▼</span>
+  <!-- 3ª RODADA -->
+  <div id="r3" class="phase">
+
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Qui · 25 de Junho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 16</span></span>
       </div>
-      <div class="day-body">
-        <div class="layer-tabs"><div class="ltab active" onclick="showLayer(this,'palco-1706')">🎤 Palco</div></div>
-        <div id="palco-1706" class="layer-panel active">
-          <div class="sched-row t-daniel"><span class="sr-time">12h</span><div class="sr-content"><span class="sr-name">Daniel + DJ</span></div></div>
-          <div class="sched-row t-daniel"><span class="sr-time">16h / 19h</span><div class="sr-content"><span class="sr-name">Daniel + DJ</span></div></div>
-          <div class="sched-row t-show"><span class="sr-time">20h</span><div class="sr-content"><span class="sr-name">🥁 Samba dos Amigos</span></div></div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd25"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd25_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb015"></div></div><div class="er t-game"><span class="er-t">17h</span><div class="er-c"><p class="er-name">🇪🇨 Equador · 🇨🇼 Curaçao x 🇩🇪 Alemanha · 🇨🇮 Costa do Marfim</p><p class="er-sub">Grupo E · Simultâneos · Nova Jersey / Filadélfia</p></div></div><div class="er t-game"><span class="er-t">20h</span><div class="er-c"><p class="er-name">🇯🇵 Japão · 🇹🇳 Tunísia x 🇸🇪 Suécia · 🇳🇱 Holanda</p><p class="er-sub">Grupo F · Simultâneos · Dallas / Kansas City</p></div></div><div class="er t-game"><span class="er-t">23h</span><div class="er-c"><p class="er-name">🇹🇷 Turquia · 🇵🇾 Paraguai x 🇺🇸 EUA · 🇦🇺 Austrália</p><p class="er-sub">Grupo D · Simultâneos · Los Angeles / San Francisco</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resd25"></div></div>
         </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">15h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-dj"><div class="pt">19h</div><div class="pc"><div class="pn">DJ</div></div></div><div class="pr p-show"><div class="pt">20h</div><div class="pc"><div class="pn">MC Daniel</div></div></div><div class="pr p-especial"><div class="pt">21h</div><div class="pc"><div class="pn">Eletrônico</div><div class="psub">DJ Rodrigo Vieira / DJ Katrin & Abidala</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
       </div>
     </div>
-
-    <div class="day-card">
-      <div class="day-header" onclick="toggleDay(this)">
-        <span class="day-date">18/06</span><span class="day-name">Quinta-feira</span>
-        <div class="day-chips"><span class="chip chip-br">D-1 🇧🇷 Haiti</span><span class="chip chip-show">🇧🇷 Noite Brasil</span></div>
-        <span class="day-toggle">▼</span>
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Sex · 26 de Junho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 17</span></span>
       </div>
-      <div class="day-body">
-        <div class="layer-tabs"><div class="ltab active" onclick="showLayer(this,'est-1806')">📺 Estúdio</div><div class="ltab" onclick="showLayer(this,'palco-1806')">🎤 Palco</div></div>
-        <div id="est-1806" class="layer-panel active">
-          <div class="sched-row t-programa"><span class="sr-time">13h</span><div class="sr-content"><span class="sr-name">Modo Raipe</span></div></div>
-          <div class="sched-row t-programa"><span class="sr-time">15h</span><div class="sr-content"><span class="sr-name">As Embaixadoras</span></div></div>
-          <div class="sched-row t-espn"><span class="sr-time">23h</span><div class="sr-content"><span class="sr-name">Resenha ESPN Especial · Véspera de Brasil x Haiti</span></div></div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd26"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd26_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb016"></div></div><div class="er t-game"><span class="er-t">16h</span><div class="er-c"><p class="er-name">🇸🇦 Arábia Saudita · 🇳🇿 NZ x 🇺🇾 Uruguai · 🇧🇪 Bélgica</p><p class="er-sub">Grupo G/H · Simultâneos · Los Angeles / Miami</p></div></div><div class="er t-game"><span class="er-t">20h</span><div class="er-c"><p class="er-name">🇳🇴 Noruega · 🇮🇶 Iraque x 🇫🇷 França · 🇸🇳 Senegal</p><p class="er-sub">Grupo I · Simultâneos · Boston / Nova Jersey</p></div></div><div class="er t-game"><span class="er-t">23h</span><div class="er-c"><p class="er-name">🇮🇷 Irã · 🇪🇬 Egito x a confirmar · a confirmar</p><p class="er-sub">Grupo H · Simultâneos · a confirmar</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resd26"></div></div>
         </div>
-        <div id="palco-1806" class="layer-panel">
-          <div class="sched-row t-daniel"><span class="sr-time">11h</span><div class="sr-content"><span class="sr-name">Daniel + DJ</span></div></div>
-          <div class="sched-row t-show"><span class="sr-time">19h</span><div class="sr-content"><span class="sr-name">🇧🇷 Noite Brasil</span><span class="sr-sub">DJ João Brasil · Banda DNA</span></div></div>
-        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-show"><div class="pt">20h</div><div class="pc"><div class="pn">Fábio Braza</div><div class="psub">Show ao vivo</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
       </div>
     </div>
-
-    <!-- 19 JUN - BRASIL -->
-    <div class="day-card" style="border-color:rgba(0,156,59,.4)">
-      <div class="day-header" onclick="toggleDay(this)">
-        <span class="day-date" style="color:var(--rr-green)">19/06</span>
-        <span class="day-name">Sexta-feira</span>
-        <div class="day-chips"><span class="chip chip-br">🇧🇷 Brasil x Haiti</span><span class="chip chip-show">🎸 Fábio Braza + Vitor Kley</span></div>
-        <span class="day-toggle">▼</span>
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Sáb · 27 de Junho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 18</span></span>
       </div>
-      <div class="day-body">
-        <div class="layer-tabs">
-          <div class="ltab active" onclick="showLayer(this,'est-1906')">📺 Estúdio</div>
-          <div class="ltab" onclick="showLayer(this,'palco-1906')">🎤 Palco</div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd27"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd27_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb017"></div></div><div class="er t-game"><span class="er-t">16h</span><div class="er-c"><p class="er-name">🇦🇷 Argentina · 🇩🇿 Argélia x 🇳🇴 Noruega · a confirmar</p><p class="er-sub">Grupo J · Simultâneos · Kansas City / San Francisco</p></div></div><div class="er t-game"><span class="er-t">20h</span><div class="er-c"><p class="er-name">🇵🇦 Panamá · 🇺🇿 Uzbequistão x 🇨🇴 Colômbia · 🇭🇷 Croácia</p><p class="er-sub">Grupo K · Simultâneos · Toronto / Cidade do México</p></div></div><div class="er t-game"><span class="er-t">23h</span><div class="er-c"><p class="er-name">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra · 🇬🇭 Gana x a confirmar · a confirmar</p><p class="er-sub">Grupo L · Simultâneos · Dallas / Boston</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resd27"></div></div>
         </div>
-        <div id="est-1906" class="layer-panel active">
-          <div class="sched-row t-programa"><span class="sr-time">13h</span><div class="sr-content"><span class="sr-name">Modo Raipe</span></div></div>
-          <div class="sched-row t-programa"><span class="sr-time">15h</span><div class="sr-content"><span class="sr-name">As Embaixadoras</span></div></div>
-          <div class="sched-row t-cavaco"><span class="sr-time">20h</span><div class="sr-content"><span class="sr-name">Cavaco Futebol Clube · Pré-Brasil x Haiti</span><span class="sr-sub">Guido + Edilson · termina às 21h30</span></div></div>
-          <div class="sched-row t-brasil"><span class="sr-time">22h</span><div class="sr-content"><span class="sr-name">🇧🇷 Brasil x 🇭🇹 Haiti · Grupo C</span><span class="sr-sub">Lincoln Financial Field · Philadelphia · 🎥 Reação da Plateia</span></div></div>
-        </div>
-        <div id="palco-1906" class="layer-panel">
-          <div class="sched-row t-daniel"><span class="sr-time">14h</span><div class="sr-content"><span class="sr-name">Daniel + DJ</span></div></div>
-          <div class="sched-row t-show"><span class="sr-time">21h</span><div class="sr-content"><span class="sr-name">🎸 Fábio Braza com Cavaco</span></div></div>
-          <div class="sched-row t-show"><span class="sr-time">22h</span><div class="sr-content"><span class="sr-name">🎸 Vitor Kley</span></div></div>
-        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-show"><div class="pt">21h</div><div class="pc"><div class="pn">Capital Inicial</div><div class="psub">A grande atração da semana</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
       </div>
     </div>
-
-    <!-- 20 JUN -->
-    <div class="day-card">
-      <div class="day-header" onclick="toggleDay(this)">
-        <span class="day-date">20/06</span><span class="day-name">Sábado</span>
-        <div class="day-chips"><span class="chip chip-show">🎵 Ton Carfi + Q2</span></div>
-        <span class="day-toggle">▼</span>
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Dom · 28 de Junho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 19</span></span>
       </div>
-      <div class="day-body">
-        <div class="layer-tabs"><div class="ltab active" onclick="showLayer(this,'est-2006')">📺 Estúdio</div><div class="ltab" onclick="showLayer(this,'palco-2006')">🎤 Palco</div></div>
-        <div id="est-2006" class="layer-panel active">
-          <div class="sched-row t-programa"><span class="sr-time">13h</span><div class="sr-content"><span class="sr-name">Modo Raipe</span></div></div>
-          <div class="sched-row t-programa"><span class="sr-time">15h</span><div class="sr-content"><span class="sr-name">As Embaixadoras</span></div></div>
-          <div class="sched-row t-espn"><span class="sr-time">21h</span><div class="sr-content"><span class="sr-name">Resenha ESPN Especial · Pós Brasil x Haiti</span></div></div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd28"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd28_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb018"></div></div><div class="er t-game"><span class="er-t">16h</span><div class="er-c"><p class="er-name">🇨🇦 Canadá · 🇨🇭 Suíça x a confirmar · a confirmar</p><p class="er-sub">Grupo B · Simultâneos · Vancouver / Los Angeles</p></div></div><div class="er t-br"><span class="er-t">20h</span><div class="er-c"><p class="er-name">🇧🇷 Brasil · 🏴󠁧󠁢󠁳󠁣󠁴󠁿 Escócia · 🇭🇹 Haiti</p><p class="er-sub">Simultâneos Grupo C</p></div></div><div class="er t-game"><span class="er-t">23h</span><div class="er-c"><p class="er-name">🇲🇽 México · 🇰🇷 Coreia x a confirmar</p><p class="er-sub">Grupo A · Simultâneos · a confirmar</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resd28"></div></div>
         </div>
-        <div id="palco-2006" class="layer-panel">
-          <div class="sched-row t-daniel"><span class="sr-time">12h</span><div class="sr-content"><span class="sr-name">Daniel + DJ</span></div></div>
-          <div class="sched-row t-show"><span class="sr-time">19h</span><div class="sr-content"><span class="sr-name">🎤 Q2 / Gordinho</span></div></div>
-          <div class="sched-row t-show"><span class="sr-time">21h</span><div class="sr-content"><span class="sr-name">🎵 Ton Carfi</span><span class="sr-sub">Uma noite de muita música e emoção</span></div></div>
-        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-show"><div class="pt">20h</div><div class="pc"><div class="pn">Jairzinho & Simoninha</div><div class="psub">Show de encerramento da semana</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
       </div>
     </div>
-
-    <!-- 21 JUN + pós-Brasil -->
-    <div class="day-card">
-      <div class="day-header" onclick="toggleDay(this)">
-        <span class="day-date">21/06</span><span class="day-name">Domingo</span>
-        <div class="day-chips"><span class="chip chip-show">🎵 Jairzinho & Simoninha</span><span class="chip chip-special">Pós-Brasil</span></div>
-        <span class="day-toggle">▼</span>
+    <div class="day">
+      <div class="day-hd">
+        <strong class="day-name">Seg · 29 de Junho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 20</span></span>
       </div>
-      <div class="day-body">
-        <div class="layer-tabs"><div class="ltab active" onclick="showLayer(this,'est-2106')">📺 Estúdio</div><div class="ltab" onclick="showLayer(this,'palco-2106')">🎤 Palco</div></div>
-        <div id="est-2106" class="layer-panel active">
-          <div class="sched-row t-programa"><span class="sr-time">13h</span><div class="sr-content"><span class="sr-name">Modo Raipe</span></div></div>
-          <div class="sched-row t-cavaco"><span class="sr-time">15h</span><div class="sr-content"><span class="sr-name">Programa Pós-Brasil · Edilson + Guido</span><span class="sr-sub">Análise e resenha com o Pentacampeão — dia seguinte de Brasil x Haiti</span></div></div>
-          <div class="sched-row t-programa"><span class="sr-time">17h</span><div class="sr-content"><span class="sr-name">As Embaixadoras</span></div></div>
-          <div class="sched-row t-espn"><span class="sr-time">19h</span><div class="sr-content"><span class="sr-name">Resenha ESPN</span></div></div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd29"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd29_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb019"></div></div><div class="er t-mm"><span class="er-t">19h</span><div class="er-c"><p class="er-name">⚽ Jogo 73 (16 Avos) x </p><p class="er-sub">Round of 32 · A confirmar</p></div></div><div class="er t-mm"><span class="er-t">22h</span><div class="er-c"><p class="er-name">⚽ Jogo 74 (16 Avos) x </p><p class="er-sub">Round of 32 · A confirmar</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resd29"></div></div>
         </div>
-        <div id="palco-2106" class="layer-panel">
-          <div class="sched-row t-daniel"><span class="sr-time">11h</span><div class="sr-content"><span class="sr-name">Daniel + DJ</span></div></div>
-          <div class="sched-row t-show"><span class="sr-time">21h</span><div class="sr-content"><span class="sr-name">🎵 Jairzinho & Simoninha</span><span class="sr-sub">Show especial de domingo</span></div></div>
-        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-dj"><div class="pt">20h</div><div class="pc"><div class="pn">DJ</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
       </div>
     </div>
-  </div><!-- /sem2 -->
-
-  <!-- SEMANA 3 -->
-  <div id="p-sem3" class="phase-content">
-    <div style="background:var(--card);border-radius:10px;padding:16px;border-left:3px solid var(--rr-gold)">
-      <p style="font-family:'Arial Narrow','Arial',sans-serif;font-weight:800;font-size:20px;color:var(--rr-gold);margin-bottom:4px">Semana 3 · 22 a 28/06</p>
-      <p style="font-size:13px;color:var(--text2);margin-bottom:12px">Showball (22/06) · Brasil x Escócia em Miami (24/06) · Capital Inicial (27/06)</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px">
-        <div style="background:var(--bg3);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px;color:var(--rr-gold)">22/06 Seg</div><div style="font-size:11px;color:var(--text2);margin-top:2px">Showball Day</div></div>
-        <div style="background:var(--bg3);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px;color:var(--text)">23/06 Ter</div><div style="font-size:11px;color:var(--text2);margin-top:2px">Noite Latina · Grupo Solsis</div></div>
-        <div style="background:rgba(0,156,59,.12);border:1px solid rgba(0,156,59,.3);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px;color:var(--rr-green)">24/06 Qua 🇧🇷</div><div style="font-size:11px;color:var(--text2);margin-top:2px">Escócia x Brasil · Samba dos Pentas</div></div>
-        <div style="background:var(--bg3);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px;color:var(--text)">25/06 Qui</div><div style="font-size:11px;color:var(--text2);margin-top:2px">MC Daniel · Eletrônico</div></div>
-        <div style="background:var(--bg3);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px;color:var(--text)">26/06 Sex</div><div style="font-size:11px;color:var(--text2);margin-top:2px">Fábio Braza · Vitor Kley</div></div>
-        <div style="background:rgba(255,199,0,.08);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px;color:var(--rr-gold)">27/06 Sáb 🔥</div><div style="font-size:11px;color:var(--text2);margin-top:2px">Capital Inicial · 22h30</div></div>
-        <div style="background:var(--bg3);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px;color:var(--text)">28/06 Dom</div><div style="font-size:11px;color:var(--text2);margin-top:2px">Jairzinho & Simoninha</div></div>
+    <div class="day">
+      <div class="day-hd">
+        <strong class="day-name">Ter · 30 de Junho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 21</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd30"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd30_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb020"></div></div><div class="er t-mm"><span class="er-t">19h</span><div class="er-c"><p class="er-name">⚽ Jogo 75 (16 Avos) x </p><p class="er-sub">Round of 32 · A confirmar</p></div></div><div class="er t-mm"><span class="er-t">22h</span><div class="er-c"><p class="er-name">⚽ Jogo 76 (16 Avos) x </p><p class="er-sub">Round of 32 · A confirmar</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resd30"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-dj"><div class="pt">20h</div><div class="pc"><div class="pn">DJ</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day">
+      <div class="day-hd">
+        <strong class="day-name">Qua · 1 de Julho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 22</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd01"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd01_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb021"></div></div><div class="er t-mm"><span class="er-t">19h</span><div class="er-c"><p class="er-name">⚽ Jogo 77 (16 Avos) x </p><p class="er-sub">Round of 32 · A confirmar</p></div></div><div class="er t-mm"><span class="er-t">22h</span><div class="er-c"><p class="er-name">⚽ Jogo 78 (16 Avos) x </p><p class="er-sub">Round of 32 · A confirmar</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resd01"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-dj"><div class="pt">20h</div><div class="pc"><div class="pn">DJ</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day">
+      <div class="day-hd">
+        <strong class="day-name">Qui · 2 de Julho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 23</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyd02"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyd02_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb022"></div></div><div class="er t-mm"><span class="er-t">19h</span><div class="er-c"><p class="er-name">⚽ Jogo 79 (16 Avos) x </p><p class="er-sub">Round of 32 · A confirmar</p></div></div><div class="er t-mm"><span class="er-t">22h</span><div class="er-c"><p class="er-name">⚽ Jogo 80 (16 Avos) x </p><p class="er-sub">Round of 32 · A confirmar</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resd02"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-dj"><div class="pt">20h</div><div class="pc"><div class="pn">DJ</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
       </div>
     </div>
   </div>
 
   <!-- 16 AVOS -->
-  <div id="p-avos" class="phase-content">
-    <div style="background:var(--card);border-radius:10px;padding:16px;border-left:3px solid var(--rr-blue)">
-      <p style="font-family:'Arial Narrow','Arial',sans-serif;font-weight:800;font-size:20px;color:#7EB3FF;margin-bottom:4px">16 Avos · 29/06 – 05/07</p>
-      <p style="font-size:13px;color:var(--text2);margin-bottom:12px">Jogos do Brasil na fase de mata-mata · DJ Ronald (04/07 - 4th of July)</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px">
-        <div style="background:rgba(0,156,59,.12);border:1px solid rgba(0,156,59,.3);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px;color:var(--rr-green)">29/06 Seg 🇧🇷</div><div style="font-size:11px;color:var(--text2)">Jogo Brasil · Karaokê</div></div>
-        <div style="background:var(--bg3);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px">30/06 Ter</div><div style="font-size:11px;color:var(--text2)">DJ Luppa · Banda Trêmula</div></div>
-        <div style="background:var(--bg3);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px">01/07 Qua</div><div style="font-size:11px;color:var(--text2)">Pagode dos Pentas</div></div>
-        <div style="background:var(--bg3);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px">02/07 Qui</div><div style="font-size:11px;color:var(--text2)">Noite Eletrônica</div></div>
-        <div style="background:var(--bg3);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px">03/07 Sex</div><div style="font-size:11px;color:var(--text2)">Fábio Braza</div></div>
-        <div style="background:rgba(0,156,59,.12);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px;color:var(--rr-green)">04/07 Sáb 🇧🇷</div><div style="font-size:11px;color:var(--text2)">4th of July · DJ Ronald</div></div>
-        <div style="background:var(--bg3);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px">05/07 Dom</div><div style="font-size:11px;color:var(--text2)">Jairzinho & Simoninha</div></div>
+  <div id="av" class="phase">
+    <div class="warn-bar">⚠️ Horários FIFA — sujeito a alterações</div>
+
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Sex · 3 de Julho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 24</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyda03"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyda03_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb023"></div></div><div class="er t-mm"><span class="er-t">19h</span><div class="er-c"><p class="er-name">⚽ Jogo 81 (16 Avos) x </p><p class="er-sub">Round of 32 · A confirmar</p></div></div><div class="er t-mm"><span class="er-t">22h30</span><div class="er-c"><p class="er-name">⚽ 1K x Repesc. x </p><p class="er-sub">16 Avos · Atlanta — Mercedes-Benz Stadium</p></div></div><div class="er t-mm"><span class="er-t">00h</span><div class="er-c"><p class="er-name">⚽ 1L x Repesc. x </p><p class="er-sub">16 Avos · Kansas City — Arrowhead Stadium</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resda03"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-show"><div class="pt">20h</div><div class="pc"><div class="pn">Fábio Braza</div><div class="psub">Show ao vivo abrindo o fim de semana</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Sáb · 4 de Julho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 25</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyda04"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyda04_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb024"></div></div><div class="er t-mm"><span class="er-t">17h</span><div class="er-c"><p class="er-name">⚽ Jogo 83 (16 Avos) x </p><p class="er-sub">Round of 32 · A confirmar</p></div></div><div class="er t-mm"><span class="er-t">21h</span><div class="er-c"><p class="er-name">⚽ Jogo 84 (16 Avos) x </p><p class="er-sub">Round of 32 · A confirmar</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resda04"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-especial"><div class="pt">21h</div><div class="pc"><div class="pn">DJ Ronald</div><div class="psub">Uma noite dançante com o melhor do som eletrônico</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Dom · 5 de Julho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 26</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyda05"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyda05_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb025"></div></div><div class="er t-mm"><span class="er-t">17h</span><div class="er-c"><p class="er-name">⚽ Venc. J76 x Venc. J78 x </p><p class="er-sub">16 Avos · Miami — Hard Rock Stadium</p></div></div><div class="er t-mm"><span class="er-t">21h</span><div class="er-c"><p class="er-name">⚽ Venc. J79 x Venc. J80 x </p><p class="er-sub">16 Avos · A confirmar</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resda05"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-show"><div class="pt">20h</div><div class="pc"><div class="pn">Jairzinho & Simoninha</div><div class="psub">Show especial para fechar o fim de semana</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day">
+      <div class="day-hd">
+        <strong class="day-name">Seg · 6 de Julho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 27</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyda06"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyda06_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb026"></div></div><div class="er t-mm"><span class="er-t">17h</span><div class="er-c"><p class="er-name">⚽ Jogo 87 (16 Avos) x </p><p class="er-sub">Round of 32 · A confirmar</p></div></div><div class="er t-mm"><span class="er-t">21h</span><div class="er-c"><p class="er-name">⚽ Jogo 88 (16 Avos) x </p><p class="er-sub">Round of 32 · A confirmar</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resda06"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-dj"><div class="pt">20h</div><div class="pc"><div class="pn">DJ</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day">
+      <div class="day-hd">
+        <strong class="day-name">Ter · 7 de Julho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 28</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyda07"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyda07_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb027"></div></div><div class="er t-mm"><span class="er-t">17h</span><div class="er-c"><p class="er-name">⚽ Jogo 89 (Oitavas) x </p><p class="er-sub">Round of 16 · A confirmar</p></div></div><div class="er t-mm"><span class="er-t">21h</span><div class="er-c"><p class="er-name">⚽ Jogo 90 (Oitavas) x </p><p class="er-sub">Round of 16 · A confirmar</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resda07"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-dj"><div class="pt">20h</div><div class="pc"><div class="pn">DJ</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
       </div>
     </div>
   </div>
 
   <!-- OITAVAS -->
-  <div id="p-oitavas" class="phase-content">
-    <div style="background:var(--card);border-radius:10px;padding:16px;border-left:3px solid var(--rr-red)">
-      <p style="font-family:'Arial Narrow','Arial',sans-serif;font-weight:800;font-size:20px;color:#FF8A8A;margin-bottom:4px">Oitavas + Quartas · 06–12/07</p>
-      <p style="font-size:13px;color:var(--text2);margin-bottom:12px">Dilsinho (08/07) · Jogo Brasil nas Quartas (09/07) · DJ Ronald (11/07)</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px">
-        <div style="background:var(--bg3);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px">06/07 Seg</div><div style="font-size:11px;color:var(--text2)">Noite Surpresa</div></div>
-        <div style="background:var(--bg3);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px">07/07 Ter</div><div style="font-size:11px;color:var(--text2)">Noite Karaokê</div></div>
-        <div style="background:rgba(255,199,0,.1);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px;color:var(--rr-gold)">08/07 Qua 🔥</div><div style="font-size:11px;color:var(--text2)">Pagode + Dilsinho</div></div>
-        <div style="background:rgba(0,156,59,.12);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px;color:var(--rr-green)">09/07 Qui 🇧🇷</div><div style="font-size:11px;color:var(--text2)">Quartas · Live Band</div></div>
-        <div style="background:var(--bg3);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px">10/07 Sex</div><div style="font-size:11px;color:var(--text2)">Fábio Braza</div></div>
-        <div style="background:var(--bg3);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px">11/07 Sáb</div><div style="font-size:11px;color:var(--text2)">Ducell & Abdala – DNA</div></div>
-        <div style="background:var(--bg3);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px">12/07 Dom</div><div style="font-size:11px;color:var(--text2)">Jairzinho & Simoninha</div></div>
+  <div id="oi" class="phase">
+    <div class="warn-bar">⚠️ Horários FIFA — sujeito a alterações</div>
+
+    <div class="day">
+      <div class="day-hd">
+        <strong class="day-name">Qua · 8 de Julho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 29</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hydo08"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hydo08_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb028"></div></div><div class="er t-mm"><span class="er-t">17h</span><div class="er-c"><p class="er-name">⚽ Jogo 91 (Oitavas) x </p><p class="er-sub">Round of 16 · A confirmar</p></div></div><div class="er t-mm"><span class="er-t">21h</span><div class="er-c"><p class="er-name">⚽ Jogo 92 (Oitavas) x </p><p class="er-sub">Round of 16 · A confirmar</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resdo08"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-dj"><div class="pt">20h</div><div class="pc"><div class="pn">DJ</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Qui · 9 de Julho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 30</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hydo09"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hydo09_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb029"></div></div><div class="er t-mm"><span class="er-t">17h</span><div class="er-c"><p class="er-name">⚽ Venc. J89 x Venc. J90 x <span class="badge">🇧🇷</span></p><p class="er-sub">Quartas · 🇧🇷 1º/2ºC · Nova Jersey — MetLife Stadium</p></div></div><div class="er t-grb"><span class="er-t">~17h</span><div class="er-c" id="grbd09"></div></div><div class="er t-mm"><span class="er-t">21h</span><div class="er-c"><p class="er-name">⚽ Jogo 94 (Quartas) x </p><p class="er-sub">Quartas · A confirmar</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resdo09"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-show"><div class="pt">19h</div><div class="pc"><div class="pn">Noite Live Band</div><div class="psub">Banda DNA · DJ Amorelli</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Sex · 10 de Julho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 31</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hydo10"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hydo10_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb030"></div></div><div class="er t-mm"><span class="er-t">17h</span><div class="er-c"><p class="er-name">⚽ Jogo 95 (Quartas) x </p><p class="er-sub">Quartas · A confirmar</p></div></div><div class="er t-mm"><span class="er-t">21h</span><div class="er-c"><p class="er-name">⚽ Jogo 96 (Quartas) x </p><p class="er-sub">Quartas · A confirmar</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resdo10"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-show"><div class="pt">20h</div><div class="pc"><div class="pn">Fábio Braza</div><div class="psub">Show ao vivo</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
       </div>
     </div>
   </div>
 
-  <!-- SEMIS + FINAL -->
-  <div id="p-semis" class="phase-content">
-    <div style="background:linear-gradient(135deg,#1A0030,#0033A0);border-radius:10px;padding:16px;border:1px solid rgba(0,51,160,.5)">
-      <p style="font-family:'Arial Narrow','Arial',sans-serif;font-weight:900;font-size:28px;color:#fff;margin-bottom:4px">SEMIS + FINAL 🏆</p>
-      <p style="font-size:13px;color:rgba(255,255,255,.6);margin-bottom:12px">13 a 19/07 · O grande encerramento da temporada</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px">
-        <div style="background:rgba(255,255,255,.07);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px">13/07 Seg</div><div style="font-size:11px;color:rgba(255,255,255,.5)">Noite Surpresa</div></div>
-        <div style="background:rgba(0,156,59,.2);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px;color:var(--rr-green)">14/07 Ter 🇧🇷</div><div style="font-size:11px;color:rgba(255,255,255,.5)">Semifinal · Noite Latina</div></div>
-        <div style="background:rgba(0,156,59,.2);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px;color:var(--rr-green)">15/07 Qua 🇧🇷</div><div style="font-size:11px;color:rgba(255,255,255,.5)">Semifinal · Pagode dos Pentas</div></div>
-        <div style="background:rgba(255,255,255,.07);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px">16/07 Qui</div><div style="font-size:11px;color:rgba(255,255,255,.5)">Festival Bandas Miami</div></div>
-        <div style="background:rgba(255,255,255,.07);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px">17/07 Sex</div><div style="font-size:11px;color:rgba(255,255,255,.5)">Fábio Braza</div></div>
-        <div style="background:rgba(255,199,0,.12);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:700;font-size:13px;color:var(--rr-gold)">18/07 Sáb</div><div style="font-size:11px;color:rgba(255,255,255,.5)">Atração Q2 · DJ Ronald</div></div>
-        <div style="background:rgba(0,51,160,.4);border:1px solid var(--rr-gold);border-radius:8px;padding:10px;text-align:center"><div style="font-weight:900;font-size:14px;color:var(--rr-gold)">19/07 Dom 🏆</div><div style="font-size:11px;color:rgba(255,255,255,.5)">FINAL · Jairzinho & Simoninha</div></div>
+  <!-- QUARTAS -->
+  <div id="qa" class="phase">
+    <div class="warn-bar">⚠️ Horários FIFA — sujeito a alterações</div>
+
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Sáb · 11 de Julho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 32</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hydq11"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hydq11_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb031"></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resdq11"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-show"><div class="pt">20h</div><div class="pc"><div class="pn">Ducell & Abdala — DNA</div><div class="psub">De volta ao palco da Casa RR</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Dom · 12 de Julho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 33</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hydq12"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hydq12_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb032"></div></div><div class="er t-br"><span class="er-t">16h</span><div class="er-c"><p class="er-name">⚽ Semifinal 1 x <span class="badge">🇧🇷</span></p><p class="er-sub">Semis · A confirmar</p></div></div><div class="er t-grb"><span class="er-t">~16h</span><div class="er-c" id="grbd12"></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resdq12"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-show"><div class="pt">20h</div><div class="pc"><div class="pn">Jairzinho & Simoninha</div><div class="psub">Show de encerramento</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
       </div>
     </div>
   </div>
 
+  <!-- SEMIS & FINAL -->
+  <div id="sf" class="phase">
+    <div class="warn-bar">⚠️ Horários FIFA — sujeito a alterações</div>
+
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Seg · 13 de Julho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 34</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyds13"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyds13_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb033"></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resds13"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-show"><div class="pt">20h</div><div class="pc"><div class="pn">Festival Bandas/DJs de Miami</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Ter · 14 de Julho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 35</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyds14"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyds14_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb034"></div></div><div class="er t-game"><span class="er-t">16h</span><div class="er-c"><p class="er-name">⚽ Semifinal 2 x </p><p class="er-sub">Semis · A confirmar</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resds14"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-show"><div class="pt">20h</div><div class="pc"><div class="pn">Pagode dos Pentas</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day">
+      <div class="day-hd">
+        <strong class="day-name">Qua · 15 de Julho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 36</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyds15"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyds15_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb035"></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resds15"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-dj"><div class="pt">20h</div><div class="pc"><div class="pn">DJ</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Qui · 16 de Julho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 37</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyds16"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyds16_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb036"></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resds16"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-show"><div class="pt">20h</div><div class="pc"><div class="pn">Festival Bandas/DJs de Miami</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Sex · 17 de Julho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 38</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyds17"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyds17_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb037"></div></div><div class="er t-game"><span class="er-t">17h</span><div class="er-c"><p class="er-name">⚽ Disputa 3º Lugar x </p><p class="er-sub">3º Lugar · A confirmar</p></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resds17"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-show"><div class="pt">20h</div><div class="pc"><div class="pn">Fábio Braza</div><div class="psub">Show ao vivo para abrir a última semana</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Sáb · 18 de Julho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 39</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyds18"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyds18_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb038"></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resds18"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-especial"><div class="pt">21h</div><div class="pc"><div class="pn">DJ Ronald</div><div class="psub">A melhor noite dançante para fechar com chave de ouro</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+    <div class="day day-show">
+      <div class="day-hd">
+        <strong class="day-name">Dom · 19 de Julho</strong>
+        <span class="day-chips"><span class="chip c-d">Dia 40</span></span>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab on" onclick="dayGo(this,'content')">📺 Grade de Conteúdo</button>
+        <button class="day-tab" onclick="dayGo(this,'palco')">🎵 Palco</button>
+        <button class="day-tab" onclick="dayGo(this,'games')">🎮 Grade Games</button>
+      </div>
+      <div class="day-panel on" data-panel="content">
+        <div class="section-divider"><span class="section-label ed-label">📺 Grade Editorial — Estúdio</span></div>
+        <div class="ed-grid"><div class="er t-hyp"><span class="er-t">13h</span><div class="er-c" id="hyds19"></div></div><div class="er t-hyp-cont"><span class="er-t">14h</span><div class="er-c" id="hyds19_b"></div></div><div class="er t-emb"><span class="er-t">15h</span><div class="er-c" id="emb039"></div></div><div class="er t-br"><span class="er-t">17h</span><div class="er-c"><p class="er-name">⚽ Final da Copa do Mundo FIFA 2026 x <span class="badge">🇧🇷</span></p><p class="er-sub">FINAL · MetLife Stadium · Nova Jersey</p></div></div><div class="er t-grb"><span class="er-t">~17h</span><div class="er-c" id="grbd19"></div></div><div class="er t-resd"><span class="er-t">19h</span><div class="er-c" id="resds19"></div></div>
+        </div>
+      </div>
+      <div class="day-panel" data-panel="palco">
+        <div class="section-divider"><span class="section-label sh-label">🎵 Programação da Casa — Palco</span></div><div class="palco-grid"><div class="pr p-abertura"><div class="pt">14h</div><div class="pc"><div class="pn">DJ — Abertura</div></div></div><div class="pr p-show"><div class="pt">21h</div><div class="pc"><div class="pn">Jairzinho & Simoninha</div><div class="psub">Grande encerramento da temporada Casa RR</div></div></div><div class="palco-tz">Horários de Miami (ET) · Brasília = ET + 1h</div></div>
+      </div>
+      <div class="day-panel" data-panel="games">
+    <div class="gm-panel">
+      <div class="gm-horario">🕐 Horário de funcionamento: <b>13h – 20h</b> · Horário de Miami (ET)</div>
+      <div class="gm-bloco"><div class="gm-bloco-titulo">⚽ Torneio Abertura EA FC</div><div class="gm-bloco-desc">Grande torneio da tarde na Baia 1 · Futebol virtual · prêmio: consumação</div></div>
+      <div class="gm-bloco gm-fase-bloco"><div class="gm-bloco-titulo">🏆 Fase 1 · O Pontapé Inicial</div><div class="gm-bloco-desc">Foco total em esportes, surfando na onda da abertura da Copa.</div><ul class="gm-fase-items"><li>Torneio <b>Abertura Miami</b> de EA FC (Baia 1)</li><li>Arena PC: desafios de pontuação no <b>Aim Lab</b></li><li>Baias 2 e 3 abertas: Free Play à tarde</li></ul></div>
+      <div class="gm-setup-titulo">⚙️ Setup do Espaço Gamer</div>
+      <div class="gm-setup"><div class="gm-row"><span class="gm-place">Baia 1 · Rei da Mesa</span><span class="gm-rdesc">1 Console + TV (EA FC) · "Quem ganha, fica" · alta rotatividade</span></div><div class="gm-row"><span class="gm-place">Baia 2 · Party Zone</span><span class="gm-rdesc">1 Console Switch + 4 Controles · Mario Kart · Overcooked</span></div><div class="gm-row"><span class="gm-place">Baia 3 · Lounge Mobile</span><span class="gm-rdesc">Puffs + Carregadores + TV Mirroring · Free Fire · Clash Royale</span></div><div class="gm-row"><span class="gm-place">Arena · 10 PCs Gaming</span><span class="gm-rdesc">Uso híbrido: Free Play à tarde + Torneios Relâmpago 2v2 ou X1</span></div></div>
+    </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
 </section>
 
 <!-- ══ ELENCO ════════════════════════════════════ -->
@@ -1848,6 +2619,22 @@ function showDpPhase(id) {
   });
 }
 
+
+function go(id, btn) {
+  document.querySelectorAll('.phase').forEach(function(p) { p.classList.remove('on'); });
+  document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('on'); });
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function dayGo(btn, panel) {
+  var d = btn.closest('.day');
+  d.querySelectorAll('.day-tab').forEach(function(t) { t.classList.remove('on'); });
+  d.querySelectorAll('.day-panel').forEach(function(p) { p.classList.remove('on'); });
+  btn.classList.add('on');
+  d.querySelector('.day-panel[data-panel="' + panel + '"]').classList.add('on');
+}
+
 // ── MODALS ───────────────────────────────────────────
 function openCastModal(name, title, role) {
   document.getElementById('modal-content').innerHTML =
@@ -1935,6 +2722,63 @@ document.addEventListener('DOMContentLoaded', function() {
   try { buildBrasil(); } catch(e){}
   try { buildGames(); } catch(e){}
 });
+
+// ── PROGRAM INJECTION SYSTEM ──────────────────────────────────────────────────
+function fillProg(id, cls, name, sub) {
+  var e = document.getElementById(id);
+  if (!e) return;
+  e.innerHTML = '<span class="er-badge er-' + cls + '">' + name + '</span>' + (sub ? '<p class="er-sub">' + sub + '</p>' : '');
+}
+
+(function injectPrograms() {
+  // Modo Raipe — all hyd* containers
+  document.querySelectorAll('[id^="hyd"],[id^="hyda"],[id^="hydo"],[id^="hydq"],[id^="hyds"]').forEach(function(el) {
+    if (el.id.endsWith('_b')) { el.innerHTML = ''; return; }
+    fillProg(el.id, 'raipe', 'Modo Raipe', 'Guido Nunes · Karoline Lima · Edilson Capetinha · convidados');
+  });
+
+  // As Embaixadoras — all emb* containers
+  document.querySelectorAll('[id^="emb"]').forEach(function(el) {
+    fillProg(el.id, 'emb', 'As Embaixadoras', 'Milene Domingues · Marília Galvão · Roseli de Belo · Cath Scala · Semile · Stella Yeshua');
+  });
+
+  // Hora do Raipe (giro*) — between games
+  document.querySelectorAll('[id^="giro"]').forEach(function(el) {
+    fillProg(el.id, 'raipe', 'Hora do Raipe', 'Guido Nunes · influenciadores ao vivo de Miami');
+  });
+
+  // Hora do Raipe Especial Brasil (grb*)
+  document.querySelectorAll('[id^="grb"],[id^="grbd"]').forEach(function(el) {
+    fillProg(el.id, 'brasil', 'Hora do Raipe · Especial Brasil', 'Cobertura ao vivo da Seleção Brasileira');
+  });
+
+  // Resenha ESPN (resd*, resda*, resdo*, resdq*, resds*)
+  document.querySelectorAll('[id^="resd"]').forEach(function(el) {
+    fillProg(el.id, 'espn', 'Resenha ESPN', 'André Plihal · análise e repercussão do dia');
+  });
+
+  // Cavaco Futebol Clube (cavd*, cavm*)
+  document.querySelectorAll('[id^="cav"]').forEach(function(el) {
+    var sub = el.id.startsWith('cavd') ? 'Pré-jogo Brasil · Guido Nunes + Edilson Capetinha + samba/pagode' :
+              el.id === 'cavm1' ? 'Pré-jogo Brasil · 16 Avos' :
+              el.id === 'cavm2' ? 'Pré-jogo Brasil · Oitavas' :
+              el.id === 'cavm3' ? 'Pré-jogo Brasil · Quartas' :
+              el.id === 'cavm4' || el.id === 'cavm5' ? 'Pré-jogo Brasil · Semifinal' :
+              el.id === 'cavm6' ? 'Pré-jogo Brasil · Final da Copa' : 'Guido Nunes · Edilson Capetinha';
+    fillProg(el.id, 'cavaco', 'Cavaco Futebol Clube', sub);
+  });
+
+  // ESPN Especial Brasil (espd*, esps*, d1*)
+  document.querySelectorAll('[id^="espd"],[id^="esps"],[id^="d1"]').forEach(function(el) {
+    var sub = el.id === 'espd13' ? 'Pós-jogo Brasil x Marrocos' :
+              el.id === 'espd24' ? 'Pós-jogo Escócia x Brasil' :
+              el.id === 'espd20' ? 'Pós-jogo Brasil x Haiti' :
+              el.id === 'd112'   ? 'Véspera · Brasil x Marrocos' :
+              el.id === 'd118'   ? 'Véspera · Brasil x Haiti' :
+              el.id === 'd123'   ? 'Véspera · Escócia x Brasil' : 'Se Brasil jogar';
+    fillProg(el.id, 'espn-esp', 'Resenha ESPN · Especial Brasil', sub);
+  });
+})();
 </script>
 </body>
 </html>
