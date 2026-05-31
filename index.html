@@ -217,6 +217,17 @@ body:not(.inside) .tab.on{color:#fff}
 .grid-lbl-wl{font-size:11.5px;font-weight:700;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.06em;margin:0 4px 14px}
 body:not(.inside) .appicon .lbl{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.85)}
 body:not(.inside) .appgrid .appicon .ico{box-shadow:0 6px 22px rgba(0,0,0,.4)}
+
+.gsec-estudio{color:#0033A0!important}
+.gsec-palco{color:#b8902b!important}
+.gsec-quadra{color:#009C3B!important}
+.gsec-gamer{color:#6B3FA0!important}
+.grow-palco .gt,.grow-palco b{color:#b8902b}
+.grow-quadra .gt,.grow-quadra b{color:#009C3B}
+.grow-gamer .gt,.grow-gamer b{color:#6B3FA0}
+.grow-palco{border-left:3px solid rgba(184,144,43,.3);padding-left:8px;margin-left:-8px}
+.grow-quadra{border-left:3px solid rgba(0,156,59,.3);padding-left:8px;margin-left:-8px}
+.grow-gamer{border-left:3px solid rgba(107,63,160,.3);padding-left:8px;margin-left:-8px}
 </style></head><body><div class="bg" id="bgA"></div>
 <div class="bg" id="bgB"></div>
 <div class="bg-ov"></div>
@@ -404,12 +415,26 @@ function gradePhase(i,btn){if(btn){document.querySelectorAll('.gtab').forEach(fu
   var p=GRADE[i],html='<div class="gphase-range">'+p.r+'</div>';
   p.days.forEach(function(d){
     var chips=d.c.map(function(c){return '<span class="gchip">'+c+'</span>'}).join('');
-    var est=d.e.map(function(r){return row(r,true)}).join(''),pal=d.p.map(function(r){return row(r,false)}).join('');
-    var gm=(d.g&&d.g.f)?'<div class="grow"><span class="gt">🎮</span><div><b>'+d.g.f+'</b>'+(d.g.t?'<span class="gs">'+d.g.t+'</span>':'')+'</div></div>':'';
-    html+='<div class="gday"><button class="gday-hd" onclick="gtoggle(this)"><span class="gday-name">'+d.d+'</span><span class="gchips">'+chips+'</span><span class="gcar">›</span></button><div class="gday-body">'+(est?'<div class="gsec">📺 Estúdio de Vidro</div>'+est:'')+(pal?'<div class="gsec">🎵 Palco</div>'+pal:'')+(gm?'<div class="gsec">🎮 Espaço Gamer</div>'+gm:'')+'</div></div>';
+    var est=d.e.map(function(r){return row(r,true)}).join('');
+    var gm=(d.g&&d.g.f)?'<div class="grow grow-gamer"><span class="gt">🎮</span><div><b>'+d.g.f+'</b>'+(d.g.t?'<span class="gs">'+d.g.t+'</span>':'')+'</div></div>':'';
+    var palShow=PALCO_MAP[d.d];
+    var palHtml=palShow?'<div class="grow grow-palco"><span class="gt">'+palShow.t+'</span><div><b>'+palShow.n+'</b><span class="gs">Show ao vivo · Palco</span></div></div>':'';
+    var qSpec=QUADRA_SPECIAL[d.d];
+    var quadHtml=qSpec
+      ?'<div class="grow grow-quadra"><span class="gt">'+qSpec.t+'</span><div><b>'+qSpec.n+'</b><span class="gs">Evento especial · Quadra</span></div></div>'
+       +'<div class="grow grow-quadra"><span class="gt">14h</span><div><b>Desafios da Quadra</b><span class="gs">Competições e exibições</span></div></div>'
+      :'<div class="grow grow-quadra"><span class="gt">14h</span><div><b>Desafios da Quadra</b><span class="gs">Competições e exibições</span></div></div>';
+    html+='<div class="gday"><button class="gday-hd" onclick="gtoggle(this)"><span class="gday-name">'+d.d+'</span><span class="gchips">'+chips+'</span><span class="gcar">›</span></button><div class="gday-body">'
+      +(est?'<div class="gsec gsec-estudio">🎙 Estúdio de Vidro</div>'+est:'')
+      +(palHtml?'<div class="gsec gsec-palco">🎵 Palco</div>'+palHtml:'')
+      +'<div class="gsec gsec-quadra">⚽ Quadra</div>'+quadHtml
+      +(gm?'<div class="gsec gsec-gamer">🎮 Espaço Gamer</div>'+gm:'')
+      +'</div></div>';
   });
   document.getElementById('gradeDays').innerHTML=html;
 }
+var PALCO_MAP={"Qui · 11 de Junho": {"n": "Abertura ao Público", "t": "22h"}, "Sex · 12 de Junho": {"n": "Fábio Braza", "t": "22h"}, "Sáb · 13 de Junho": {"n": "Ducell & Abdala — DNA", "t": "22h"}, "Dom · 14 de Junho": {"n": "Simoninha & Jairzinho", "t": "22h"}, "Sex · 19 de Junho": {"n": "Fábio Braza", "t": "22h"}, "Sáb · 20 de Junho": {"n": "Ton Carfi", "t": "22h"}, "Dom · 21 de Junho": {"n": "Jairzinho & Simoninha", "t": "22h"}, "Qua · 24 de Junho": {"n": "Samba dos Pentas", "t": "22h"}, "Sex · 26 de Junho": {"n": "Fábio Braza", "t": "22h"}, "Sáb · 27 de Junho": {"n": "Capital Inicial", "t": "22h"}, "Dom · 28 de Junho": {"n": "Jairzinho & Simoninha", "t": "22h"}, "Sex · 3 de Julho": {"n": "Fábio Braza", "t": "22h"}, "Sáb · 4 de Julho": {"n": "DJ Ronald", "t": "22h"}, "Dom · 5 de Julho": {"n": "Jairzinho & Simoninha", "t": "22h"}, "Sex · 10 de Julho": {"n": "Fábio Braza", "t": "22h"}, "Sáb · 11 de Julho": {"n": "Ducell & Abdala — DNA", "t": "22h"}, "Dom · 12 de Julho": {"n": "Jairzinho & Simoninha", "t": "22h"}, "Sex · 17 de Julho": {"n": "Fábio Braza", "t": "22h"}, "Sáb · 18 de Julho": {"n": "DJ Ronald", "t": "22h"}, "Dom · 19 de Julho": {"n": "Jairzinho & Simoninha — Grand Finale", "t": "22h"}};
+var QUADRA_SPECIAL={"Seg · 22 de Junho": {"n": "⭐ Show Bol Day", "t": "16h"}};
 renderGrade();
 
 var BG_IMGS=[RAW+'/fotos/casa/casa_entrada.jpg',RAW+'/fotos/casa/casa_estudio.jpg',RAW+'/fotos/casa/casa_quadra1.jpg',RAW+'/fotos/casa/casa_noite.jpg'];
