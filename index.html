@@ -37,8 +37,8 @@ body.inside .tb-title{display:block}
   box-shadow:0 8px 24px rgba(0,0,0,.10)}
 .gal{position:relative;overflow:hidden}
 .gal-track{display:flex;transition:transform .45s cubic-bezier(.32,.72,0,1)}
-.slide{min-width:100%;aspect-ratio:16/9;position:relative;flex-shrink:0}
-.slide img{width:100%;height:100%;object-fit:cover;display:block}
+.slide{min-width:100%;aspect-ratio:4/3;position:relative;flex-shrink:0}
+.slide img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
 .slide-cap{position:absolute;left:0;right:0;bottom:0;padding:34px 16px 12px;
   background:linear-gradient(transparent,rgba(0,0,0,.6));color:#fff}
 .slide-cap h3{font-size:16px;font-weight:700;letter-spacing:-.01em}
@@ -196,7 +196,7 @@ footer{text-align:center;padding:24px 20px;color:var(--gray2);font-size:11px;lin
   <img class="logo-img" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/rr.png" alt="RR"><span class="logo">CASA RR</span><span class="tb-title" id="tbTitle"></span></div>
 
 <section class="page on" id="page-home">
-  <div class="hero"><div class="gal"><div class="gal-track" id="galTrack" ontouchstart="tStart(event)" ontouchend="tEnd(event)"><div class="slide"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/casa/casa_entrada.jpg" loading="eager"><div class="slide-cap"><h3>A Entrada</h3><p>Wynwood Marketplace · Miami</p></div></div><div class="slide"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/casa/casa_estudio.jpg" loading="lazy"><div class="slide-cap"><h3>Estúdio de Vidro</h3><p>ESPN no Disney+</p></div></div><div class="slide"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/casa/casa_quadra1.jpg" loading="lazy"><div class="slide-cap"><h3>Quadra Poliesportiva</h3><p>Desafios diários</p></div></div><div class="slide"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/casa/casa_noite.jpg" loading="lazy"><div class="slide-cap"><h3>À Noite</h3><p>Palco · Shows</p></div></div><div class="slide"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/casa/casa_aerial.jpg" loading="lazy"><div class="slide-cap"><h3>Wynwood, Miami</h3><p>11 Jun – 19 Jul</p></div></div></div><div class="dots"><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div></div>
+  <div class="hero"><div class="gal"><div class="gal-track" id="galTrack" ontouchstart="tStart(event)" ontouchend="tEnd(event)"><div class="slide"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/casa/casa_entrada.jpg" loading="eager"><div class="slide-cap"><h3>A Entrada</h3><p>Wynwood Marketplace · Miami</p></div></div><div class="slide"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/casa/casa_estudio.jpg" loading="lazy"><div class="slide-cap"><h3>Estúdio de Vidro</h3><p>ESPN no Disney+</p></div></div><div class="slide"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/casa/casa_quadra1.jpg" loading="lazy"><div class="slide-cap"><h3>Quadra Poliesportiva</h3><p>Desafios diários</p></div></div><div class="slide"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/casa/casa_noite.jpg" loading="lazy"><div class="slide-cap"><h3>À Noite</h3><p>Palco · Shows</p></div></div></div><div class="dots"><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div></div>
   <div class="estrip"><div class="et">Copa do Mundo 2026<b>Casa Rede Ronaldo</b></div><div class="ed">Wynwood · Miami<b>11 Jun – 19 Jul</b></div></div>
   <button class="grade-banner" onclick="go('grade')"><span class="gb-ic">📅</span><span class="gb-tx"><span class="gb-t">Programação do Dia</span><span class="gb-s">Grade completa · 11 Jun → 20 Jul · 40 dias</span></span><span class="gb-arr">›</span></button>
   <div class="grid-label">Os espaços da Casa</div>
@@ -323,7 +323,7 @@ function go(id){
   document.querySelectorAll('.tab').forEach(function(b){b.classList.toggle('on',b.dataset.tab===id)});
   window.scrollTo(0,0);
 }
-var gi=0,gn=5;
+var gi=0,gn=4;
 function gset(n){gi=((n%gn)+gn)%gn;document.getElementById('galTrack').style.transform='translateX(-'+(gi*100)+'%)';
   document.querySelectorAll('.dot').forEach(function(x,j){x.classList.toggle('on',j===gi)})}
 var tx=0;function tStart(e){tx=e.touches[0].clientX}
