@@ -58,13 +58,12 @@ body.inside .tb-title{display:block}
 /* ── APP ICON GRID (the buttons) ── */
 .grid-label{font-size:13px;font-weight:600;color:var(--gray);text-transform:uppercase;
   letter-spacing:.05em;margin:24px 22px 12px}
-.appgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px 6px;padding:0 14px}
-.appicon{display:flex;flex-direction:column;align-items:center;gap:8px;border:none;background:none;
-  cursor:pointer;transition:transform .12s}
+.appgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 4px;padding:0 8px}
+.appicon{display:flex;flex-direction:column;align-items:center;gap:4px;border:none;background:none;cursor:pointer;transition:transform .12s}
 
 
 .appicon:active{transform:scale(.92)}
-.appicon .lbl{font-size:12.5px;font-weight:600;color:var(--ink);letter-spacing:-.01em;text-align:center}
+.appicon .lbl{font-size:10.5px;font-weight:600;color:var(--ink);letter-spacing:-.01em;text-align:center}
 
 /* ── SECTION HEAD ── */
 .sec-head{padding:14px 0 2px}
@@ -147,7 +146,7 @@ body.inside .tb-title{display:block}
 .modal-card .mr{font-size:14.5px;color:#3a3a3c;text-align:center;margin-top:13px;line-height:1.55}
 .modal-close{position:absolute;top:14px;right:14px;width:28px;height:28px;border:none;background:var(--bg);border-radius:50%;font-size:14px;color:var(--gray);cursor:pointer}
 footer{text-align:center;padding:24px 20px;color:var(--gray2);font-size:11px;line-height:1.6}
-.grade-banner{display:flex;align-items:center;gap:13px;width:calc(100% - 36px);margin:16px 18px 0;padding:16px 18px;background:linear-gradient(135deg,#0033A0,#0a4bd4);border:none;border-radius:18px;cursor:pointer;color:#fff;text-align:left;box-shadow:0 6px 18px rgba(0,51,160,.25)}
+.grade-banner{display:flex;align-items:center;gap:10px;width:calc(100% - 28px);margin:0 14px;padding:11px 14px;background:linear-gradient(135deg,#0033A0,#0a4bd4);border:none;border-radius:18px;cursor:pointer;color:#fff;text-align:left;box-shadow:0 6px 18px rgba(0,51,160,.25)}
 .grade-banner:active{transform:scale(.98)}
 .gb-ic{font-size:24px}.gb-tx{flex:1}.gb-t{display:block;font-size:16px;font-weight:700}.gb-s{display:block;font-size:11.5px;opacity:.82;margin-top:1px}
 .gb-arr{font-size:20px;opacity:.7}
@@ -202,10 +201,10 @@ body:not(.inside) .appbar .logo b{color:rgba(255,210,80,.95)}
 body:not(.inside) .tabbar{background:rgba(0,0,0,.3);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top-color:rgba(255,255,255,.08)}
 body:not(.inside) .tab{color:rgba(255,255,255,.5)}
 body:not(.inside) .tab.on{color:#fff}
-.home-over{position:relative;z-index:2;padding:80px 20px 100px;min-height:100svh;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center}
-.event-glass{text-align:center;padding-bottom:24px;color:#fff}
+.home-over{position:relative;z-index:2;padding:12px 16px 8px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;gap:10px}
+.event-glass{text-align:center;padding:4px 0 8px;color:#fff}
 .eg-kicker{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;opacity:.8;margin-bottom:6px}
-.event-glass h1{font-size:34px;font-weight:800;letter-spacing:-.03em;text-shadow:0 2px 16px rgba(0,0,0,.65);margin:4px 0 14px;line-height:1.05}
+.event-glass h1{font-size:24px;font-weight:800;letter-spacing:-.03em;text-shadow:0 2px 16px rgba(0,0,0,.65);margin:2px 0 14px;line-height:1.05}
 .date-pill{display:inline-block;background:rgba(255,255,255,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.3);border-radius:100px;padding:7px 18px;font-size:13px;font-weight:600;color:#fff}
 .grade-banner-glass{display:flex;align-items:center;gap:13px;width:100%;padding:15px 18px;margin:24px 0 28px;background:rgba(255,255,255,.13);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.28);border-radius:18px;cursor:pointer;color:#fff;text-align:left;transition:.15s}
 .grade-banner-glass:active{background:rgba(255,255,255,.24)}
@@ -214,7 +213,7 @@ body:not(.inside) .tab.on{color:#fff}
 .grade-banner-glass .gb-t{display:block;font-size:16px;font-weight:700}
 .grade-banner-glass .gb-s{display:block;font-size:11.5px;opacity:.78;margin-top:1px}
 .grade-banner-glass .gb-arr{font-size:20px;opacity:.6}
-.grid-lbl-wl{font-size:11.5px;font-weight:700;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.06em;margin:0 4px 14px}
+.grid-lbl-wl{font-size:10px;font-weight:700;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.06em;margin:0 4px 6px}
 
 
 
@@ -238,25 +237,18 @@ body:not(.inside) .tab.on{color:#fff}
 /* ── NEW GLASS ICONS ── */
 .appicon{position:relative}
 .ico-glass{
-  width:74px;height:74px;
-  border-radius:20px;
-  background:rgba(255,255,255,.12);
-  -webkit-backdrop-filter:blur(18px) saturate(200%);
-  backdrop-filter:blur(18px) saturate(200%);
-  border:1px solid rgba(255,255,255,.35);
-  box-shadow:
-    0 8px 28px rgba(0,0,0,.30),
-    inset 0 1.5px 0 rgba(255,255,255,.55);
+  width:60px;height:60px;
+  border-radius:16px;
+  background:transparent;
+  -webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px);
+  border:none;
+  box-shadow:none;
   overflow:hidden;
   display:flex;align-items:center;justify-content:center;
 }
 /* Ícones preto/prata: mix-blend screen → preto vira transparente */
-.ico-glass .ico{
-  width:74px;height:74px;
-  object-fit:cover;
-  display:block;
-  mix-blend-mode:normal;
-}
+.ico-glass .ico{width:60px;height:60px;border-radius:16px;object-fit:cover;display:block;mix-blend-mode:normal;}
 /* Disney e ESPN — coloridos, sem blend */
 .ico-glass.color .ico{
   mix-blend-mode:normal;
@@ -264,13 +256,20 @@ body:not(.inside) .tab.on{color:#fff}
 }
 /* Dentro das seções */
 body.inside .ico-glass{
-  background:rgba(0,0,0,.06);
-  border-color:rgba(0,0,0,.10);
-  box-shadow:0 2px 10px rgba(0,0,0,.08);
+  width:60px;height:60px;
+  border-radius:16px;
+  background:transparent;
+  -webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px);
+  border:none;
+  box-shadow:none;
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
 }
-body.inside .ico-glass .ico{
-  mix-blend-mode:normal;
-}
+body.inside .ico-glass .ico{width:60px;height:60px;border-radius:16px;object-fit:cover;display:block;mix-blend-mode:normal;}
+
+
+.rr-logo{width:36px;height:36px;object-fit:contain;margin-bottom:2px}
 
 </style></head><body><div class="bg" id="bgA"></div>
 <div class="bg" id="bgB"></div>
@@ -283,7 +282,7 @@ body.inside .ico-glass .ico{
 <section class="page on" id="page-home">
   <div class="home-over">
     <div class="event-glass">
-      <div class="eg-kicker">Copa do Mundo FIFA 2026</div>
+      <img class="rr-logo" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/rr.png" alt="RR">
       <h1>Casa Rede Ronaldo</h1>
       <span class="date-pill">11 Jun – 19 Jul · Wynwood, Miami</span>
     </div>
