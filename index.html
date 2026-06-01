@@ -304,6 +304,35 @@ body:not(.inside) .appicon .lbl{
 .appgrid{display:grid;grid-template-columns:repeat(3,1fr);
   gap:8px 4px;padding:0 6px}
 
+
+/* ══ SECTION HERO PHOTOS ══ */
+.sec-hero{
+  width:100%;height:200px;
+  object-fit:cover;
+  display:block;
+  margin:-1px 0 0;          /* flush contra o topo */
+  border-radius:0;
+}
+.sec-hero-wrap{
+  position:relative;
+  width:100%;height:200px;
+  overflow:hidden;
+  margin-bottom:4px;
+}
+.sec-hero-wrap img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+}
+/* Gradiente sobre a foto → transição suave pro branco */
+.sec-hero-wrap::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:60px;
+  background:linear-gradient(to bottom, transparent, #fff);
+}
+
 </style><!-- updated:1780343078 --></head><body><div class="bg" id="bgA"></div>
 <div class="bg" id="bgB"></div>
 <div class="bg-ov"></div>
@@ -331,7 +360,7 @@ body:not(.inside) .appicon .lbl{
 </div></section>
 
 <!-- ESTÚDIO -->
-<section class="page" id="page-estudio"><div class="wrap">
+<section class="page" id="page-estudio"><div class="sec-hero-wrap"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/estudio_bg.jpg" alt="Estúdio de Vidro"></div><div class="wrap">
   <div class="sec-head"><h1>Estúdio de Vidro</h1><p>Transmissões ao vivo · ESPN no Disney+</p></div>
   <p class="lead" style="margin-top:6px">O coração editorial da Casa. Daqui saem os programas diários, com o público ao redor e a cidade ao fundo. Toque em um programa para ver os detalhes.</p>
   <div id="progList"></div>
@@ -347,7 +376,7 @@ body:not(.inside) .appicon .lbl{
 </div></section>
 
 <!-- QUADRA -->
-<section class="page" id="page-quadra"><div class="wrap">
+<section class="page" id="page-quadra"><div class="sec-hero-wrap"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/quadra_bg.jpg" alt="Quadra"></div><div class="wrap">
   <div class="sec-head"><h1>Quadra Poliesportiva</h1><p>Desafios diários · meia quadra</p></div>
   <div class="block" style="border:1.5px solid var(--gold)"><h3>⭐ Showball · Dia Especial</h3>
     <p class="lead" style="margin-top:0">O esporte criado por Ronaldo ganha um <b>dia único e especial</b> na Casa — não é atração diária. Uma data marcada para celebrar o showball com exibições e convidados.</p></div>
