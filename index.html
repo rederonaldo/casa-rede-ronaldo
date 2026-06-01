@@ -234,42 +234,21 @@ body:not(.inside) .tab.on{color:#fff}
 
 
 
-/* ── NEW GLASS ICONS ── */
-.appicon{position:relative}
-.ico-glass{
-  width:60px;height:60px;
-  border-radius:16px;
-  background:transparent;
-  -webkit-backdrop-filter:blur(12px);
-  backdrop-filter:blur(12px);
-  border:none;
-  box-shadow:none;
-  overflow:hidden;
-  display:flex;align-items:center;justify-content:center;
-}
-/* Ícones preto/prata: mix-blend screen → preto vira transparente */
-.ico-glass .ico{width:60px;height:60px;border-radius:16px;object-fit:cover;display:block;mix-blend-mode:normal;}
-/* Disney e ESPN — coloridos, sem blend */
-.ico-glass.color .ico{
-  mix-blend-mode:normal;
-  width:74px;height:74px;
-}
-/* Dentro das seções */
-body.inside .ico-glass{
-  width:60px;height:60px;
-  border-radius:16px;
-  background:transparent;
-  -webkit-backdrop-filter:blur(12px);
-  backdrop-filter:blur(12px);
-  border:none;
-  box-shadow:none;
-  overflow:hidden;
-  display:flex;align-items:center;justify-content:center;
-}
-body.inside .ico-glass .ico{width:60px;height:60px;border-radius:16px;object-fit:cover;display:block;mix-blend-mode:normal;}
 
 
-.rr-logo{width:36px;height:36px;object-fit:contain;margin-bottom:2px}
+/* ── ÍCONES HOME ── */
+.appicon .ico{
+  width:60px;height:60px;
+  border-radius:16px;
+  object-fit:cover;
+  display:block;
+}
+/* Labels legíveis sobre wallpaper */
+body:not(.inside) .appicon .lbl{
+  color:#fff!important;
+  text-shadow:0 1px 6px rgba(0,0,0,.95),0 0 2px rgba(0,0,0,.8);
+  font-size:11px;
+}
 
 </style></head><body><div class="bg" id="bgA"></div>
 <div class="bg" id="bgB"></div>
@@ -498,20 +477,5 @@ renderProgs();renderCastTabs();
 
 
 
-/* Glass icons v3 — blend screen para pretos, normal para coloridos */
-(function(){
-  var colorSections = ['disney','estudio'];
-  document.querySelectorAll('.appicon').forEach(function(btn){
-    var img = btn.querySelector('.ico');
-    if(!img || btn.querySelector('.ico-glass')) return;
-    // Descobrir seção pelo onclick
-    var oc = btn.getAttribute('onclick') || '';
-    var isColor = colorSections.some(function(s){ return oc.indexOf(s)>-1; });
-    var g = document.createElement('div');
-    g.className = 'ico-glass' + (isColor ? ' color' : '');
-    btn.insertBefore(g, img);
-    g.appendChild(img);
-  });
-})();
 
 </script></body></html>
