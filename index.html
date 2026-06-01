@@ -195,6 +195,7 @@ footer{text-align:center;padding:24px 20px;color:var(--gray2);font-size:11px;lin
 .bg-ov{position:fixed;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.28) 0%,rgba(0,0,0,.12) 38%,rgba(0,0,0,.55) 100%);pointer-events:none}
 body.inside .bg-ov{opacity:0!important}/* overlay home only */
 body:not(.inside) .app{background:transparent}
+body.inside .app{background:transparent!important}
 body:not(.inside) .appbar{background:rgba(0,0,0,.22);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:rgba(255,255,255,.1)}
 body:not(.inside) .appbar .logo{color:#fff}
 body:not(.inside) .appbar .logo b{color:rgba(255,210,80,.95)}
@@ -429,6 +430,11 @@ body.inside .cam-feat{
   background:rgba(255,255,255,.12)!important;
   color:#fff!important;
 }
+
+
+/* ── BG VISÍVEL NAS SEÇÕES ── */
+body.inside .page.on{background:transparent!important}
+body.inside .wrap{background:transparent!important}
 
 </style><!-- updated:1780343078 --></head><body><div class="bg" id="bgA"></div>
 <div class="bg" id="bgB"></div>
