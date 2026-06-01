@@ -333,6 +333,103 @@ body:not(.inside) .appicon .lbl{
   background:linear-gradient(to bottom, transparent, #fff);
 }
 
+
+/* ══ SEÇÕES INTERNAS — GLASS SOBRE WALLPAPER ══ */
+
+/* Overlay escuro sobre o bg para legibilidade */
+body.inside .page.on::before{
+  content:'';position:fixed;inset:0;
+  background:rgba(0,0,0,.42);
+  z-index:0;pointer-events:none;
+}
+body.inside .page.on .wrap{
+  position:relative;z-index:1;
+  padding-bottom:110px;
+}
+/* Remove fundo branco das páginas internas */
+body.inside .page.on{background:transparent!important}
+
+/* Títulos das seções */
+body.inside .sec-head{padding-top:14px}
+body.inside .sec-head h1{
+  color:#fff!important;
+  text-shadow:0 2px 12px rgba(0,0,0,.6);
+}
+body.inside .sec-head p,
+body.inside .lead{color:rgba(255,255,255,.85)!important}
+
+/* ── CARDS GLASS ── */
+body.inside .block,
+body.inside .week,
+body.inside .cam-coming{
+  background:rgba(255,255,255,.13)!important;
+  -webkit-backdrop-filter:blur(22px) saturate(180%);
+  backdrop-filter:blur(22px) saturate(180%);
+  border:1px solid rgba(255,255,255,.22)!important;
+  border-radius:18px;
+  margin-bottom:12px;
+  padding:14px!important;
+}
+/* Textos dentro dos cards */
+body.inside .rn,
+body.inside h3,
+body.inside .week-t,
+body.inside .sn,
+body.inside .sd,
+body.inside .gb-t,
+body.inside .prog-t{color:#fff!important}
+
+body.inside .rs,
+body.inside .ss,
+body.inside .prog-s,
+body.inside .gb-s{color:rgba(255,255,255,.75)!important}
+
+/* Linhas das rows */
+body.inside .row{
+  border-bottom:1px solid rgba(255,255,255,.12)!important;
+  padding:10px 0!important;
+}
+body.inside .row:last-child{border-bottom:none!important}
+
+/* Shows do palco */
+body.inside .show{
+  background:rgba(255,255,255,.10)!important;
+  border-radius:14px;
+  padding:10px 12px!important;
+  margin-bottom:8px;
+}
+body.inside .show.big{
+  background:rgba(255,210,0,.18)!important;
+  border:1px solid rgba(255,210,0,.35)!important;
+}
+
+/* Grade / programação */
+body.inside .prog-item{
+  background:rgba(255,255,255,.11)!important;
+  border-radius:12px;border:none!important;
+}
+
+/* Abas de seção */
+body.inside .sec-tabs .stab{
+  background:rgba(255,255,255,.15)!important;
+  border-radius:100px;color:#fff!important;
+  border:1px solid rgba(255,255,255,.25)!important;
+}
+body.inside .sec-tabs .stab.on{
+  background:rgba(255,255,255,.35)!important;
+  color:#fff!important;
+}
+
+/* Cam-coming (em breve) */
+body.inside .cam-title,
+body.inside .cam-sub,
+body.inside .cam-desc,
+body.inside .cam-cta{color:#fff!important}
+body.inside .cam-feat{
+  background:rgba(255,255,255,.12)!important;
+  color:#fff!important;
+}
+
 </style><!-- updated:1780343078 --></head><body><div class="bg" id="bgA"></div>
 <div class="bg" id="bgB"></div>
 <div class="bg-ov"></div>
@@ -360,7 +457,7 @@ body:not(.inside) .appicon .lbl{
 </div></section>
 
 <!-- ESTÚDIO -->
-<section class="page" id="page-estudio"><div class="sec-hero-wrap"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/estudio_bg.jpg" alt="Estúdio de Vidro"></div><div class="wrap">
+<section class="page" id="page-estudio"><div class="wrap">
   <div class="sec-head"><h1>Estúdio de Vidro</h1><p>Transmissões ao vivo · ESPN no Disney+</p></div>
   <p class="lead" style="margin-top:6px">O coração editorial da Casa. Daqui saem os programas diários, com o público ao redor e a cidade ao fundo. Toque em um programa para ver os detalhes.</p>
   <div id="progList"></div>
@@ -376,7 +473,7 @@ body:not(.inside) .appicon .lbl{
 </div></section>
 
 <!-- QUADRA -->
-<section class="page" id="page-quadra"><div class="sec-hero-wrap"><img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/quadra_bg.jpg" alt="Quadra"></div><div class="wrap">
+<section class="page" id="page-quadra"><div class="wrap">
   <div class="sec-head"><h1>Quadra Poliesportiva</h1><p>Desafios diários · meia quadra</p></div>
   <div class="block" style="border:1.5px solid var(--gold)"><h3>⭐ Showball · Dia Especial</h3>
     <p class="lead" style="margin-top:0">O esporte criado por Ronaldo ganha um <b>dia único e especial</b> na Casa — não é atração diária. Uma data marcada para celebrar o showball com exibições e convidados.</p></div>
@@ -467,6 +564,20 @@ function go(id){
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('on')});
   var el=document.getElementById('page-'+id);if(el)el.classList.add('on');
   document.body.classList.toggle('inside',id!=='home');
+  /* Trocar background */
+  if(id==='home'){
+    clearInterval(bgTimer);
+    if(bgA)bgA.style.backgroundImage='url('+BG_IMGS[bgIdx]+')';
+    if(bgB){bgB.style.backgroundImage='';bgB.style.opacity='0';}
+    bgTimer=setInterval(rotateBg,13000);
+  } else {
+    clearInterval(bgTimer);
+    var sbg=SEC_BG[id];
+    if(sbg){
+      if(bgA){bgA.style.backgroundImage='url('+sbg+')';bgA.style.opacity='1';}
+      if(bgB){bgB.style.backgroundImage='';bgB.style.opacity='0';}
+    }
+  }
   var t=document.getElementById('tbTitle');if(t)t.textContent=TITLES[id]||'';
   document.querySelectorAll('.tab').forEach(function(b){b.classList.toggle('on',b.dataset.tab===id)});
   window.scrollTo(0,0);
@@ -540,8 +651,22 @@ var BG_IMGS=[RAW+'/fotos/casa/casa_entrada.jpg',RAW+'/fotos/casa/casa_estudio.jp
 var bgIdx=0,bgIsA=true;
 var bgA=document.getElementById('bgA'),bgB=document.getElementById('bgB');
 if(bgA)bgA.style.backgroundImage='url('+BG_IMGS[0]+')';
-function rotateBg(){{bgIdx=(bgIdx+1)%BG_IMGS.length;var nxt=bgIsA?bgB:bgA,cur=bgIsA?bgA:bgB;nxt.style.backgroundImage='url('+BG_IMGS[bgIdx]+')';nxt.style.opacity='1';cur.style.opacity='0';bgIsA=!bgIsA;}}
-setInterval(rotateBg,13000);
+function rotateBg(){bgIdx=(bgIdx+1)%BG_IMGS.length;var nxt=bgIsA?bgB:bgA,cur=bgIsA?bgA:bgB;nxt.style.backgroundImage='url('+BG_IMGS[bgIdx]+')';nxt.style.opacity='1';cur.style.opacity='0';bgIsA=!bgIsA;}
+var bgTimer=setInterval(rotateBg,13000);
+
+/* Fotos por seção */
+var SEC_BG={
+  estudio:RAW+'/fotos/estudio_bg.jpg',
+  quadra:RAW+'/fotos/quadra_bg.jpg',
+  palco:RAW+'/fotos/casa/casa_noite.jpg',
+  gamer:RAW+'/fotos/casa/casa_noite.jpg',
+  fenomeno:RAW+'/fotos/casa/casa_entrada.jpg',
+  elenco:RAW+'/fotos/casa/casa_estudio.jpg',
+  brasil:RAW+'/fotos/casa/casa_noite.jpg',
+  disney:RAW+'/fotos/casa/casa_noite.jpg',
+  grade:RAW+'/fotos/casa/casa_estudio.jpg',
+  camarotes:RAW+'/fotos/casa/casa_noite.jpg'
+};
 renderProgs();renderCastTabs();
 
 
