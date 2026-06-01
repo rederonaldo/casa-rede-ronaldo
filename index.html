@@ -237,7 +237,12 @@ body:not(.inside) .tab.on{color:#fff}
 
 
 /* ── ÍCONES HOME ── */
-.appicon .ico{width:62px;height:62px;border-radius:16px;object-fit:cover;display:block;}
+.appicon .ico{
+  width:60px;height:60px;
+  border-radius:16px;
+  object-fit:cover;
+  display:block;
+}
 /* Labels legíveis sobre wallpaper */
 body:not(.inside) .appicon .lbl{
   color:#fff!important;
@@ -245,7 +250,12 @@ body:not(.inside) .appicon .lbl{
   font-size:11px;
 }
 
-</style><!-- updated:1780342678 --></head><body><div class="bg" id="bgA"></div>
+
+/* ── SEM BORDA NOS ÍCONES ── */
+.appicon .ico{border:none!important;box-shadow:none!important;outline:none!important}
+.appicon{border:none!important;background:none!important;box-shadow:none!important}
+
+</style></head><body><div class="bg" id="bgA"></div>
 <div class="bg" id="bgB"></div>
 <div class="bg-ov"></div>
 <div class="app">
@@ -256,7 +266,6 @@ body:not(.inside) .appicon .lbl{
 <section class="page on" id="page-home">
   <div class="home-over">
     <div class="event-glass">
-      <img class="rr-logo" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/rr.png" alt="RR">
       <h1>Casa Rede Ronaldo</h1>
       <span class="date-pill">11 Jun – 19 Jul · Wynwood, Miami</span>
     </div>
