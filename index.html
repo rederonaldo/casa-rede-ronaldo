@@ -236,7 +236,7 @@ body:not(.inside) .tab.on{color:#fff}
 
 
 
-/* ── ÍCONES HOME ── */
+
 .appicon .ico{
   width:60px;height:60px;
   border-radius:16px;
@@ -251,9 +251,58 @@ body:not(.inside) .appicon .lbl{
 }
 
 
-/* ── SEM BORDA NOS ÍCONES ── */
-.appicon .ico{border:none!important;box-shadow:none!important;outline:none!important}
+
 .appicon{border:none!important;background:none!important;box-shadow:none!important}
+
+
+/* ══ GLASS ICONS (definitivo) ══ */
+.appicon{border:none!important;background:none!important;
+  box-shadow:none!important;display:flex;flex-direction:column;
+  align-items:center;gap:5px;cursor:pointer;transition:transform .12s}
+.appicon:active{transform:scale(.90)}
+
+.ico-glass{
+  width:62px;height:62px;
+  border-radius:18px;
+  background:rgba(255,255,255,.18);
+  -webkit-backdrop-filter:blur(22px) saturate(200%);
+  backdrop-filter:blur(22px) saturate(200%);
+  border:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.50),
+             0 4px 18px rgba(0,0,0,.22);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.ico-glass img.ico{
+  width:54px;height:54px;
+  object-fit:contain;
+  display:block;
+  border:none!important;box-shadow:none!important;
+}
+
+/* Labels legíveis sobre wallpaper */
+body:not(.inside) .appicon .lbl{
+  color:#fff!important;font-size:10.5px;font-weight:600;
+  text-shadow:0 1px 6px rgba(0,0,0,.95),0 0 3px rgba(0,0,0,.8);
+}
+
+/* ── HOME compacto (tudo na tela) ── */
+.home-over{
+  position:relative;z-index:2;
+  padding:10px 14px 4px;
+  box-sizing:border-box;
+  display:flex;flex-direction:column;
+  justify-content:flex-start;gap:8px;
+}
+.event-glass{text-align:center;padding:2px 0 6px;color:#fff}
+.event-glass h1{font-size:22px;font-weight:800;letter-spacing:-.03em;
+  text-shadow:0 2px 16px rgba(0,0,0,.65);margin:2px 0}
+.eg-kicker{display:none}
+.date-pill{font-size:11px}
+.grid-lbl-wl{font-size:10px;font-weight:700;color:rgba(255,255,255,.75);
+  text-transform:uppercase;letter-spacing:.06em;margin:0 4px 4px}
+.appgrid{display:grid;grid-template-columns:repeat(3,1fr);
+  gap:8px 4px;padding:0 6px}
 
 </style><!-- updated:1780343078 --></head><body><div class="bg" id="bgA"></div>
 <div class="bg" id="bgB"></div>
@@ -269,13 +318,8 @@ body:not(.inside) .appicon .lbl{
       <h1>Casa Rede Ronaldo</h1>
       <span class="date-pill">11 Jun – 19 Jul · Wynwood, Miami</span>
     </div>
-    <button class="grade-banner-glass" onclick="go('grade')">
-      <span class="gb-ic">📅</span>
-      <span class="gb-tx"><span class="gb-t">Programação do Dia</span><span class="gb-s">Grade completa · 40 dias</span></span>
-      <span class="gb-arr">›</span>
-    </button>
     <div class="grid-lbl-wl">Universos</div>
-    <div class="appgrid"><button class="appicon" onclick="go('grade')"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/grade.png" alt="Programação"><span class="lbl">Programação</span></button><button class="appicon" onclick="go('estudio')"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/programacao.png" alt="Estúdio"><span class="lbl">Estúdio</span></button><button class="appicon" onclick="go('palco')"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/palco.png" alt="Palco"><span class="lbl">Palco</span></button><button class="appicon" onclick="go('quadra')"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/quadra.png" alt="Quadra"><span class="lbl">Quadra</span></button><button class="appicon" onclick="go('gamer')"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/games.png" alt="Espaço Gamer"><span class="lbl">Espaço Gamer</span></button><button class="appicon" onclick="go('fenomeno')"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/fenomeno.png" alt="Fenômeno 50"><span class="lbl">Fenômeno 50</span></button><button class="appicon" onclick="go('camarotes')"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/camarotes.png" alt="Camarotes"><span class="lbl">Camarotes</span></button><button class="appicon" onclick="go('elenco')"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/elenco.png" alt="Elenco"><span class="lbl">Elenco</span></button><button class="appicon" onclick="go('brasil')"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/brasil.png" alt="Brasil"><span class="lbl">Brasil</span></button><button class="appicon" onclick="go('disney')"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/disney.png" alt="Disney+"><span class="lbl">Disney+</span></button></div>
+    <div class="appgrid"><button class="appicon" onclick="go('grade')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/grade.png" alt="Programação"></div><span class="lbl">Programação</span></button><button class="appicon" onclick="go('estudio')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/programacao.png" alt="Estúdio"></div><span class="lbl">Estúdio</span></button><button class="appicon" onclick="go('palco')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/palco.png" alt="Palco"></div><span class="lbl">Palco</span></button><button class="appicon" onclick="go('quadra')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/quadra.png" alt="Quadra"></div><span class="lbl">Quadra</span></button><button class="appicon" onclick="go('gamer')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/games.png" alt="Espaço Gamer"></div><span class="lbl">Espaço Gamer</span></button><button class="appicon" onclick="go('fenomeno')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/fenomeno.png" alt="Fenômeno 50"></div><span class="lbl">Fenômeno 50</span></button><button class="appicon" onclick="go('camarotes')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/camarotes.png" alt="Camarotes"></div><span class="lbl">Camarotes</span></button><button class="appicon" onclick="go('elenco')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/elenco.png" alt="Elenco"></div><span class="lbl">Elenco</span></button><button class="appicon" onclick="go('brasil')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/brasil.png" alt="Brasil"></div><span class="lbl">Brasil</span></button><button class="appicon" onclick="go('disney')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/disney.png" alt="Disney+"></div><span class="lbl">Disney+</span></button></div>
   </div>
 </section>
 
