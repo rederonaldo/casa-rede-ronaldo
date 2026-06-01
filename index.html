@@ -250,6 +250,42 @@ body:not(.inside) .appicon .lbl{
   font-size:11px;
 }
 
+
+/* ── CAMAROTES EM BREVE ── */
+.cam-coming{
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:center;
+  min-height:calc(100svh - 140px);
+  padding:32px 24px;
+  text-align:center;
+}
+.cam-icon{font-size:56px;margin-bottom:12px;line-height:1}
+.cam-title{font-size:30px;font-weight:800;letter-spacing:-.03em;color:#0a0a0a;margin:0 0 6px}
+.cam-sub{font-size:14px;color:#666;margin:0 0 20px}
+.cam-badge{
+  display:inline-block;
+  background:linear-gradient(135deg,#0033A0,#0055d4);
+  color:#fff;
+  font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:8px 22px;border-radius:100px;
+  margin-bottom:24px;
+  box-shadow:0 4px 16px rgba(0,51,160,.30);
+}
+.cam-desc{font-size:15px;color:#444;line-height:1.55;max-width:300px;margin:0 auto 28px}
+.cam-features{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:12px;width:100%;max-width:300px;
+  margin-bottom:28px;
+}
+.cam-feat{
+  background:#f5f7ff;border-radius:14px;
+  padding:14px 12px;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  font-size:12.5px;font-weight:600;color:#1a1a2e;
+}
+.cam-feat-ic{font-size:22px}
+.cam-cta{font-size:13px;color:#999;font-style:italic}
+
 </style></head><body><div class="bg" id="bgA"></div>
 <div class="bg" id="bgB"></div>
 <div class="bg-ov"></div>
@@ -341,14 +377,22 @@ body:not(.inside) .appicon .lbl{
 </div></section>
 
 <!-- CAMAROTES -->
-<section class="page" id="page-camarotes"><div class="wrap">
-  <div class="sec-head"><h1>Camarotes</h1><p>Espaços VIP · um universo à parte</p></div>
-  <p class="lead" style="margin-top:4px">Camarotes personalizados por marca, com visibilidade ao longo dos 39 dias da Casa.</p>
-  <div class="block" style="margin-top:16px"><h3>O espaço</h3>
-    <div class="row"><div><div class="rn">Até 20 pessoas/dia</div><div class="rs">Capacidade por camarote</div></div></div>
-    <div class="row"><div><div class="rn">Open bar & food</div><div class="rs">Serviço completo</div></div></div>
-    <div class="row"><div><div class="rn">Espaço personalizado</div><div class="rs">Identidade da marca parceira · visibilidade nos 39 dias</div></div></div></div>
-</div></section>
+<section class="page" id="page-camarotes">
+  <div class="cam-coming">
+    <div class="cam-icon">🏆</div>
+    <h1 class="cam-title">Camarotes</h1>
+    <p class="cam-sub">Espaços VIP · 39 dias · Wynwood, Miami</p>
+    <div class="cam-badge">Em Breve</div>
+    <p class="cam-desc">Uma experiência exclusiva com visibilidade total da Casa Rede Ronaldo durante toda a Copa do Mundo 2026.</p>
+    <div class="cam-features">
+      <div class="cam-feat"><span class="cam-feat-ic">🥂</span><span>Open bar & food</span></div>
+      <div class="cam-feat"><span class="cam-feat-ic">👥</span><span>Até 20 pessoas/dia</span></div>
+      <div class="cam-feat"><span class="cam-feat-ic">📺</span><span>Transmissão ao vivo</span></div>
+      <div class="cam-feat"><span class="cam-feat-ic">🎤</span><span>Acesso aos shows</span></div>
+    </div>
+    <p class="cam-cta">Informações em breve</p>
+  </div>
+</section>
 
 <!-- ELENCO -->
 <section class="page" id="page-elenco"><div class="wrap">
