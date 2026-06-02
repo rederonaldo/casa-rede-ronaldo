@@ -91,6 +91,25 @@ body.inside .tb-title{display:block}
 .pq-n{font-size:14px;font-weight:600}
 .pq-d{font-size:12px;color:var(--gray);margin-top:1px}
 
+/* ── AGORA ── */
+.agr-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.agr-card{background:var(--card);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border:0.5px solid rgba(255,255,255,0.5);border-radius:16px;padding:14px;box-shadow:0 2px 14px rgba(0,0,0,.14);position:relative;overflow:hidden}
+.agr-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--agr-color,var(--blue))}
+.agr-header{display:flex;align-items:center;gap:6px;margin-bottom:8px}
+.agr-icon{font-size:15px}.agr-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--agr-color,var(--blue))}
+.agr-live{font-size:10px;font-weight:800;color:#ef4444;letter-spacing:.06em;margin-bottom:5px}
+.agr-name{font-size:13px;font-weight:700;line-height:1.3;margin-bottom:2px}
+.agr-sub{font-size:11px;color:var(--gray);line-height:1.3}
+.agr-time{font-size:11px;font-weight:700;color:var(--agr-color,var(--blue));margin-top:5px}
+.agr-idle{font-size:11.5px;color:var(--gray);padding:6px 0}
+.agr-next{font-size:10.5px;color:var(--gray);margin-top:8px;padding-top:7px;border-top:.5px solid var(--line)}
+.agora-day{font-size:14px;font-weight:700;color:rgba(255,255,255,.9);margin-bottom:2px;padding:0 2px}
+.agr-row-now .rn{color:#38bdf8;font-weight:700}
+.agr-row-now .rt{color:#ef4444;font-weight:800}
+.agora-cdown{text-align:center;padding:50px 20px}
+.agora-cdown-n{font-size:88px;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-.04em}
+.agora-cdown-l{font-size:17px;font-weight:700;color:#fff;margin-top:6px}
+.agora-cdown-s{font-size:13px;color:rgba(255,255,255,.55);margin-top:10px}
 /* ── CAST ── */
 .cast-tabs{display:flex;gap:7px;overflow-x:auto;padding:14px 0 4px;scrollbar-width:none}
 .cast-tabs::-webkit-scrollbar{display:none}
@@ -460,7 +479,7 @@ body.inside .wrap{background:transparent!important}
       <span class="date-pill">11 Jun – 19 Jul · Wynwood, Miami</span>
     </div>
     <div class="grid-lbl-wl">Universos</div>
-    <div class="appgrid"><button class="appicon" onclick="go('grade')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/grade.png" alt="Programação"></div><span class="lbl">Programação</span></button><button class="appicon" onclick="go('estudio')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/programacao.png" alt="Estúdio"></div><span class="lbl">Estúdio</span></button><button class="appicon" onclick="go('palco')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/palco.png" alt="Palco"></div><span class="lbl">Palco</span></button><button class="appicon" onclick="go('quadra')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/quadra.png" alt="Quadra"></div><span class="lbl">Quadra</span></button><button class="appicon" onclick="go('gamer')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/games.png" alt="Espaço Gamer"></div><span class="lbl">Espaço Gamer</span></button><button class="appicon" onclick="go('fenomeno')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/fenomeno.png" alt="Fenômeno 50"></div><span class="lbl">Fenômeno 50</span></button><button class="appicon" onclick="go('camarotes')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/camarotes.png" alt="Camarotes"></div><span class="lbl">Camarotes</span></button><button class="appicon" onclick="go('elenco')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/elenco.png" alt="Elenco"></div><span class="lbl">Elenco</span></button><button class="appicon" onclick="go('brasil')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/brasil.png" alt="Brasil"></div><span class="lbl">Brasil</span></button><button class="appicon" onclick="go('espn')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/espn.png" alt="ESPN"></div><span class="lbl">ESPN</span></button><button class="appicon" onclick="go('disney')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/disney.png" alt="Disney+"></div><span class="lbl">Disney+</span></button></div>
+    <div class="appgrid"><button class="appicon" onclick="go('agora')"><div class="ico-glass" style="background:rgba(239,68,68,0.18)"><span style="font-size:26px">⚡</span></div><span class="lbl">Agora</span></button><button class="appicon" onclick="go('grade')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/grade.png" alt="Programação"></div><span class="lbl">Programação</span></button><button class="appicon" onclick="go('estudio')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/programacao.png" alt="Estúdio"></div><span class="lbl">Estúdio</span></button><button class="appicon" onclick="go('palco')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/palco.png" alt="Palco"></div><span class="lbl">Palco</span></button><button class="appicon" onclick="go('quadra')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/quadra.png" alt="Quadra"></div><span class="lbl">Quadra</span></button><button class="appicon" onclick="go('gamer')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/games.png" alt="Espaço Gamer"></div><span class="lbl">Espaço Gamer</span></button><button class="appicon" onclick="go('fenomeno')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/fenomeno.png" alt="Fenômeno 50"></div><span class="lbl">Fenômeno 50</span></button><button class="appicon" onclick="go('camarotes')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/camarotes.png" alt="Camarotes"></div><span class="lbl">Camarotes</span></button><button class="appicon" onclick="go('elenco')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/elenco.png" alt="Elenco"></div><span class="lbl">Elenco</span></button><button class="appicon" onclick="go('brasil')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/brasil.png" alt="Brasil"></div><span class="lbl">Brasil</span></button><button class="appicon" onclick="go('espn')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/espn.png" alt="ESPN"></div><span class="lbl">ESPN</span></button><button class="appicon" onclick="go('disney')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/disney.png" alt="Disney+"></div><span class="lbl">Disney+</span></button></div>
   </div>
 </section>
 
@@ -565,6 +584,13 @@ body.inside .wrap{background:transparent!important}
     <div class="row"><div><div class="rn">Estúdio de Vidro</div><div class="rs">Base de operações ESPN · ao vivo direto de Wynwood</div></div></div></div>
 </div></section>
 
+
+<!-- AGORA -->
+<section class="page" id="page-agora"><div class="wrap">
+  <div class="sec-head"><h1>⚡ Agora</h1><p id="agora-clk">--:-- · Miami (ET)</p></div>
+  <div id="agora-body" style="margin-top:10px"></div>
+</div></section>
+
 <!-- DISNEY -->
 <section class="page" id="page-disney"><div class="wrap">
   <div class="sec-head"><h1>Disney+</h1><p>Ao vivo · 18h–22h todos os dias da Copa</p></div>
@@ -582,7 +608,7 @@ body.inside .wrap{background:transparent!important}
 
 </div>
 
-<nav class="tabbar" id="tabbar"><button class="tab on" data-tab="home" onclick="go('home')"><span class="ti">⌂</span><span class="tl">Início</span></button><button class="tab" data-tab="estudio" onclick="go('estudio')"><span class="ti">▶</span><span class="tl">Estúdio</span></button><button class="tab" data-tab="palco" onclick="go('palco')"><span class="ti">♪</span><span class="tl">Palco</span></button><button class="tab" data-tab="gamer" onclick="go('gamer')"><span class="ti">◉</span><span class="tl">Gamer</span></button><button class="tab" data-tab="fenomeno" onclick="go('fenomeno')"><span class="ti">♛</span><span class="tl">Fenômeno</span></button></nav>
+<nav class="tabbar" id="tabbar"><button class="tab on" data-tab="home" onclick="go('home')"><span class="ti">⌂</span><span class="tl">Início</span></button><button class="tab" data-tab="estudio" onclick="go('estudio')"><span class="ti">▶</span><span class="tl">Estúdio</span></button><button class="tab" data-tab="palco" onclick="go('palco')"><span class="ti">♪</span><span class="tl">Palco</span></button><button class="tab" data-tab="gamer" onclick="go('gamer')"><span class="ti">◉</span><span class="tl">Gamer</span></button><button class="tab" data-tab="agora" onclick="go('agora')"><span class="ti">⚡</span><span class="tl">Agora</span></button></nav>
 
 <div class="modal" id="modal"><div class="modal-bg" onclick="closeModal()"></div>
   <div class="modal-card"><button class="modal-close" onclick="closeModal()">✕</button><div id="modalBody"></div></div></div>
@@ -651,6 +677,80 @@ function showGame(el){var t=el.getAttribute('data-t'),teams=el.getAttribute('dat
   document.getElementById('modalBody').innerHTML='<div class="mgame-tag">⚽ Jogo da Copa</div><h2 class="mgame-h">'+teams+'</h2><div class="mt">🕐 '+t+' Miami (ET)'+bras+'</div>'+(sub?'<div class="mr">'+sub+'</div>':'')+'<div class="mgame-note">Transmissão oficial · ESPN no Disney+</div>';
   document.getElementById('modal').classList.add('on');}
 function gtoggle(el){el.parentNode.classList.toggle('open');}
+
+/* ── AGORA ─────────────────────────────────────────── */
+function getMiamiNow(){return new Date(new Date().toLocaleString("en-US",{timeZone:"America/New_York"}));}
+function parseT(t){var m=(t||'').replace(/~/g,'').match(/(\d+)h(\d*)/);return m?parseInt(m[1])*60+(m[2]?parseInt(m[2]):0):null;}
+function getCurNext(evs,nowM){
+  var cur=null,nxt=null;
+  for(var i=0;i<evs.length;i++){
+    var t=parseT(evs[i].t||evs[i].f||'');if(t===null)continue;
+    var nt=i<evs.length-1?parseT(evs[i+1].t||evs[i+1].f||''):1440;
+    if(nowM>=t&&nowM<(nt!==null?nt:1440)){cur=evs[i];nxt=evs[i+1]||null;break;}
+  }
+  if(!cur&&evs.length){var ft=parseT(evs[0].t||evs[0].f||'');if(ft!==null&&nowM<ft)nxt=evs[0];}
+  return{cur:cur,nxt:nxt};
+}
+function agoraCard(icon,cor,label,cur,nxt){
+  var live=cur
+    ?'<div class="agr-live">● AO VIVO</div><div class="agr-name">'+(cur.n||cur.f||'')+'</div>'
+      +(cur.s||cur.d?'<div class="agr-sub">'+(cur.s||cur.d||'')+'</div>':'')
+      +'<div class="agr-time">'+(cur.t||cur.f||'')+'</div>'
+    :'<div class="agr-idle">Sem transmissão agora</div>';
+  var next=nxt?'<div class="agr-next">Próx · '+(nxt.t||nxt.f||'')+' · '+(nxt.n||nxt.f||'')+'</div>':'';
+  return '<div class="agr-card" style="--agr-color:'+cor+'"><div class="agr-header"><span class="agr-icon">'+icon+'</span><span class="agr-label">'+label+'</span></div>'+live+next+'</div>';
+}
+function renderAgora(){
+  var bodyEl=document.getElementById('agora-body');
+  var clkEl=document.getElementById('agora-clk');
+  if(!bodyEl)return;
+  var now=getMiamiNow();
+  var hh=String(now.getHours()).padStart(2,'0'),mm=String(now.getMinutes()).padStart(2,'0');
+  if(clkEl)clkEl.textContent=hh+':'+mm+' · Miami (ET)';
+  var start=new Date(2026,5,11),today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  var diff=Math.round((today-start)/86400000);
+  var allDays=[];DATA.grade.forEach(function(p){p.days.forEach(function(d){allDays.push(d);});});
+  if(diff<0){
+    var d=Math.abs(diff);
+    bodyEl.innerHTML='<div class="agora-cdown"><div class="agora-cdown-n">'+d+'</div><div class="agora-cdown-l">dia'+(d>1?'s':'')+' para a Copa</div><div class="agora-cdown-s">A Casa Rede Ronaldo abre em '+d+' dia'+(d>1?'s':'')+'</div></div>';
+    return;
+  }
+  if(diff>=allDays.length){
+    bodyEl.innerHTML='<div class="agora-cdown"><div class="agora-cdown-l" style="color:var(--gold)">Copa do Mundo 2026 encerrada.</div><div class="agora-cdown-s">Obrigado por fazer parte da Casa Rede Ronaldo!</div></div>';
+    return;
+  }
+  var day=allDays[diff],nowM=now.getHours()*60+now.getMinutes();
+  var isBr=day.c&&day.c.some(function(x){return x.includes('🇧🇷');});
+  var estudio=[],jogos=[];
+  (day.e||[]).forEach(function(ev){(ev.n.includes(' x ')||ev.n.includes('×'))?jogos.push(ev):estudio.push(ev);});
+  var palco=PALCO_MAP[day.d]?[{n:PALCO_MAP[day.d].n,t:PALCO_MAP[day.d].t,s:'Show · Palco'}]:[];
+  var gamer=day.g?[{n:day.g.t,t:'13h',s:day.g.d,f:'13h'}]:[];
+  var quadra=QUADRA_SPECIAL[day.d]
+    ?[{n:QUADRA_SPECIAL[day.d].n,t:QUADRA_SPECIAL[day.d].t,s:'Evento especial'},{n:'Desafios da Quadra',t:'14h',s:'Competições e exibições'}]
+    :[{n:'Desafios da Quadra',t:'14h',s:'Competições e exibições'}];
+  var es=getCurNext(estudio,nowM),jo=getCurNext(jogos,nowM),pa=getCurNext(palco,nowM),ga=getCurNext(gamer,nowM),qa=getCurNext(quadra,nowM);
+  var h='<div class="agora-day">Dia '+(diff+1)+' da Copa &nbsp;·&nbsp; '+day.d+(isBr?' &nbsp;🇧🇷 Brasil joga hoje!':'')+'</div>';
+  h+='<div class="agr-grid">';
+  h+=agoraCard('▶','var(--blue)','Estúdio',es.cur,es.nxt);
+  h+=agoraCard('⚽','#16a34a','Jogos da Copa',jo.cur,jo.nxt);
+  h+=agoraCard('🎵','var(--gold)','Palco',pa.cur,pa.nxt);
+  h+=agoraCard('🎮','#7c3aed','Gamer',ga.cur,ga.nxt);
+  h+=agoraCard('🏀','#ea580c','Quadra',qa.cur,qa.nxt);
+  h+='</div>';
+  h+='<div class="block" style="margin-top:16px"><h3>Grade completa · hoje</h3>';
+  (day.e||[]).forEach(function(ev,i){
+    var t=parseT(ev.t),nt=i<day.e.length-1?parseT(day.e[i+1].t):1440;
+    var isNow=t!==null&&nowM>=t&&nowM<(nt!==null?nt:1440);
+    h+='<div class="row'+(isNow?' agr-row-now':'')+'"><div><div class="rn">'+ev.n+'</div><div class="rs">'+(ev.s||'')+'</div></div><div class="rt">'+ev.t+(isNow?' 🔴':'')+'</div></div>';
+  });
+  h+='</div>';
+  bodyEl.innerHTML=h;
+}
+setInterval(function(){
+  var clkEl=document.getElementById('agora-clk');
+  if(clkEl){var now=getMiamiNow();clkEl.textContent=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0')+' · Miami (ET)';}
+  if(document.getElementById('page-agora')&&document.getElementById('page-agora').classList.contains('on'))renderAgora();
+},30000);
 function renderGrade(){document.getElementById('gradeTabs').innerHTML=GRADE.map(function(p,i){return '<button class="gtab'+(i===0?' on':'')+'" onclick="gradePhase('+i+',this)">'+p.l+'</button>'}).join('');gradePhase(0);}
 function row(r,est){var pk=PROGMAP[r.n];if(pk){return '<div class="grow grow-prog" data-prog="'+pk+'" onclick="showProg(this)"><span class="gt">'+r.t+'</span><div><b>'+r.n+' <span class="gprog-i">ⓘ</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div></div>';}if(est&&(/ x /.test(r.n)||/^🏆|^🥉/.test(r.n))){return '<div class="grow grow-game" data-t="'+r.t+'" data-n="'+r.n+'" data-s="'+(r.s||'')+'" onclick="showGame(this)"><span class="gt">'+r.t+'</span><div><b>'+r.n+' <span class="ggame-i">›</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div></div>';}return '<div class="grow"><span class="gt">'+r.t+'</span><div><b>'+r.n+'</b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div></div>';}
 function gradePhase(i,btn){if(btn){document.querySelectorAll('.gtab').forEach(function(b){b.classList.remove('on')});btn.classList.add('on');}
