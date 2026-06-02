@@ -637,6 +637,8 @@ function go(id){
   var t=document.getElementById('tbTitle');if(t)t.textContent=TITLES[id]||'';
   document.querySelectorAll('.tab').forEach(function(b){b.classList.toggle('on',b.dataset.tab===id)});
   window.scrollTo(0,0);
+  if(id==='agora')renderAgora();
+  if(id==='grade')renderGrade();
 }
 var gi=0,gn=4;
 function gset(n){gi=((n%gn)+gn)%gn;document.getElementById('galTrack').style.transform='translateX(-'+(gi*100)+'%)';
