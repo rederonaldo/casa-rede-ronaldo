@@ -786,7 +786,7 @@ function renderGrade(){document.getElementById('gradeTabs').innerHTML=GRADE.map(
 function row(r,est){var pk=PROGMAP[r.n];if(pk){var gStr=(r.n==='Modo Raipe'||r.n==='Hora do Raipe')&&_gday.length?'<span class="gs gs-guests">'+_gday.join(' · ')+'</span>':'';return '<div class="grow grow-prog" data-prog="'+pk+'" onclick="showProg(this)"><span class="gt">'+r.t+'</span><div><b>'+r.n+' <span class="gprog-i">ⓘ</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+gStr+'</div></div>';}if(est&&(/ x /.test(r.n)||/^🏆|^🥉/.test(r.n))){return '<div class="grow grow-game" data-t="'+r.t+'" data-n="'+r.n+'" data-s="'+(r.s||'')+'" onclick="showGame(this)"><span class="gt">'+r.t+'</span><div><b>'+r.n+' <span class="ggame-i">›</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div></div>';}return '<div class="grow"><span class="gt">'+r.t+'</span><div><b>'+r.n+'</b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div></div>';}
 function gradePhase(i,btn){if(btn){document.querySelectorAll('.gtab').forEach(function(b){b.classList.remove('on')});btn.classList.add('on');}
   var p=GRADE[i],html='<div class="gphase-range">'+p.r+'</div>';
-  p.days.forEach(function(d){
+  p.days.forEach(function(d){_gday=getGuests(d.d);
     var chips=d.c.map(function(c){return '<span class="gchip">'+c+'</span>'}).join('');
     var est=d.e.map(function(r){return row(r,true)}).join('');
     var gm=(d.g&&d.g.f)?'<div class="grow grow-gamer"><span class="gt">🎮</span><div><b>'+d.g.f+'</b>'+(d.g.t?'<span class="gs">'+d.g.t+'</span>':'')+'</div></div>':'';
