@@ -106,6 +106,7 @@ body.inside .tb-title{display:block}
 .agora-day{font-size:14px;font-weight:700;color:rgba(255,255,255,.9);margin-bottom:2px;padding:0 2px}
 .agr-row-now .rn{color:#38bdf8;font-weight:700}
 .agr-row-now .rt{color:#ef4444;font-weight:800}
+.agr-guests{font-size:12px;color:var(--gold);padding:6px 2px 2px;font-weight:600;line-height:1.5}
 .agora-cdown{text-align:center;padding:50px 20px}
 .agora-cdown-n{font-size:88px;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-.04em}
 .agora-cdown-l{font-size:17px;font-weight:700;color:#fff;margin-top:6px}
@@ -731,7 +732,9 @@ function renderAgora(){
     ?[{n:QUADRA_SPECIAL[day.d].n,t:QUADRA_SPECIAL[day.d].t,s:'Evento especial'},{n:'Desafios da Quadra',t:'14h',s:'Competições e exibições'}]
     :[{n:'Desafios da Quadra',t:'14h',s:'Competições e exibições'}];
   var es=getCurNext(estudio,nowM),jo=getCurNext(jogos,nowM),pa=getCurNext(palco,nowM),ga=getCurNext(gamer,nowM),qa=getCurNext(quadra,nowM);
-  var h='<div class="agora-day">Dia '+(diff+1)+' da Copa &nbsp;·&nbsp; '+day.d+(isBr?' &nbsp;🇧🇷 Brasil joga hoje!':'')+'</div>';
+  var dayGuests=getGuests(day.d);
+  var guestBar=dayGuests.length?'<div class="agr-guests">🎤 '+dayGuests.join(' · ')+'</div>':'';
+  var h='<div class="agora-day">Dia '+(diff+1)+' da Copa &nbsp;·&nbsp; '+day.d+(isBr?' &nbsp;🇧🇷 Brasil joga hoje!':'')+'</div>'+guestBar;
   h+='<div class="agr-grid">';
   h+=agoraCard('▶','var(--blue)','Estúdio',es.cur,es.nxt);
   h+=agoraCard('⚽','#16a34a','Jogos da Copa',jo.cur,jo.nxt);
@@ -753,8 +756,34 @@ setInterval(function(){
   if(clkEl){var now=getMiamiNow();clkEl.textContent=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0')+' · Miami (ET)';}
   if(document.getElementById('page-agora')&&document.getElementById('page-agora').classList.contains('on'))renderAgora();
 },30000);
+
+/* ── GUESTS — talentos presentes por período ── */
+var GUESTS=[
+  {n:"Leo Chile",      from:0,  to:14},
+  {n:"Douglas Vlegas", from:0,  to:9},
+  {n:"Gui Tank",       from:0,  to:17},
+  {n:"Priscila Souza", from:0,  to:8},
+  {n:"Bil Araújo",     from:0,  to:17},
+  {n:"Sofia Espanha",  from:0,  to:38},
+  {n:"Gabriel Cacella",from:0,  to:38},
+  {n:"Cela Lopes",     from:6,  to:16},
+  {n:"Duda Rubert",    from:6,  to:16},
+  {n:"Thiago Rosinhole",from:3, to:17},
+  {n:"Luva de Pedreiro",from:13,to:17}
+];
+var MESES_G={Janeiro:0,Fevereiro:1,Março:2,Abril:3,Maio:4,Junho:5,Julho:6,Agosto:7};
+function dayIdx(dStr){
+  var m=dStr.match(/(\d+) de (\w+)/);if(!m)return -1;
+  var mes=MESES_G[m[2]];if(mes===undefined)return -1;
+  return Math.round((new Date(2026,mes,parseInt(m[1]))-new Date(2026,5,11))/86400000);
+}
+function getGuests(dStr){
+  var i=dayIdx(dStr);if(i<0)return[];
+  return GUESTS.filter(function(g){return i>=g.from&&i<=g.to;}).map(function(g){return g.n;});
+}
+var _gday=[];
 function renderGrade(){document.getElementById('gradeTabs').innerHTML=GRADE.map(function(p,i){return '<button class="gtab'+(i===0?' on':'')+'" onclick="gradePhase('+i+',this)">'+p.l+'</button>'}).join('');gradePhase(0);}
-function row(r,est){var pk=PROGMAP[r.n];if(pk){return '<div class="grow grow-prog" data-prog="'+pk+'" onclick="showProg(this)"><span class="gt">'+r.t+'</span><div><b>'+r.n+' <span class="gprog-i">ⓘ</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div></div>';}if(est&&(/ x /.test(r.n)||/^🏆|^🥉/.test(r.n))){return '<div class="grow grow-game" data-t="'+r.t+'" data-n="'+r.n+'" data-s="'+(r.s||'')+'" onclick="showGame(this)"><span class="gt">'+r.t+'</span><div><b>'+r.n+' <span class="ggame-i">›</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div></div>';}return '<div class="grow"><span class="gt">'+r.t+'</span><div><b>'+r.n+'</b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div></div>';}
+function row(r,est){var pk=PROGMAP[r.n];if(pk){var gStr=(r.n==='Modo Raipe'||r.n==='Hora do Raipe')&&_gday.length?'<span class="gs gs-guests">'+_gday.join(' · ')+'</span>':'';return '<div class="grow grow-prog" data-prog="'+pk+'" onclick="showProg(this)"><span class="gt">'+r.t+'</span><div><b>'+r.n+' <span class="gprog-i">ⓘ</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+gStr+'</div></div>';}if(est&&(/ x /.test(r.n)||/^🏆|^🥉/.test(r.n))){return '<div class="grow grow-game" data-t="'+r.t+'" data-n="'+r.n+'" data-s="'+(r.s||'')+'" onclick="showGame(this)"><span class="gt">'+r.t+'</span><div><b>'+r.n+' <span class="ggame-i">›</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div></div>';}return '<div class="grow"><span class="gt">'+r.t+'</span><div><b>'+r.n+'</b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div></div>';}
 function gradePhase(i,btn){if(btn){document.querySelectorAll('.gtab').forEach(function(b){b.classList.remove('on')});btn.classList.add('on');}
   var p=GRADE[i],html='<div class="gphase-range">'+p.r+'</div>';
   p.days.forEach(function(d){
