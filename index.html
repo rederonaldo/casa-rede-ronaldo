@@ -200,7 +200,7 @@ footer{text-align:center;padding:24px 20px;color:var(--gray2);font-size:11px;lin
 .gsec{font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.04em;margin:13px 0 4px}
 .grow{display:flex;gap:10px;padding:7px 0;border-bottom:.5px solid var(--line)}
 .grow:last-child{border:none}
-.gt{font-size:12px;font-weight:700;color:var(--gray2);width:42px;flex-shrink:0;padding-top:2px}
+.gt{font-size:12px;font-weight:700;color:var(--gray2);width:54px;flex-shrink:0;padding-top:2px}
 .grow b{font-size:14px;font-weight:600;display:block;letter-spacing:-.01em}
 .gs{font-size:12px;color:var(--gray);display:block;margin-top:1px}
 .gs-guests{color:var(--gold)!important;font-size:10.5px}
@@ -822,7 +822,7 @@ function gtoggle(el){el.parentNode.classList.toggle('open');}
 
 /* ── AGORA ─────────────────────────────────────────── */
 function getMiamiNow(){return new Date(new Date().toLocaleString("en-US",{timeZone:"America/New_York"}));}
-function calcBRT(t){var m=(t||'').replace(/~/g,'').match(/(\d+)h/);if(!m)return '';return ((parseInt(m[1])+1)%24)+'h 🇧🇷';}
+function calcBRT(t){var m=(t||'').replace(/~/g,'').match(/(\d+)h/);if(!m)return '';return '🇧🇷 '+((parseInt(m[1])+1)%24)+'h';}
 function parseT(t){var m=(t||'').replace(/~/g,'').match(/(\d+)h(\d*)/);return m?parseInt(m[1])*60+(m[2]?parseInt(m[2]):0):null;}
 function getCurNext(evs,nowM){
   var cur=null,nxt=null;
@@ -863,7 +863,7 @@ function renderAgora(){
     pcEvs.forEach(function(ev,i){
       var t=parseT(ev.t),nt=i<pcEvs.length-1?parseT(pcEvs[i+1].t):1440;
       var isNow=t!==null&&nowMpc>=t&&nowMpc<(nt!==null?nt:1440);
-      hpc+='<div class="row'+(isNow?' agr-row-now':'')+'"><div class="rt">'+ev.t+(isNow?' 🔴':'')+'</div><div class="rc"><div class="rn">'+ev.n+'</div><div class="rs">'+ev.s+'</div></div><div class="rt-brt">'+calcBRT(ev.t)+'</div></div>';
+      hpc+='<div class="row'+(isNow?' agr-row-now':'')+'"><div class="rt">🇺🇸 '+ev.t+(isNow?' 🔴':'')+'</div><div class="rc"><div class="rn">'+ev.n+'</div><div class="rs">'+ev.s+'</div></div><div class="rt-brt">'+calcBRT(ev.t)+'</div></div>';
     });
     hpc+='</div>';
     bodyEl.innerHTML=hpc;
@@ -902,7 +902,7 @@ function renderAgora(){
   (day.e||[]).forEach(function(ev,i){
     var t=parseT(ev.t),nt=i<day.e.length-1?parseT(day.e[i+1].t):1440;
     var isNow=t!==null&&nowM>=t&&nowM<(nt!==null?nt:1440);
-    h+='<div class="row'+(isNow?' agr-row-now':'')+'"><div class="rt">'+ev.t+(isNow?' 🔴':'')+'</div><div class="rc"><div class="rn">'+ev.n+'</div><div class="rs">'+(ev.s||'')+'</div></div><div class="rt-brt">'+calcBRT(ev.t)+'</div></div>';
+    h+='<div class="row'+(isNow?' agr-row-now':'')+'"><div class="rt">🇺🇸 '+ev.t+(isNow?' 🔴':'')+'</div><div class="rc"><div class="rn">'+ev.n+'</div><div class="rs">'+(ev.s||'')+'</div></div><div class="rt-brt">'+calcBRT(ev.t)+'</div></div>';
   });
   h+='</div>';
   bodyEl.innerHTML=h;
@@ -944,7 +944,7 @@ function getGuests(dStr){
 }
 var _gday=[];
 function renderGrade(){document.getElementById('gradeTabs').innerHTML=GRADE.map(function(p,i){return '<button class="gtab'+(i===0?' on':'')+'" onclick="gradePhase('+i+',this)">'+p.l+'</button>'}).join('');gradePhase(0);}
-function row(r,est){var pk=PROGMAP[r.n];if(pk){var gStr=(r.n==='Modo Raipe'||r.n==='Hora do Raipe')&&_gday.length?'<span class="gs gs-guests">'+_gday.join(' · ')+'</span>':'';return '<div class="grow grow-prog" data-prog="'+pk+'" onclick="showProg(this)"><span class="gt">'+r.t+'</span><div><b>'+r.n+' <span class="gprog-i">ⓘ</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+gStr+'</div><span class="gbrt">'+calcBRT(r.t)+'</span></div>';}if(est&&(/ x /.test(r.n)||/^🏆|^🥉/.test(r.n))){return '<div class="grow grow-game" data-t="'+r.t+'" data-n="'+r.n+'" data-s="'+(r.s||'')+'" onclick="showGame(this)"><span class="gt">'+r.t+'</span><div><b>'+r.n+' <span class="ggame-i">›</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div><span class="gbrt">'+calcBRT(r.t)+'</span></div>';}return '<div class="grow"><span class="gt">'+r.t+'</span><div><b>'+r.n+'</b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div><span class="gbrt">'+calcBRT(r.t)+'</span></div>';}
+function row(r,est){var pk=PROGMAP[r.n];if(pk){var gStr=(r.n==='Modo Raipe'||r.n==='Hora do Raipe')&&_gday.length?'<span class="gs gs-guests">'+_gday.join(' · ')+'</span>':'';return '<div class="grow grow-prog" data-prog="'+pk+'" onclick="showProg(this)"><span class="gt">🇺🇸 '+r.t+'</span><div><b>'+r.n+' <span class="gprog-i">ⓘ</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+gStr+'</div><span class="gbrt">'+calcBRT(r.t)+'</span></div>';}if(est&&(/ x /.test(r.n)||/^🏆|^🥉/.test(r.n))){return '<div class="grow grow-game" data-t="'+r.t+'" data-n="'+r.n+'" data-s="'+(r.s||'')+'" onclick="showGame(this)"><span class="gt">🇺🇸 '+r.t+'</span><div><b>'+r.n+' <span class="ggame-i">›</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div><span class="gbrt">'+calcBRT(r.t)+'</span></div>';}return '<div class="grow"><span class="gt">🇺🇸 '+r.t+'</span><div><b>'+r.n+'</b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div><span class="gbrt">'+calcBRT(r.t)+'</span></div>';}
 function gradePhase(i,btn){if(btn){document.querySelectorAll('.gtab').forEach(function(b){b.classList.remove('on')});btn.classList.add('on');}
   var p=GRADE[i],html='<div class="gphase-range">'+p.r+'</div>';
   p.days.forEach(function(d){_gday=getGuests(d.d);
