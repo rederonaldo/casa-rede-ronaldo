@@ -2,7 +2,7 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f2f2f7"><title>Casa Rede Ronaldo</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Space+Mono:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@700;800;900&family=Space+Mono:wght@700&display=swap');
 :root{
   --bg:#f2f2f7; --card:rgba(255,255,255,0.88); --ink:#1c1c1e; --gray:#8a8a8e; --gray2:#aeaeb2;
   --line:#e5e5ea; --blue:#0033A0; --gold:#b8902b; --br:#009C3B;
@@ -57,15 +57,50 @@ body.inside .tb-title{display:block}
 .estrip .ed{text-align:right;font-size:12px;color:var(--gray)}
 .estrip .ed b{display:block;font-size:15px;color:var(--blue);font-weight:700}
 
-/* ── APP ICON GRID (the buttons) ── */
-.grid-label{font-size:13px;font-weight:600;color:rgba(255,255,255,0.5);text-transform:uppercase;
-  letter-spacing:.05em;margin:24px 22px 12px}
-.appgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 4px;padding:0 8px}
-.appicon{display:flex;flex-direction:column;align-items:center;gap:4px;border:none;background:none;cursor:pointer;transition:transform .12s}
-
-
-.appicon:active{transform:scale(.92)}
-.appicon .lbl{font-size:10.5px;font-weight:600;color:var(--ink);letter-spacing:-.01em;text-align:center}
+/* ── APP BUTTON LIST (new design) ── */
+.appgrid{padding:0 16px 8px}
+.uni-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:0}
+.app-btn{
+  display:flex;align-items:center;gap:12px;width:100%;
+  background:#0b1230;border:1px solid #1c2b56;
+  border-left:4px solid var(--bc,#f5c400);
+  padding:13px 16px;cursor:pointer;position:relative;overflow:hidden;
+  transition:background .18s,transform .1s;
+  -webkit-tap-highlight-color:transparent;user-select:none;
+  clip-path:polygon(0 0,calc(100% - 13px) 0,100% 13px,100% 100%,0 100%)
+}
+.app-btn::after{
+  content:'';position:absolute;top:0;right:0;width:0;height:0;
+  border-style:solid;border-width:0 20px 20px 0;
+  border-color:transparent var(--bc,#f5c400) transparent transparent;
+  opacity:.5;transition:opacity .18s
+}
+.app-btn:active{transform:scale(.97);background:rgba(255,255,255,.05)}
+.app-btn:active::after{opacity:1}
+.app-btn.col{
+  flex-direction:column;align-items:flex-start;gap:7px;
+  padding:15px 14px 13px;
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%)
+}
+.app-btn.col .app-btn-arrow{display:none}
+.app-btn.special{
+  background:linear-gradient(135deg,#0d1430 0%,#1a1200 100%);
+  border-top:1px solid rgba(245,196,0,.25);
+  grid-column:1/-1
+}
+.app-btn.special .app-btn-lbl{
+  background:linear-gradient(90deg,#fff 40%,#f5c400 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text
+}
+.app-btn-ico{font-size:24px;min-width:30px;text-align:center;line-height:1;flex-shrink:0}
+.app-btn.col .app-btn-ico{font-size:28px}
+.app-btn-lbl{color:#fff;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:.5px;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.app-btn-sub{color:var(--bc,#f5c400);font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-top:3px;opacity:.8}
+.app-btn-arrow{color:#1c2b56;font-size:18px;margin-left:auto;flex-shrink:0;transition:color .18s,transform .18s}
+.app-btn:active .app-btn-arrow{color:var(--bc,#f5c400);transform:translateX(3px)}
+.live-wrap{display:flex;align-items:center;justify-content:center;min-width:30px}
+.live-dot{width:11px;height:11px;border-radius:50%;background:#ef4444;animation:livePulse 1.2s ease-out infinite}
+@keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(239,68,68,.7)}70%{box-shadow:0 0 0 9px rgba(239,68,68,0)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
 
 /* ── SECTION HEAD ── */
 .sec-head{padding:14px 0 2px}
@@ -248,7 +283,7 @@ body:not(.inside) .tab.on{color:#fff}
 .grade-banner-glass .gb-t{display:block;font-size:16px;font-weight:700}
 .grade-banner-glass .gb-s{display:block;font-size:11.5px;opacity:.78;margin-top:1px}
 .grade-banner-glass .gb-arr{font-size:20px;opacity:.6}
-.grid-lbl-wl{font-size:10px;font-weight:700;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.06em;margin:0 4px 6px}
+.grid-lbl-wl{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;color:#1c2b56;text-transform:uppercase;letter-spacing:4px;padding:18px 16px 10px}
 
 
 
@@ -296,30 +331,6 @@ body:not(.inside) .appicon .lbl{
   align-items:center;gap:5px;cursor:pointer;transition:transform .12s}
 .appicon:active{transform:scale(.90)}
 
-.ico-glass{
-  width:62px;height:62px;
-  border-radius:18px;
-  background:rgba(255,255,255,.18);
-  -webkit-backdrop-filter:blur(22px) saturate(200%);
-  backdrop-filter:blur(22px) saturate(200%);
-  border:none;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.50),
-             0 4px 18px rgba(0,0,0,.22);
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
-}
-.ico-glass img.ico{
-  width:54px;height:54px;
-  object-fit:contain;
-  display:block;
-  border:none!important;box-shadow:none!important;
-}
-
-/* Labels legíveis sobre wallpaper */
-body:not(.inside) .appicon .lbl{
-  color:#fff!important;font-size:10.5px;font-weight:600;
-  text-shadow:0 1px 6px rgba(0,0,0,.95),0 0 3px rgba(0,0,0,.8);
-}
 
 /* ── HOME compacto (tudo na tela) ── */
 .home-over{
@@ -530,7 +541,22 @@ body.inside .wrap{background:transparent!important}
       <span class="date-pill">11 Jun – 19 Jul · Wynwood, Miami</span>
     </div>
     <div class="grid-lbl-wl">Universos</div>
-    <div class="appgrid"><button class="appicon" onclick="go('agora')"><div class="ico-glass" style="background:rgba(239,68,68,0.18)"><span style="font-size:26px">⚡</span></div><span class="lbl">Agora</span></button><button class="appicon" onclick="go('grade')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/grade.png" alt="Programação"></div><span class="lbl">Programação</span></button><button class="appicon" onclick="go('estudio')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/programacao.png" alt="Estúdio"></div><span class="lbl">Estúdio</span></button><button class="appicon" onclick="go('palco')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/palco.png" alt="Palco"></div><span class="lbl">Palco</span></button><button class="appicon" onclick="go('quadra')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/quadra.png" alt="Quadra"></div><span class="lbl">Quadra</span></button><button class="appicon" onclick="go('gamer')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/games.png" alt="Espaço Gamer"></div><span class="lbl">Espaço Gamer</span></button><button class="appicon" onclick="go('fenomeno')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/fenomeno.png" alt="Fenômeno 50"></div><span class="lbl">Fenômeno 50</span></button><button class="appicon" onclick="go('camarotes')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/camarotes.png" alt="Camarotes"></div><span class="lbl">Camarotes</span></button><button class="appicon" onclick="go('elenco')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/elenco.png" alt="Talents"></div><span class="lbl">Talents</span></button><button class="appicon" onclick="go('brasil')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/brasil.png" alt="Brasil"></div><span class="lbl">Brasil</span></button><button class="appicon" onclick="go('espn')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/espn.png" alt="ESPN"></div><span class="lbl">ESPN</span></button><button class="appicon" onclick="go('disney')"><div class="ico-glass"><img class="ico" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/disney.png" alt="Disney+"></div><span class="lbl">Disney+</span></button></div>
+    <div class="appgrid">
+<button class="app-btn" style="--bc:#ef4444;margin-bottom:3px" onclick="go('agora')"><div class="live-wrap"><div class="live-dot"></div></div><div><div class="app-btn-lbl">AGORA</div><div class="app-btn-sub">transmissão ao vivo</div></div><div class="app-btn-arrow">›</div></button>
+<button class="app-btn" style="--bc:#f5c400;margin-bottom:12px" onclick="go('grade')"><div class="app-btn-ico">📋</div><div><div class="app-btn-lbl">PROGRAMAÇÃO</div><div class="app-btn-sub">grade completa · 40 dias</div></div><div class="app-btn-arrow">›</div></button>
+<div class="uni-grid">
+<button class="app-btn col" style="--bc:#2563eb" onclick="go('estudio')"><div class="app-btn-ico">🎙️</div><div><div class="app-btn-lbl">ESTÚDIO</div><div class="app-btn-sub">talk show</div></div></button>
+<button class="app-btn col" style="--bc:#c49500" onclick="go('palco')"><div class="app-btn-ico">🎤</div><div><div class="app-btn-lbl">PALCO</div><div class="app-btn-sub">shows & eventos</div></div></button>
+<button class="app-btn col" style="--bc:#16a34a" onclick="go('quadra')"><div class="app-btn-ico">⚽</div><div><div class="app-btn-lbl">QUADRA</div><div class="app-btn-sub">arena ESPN</div></div></button>
+<button class="app-btn col" style="--bc:#7c3aed" onclick="go('gamer')"><div class="app-btn-ico">🎮</div><div><div class="app-btn-lbl">GAMER</div><div class="app-btn-sub">EA Sports</div></div></button>
+<button class="app-btn special" style="--bc:#f5c400" onclick="go('fenomeno')"><div class="app-btn-ico">⭐</div><div><div class="app-btn-lbl">FENÔMENO 50</div><div class="app-btn-sub">experience · memorabília</div></div><div class="app-btn-arrow">›</div></button>
+<button class="app-btn col" style="--bc:#d4a017" onclick="go('camarotes')"><div class="app-btn-ico">🥂</div><div><div class="app-btn-lbl">CAMAROTES</div><div class="app-btn-sub">área VIP</div></div></button>
+<button class="app-btn col" style="--bc:#e4427d" onclick="go('elenco')"><div class="app-btn-ico">🌟</div><div><div class="app-btn-lbl">TALENTS</div><div class="app-btn-sub">elenco</div></div></button>
+<button class="app-btn col" style="--bc:#009c3b" onclick="go('brasil')"><div class="app-btn-ico">🇧🇷</div><div><div class="app-btn-lbl">VAI BRASIL!</div><div class="app-btn-sub">Copa 2026</div></div></button>
+<button class="app-btn col" style="--bc:#cc0000" onclick="go('espn')"><div class="app-btn-ico" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:16px;color:#cc0000;letter-spacing:-1px">ESPN</div><div><div class="app-btn-lbl">ESPN</div><div class="app-btn-sub">transmissão</div></div></button>
+<button class="app-btn col" style="--bc:#1a4dbd" onclick="go('disney')"><div class="app-btn-ico" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:0">D+</div><div><div class="app-btn-lbl">DISNEY+</div><div class="app-btn-sub">streaming</div></div></button>
+</div>
+</div>
   </div>
 </section>
 
