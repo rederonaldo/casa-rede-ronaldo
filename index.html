@@ -252,6 +252,16 @@ footer{text-align:center;padding:24px 20px;color:var(--gray2);font-size:11px;lin
 .grow-game{cursor:pointer;border-radius:8px;margin:0 -8px;padding:7px 8px}
 .grow-game:active{background:var(--bg)}
 .ggame-i{font-size:13px;color:var(--gray2);font-weight:400}
+.grow-roteiro{cursor:pointer;border-radius:8px;margin:0 -8px;padding:7px 8px;border-left:3px solid rgba(245,178,0,.55);padding-left:10px;margin-left:-10px}
+.grow-roteiro:active{background:rgba(245,178,0,.06)}
+.grow-roteiro b{color:var(--ink)}
+.rot-list{margin-top:16px}
+.rot-bloco{padding:11px 0;border-top:.5px solid var(--line)}
+.rot-bloco:first-child{border-top:none;padding-top:0}
+.rot-hora{font-size:10px;font-weight:700;color:#C49A00;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}
+.rot-nome{font-size:12px;font-weight:800;color:var(--ink);letter-spacing:.04em;text-transform:uppercase;margin-bottom:2px}
+.rot-quem{font-size:11px;color:var(--ink-3);margin-bottom:5px}
+.rot-txt{font-size:13px;color:var(--ink);line-height:1.55;font-style:italic}
 
 .bg{position:fixed;inset:0;z-index:0;background:#111 center top/cover no-repeat;transition:opacity 1.8s ease;pointer-events:none}
 #bgB{opacity:0}
@@ -759,6 +769,50 @@ function showPerson(key,i){var m=DATA.cast[key][i];var img=m.k?'<img class="mph"
 function closeModal(){document.getElementById('modal').classList.remove('on')}
 var GRADE=DATA.grade;
 var PROGMAP={'Modo Raipe':'Modo Raipe','As Embaixadoras':'As Embaixadoras','Hora do Raipe':'Hora do Raipe','Hora do Raipe · Especial Brasil':'Hora do Raipe - Edição Especial Brasil','Cavaco Futebol Clube':'Cavaco Futebol Clube','ESPN · Resenha da Copa':'ESPN | Resenha da Copa','ESPN · Resenha (Especial)':'ESPN | Resenha da Copa (Especial)','Onde Está o FEURIPE':'Onde Está o FEURIPE'};
+var ROTEIRO={
+  'Pré-Jogo · Brasil x Egito':{
+    title:'Pré-Jogo · Brasil × Egito',
+    sub:'🇺🇸 17h30 · 🇧🇷 18h30 · Casa Rede Ronaldo, Wynwood',
+    cast:[{n:'Fábio Stefanini',k:'fabio'},{n:'Taty Meyer',k:'taty_meyer'},{n:'Luan Fiuza',k:'luan_fiuza'}],
+    blocos:[
+      {t:'17h30',nome:'ABERTURA',quem:'Fábio + Taty · Estúdio',txt:'Fábio abre ao vivo com Taty Meyer ao lado. Fiuza circula pela Casa. Apresenta o jogo: último amistoso antes da Copa do Mundo 2026.'},
+      {t:'17h32',nome:'1ª ENTRADA FIUZA',quem:'Fiuza · Câmera móvel',txt:'"4 dias para a abertura e isso aqui já está tomado. Olha esse estúdio, olha esse palco." Mostra palco, estrutura, telas LED e público chegando.'},
+      {t:'17h35',nome:'APRESENTAÇÃO TATY MEYER',quem:'Fábio + Taty · Estúdio',txt:'Atriz, modelo e diretora criativa. Como é estar em Miami nesse momento de Copa. O olhar criativo sobre a Casa Rede Ronaldo.'},
+      {t:'17h42',nome:'ANÁLISE PRÉ-JOGO',quem:'Fábio · Arte gráfica',txt:'Escalação provável: Alisson · Wesley, Marquinhos, Léo, Douglas · Casemiro, Bruno G., Paquetá · Raphinha, Vini Jr., Igor Thiago. Ausência: Neymar (lesão grau 2 panturrilha). Foco: encaixe Vini+Raphinha e teste do 9 Igor Thiago.'},
+      {t:'17h52',nome:'2ª ENTRADA FIUZA',quem:'Fiuza ao vivo · Outra área',txt:'Torcida chegando. Verde e amarelo por toda parte. Tenta entrevista rápida com torcedor.'},
+      {t:'17h57',nome:'CONTAGEM REGRESSIVA',quem:'Fábio + Taty',txt:'"Eu quero ver o Vini Jr. com gana. Eu quero ver o Paquetá comandando. E se o Igor Thiago mostrar serviço hoje, o Brasil vai pra Copa com um 9 centávante há décadas."'}
+    ]
+  },
+  '⚽ 🇧🇷 Brasil x 🇪🇬 Egito':{
+    title:'⚽ Brasil × Egito — Ao Vivo',
+    sub:'🇺🇸 18h · 🇧🇷 19h · Huntington Bank Field, Cleveland',
+    cast:[{n:'Fábio Stefanini',k:'fabio'},{n:'Taty Meyer',k:'taty_meyer'},{n:'Luan Fiuza',k:'luan_fiuza'}],
+    blocos:[
+      {t:'18h00',nome:'KICKOFF',quem:'Fábio âncora · Estúdio',txt:'"E começa! Brasil e Egito aqui em Cleveland. Vamos acompanhar tudo ao vivo aqui na Rede Ronaldo, direto de dentro da Casa no Wynwood, Miami."'},
+      {t:'Ao vivo',nome:'DINÂMICA DE COBERTURA',quem:'Fábio + Taty + Fiuza',txt:'Fábio: narra lançes e contextualiza. Taty: reage com olhar de quem mistura cultura com emoção. Fiuza: circula pela Casa, entra nos gols e grandes jogadas com a câmera no meio do público.'},
+      {t:'~18h50',nome:'INTERVALO',quem:'Estúdio + Fiuza ao vivo',txt:'Análise do 1º tempo: como o Brasil está jogando? O esquema de Ancelotti funciona? Neymar ausente — dá pra sentir falta? Fiuza mostra a Casa no intervalo: DJ, torcida, bar, bastidores.'},
+      {t:'~19h05',nome:'2º TEMPO',quem:'Fábio + Taty + Fiuza',txt:'Mesma dinâmica. No gol: câmera explode no Wynwood — "GOOOOOL DO BRASIL aqui no Wynwood! Olha a Casa!"'}
+    ]
+  },
+  'Pós-Jogo · Brasil x Egito':{
+    title:'Pós-Jogo · Brasil × Egito',
+    sub:'🇺🇸 ~20h · 🇧🇷 ~21h',
+    cast:[{n:'Fábio Stefanini',k:'fabio'},{n:'Taty Meyer',k:'taty_meyer'},{n:'Luan Fiuza',k:'luan_fiuza'}],
+    blocos:[
+      {t:'~20h00',nome:'ANÁLISE DO JOGO',quem:'Fábio + Taty · Estúdio',txt:'O time de Ancelotti está pronto? Dupla Vini+Raphinha funcionou? Igor Thiago se impôs como 9? Neymar: a Seleção precisa dele pra ir longe? O que mudar antes do Marrocos?'},
+      {t:'~20h10',nome:'FIUZA PÓS-JOGO',quem:'Fiuza ao vivo · Casa Rede Ronaldo',txt:'"Aqui o jogo acabou mas a festa continua. Isso é o que vai acontecer 39 dias seguidos aqui na Casa — jogo, emoção, e depois o pessoal fica."'},
+      {t:'~20h18',nome:'IMPRESSÕES DE TATY MEYER',quem:'Fábio + Taty',txt:'Como foi passar o dia na Casa e viver o jogo por dentro? O que ficou na memória? Como imagina isso quando a Copa começar de verdade?'},
+      {t:'~20h28',nome:'ENCERRAMENTO',quem:'Fábio + Taty · Arte de encerramento',txt:'"Daqui a 4 dias, dia 10, a Casa abre. Daqui a 7, dia 13, Brasil x Marrocos em Nova Jersey. 39 dias, ao vivo, todos os dias. A Copa começa agora. Vai, Brasil."'}
+    ]
+  }
+};
+function showRoteiro(name){
+  var r=ROTEIRO[name];if(!r)return;
+  var cast=(r.cast||[]).map(function(c){var img=c.k?'<img src="'+RAW+'/fotos/'+c.k+'.jpg">':'<span class="mc-emoji">🎙</span>';return '<div class="mc-person">'+img+'<span>'+c.n+'</span></div>';}).join('');
+  var blocos=r.blocos.map(function(b){return '<div class="rot-bloco"><div class="rot-hora">'+b.t+' · Miami ET</div><div class="rot-nome">'+b.nome+'</div><div class="rot-quem">'+b.quem+'</div><div class="rot-txt">'+b.txt+'</div></div>';}).join('');
+  document.getElementById('modalBody').innerHTML='<div class="mprog-tag">📋 Roteiro</div><h2>'+r.title+'</h2><div class="mt">'+r.sub+'</div>'+(cast?'<div class="mc-lbl">Equipe em campo</div><div class="mc-row">'+cast+'</div>':'')+'<div class="rot-list">'+blocos+'</div>';
+  document.getElementById('modal').classList.add('on');
+}
 function showProg(el){var key=el.getAttribute('data-prog'),p=DATA.progs[key];if(!p)return;
   var title=key.replace(' | ',' · ').replace('(Especial)','· Especial');
   var cast=(p.cast||[]).map(function(c){var img=c.k?'<img src="'+RAW+'/fotos/'+c.k+'.jpg">':'<span class="mc-emoji">👤</span>';return '<div class="mc-person">'+img+'<span>'+c.n+'</span></div>';}).join('');
@@ -895,7 +949,9 @@ function getGuests(dStr){
 }
 var _gday=[];
 function renderGrade(){document.getElementById('gradeTabs').innerHTML=GRADE.map(function(p,i){return '<button class="gtab'+(i===0?' on':'')+'" onclick="gradePhase('+i+',this)">'+p.l+'</button>'}).join('');gradePhase(0);}
-function row(r,est){var pk=PROGMAP[r.n];if(pk){var gStr=(r.n==='Modo Raipe'||r.n==='Hora do Raipe')&&_gday.length?'<span class="gs gs-guests">'+_gday.join(' · ')+'</span>':'';return '<div class="grow grow-prog" data-prog="'+pk+'" onclick="showProg(this)"><span class="gt">🇺🇸 '+r.t+'</span><div><b>'+r.n+' <span class="gprog-i">ⓘ</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+gStr+'</div><span class="gbrt">'+calcBRT(r.t)+'</span></div>';}if(est&&(/ x /.test(r.n)||/^🏆|^🥉/.test(r.n))){return '<div class="grow grow-game" data-t="'+r.t+'" data-n="'+r.n+'" data-s="'+(r.s||'')+'" onclick="showGame(this)"><span class="gt">🇺🇸 '+r.t+'</span><div><b>'+r.n+' <span class="ggame-i">›</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div><span class="gbrt">'+calcBRT(r.t)+'</span></div>';}return '<div class="grow"><span class="gt">🇺🇸 '+r.t+'</span><div><b>'+r.n+'</b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div><span class="gbrt">'+calcBRT(r.t)+'</span></div>';}
+function row(r,est){var pk=PROGMAP[r.n];if(pk){var gStr=(r.n==='Modo Raipe'||r.n==='Hora do Raipe')&&_gday.length?'<span class="gs gs-guests">'+_gday.join(' · ')+'</span>':'';return '<div class="grow grow-prog" data-prog="'+pk+'" onclick="showProg(this)"><span class="gt">🇺🇸 '+r.t+'</span><div><b>'+r.n+' <span class="gprog-i">ⓘ</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+gStr+'</div><span class="gbrt">'+calcBRT(r.t)+'</span></div>';}if(ROTEIRO&&ROTEIRO[r.n]){return '<div class="grow grow-roteiro" onclick="showRoteiro(\''+r.n.replace(/\x27/g,"\\\'")+'\')"><span class="gt">🇺🇸 '+r.t+'</span><div><b>'+r.n+'</b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+
+'</div><span class="gbrt">'+calcBRT(r.t)+'</span></div>';}
+if(est&&(/ x /.test(r.n)||/^🏆|^🥉/.test(r.n))){return '<div class="grow grow-game" data-t="'+r.t+'" data-n="'+r.n+'" data-s="'+(r.s||'')+'" onclick="showGame(this)"><span class="gt">🇺🇸 '+r.t+'</span><div><b>'+r.n+' <span class="ggame-i">›</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div><span class="gbrt">'+calcBRT(r.t)+'</span></div>';}return '<div class="grow"><span class="gt">🇺🇸 '+r.t+'</span><div><b>'+r.n+'</b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div><span class="gbrt">'+calcBRT(r.t)+'</span></div>';}
 function gradePhase(i,btn){if(btn){document.querySelectorAll('.gtab').forEach(function(b){b.classList.remove('on')});btn.classList.add('on');}
   var p=GRADE[i],html='<div class="gphase-range">'+p.r+'</div>';
   p.days.forEach(function(d){_gday=getGuests(d.d);
@@ -905,7 +961,7 @@ function gradePhase(i,btn){if(btn){document.querySelectorAll('.gtab').forEach(fu
     var palShow=PALCO_MAP[d.d];
     var igTxt=palShow?(palShow.ig==='free'?'Gratuito':palShow.ig==='spec'?'Premium · GA U$79+':'U$20 entrada'):'';var palHtml=palShow?'<div class="grow grow-palco"><span class="gt">🇺🇸 13h–'+palShow.t+'</span><div><b>'+palShow.n+'</b><span class="gs">Palco · '+igTxt+'</span></div><span class="gbrt">🇧🇷 14h–'+((parseInt((palShow.t||'0h').match(/(\d+)h/)[1])+1)%24)+'h</span></div>':'';
     var qSpec=QUADRA_SPECIAL[d.d];
-    var quadHtml=qSpec
+    var quadHtml=(d.d==='Sáb · 6 de Junho')?'':qSpec
       ?'<div class="grow grow-quadra"><span class="gt">🇺🇸 '+qSpec.t+'</span><div><b>'+qSpec.n+'</b><span class="gs">Evento especial · Quadra</span></div><span class="gbrt">'+calcBRT(qSpec.t)+'</span></div>'
        +'<div class="grow grow-quadra"><span class="gt">🇺🇸 14h</span><div><b>Desafios da Quadra</b><span class="gs">Competições e exibições</span></div><span class="gbrt">🇧🇷 15h</span></div>'
       :'<div class="grow grow-quadra"><span class="gt">🇺🇸 14h</span><div><b>Desafios da Quadra</b><span class="gs">Competições e exibições</span></div><span class="gbrt">🇧🇷 15h</span></div>';
