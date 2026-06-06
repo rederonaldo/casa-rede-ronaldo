@@ -57,50 +57,41 @@ body.inside .tb-title{display:block}
 .estrip .ed{text-align:right;font-size:12px;color:var(--gray)}
 .estrip .ed b{display:block;font-size:15px;color:var(--blue);font-weight:700}
 
-/* ── APP BUTTON LIST (new design) ── */
-.appgrid{padding:0 16px 8px}
-.uni-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:0}
-.app-btn{
-  display:flex;align-items:center;gap:12px;width:100%;
-  background:#0b1230;border:1px solid #1c2b56;
-  border-left:4px solid var(--bc,#f5c400);
-  padding:13px 16px;cursor:pointer;position:relative;overflow:hidden;
-  transition:background .18s,transform .1s;
-  -webkit-tap-highlight-color:transparent;user-select:none;
-  clip-path:polygon(0 0,calc(100% - 13px) 0,100% 13px,100% 100%,0 100%)
-}
-.app-btn::after{
-  content:'';position:absolute;top:0;right:0;width:0;height:0;
-  border-style:solid;border-width:0 20px 20px 0;
-  border-color:transparent var(--bc,#f5c400) transparent transparent;
-  opacity:.5;transition:opacity .18s
-}
-.app-btn:active{transform:scale(.97);background:rgba(255,255,255,.05)}
-.app-btn:active::after{opacity:1}
-.app-btn.col{
-  flex-direction:column;align-items:flex-start;gap:7px;
-  padding:15px 14px 13px;
-  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%)
-}
-.app-btn.col .app-btn-arrow{display:none}
-.app-btn.special{
-  background:linear-gradient(135deg,#0d1430 0%,#1a1200 100%);
-  border-top:1px solid rgba(245,196,0,.25);
-  grid-column:1/-1
-}
-.app-btn.special .app-btn-lbl{
-  background:linear-gradient(90deg,#fff 40%,#f5c400 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text
-}
-.app-btn-ico{font-size:24px;min-width:30px;text-align:center;line-height:1;flex-shrink:0}
-.app-btn.col .app-btn-ico{font-size:28px}
-.app-btn-lbl{color:#fff;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:.5px;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.app-btn-sub{color:var(--bc,#f5c400);font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-top:3px;opacity:.8}
-.app-btn-arrow{color:#1c2b56;font-size:18px;margin-left:auto;flex-shrink:0;transition:color .18s,transform .18s}
-.app-btn:active .app-btn-arrow{color:var(--bc,#f5c400);transform:translateX(3px)}
-.live-wrap{display:flex;align-items:center;justify-content:center;min-width:30px}
-.live-dot{width:11px;height:11px;border-radius:50%;background:#ef4444;animation:livePulse 1.2s ease-out infinite}
-@keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(239,68,68,.7)}70%{box-shadow:0 0 0 9px rgba(239,68,68,0)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
+/* ── BUTTON REDESIGN (exact preview) ── */
+.appgrid{padding:0}
+.section-label{color:#1c2b56;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;padding:20px 20px 10px}
+.btn{display:flex;align-items:center;gap:14px;background:#0b1230;border:1px solid #1c2b56;border-left:4px solid var(--c,#f5c400);border-radius:0;padding:14px 18px;cursor:pointer;position:relative;overflow:hidden;transition:background .18s ease,transform .12s ease;-webkit-tap-highlight-color:transparent;user-select:none;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%)}
+.btn::after{content:'';position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 22px 22px 0;border-color:transparent var(--c,#f5c400) transparent transparent;opacity:.6;transition:opacity .18s ease}
+.btn:active{transform:scale(.98)}
+.btn:active::after{opacity:1}
+.btn+.btn{margin-top:1px}
+.btn-icon{font-size:26px;min-width:36px;text-align:center;line-height:1;filter:drop-shadow(0 0 6px rgba(255,255,255,.15));flex-shrink:0}
+.icon-live{display:flex;align-items:center;justify-content:center}
+.live-dot{width:12px;height:12px;border-radius:50%;background:#ef4444;box-shadow:0 0 0 0 #ef4444;animation:livePulse 1.2s ease-out infinite}
+@keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(239,68,68,.7)}70%{box-shadow:0 0 0 10px rgba(239,68,68,0)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
+.btn-text{flex:1;min-width:0}
+.btn-label{color:#fff;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn-sub{color:var(--c,#f5c400);font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-top:3px;opacity:.85}
+.btn-arrow{color:#1c2b56;font-size:20px;margin-left:auto;flex-shrink:0;padding-right:4px;transition:color .18s,transform .18s}
+.btn:active .btn-arrow{color:var(--c,#f5c400);transform:translateX(3px)}
+.btn-full{margin:0 20px;margin-bottom:3px;border-radius:4px;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%)}
+.btn-full .btn-label{font-size:22px}
+.btn-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:0 20px}
+.btn-grid .btn{flex-direction:column;align-items:flex-start;gap:8px;padding:16px 14px 14px;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,0 100%)}
+.btn-grid .btn-icon{font-size:30px}
+.btn-grid .btn-label{font-size:17px}
+.btn-grid .btn-arrow{display:none}
+.btn-special{background:linear-gradient(135deg,#0d1430 0%,#1a1200 100%);border-left-color:#f5c400!important;border-top:1px solid rgba(245,196,0,.3)}
+.btn-special .btn-label{background:linear-gradient(90deg,#fff 40%,#f5c400 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.brand-row{display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:0 20px}
+.brand-row .btn{flex-direction:column;align-items:flex-start;gap:6px;padding:14px 14px 12px;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,0 100%)}
+.brand-row .btn-sub{letter-spacing:2px}
+.brand-row .btn-arrow{display:none}
+.brand-row .btn-icon{font-size:13px;font-family:'Barlow Condensed',sans-serif;font-weight:800;letter-spacing:.5px}
+.btn-espn .btn-icon-espn{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:20px;color:#cc0000;letter-spacing:-1px;line-height:1}
+.btn-disney .btn-icon-disney{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;color:#fff;letter-spacing:0;line-height:1}
+.btn-brasil{background:linear-gradient(135deg,#0b1230 0%,#001a0a 100%)}
+.divider{height:1px;background:linear-gradient(90deg,transparent,#1c2b56,transparent);margin:20px 20px 0}
 
 /* ── SECTION HEAD ── */
 .sec-head{padding:14px 0 2px}
@@ -283,7 +274,7 @@ body:not(.inside) .tab.on{color:#fff}
 .grade-banner-glass .gb-t{display:block;font-size:16px;font-weight:700}
 .grade-banner-glass .gb-s{display:block;font-size:11.5px;opacity:.78;margin-top:1px}
 .grade-banner-glass .gb-arr{font-size:20px;opacity:.6}
-.grid-lbl-wl{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;color:#1c2b56;text-transform:uppercase;letter-spacing:4px;padding:18px 16px 10px}
+.grid-lbl-wl{display:none}
 
 
 
@@ -542,19 +533,26 @@ body.inside .wrap{background:transparent!important}
     </div>
     <div class="grid-lbl-wl">Universos</div>
     <div class="appgrid">
-<button class="app-btn" style="--bc:#ef4444;margin-bottom:3px" onclick="go('agora')"><div class="live-wrap"><div class="live-dot"></div></div><div><div class="app-btn-lbl">AGORA</div><div class="app-btn-sub">transmissão ao vivo</div></div><div class="app-btn-arrow">›</div></button>
-<button class="app-btn" style="--bc:#f5c400;margin-bottom:12px" onclick="go('grade')"><div class="app-btn-ico">📋</div><div><div class="app-btn-lbl">PROGRAMAÇÃO</div><div class="app-btn-sub">grade completa · 40 dias</div></div><div class="app-btn-arrow">›</div></button>
-<div class="uni-grid">
-<button class="app-btn col" style="--bc:#2563eb" onclick="go('estudio')"><div class="app-btn-ico">🎙️</div><div><div class="app-btn-lbl">ESTÚDIO</div><div class="app-btn-sub">talk show</div></div></button>
-<button class="app-btn col" style="--bc:#c49500" onclick="go('palco')"><div class="app-btn-ico">🎤</div><div><div class="app-btn-lbl">PALCO</div><div class="app-btn-sub">shows & eventos</div></div></button>
-<button class="app-btn col" style="--bc:#16a34a" onclick="go('quadra')"><div class="app-btn-ico">⚽</div><div><div class="app-btn-lbl">QUADRA</div><div class="app-btn-sub">arena ESPN</div></div></button>
-<button class="app-btn col" style="--bc:#7c3aed" onclick="go('gamer')"><div class="app-btn-ico">🎮</div><div><div class="app-btn-lbl">GAMER</div><div class="app-btn-sub">EA Sports</div></div></button>
-<button class="app-btn special" style="--bc:#f5c400" onclick="go('fenomeno')"><div class="app-btn-ico">⭐</div><div><div class="app-btn-lbl">FENÔMENO 50</div><div class="app-btn-sub">experience · memorabília</div></div><div class="app-btn-arrow">›</div></button>
-<button class="app-btn col" style="--bc:#d4a017" onclick="go('camarotes')"><div class="app-btn-ico">🥂</div><div><div class="app-btn-lbl">QG R9</div><div class="app-btn-sub">o cantinho do R9</div></div></button>
-<button class="app-btn col" style="--bc:#e4427d" onclick="go('elenco')"><div class="app-btn-ico">🌟</div><div><div class="app-btn-lbl">TALENTS</div><div class="app-btn-sub">elenco</div></div></button>
-<button class="app-btn col" style="--bc:#009c3b" onclick="go('brasil')"><div class="app-btn-ico">🇧🇷</div><div><div class="app-btn-lbl">VAI BRASIL!</div><div class="app-btn-sub">Copa 2026</div></div></button>
-<button class="app-btn col" style="--bc:#cc0000" onclick="go('espn')"><div class="app-btn-ico" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:16px;color:#cc0000;letter-spacing:-1px">ESPN</div><div><div class="app-btn-lbl">ESPN</div><div class="app-btn-sub">transmissão</div></div></button>
-<button class="app-btn col" style="--bc:#1a4dbd" onclick="go('disney')"><div class="app-btn-ico" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:13px;color:#fff;letter-spacing:0">D+</div><div><div class="app-btn-lbl">DISNEY+</div><div class="app-btn-sub">streaming</div></div></button>
+<div class="section-label">Ao vivo &amp; Agora</div>
+<div class="btn btn-full" style="--c:#ef4444" onclick="go('agora')"><div class="btn-icon icon-live"><div class="live-dot"></div></div><div class="btn-text"><div class="btn-label">AGORA</div><div class="btn-sub">transmissão ao vivo</div></div><div class="btn-arrow">›</div></div>
+<div class="btn btn-full" style="--c:#f5c400;margin-bottom:12px" onclick="go('grade')"><div class="btn-icon">📋</div><div class="btn-text"><div class="btn-label">PROGRAMAÇÃO</div><div class="btn-sub">grade completa · 40 dias</div></div><div class="btn-arrow">›</div></div>
+<div class="divider"></div>
+<div class="section-label">Universos</div>
+<div class="btn-grid">
+<div class="btn" style="--c:#2563eb" onclick="go('estudio')"><div class="btn-icon">🎙️</div><div class="btn-text"><div class="btn-label">ESTÚDIO</div><div class="btn-sub">talk show</div></div></div>
+<div class="btn" style="--c:#c49500" onclick="go('palco')"><div class="btn-icon">🎤</div><div class="btn-text"><div class="btn-label">PALCO</div><div class="btn-sub">shows &amp; eventos</div></div></div>
+<div class="btn" style="--c:#16a34a" onclick="go('quadra')"><div class="btn-icon">⚽</div><div class="btn-text"><div class="btn-label">QUADRA</div><div class="btn-sub">arena ESPN</div></div></div>
+<div class="btn" style="--c:#7c3aed" onclick="go('gamer')"><div class="btn-icon">🎮</div><div class="btn-text"><div class="btn-label">GAMER</div><div class="btn-sub">EA Sports</div></div></div>
+<div class="btn btn-special" style="--c:#f5c400;grid-column:1/-1" onclick="go('fenomeno')"><div class="btn-icon">⭐</div><div class="btn-text"><div class="btn-label">FENÔMENO 50</div><div class="btn-sub">experience · memorabília</div></div><div class="btn-arrow">›</div></div>
+<div class="btn" style="--c:#d4a017" onclick="go('camarotes')"><div class="btn-icon">🥂</div><div class="btn-text"><div class="btn-label">CAMAROTES</div><div class="btn-sub">área VIP</div></div></div>
+<div class="btn" style="--c:#e4427d" onclick="go('elenco')"><div class="btn-icon">🌟</div><div class="btn-text"><div class="btn-label">TALENTS</div><div class="btn-sub">elenco</div></div></div>
+<div class="btn btn-brasil" style="--c:#009c3b" onclick="go('brasil')"><div class="btn-icon">🇧🇷</div><div class="btn-text"><div class="btn-label">VAI BRASIL!</div><div class="btn-sub">Copa 2026</div></div></div>
+</div>
+<div class="divider"></div>
+<div class="section-label">Parceiros de transmissão</div>
+<div class="brand-row">
+<div class="btn btn-espn" style="--c:#cc0000" onclick="go('espn')"><div class="btn-icon btn-icon-espn">ESPN</div><div class="btn-text"><div class="btn-label">ESPN</div><div class="btn-sub">transmissão</div></div></div>
+<div class="btn btn-disney" style="--c:#1a4dbd" onclick="go('disney')"><div class="btn-icon btn-icon-disney">DISNEY+</div><div class="btn-text"><div class="btn-label">DISNEY+</div><div class="btn-sub">streaming</div></div></div>
 </div>
 </div>
   </div>
