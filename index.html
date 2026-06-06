@@ -838,9 +838,9 @@ function agoraCard(icon,cor,label,cur,nxt){
   var live=cur
     ?'<div class="agr-live">● AO VIVO</div><div class="agr-name">'+(cur.n||cur.f||'')+'</div>'
       +(cur.s||cur.d?'<div class="agr-sub">'+(cur.s||cur.d||'')+'</div>':'')
-      +'<div class="agr-time">'+(cur.t||cur.f||'')+'</div>'
+      +'<div class="agr-time">🇺🇸 '+(cur.t||cur.f||'')+' · '+calcBRT(cur.t||cur.f||'')+'</div>'
     :'<div class="agr-idle">Sem transmissão agora</div>';
-  var next=nxt?'<div class="agr-next">Próx · '+(nxt.t||nxt.f||'')+' · '+(nxt.n||nxt.f||'')+'</div>':'';
+  var next=nxt?'<div class="agr-next">Próx · 🇺🇸 '+(nxt.t||nxt.f||'')+' · 🇧🇷 '+calcBRT(nxt.t||nxt.f||'')+' · '+(nxt.n||nxt.f||'')+'</div>':'';
   return '<div class="agr-card" style="--agr-color:'+cor+'"><div class="agr-header"><span class="agr-icon">'+icon+'</span><span class="agr-label">'+label+'</span></div>'+live+next+'</div>';
 }
 function renderAgora(){
@@ -849,7 +849,7 @@ function renderAgora(){
   if(!bodyEl)return;
   var now=getMiamiNow();
   var hh=String(now.getHours()).padStart(2,'0'),mm=String(now.getMinutes()).padStart(2,'0');
-  if(clkEl)clkEl.textContent=hh+':'+mm+' · Miami (ET)';
+  if(clkEl)var bhh=String((now.getHours()+1)%24).padStart(2,'0');clkEl.textContent='🇺🇸 '+hh+':'+mm+' · 🇧🇷 '+bhh+':'+mm;
   var start=new Date(2026,5,11),today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
   var diff=Math.round((today-start)/86400000);
   var allDays=[];DATA.grade.forEach(function(p){p.days.forEach(function(d){allDays.push(d);});});
@@ -909,7 +909,7 @@ function renderAgora(){
 }
 setInterval(function(){
   var clkEl=document.getElementById('agora-clk');
-  if(clkEl){var now=getMiamiNow();clkEl.textContent=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0')+' · Miami (ET)';}
+  if(clkEl){var now=getMiamiNow();var sh=String(now.getHours()).padStart(2,'0'),sm=String(now.getMinutes()).padStart(2,'0'),sbh=String((now.getHours()+1)%24).padStart(2,'0');clkEl.textContent='🇺🇸 '+sh+':'+sm+' · 🇧🇷 '+sbh+':'+sm;}
   if(document.getElementById('page-agora')&&document.getElementById('page-agora').classList.contains('on'))renderAgora();
 },30000);
 
@@ -952,12 +952,12 @@ function gradePhase(i,btn){if(btn){document.querySelectorAll('.gtab').forEach(fu
     var est=d.e.map(function(r){return row(r,true)}).join('');
     var gm=(d.g&&d.g.f)?'<div class="grow grow-gamer"><span class="gt">🎮</span><div><b>'+d.g.f+'</b>'+(d.g.t?'<span class="gs">'+d.g.t+'</span>':'')+'</div></div>':'';
     var palShow=PALCO_MAP[d.d];
-    var igTxt=palShow?(palShow.ig==='free'?'Gratuito':palShow.ig==='spec'?'Premium · GA U$79+':'U$20 entrada'):'';var palHtml=palShow?'<div class="grow grow-palco"><span class="gt">13h–'+palShow.t+'</span><div><b>'+palShow.n+'</b><span class="gs">Palco · '+igTxt+'</span></div></div>':'';
+    var igTxt=palShow?(palShow.ig==='free'?'Gratuito':palShow.ig==='spec'?'Premium · GA U$79+':'U$20 entrada'):'';var palHtml=palShow?'<div class="grow grow-palco"><span class="gt">🇺🇸 13h–'+palShow.t+'</span><div><b>'+palShow.n+'</b><span class="gs">Palco · '+igTxt+'</span></div><span class="gbrt">🇧🇷 14h–'+((parseInt((palShow.t||'0h').match(/(\d+)h/)[1])+1)%24)+'h</span></div>':'';
     var qSpec=QUADRA_SPECIAL[d.d];
     var quadHtml=qSpec
-      ?'<div class="grow grow-quadra"><span class="gt">'+qSpec.t+'</span><div><b>'+qSpec.n+'</b><span class="gs">Evento especial · Quadra</span></div></div>'
-       +'<div class="grow grow-quadra"><span class="gt">14h</span><div><b>Desafios da Quadra</b><span class="gs">Competições e exibições</span></div></div>'
-      :'<div class="grow grow-quadra"><span class="gt">14h</span><div><b>Desafios da Quadra</b><span class="gs">Competições e exibições</span></div></div>';
+      ?'<div class="grow grow-quadra"><span class="gt">🇺🇸 '+qSpec.t+'</span><div><b>'+qSpec.n+'</b><span class="gs">Evento especial · Quadra</span></div><span class="gbrt">'+calcBRT(qSpec.t)+'</span></div>'
+       +'<div class="grow grow-quadra"><span class="gt">🇺🇸 14h</span><div><b>Desafios da Quadra</b><span class="gs">Competições e exibições</span></div><span class="gbrt">🇧🇷 15h</span></div>'
+      :'<div class="grow grow-quadra"><span class="gt">🇺🇸 14h</span><div><b>Desafios da Quadra</b><span class="gs">Competições e exibições</span></div><span class="gbrt">🇧🇷 15h</span></div>';
     html+='<div class="gday"><button class="gday-hd" onclick="gtoggle(this)"><span class="gday-name">'+d.d+'</span><span class="gchips">'+chips+'</span><span class="gcar">›</span></button><div class="gday-body">'
       +(est?'<div class="gsec gsec-estudio">🎙 Estúdio de Vidro</div>'+est:'')
       +(palHtml?'<div class="gsec gsec-palco">🎵 Palco</div>'+palHtml:'')
