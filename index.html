@@ -134,7 +134,7 @@ body.inside .tb-title{display:block}
 .agr-row-now .rn{color:#38bdf8;font-weight:700}
 .agr-row-now .rt{color:#ef4444;font-weight:800}
 .agr-guests{font-size:12px;color:var(--gold);padding:6px 2px 2px;font-weight:600;line-height:1.5}
-.agora-cdown{text-align:center;padding:50px 20px}
+.agora-cdown{text-align:center;padding:28px 20px 20px}
 .agora-cdown-n{font-size:88px;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-.04em}
 .agora-cdown-l{font-size:17px;font-weight:700;color:#fff;margin-top:6px}
 .agora-cdown-s{font-size:13px;color:rgba(255,255,255,.55);margin-top:10px}
@@ -875,8 +875,39 @@ function renderAgora(){
     return;
   }
   if(diff<0){
-    var d=Math.abs(diff);
-    bodyEl.innerHTML='<div class="agora-cdown"><div class="agora-cdown-n">'+d+'</div><div class="agora-cdown-l">dia'+(d>1?'s':'')+' para a Copa</div><div class="agora-cdown-s">A Casa Rede Ronaldo abre em '+d+' dia'+(d>1?'s':'')+'</div></div>';
+    /* ── 10/06: Festa de Lançamento ── */
+    if(todayLbl==='Qua · 10 de Junho'){
+      var flEvs=[{t:'18h',n:'Abertura · Resenha ESPN',s:'Estúdio ao vivo · Todo o elenco'},{t:'19h',n:'Ceriônia de Abertura',s:'Guido Nunes · Palco · Ronald & Douglas Buiu'},{t:'19h15',n:'Show · Pedro Abdala',s:'Palco · Convidados especiais'},{t:'20h30',n:'Show · Jairzinho & Simoninha',s:'Palco · Convidados especiais'},{t:'22h',n:'Encerramento',s:'Festa de Lançamento'}];
+      var nowMfl=now.getHours()*60+now.getMinutes();
+      var hfl='<div class="agora-day">🎉 Festa de Lançamento &nbsp;·&nbsp; Qua · 10 de Junho</div>';
+      hfl+='<div class="block" style="margin-top:16px"><h3>Abertura da Casa · Convidados VIP</h3>';
+      flEvs.forEach(function(ev,i){
+        var t=parseT(ev.t),nt=i<flEvs.length-1?parseT(flEvs[i+1].t):1440;
+        var isNow=t!==null&&nowMfl>=t&&nowMfl<nt;
+        hfl+='<div class="row'+(isNow?' agr-row-now':'')+'"><div class="rt">🇺🇸 '+ev.t+(isNow?' 🔴':'')+'</div><div class="rc"><div class="rn">'+ev.n+'</div><div class="rs">'+ev.s+'</div></div><div class="rt-brt">'+calcBRT(ev.t)+'</div></div>';
+      });
+      hfl+='</div>';
+      bodyEl.innerHTML=hfl;
+      return;
+    }
+    /* ── Contagem regressiva para 10/06 ── */
+    var openDay=new Date(2026,5,10);
+    var dToOpen=Math.round((openDay-today)/86400000);
+    var cdLbl=dToOpen>0?dToOpen+' dia'+(dToOpen>1?'s':'')+' para a abertura':'Hoje é o dia!';
+    var cdBig=dToOpen>0?String(dToOpen):'🎉';
+    bodyEl.innerHTML='<div class="agora-cdown">'+
+      '<div style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">⚡ Contagem Regressiva</div>'+
+      '<div class="agora-cdown-n">'+cdBig+'</div>'+
+      '<div class="agora-cdown-l">'+cdLbl+'</div>'+
+      '<div class="agora-cdown-s">Casa Rede Ronaldo · Wynwood, Miami</div>'+
+      '<div style="margin-top:20px;background:linear-gradient(135deg,rgba(212,175,55,.1),rgba(212,175,55,.04));border:1px solid rgba(212,175,55,.22);border-radius:14px;padding:16px 14px;text-align:left">'+
+      '<div style="font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">🎉 Festa de Lançamento · Qua 10/06</div>'+
+      '<div style="display:flex;flex-direction:column;gap:7px">'+
+      '<div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.8)"><span>Abertura · Resenha ESPN</span><span style="color:var(--gold);font-weight:700;font-size:11px;white-space:nowrap;margin-left:8px">🇺🇸 18h · 🇧🇷 19h</span></div>'+
+      '<div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.8)"><span>Ceriônia de Abertura</span><span style="color:var(--gold);font-weight:700;font-size:11px;white-space:nowrap;margin-left:8px">🇺🇸 19h · 🇧🇷 20h</span></div>'+
+      '<div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.8)"><span>Show · Pedro Abdala</span><span style="color:var(--gold);font-weight:700;font-size:11px;white-space:nowrap;margin-left:8px">🇺🇸 19h15 · 🇧🇷 20h15</span></div>'+
+      '<div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.8)"><span>Show · Jairzinho &amp; Simoninha</span><span style="color:var(--gold);font-weight:700;font-size:11px;white-space:nowrap;margin-left:8px">🇺🇸 20h30 · 🇧🇷 21h30</span></div>'+
+      '</div></div></div>';
     return;
   }
   if(diff>=allDays.length){
