@@ -685,8 +685,42 @@ body.inside .wrap{background:transparent!important}
 <section class="page" id="page-agora"><div class="wrap">
   <div class="sec-head"><h1>⚡ Agora</h1><p id="agora-clk">--:-- · Miami (ET)</p></div>
   <!-- ── Live Player ── -->
-<div class="yt-embed-wrap">
-  <iframe src="https://www.youtube.com/embed/L_vB1fmIzu0?si=g5r9SGRmjUnsDcws&playsinline=1" title="Casa Rede Ronaldo ao vivo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="yt-embed-wrap" id="ytWrap">
+  <!-- Countdown art — substituir pelo iframe quando tiver o link da live -->
+  <div style="position:absolute;inset:0;background:linear-gradient(160deg,#060e2e 0%,#0a1e5e 30%,#0f2d8a 60%,#1547C8 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden">
+    <!-- Deco diagonal esquerda -->
+    <div style="position:absolute;top:0;left:0;bottom:0;width:30%;background:linear-gradient(160deg,rgba(255,255,255,.07) 0%,transparent 65%);clip-path:polygon(0 0,72% 0,100% 100%,0 100%)"></div>
+    <!-- Linha dourada vertical -->
+    <div style="position:absolute;left:21.5%;top:0;bottom:0;width:1.5px;background:linear-gradient(180deg,transparent 0%,#F5B200 25%,#F5B200 75%,transparent 100%);opacity:.65"></div>
+    <!-- Logo RR -->
+    <img src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/logo-rr.png" style="height:clamp(18px,5vw,42px);width:auto;margin-bottom:clamp(3px,1vw,8px);position:relative;z-index:1" alt="RR">
+    <!-- Título -->
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(19px,6.2vw,58px);color:#fff;letter-spacing:.05em;line-height:1;text-align:center;position:relative;z-index:1">CASA <span style="color:#F5B200">REDE</span> RONALDO</div>
+    <!-- Subtítulo -->
+    <div style="font-size:clamp(7.5px,1.9vw,15px);font-weight:800;letter-spacing:.22em;color:#F5B200;margin:clamp(4px,.8vw,7px) 0 clamp(5px,1.2vw,10px);text-align:center;position:relative;z-index:1">— OPEN HOUSE EM —</div>
+    <!-- Timer -->
+    <div style="display:flex;align-items:flex-end;gap:clamp(4px,1.5vw,14px);margin-bottom:clamp(6px,1.5vw,14px);position:relative;z-index:1">
+      <div style="text-align:center">
+        <div style="font-size:clamp(6px,1.3vw,11px);font-weight:800;color:#F5B200;letter-spacing:.14em;margin-bottom:2px">HORAS</div>
+        <div id="ytcH" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,8.5vw,78px);color:#fff;line-height:.88">00</div>
+      </div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(22px,7vw,66px);color:#F5B200;line-height:.88;padding-bottom:2px">:</div>
+      <div style="text-align:center">
+        <div style="font-size:clamp(6px,1.3vw,11px);font-weight:800;color:#F5B200;letter-spacing:.14em;margin-bottom:2px">MINUTOS</div>
+        <div id="ytcM" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,8.5vw,78px);color:#fff;line-height:.88">00</div>
+      </div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(22px,7vw,66px);color:#F5B200;line-height:.88;padding-bottom:2px">:</div>
+      <div style="text-align:center">
+        <div style="font-size:clamp(6px,1.3vw,11px);font-weight:800;color:#F5B200;letter-spacing:.14em;margin-bottom:2px">SEGUNDOS</div>
+        <div id="ytcS" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,8.5vw,78px);color:#fff;line-height:.88">00</div>
+      </div>
+    </div>
+    <!-- Badge YT -->
+    <a href="https://youtube.com/@RedeRonaldo" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:rgba(245,178,0,.13);border:1.5px solid rgba(245,178,0,.4);border-radius:100px;padding:clamp(3px,.8vw,7px) clamp(9px,2.2vw,20px);color:#fff;font-size:clamp(7px,1.7vw,13px);font-weight:800;letter-spacing:.1em;text-decoration:none;margin-bottom:clamp(3px,.8vw,7px);position:relative;z-index:1">
+      <span style="color:#F5B200">▶</span> YOUTUBE.COM/@REDERONALDO
+    </a>
+    <div style="font-size:clamp(6.5px,1.4vw,11px);font-weight:700;color:rgba(255,255,255,.48);letter-spacing:.1em;position:relative;z-index:1">TODOS OS DIAS · 13H ÀS 22H (MIAMI ET)</div>
+  </div>
 </div>
 
 <div id="agora-body" style="margin-top:10px"></div>
@@ -1087,4 +1121,21 @@ renderProgs();renderCastTabs();
     }
   },1000);
 })();
+/* ── YouTube Countdown Art ── */
+(function(){
+  var ytcTarget=Date.UTC(2026,5,10,22,0,0); // June 10 18:00 ET = 22:00 UTC
+  function ytcTick(){
+    var hEl=document.getElementById('ytcH'),mEl=document.getElementById('ytcM'),sEl=document.getElementById('ytcS');
+    if(!hEl)return;
+    var diff=ytcTarget-Date.now();
+    if(diff<=0){hEl.textContent='00';mEl.textContent='00';sEl.textContent='00';return;}
+    var h=Math.floor(diff/3600000),m=Math.floor(diff%3600000/60000),s=Math.floor(diff%60000/1000);
+    hEl.textContent=String(h).padStart(2,'0');
+    mEl.textContent=String(m).padStart(2,'0');
+    sEl.textContent=String(s).padStart(2,'0');
+  }
+  setInterval(ytcTick,1000);
+  ytcTick();
+})();
+
 </script></body></html>
