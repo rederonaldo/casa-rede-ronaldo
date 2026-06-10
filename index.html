@@ -805,7 +805,7 @@ function renderEquipe(){
   var arr=DATA.cast.equipe||[];
   document.getElementById('equipeGrid').innerHTML=arr.map(function(m,i){
     var img=m.k?'<img class="ph" loading="lazy" src="'+RAW+'/fotos/'+m.k+'.jpg">':'<div class="ph-emoji">'+m.e+'</div>';
-    return '<div class="person" onclick="showPerson('equipe','+i+')">'+img+'<div class="pn">'+m.n+'</div><div class="pt">'+m.t+'</div></div>';
+    return '<div class="person" onclick="showPerson(\'equipe\','+i+')">'+img+'<div class="pn">'+m.n+'</div><div class="pt">'+m.t+'</div></div>';
   }).join('');
 }
 function renderCastTabs(){document.getElementById('castTabs').innerHTML=CTABS.map(function(t,i){return '<button class="ctab'+(i===0?' on':'')+'" onclick="showCast(\''+t[0]+'\',this)">'+t[1]+'</button>'}).join('');showCast('fixos');}
