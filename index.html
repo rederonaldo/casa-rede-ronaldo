@@ -976,7 +976,7 @@ function renderAgora(){
   var palco=PALCO_MAP[day.d]?[{n:PALCO_MAP[day.d].n,t:PALCO_MAP[day.d].t,s:'Show · Palco'}]:[];
   var gamer=day.g?[{n:day.g.t,t:'13h',s:day.g.d,f:'13h'}]:[];
   var quadra=QUADRA_SPECIAL[day.d]
-    ?[{n:QUADRA_SPECIAL[day.d].n,t:QUADRA_SPECIAL[day.d].t,s:'Evento especial'},{n:'Desafios da Quadra',t:'14h',s:'Competições e exibições'}]
+    ?[{n:QUADRA_SPECIAL[day.d].n,t:QUADRA_SPECIAL[day.d].t,s:QUADRA_SPECIAL[day.d].s||'Evento especial'},{n:'Desafios da Quadra',t:'14h',s:'Competições e exibições'}]
     :[{n:'Desafios da Quadra',t:'14h',s:'Competições e exibições'}];
   var es=getCurNext(estudio,nowM),jo=getCurNext(jogos,nowM),pa=getCurNext(palco,nowM),ga=getCurNext(gamer,nowM),qa=getCurNext(quadra,nowM);
   var dayGuests=getGuests(day.d);
@@ -1048,7 +1048,7 @@ function gradePhase(i,btn){if(btn){document.querySelectorAll('.gtab').forEach(fu
     var igTxt=palShow?(palShow.ig==='free'?'Gratuito':palShow.ig==='spec'?'Premium · GA U$79+':'U$20 entrada'):'';var palHtml=palShow?'<div class="grow grow-palco"><span class="gt">🇺🇸 '+(palShow.ts||'13h')+'–'+palShow.t+'</span><div><b>'+palShow.n+'</b><span class="gs">Palco · '+igTxt+'</span></div><span class="gbrt">🇧🇷 '+((parseInt((palShow.ts||'13h').match(/(\d+)h/)[1])+1)%24)+'h–'+((parseInt((palShow.t||'0h').match(/(\d+)h/)[1])+1)%24)+'h</span></div>':'';
     var qSpec=QUADRA_SPECIAL[d.d];
     var quadHtml=(d.d==='Sáb · 6 de Junho')?'':qSpec
-      ?'<div class="grow grow-quadra"><span class="gt">🇺🇸 '+qSpec.t+'</span><div><b>'+qSpec.n+'</b><span class="gs">Evento especial · Quadra</span></div><span class="gbrt">'+calcBRT(qSpec.t)+'</span></div>'
+      ?'<div class="grow grow-quadra"><span class="gt">🇺🇸 '+qSpec.t+'</span><div><b>'+qSpec.n+'</b><span class="gs">'+(qSpec.s||'Evento especial')+' · Quadra</span></div><span class="gbrt">'+calcBRT(qSpec.t)+'</span></div>'
        +'<div class="grow grow-quadra"><span class="gt">🇺🇸 14h</span><div><b>Desafios da Quadra</b><span class="gs">Competições e exibições</span></div><span class="gbrt">🇧🇷 15h</span></div>'
       :'<div class="grow grow-quadra"><span class="gt">🇺🇸 14h</span><div><b>Desafios da Quadra</b><span class="gs">Competições e exibições</span></div><span class="gbrt">🇧🇷 15h</span></div>';
     html+='<div class="gday"><button class="gday-hd" onclick="gtoggle(this)"><span class="gday-name">'+d.d+'</span><span class="gchips">'+chips+'</span><span class="gcar">›</span></button><div class="gday-body">'
@@ -1061,7 +1061,7 @@ function gradePhase(i,btn){if(btn){document.querySelectorAll('.gtab').forEach(fu
   document.getElementById('gradeDays').innerHTML=html;
 }
 var PALCO_MAP={"Qua · 10 de Junho": {"n": "Festa de Lançamento", "ts": "18h", "t": "22h", "ig": "free"}, "Qui · 11 de Junho": {"n": "Abertura ao Público", "ts": "13h", "t": "22h", "ig": "free"}, "Sex · 12 de Junho": {"n": "Fábio Braza", "ts": "13h", "t": "22h", "ig": "20"}, "Sáb · 13 de Junho": {"n": "DNA Live Band: Ducell & Abdala", "ts": "13h", "t": "22h", "ig": "20"}, "Dom · 14 de Junho": {"n": "Simoninha & Jairzinho", "ts": "13h", "t": "22h", "ig": "20"}, "Sex · 19 de Junho": {"n": "Fábio Braza", "ts": "13h", "t": "22h", "ig": "20"}, "Sáb · 20 de Junho": {"n": "Ton Carfi & DJ Ronald", "ts": "13h", "t": "22h", "ig": "20"}, "Dom · 21 de Junho": {"n": "Jairzinho & Simoninha", "ts": "13h", "t": "22h", "ig": "20"}, "Qua · 24 de Junho": {"n": "Samba dos Pentas", "ts": "13h", "t": "22h", "ig": "free"}, "Sex · 26 de Junho": {"n": "Fábio Braza", "ts": "13h", "t": "22h", "ig": "20"}, "Sáb · 27 de Junho": {"n": "Capital Inicial", "ts": "13h", "t": "2h", "ig": "spec"}, "Dom · 28 de Junho": {"n": "Jairzinho & Simoninha", "ts": "13h", "t": "22h", "ig": "20"}, "Seg · 29 de Junho": {"n": "Revelação", "ts": "13h", "t": "2h", "ig": "spec"}, "Sex · 3 de Julho": {"n": "Fábio Braza", "ts": "13h", "t": "22h", "ig": "20"}, "Sáb · 4 de Julho": {"n": "DJ Ronald", "ts": "13h", "t": "22h", "ig": "20"}, "Dom · 5 de Julho": {"n": "Jairzinho & Simoninha", "ts": "13h", "t": "22h", "ig": "20"}, "Sex · 10 de Julho": {"n": "Fábio Braza", "ts": "13h", "t": "22h", "ig": "20"}, "Sáb · 11 de Julho": {"n": "DNA Live Band: Ducell & Abdala", "ts": "13h", "t": "22h", "ig": "20"}, "Dom · 12 de Julho": {"n": "Jairzinho & Simoninha", "ts": "13h", "t": "22h", "ig": "20"}, "Qua · 15 de Julho": {"n": "Samba dos Pentas", "ts": "13h", "t": "22h", "ig": "free"}, "Sex · 17 de Julho": {"n": "DJ Ronald", "ts": "13h", "t": "22h", "ig": "20"}, "Sáb · 18 de Julho": {"n": "Abdala & Convidados Especiais", "ts": "13h", "t": "22h", "ig": "20"}, "Dom · 19 de Julho": {"n": "Jairzinho & Simoninha — Grand Finale", "ts": "13h", "t": "22h", "ig": "20"}};
-var QUADRA_SPECIAL={"Seg · 22 de Junho": {"n": "⭐ Show Bol Day", "t": "16h"}};
+var QUADRA_SPECIAL={"Seg · 22 de Junho": {"n": "⭐ Show Bol Day", "t": "16h"}, "Ter · 23 de Junho": {"n": "⭐ Veioba na Copa", "t": "19h", "s": "Show Ball · craques em campo, árbitro, narração ao vivo e troféu"}};
 renderGrade();
 
 var BG_IMGS=[RAW+'/fotos/casa/casa_entrada.jpg',RAW+'/fotos/casa/casa_estudio.jpg',RAW+'/fotos/casa/casa_quadra1.jpg',RAW+'/fotos/casa/casa_noite.jpg'];
