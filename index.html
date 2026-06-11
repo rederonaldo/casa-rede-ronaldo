@@ -912,7 +912,7 @@ function renderAgora(){
   if(clkEl)var bhh=String((now.getHours()+1)%24).padStart(2,'0');clkEl.textContent='🇺🇸 '+hh+':'+mm+' · 🇧🇷 '+bhh+':'+mm;
   var start=new Date(2026,5,11),today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
   var diff=Math.round((today-start)/86400000);
-  var allDays=[];DATA.grade.forEach(function(p){p.days.forEach(function(d){allDays.push(d);});});
+  var allDays=[];DATA.grade.forEach(function(p){if(p.id!=='pre')p.days.forEach(function(d){allDays.push(d);});});
   var PRE_COPA={"Sáb · 6 de Junho":[{"t":"17h","n":"Pré-Jogo · Brasil x Egito","s":"Fábio Stefanini · Luan Fiuza · Taty Meyer"},{"t":"18h","n":"⚽ 🇧🇷 Brasil x 🇪🇬 Egito","s":"Transmissão ao vivo"},{"t":"20h","n":"Pós-Jogo · Brasil x Egito","s":"Análise e repercussão"}]};
   var wd=["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"],ms=["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
   var todayLbl=wd[today.getDay()]+" · "+today.getDate()+" de "+ms[today.getMonth()];
