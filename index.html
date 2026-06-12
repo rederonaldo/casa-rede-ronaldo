@@ -225,6 +225,12 @@ footer{text-align:center;padding:24px 20px;color:var(--gray2);font-size:11px;lin
 .gchip{font-size:10px;font-weight:700;background:var(--bg);color:var(--gray);padding:2px 7px;border-radius:100px}
 .gcar{color:var(--gray2);font-size:18px;transition:transform .2s}
 .gday.open .gcar{transform:rotate(90deg)}
+.disney-live-banner{display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#0A2070 0%,#1547C8 100%);border:1.5px solid rgba(245,178,0,.42);border-radius:12px;padding:12px 14px;margin:10px 0 6px;cursor:pointer;gap:10px}
+.disney-live-banner:active{opacity:.8}
+.dlb-label{font-size:9px;font-weight:800;color:#F5B200;letter-spacing:.2em;text-transform:uppercase;margin-bottom:2px}
+.dlb-time{font-size:clamp(18px,5vw,24px);font-weight:900;color:#fff;font-family:'Bebas Neue',sans-serif;letter-spacing:.04em;line-height:1.1}
+.dlb-time span{color:#F5B200}
+.dlb-cta{background:#F5B200;border-radius:8px;padding:6px 13px;font-size:11px;font-weight:800;color:#000;letter-spacing:.06em;white-space:nowrap;flex-shrink:0}
 .gday-body{display:none;padding:0 16px 14px}
 .gday.open .gday-body{display:block}
 .gsec{font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.04em;margin:13px 0 4px}
@@ -1038,6 +1044,7 @@ function gradePhase(i,btn){if(btn){document.querySelectorAll('.gtab').forEach(fu
        +'<div class="grow grow-quadra"><span class="gt">14h</span><div><b>Desafios da Quadra</b><span class="gs">Competições e exibições</span></div></div>'
       :'<div class="grow grow-quadra"><span class="gt">14h</span><div><b>Desafios da Quadra</b><span class="gs">Competições e exibições</span></div></div>';
     html+='<div class="gday'+(d.d===_todayLbl?' open':'')+'"><button class="gday-hd" onclick="gtoggle(this)"><span class="gday-name">'+d.d+'</span><span class="gchips">'+chips+'</span><span class="gcar">›</span></button><div class="gday-body">'
+      +(GRADE[i].id!=='pre'?'<div class="disney-live-banner" onclick="go(\'disney\')"><div><div class="dlb-label">AO VIVO TODOS OS DIAS</div><div class="dlb-time">DISNEY<span>+</span> · 17H–21H</div></div><div class="dlb-cta">▶ AO VIVO</div></div>':'')
       +(est?'<div class="gsec gsec-estudio">🎙 Estúdio de Vidro</div>'+est:'')
       +(palHtml?'<div class="gsec gsec-palco">🎵 Palco</div>'+palHtml:'')
       +'<div class="gsec gsec-quadra">⚽ Quadra</div>'+quadHtml
