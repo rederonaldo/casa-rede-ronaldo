@@ -538,6 +538,53 @@ body.inside .wrap{background:transparent!important}
 .yt-chn{color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px}
 .yt-chi{color:rgba(255,255,255,.42);font-family:'Barlow Condensed',sans-serif;font-size:12px}
 .yt-sub{background:#fff;color:#111;padding:6px 16px;border-radius:2px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:12px;letter-spacing:.05em;text-decoration:none;white-space:nowrap}
+
+/* ══ TIMELINE EPG ══ */
+.view-toggle{display:flex;gap:6px;padding:10px 0 4px;position:sticky;top:55px;z-index:11;background:rgba(6,14,38,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.vtab{flex:1;padding:8px;border:none;border-radius:10px;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:13px;letter-spacing:.04em;cursor:pointer;background:rgba(255,255,255,.07);color:rgba(255,255,255,.5);text-transform:uppercase;transition:background .15s,color .15s}
+.vtab.on{background:#0033A0;color:#fff}
+.view-list{display:none}.view-epg{display:none}
+.view-list.on{display:block}.view-epg.on{display:block}
+.tl-epg{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;position:relative;margin:0 -18px}
+.tl-epg::-webkit-scrollbar{height:0}
+.tl-inner{position:relative}
+.tl-ruler{display:flex;height:24px;margin-left:88px;position:sticky;top:0;z-index:30;background:rgba(8,22,80,.96);backdrop-filter:blur(8px)}
+.tl-tick{flex-shrink:0;font-family:'Space Mono',monospace;font-size:9.5px;color:rgba(255,255,255,.42);padding:5px 0 0 7px;border-left:.5px solid rgba(255,255,255,.08)}
+.tl-dist{display:flex;height:20px;align-items:center}
+.tl-dlbl{position:sticky;left:0;z-index:20;width:88px;flex-shrink:0;height:20px;display:flex;align-items:center;gap:4px;padding:0 7px;background:rgba(8,22,80,.97);backdrop-filter:blur(8px);border-right:.5px solid rgba(255,255,255,.1)}
+.tl-dlbl .tdi{font-size:10px;line-height:1}
+.tl-dlbl .tdn{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:9px;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.tl-dtrk{position:relative;flex:1;height:20px}
+.tl-dseg{position:absolute;top:3px;height:13px;border-radius:3px;display:flex;align-items:center;padding:0 6px;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:7.5px;letter-spacing:.06em;color:#fff;white-space:nowrap;overflow:hidden}
+.tl-dsep{height:.5px;background:rgba(255,255,255,.12);margin-left:88px}
+.tl-disney-zone{position:absolute;bottom:0;z-index:3;background:linear-gradient(180deg,rgba(21,71,200,.08),rgba(21,71,200,.02));border-left:1px dashed rgba(120,160,255,.3);border-right:1px dashed rgba(120,160,255,.3);pointer-events:none}
+.tl-now{position:absolute;top:0;bottom:0;width:2px;background:#ef4444;z-index:40;pointer-events:none;box-shadow:0 0 8px rgba(239,68,68,.6)}
+.tl-now::before{content:'AGORA';position:absolute;top:0;left:3px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:7px;letter-spacing:.1em;color:#fff;background:#ef4444;padding:1px 4px;border-radius:2px;white-space:nowrap}
+.tl-rows{position:relative;z-index:10}
+.tl-row{display:flex;border-bottom:.5px solid rgba(255,255,255,.07);position:relative}
+.tl-row-noar{background:rgba(239,68,68,.04)}
+.tl-lbl{position:sticky;left:0;z-index:20;width:88px;flex-shrink:0;background:rgba(8,22,80,.97);backdrop-filter:blur(8px);border-right:.5px solid rgba(255,255,255,.1);display:flex;flex-direction:column;justify-content:center;padding:0 7px;gap:1px;min-height:60px}
+.tl-row-noar .tl-lbl{min-height:76px}
+.tl-lic{font-size:14px;line-height:1}
+.tl-lnm{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:10.5px;line-height:1.05}
+.tl-lsb{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:8px;color:rgba(255,255,255,.42);letter-spacing:.05em;text-transform:uppercase}
+.tl-trk{position:relative;flex:1}
+.tl-blk{position:absolute;top:5px;bottom:5px;border-radius:6px;padding:6px 8px;overflow:hidden;cursor:pointer;border-left:3px solid var(--c);background:rgba(255,255,255,.06);display:flex;flex-direction:column;justify-content:center;transition:transform .1s}
+.tl-blk:active{transform:scale(.97)}
+.tl-bt{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:11.5px;line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl-bs{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:9px;color:rgba(255,255,255,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.tl-btime{font-family:'Space Mono',monospace;font-size:7.5px;color:var(--c);margin-top:2px}
+.tl-row-noar .tl-blk{top:7px;bottom:7px;border-left-width:4px;background:rgba(255,255,255,.10);box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.tl-row-noar .tl-bt{font-size:12.5px;font-weight:900}
+.tl-src{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:7.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--c);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl-dest{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:7px;color:rgba(255,255,255,.4);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl-blk.tl-live::after{content:'';position:absolute;top:7px;right:7px;width:6px;height:6px;border-radius:50%;background:#ef4444;animation:tlPulse 1.3s infinite}
+@keyframes tlPulse{0%{box-shadow:0 0 0 0 rgba(239,68,68,.6)}70%{box-shadow:0 0 0 7px rgba(239,68,68,0)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
+.tl-legend{display:flex;gap:6px;flex-wrap:wrap;padding:6px 0 2px}
+.tl-lg{display:flex;align-items:center;gap:4px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.tl-lg i{width:8px;height:8px;border-radius:2px;display:block;flex-shrink:0}
+.tl-hint{text-align:center;padding:6px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.tl-day-lbl{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;color:rgba(255,255,255,.5);padding:8px 0 2px;letter-spacing:.04em}
 </style><!-- updated:1780343078 --></head><body><div class="bg" id="bgA"></div>
 <div class="bg" id="bgB"></div>
 <div class="bg-ov"></div>
@@ -582,9 +629,10 @@ body.inside .wrap{background:transparent!important}
 
 <!-- GRADE COMPLETA -->
 <section class="page" id="page-grade"><div class="wrap">
-  <div class="sec-head"><h1>Programação do Dia</h1><p>Estúdio · Palco · Games — dia a dia</p></div>
-  <div class="grade-tabs" id="gradeTabs"></div>
-  <div id="gradeDays"></div>
+  <div class="sec-head"><h1>Programação</h1><p>Estúdio · Palco · Games — dia a dia</p></div>
+  <div class="view-toggle"><button class="vtab" id="vtLista" onclick="setView('lista')">📋 Lista</button><button class="vtab on" id="vtTimeline" onclick="setView('timeline')">⏱ Timeline</button></div>
+  <div class="view-list" id="viewLista"><div class="grade-tabs" id="gradeTabs"></div><div id="gradeDays"></div></div>
+  <div class="view-epg on" id="viewEpg"><div class="tl-legend" id="tlLegend"></div><div class="tl-day-lbl" id="tlDayLbl"></div><div class="tl-epg" id="tlEpg"><div class="tl-inner" id="tlInner"><div class="tl-ruler" id="tlRuler"></div><div id="tlDist"></div><div class="tl-dsep"></div><div class="tl-disney-zone" id="tlDisney"></div><div class="tl-now" id="tlNow"></div><div class="tl-rows" id="tlRows"></div></div></div><div class="tl-hint">← arraste para ver a programação toda →</div></div>
 </div></section>
 
 <!-- ESTÚDIO -->
@@ -1164,4 +1212,227 @@ function playYT(){
   }
 }
 
+
+/* ══ TIMELINE EPG ══ */
+var TL_HW=140; // px por hora
+var TL_T0=13;  // começa às 13h
+function tlX(t){var m=(t||'').replace(/~/g,'').match(/(\d+)h(\d*)/);if(!m)return 0;var h=+m[1],mm=m[2]?+m[2]:0;if(h<6)h+=24;return(h-TL_T0+mm/60)*TL_HW;}
+function tlSpan(a,b){return tlX(b)-tlX(a);}
+
+var TL_CORES={'noar':'#ef4444','estudio':'#2563eb','palco':'#c49500','quadra':'#16a34a','gamer':'#7c3aed','fenomeno':'#d4a017'};
+var TL_ESPACOS_DEF=[
+  {k:'noar',ic:'🔴',nm:'NO AR',sub:'YouTube · Disney+',cls:'tl-row-noar'},
+  {k:'estudio',ic:'🎙️',nm:'ESTÚDIO',sub:'Vidro'},
+  {k:'palco',ic:'🎤',nm:'PALCO',sub:'Shows'},
+  {k:'quadra',ic:'⚽',nm:'QUADRA',sub:'Jogos · telões'},
+  {k:'gamer',ic:'🎮',nm:'GAMER',sub:'EA Sports'},
+  {k:'fenomeno',ic:'⭐',nm:'EXTERNO',sub:'Feuripe · F50'},
+];
+var TL_DIST_DEF=[
+  {di:'📺',dn:'YouTube',c:'rgba(255,0,51,.18)',bc:'rgba(255,0,51,.4)',segs:[{a:'13h',b:'25h',l:'AO VIVO'}]},
+  {di:'▶',dn:'Disney+',c:'#1547C8',bc:null,segs:[{a:'17h',b:'21h',l:'SIMULCAST'}]},
+  {di:'🔴',dn:'ESPN TV',c:'#CC0000',bc:null,segs:[]}, // preenchido dinamicamente
+];
+
+/* Constrói dados da timeline a partir do DATA.grade para o dia passado */
+function tlBuildDay(dayObj){
+  // Events do estúdio/programas
+  var evs=dayObj.e||[];
+  var pmap=PALCO_MAP||{};
+  var qspec=QUADRA_SPECIAL||{};
+  var palcoToday=pmap[dayObj.d];
+  var quadraSpec=qspec[dayObj.d];
+  var hasBrasil=dayObj.c&&dayObj.c.some(function(x){return x.includes('🇧🇷')&&!x.includes('D-1');});
+
+  // Estúdio: programas que não são jogos
+  var estudio=[],palco=[],quadra=[],gamer=[],fenomeno=[],noar=[];
+
+  evs.forEach(function(ev){
+    var n=ev.n||'', t=ev.t||'', s=ev.s||'';
+    var isJogo=(/ x /.test(n)||/^⚽|^🏆|^🥉/.test(n))&&!['Resenha','Raipe','Cavaco','Pré','Pós','Narração','Boas'].some(function(p){return n.includes(p);});
+    var isPalco=n.includes('Palco')||n.includes('Fábio Braza')||n.includes('Abdala')&&n.includes('🎵');
+    var isFeuripe=n.includes('FEURIPE')||n.includes('Feuripe');
+
+    if(isFeuripe){fenomeno.push({a:t,n:n,s:s});}
+    else if(isJogo){quadra.push({a:t,n:n,s:s});}
+    else if(isPalco){palco.push({a:t,n:n,s:s,raw:ev});}
+    else{estudio.push({a:t,n:n,s:s,raw:ev});}
+  });
+
+  // Palco do PALCO_MAP (show noturno)
+  if(palcoToday){
+    palco.push({a:palcoToday.ts||'13h',b:palcoToday.t,n:palcoToday.n,s:'Palco · show'});
+  }
+
+  // Gamer
+  if(dayObj.g&&dayObj.g.f){
+    gamer.push({a:'13h',b:'20h',n:dayObj.g.f,s:dayObj.g.t||''});
+  }
+
+  // Inferir ends (próximo start ou fim fixo)
+  function inferEnd(arr, defaultEnd){
+    for(var i=0;i<arr.length;i++){
+      if(!arr[i].b){
+        arr[i].b=i+1<arr.length?arr[i+1].a:defaultEnd;
+      }
+    }
+  }
+  inferEnd(estudio,'22h'); inferEnd(palco,'23h30'); inferEnd(quadra,'26h');
+  inferEnd(fenomeno,'17h'); inferEnd(gamer,'20h');
+
+  // Construir NO AR (sequência editorial lógica)
+  // Regras: estudio é a base; palco substitui quando tem show; quadra substitui durante jogo
+  var noarBlocs=[];
+  function pushNoar(a,b,t,sc,src,dest){
+    if(tlX(b)>tlX(a)) noarBlocs.push({a:a,b:b,t:t,sc:TL_CORES[sc]||'#888',src:src,dest:dest||'YT'});
+  }
+
+  // Simplificado: usar estudio como base, marcar quando palco/jogo assumem
+  estudio.forEach(function(ev){pushNoar(ev.a,ev.b,ev.n,'estudio','🎙️ Estúdio',
+    (tlX(ev.a)>=tlX('17h')&&tlX(ev.b)<=tlX('21h'))?'YT · Disney+':'YT');});
+
+  palco.forEach(function(ev){
+    if(ev.n&&(ev.n.includes('Fábio Braza')||ev.n.includes('Cavaco')||ev.n.includes('Abdala'))){
+      pushNoar(ev.a,ev.b||'23h30',ev.n,'palco','🎤 Palco',
+        (tlX(ev.a)>=tlX('17h')&&tlX(ev.a)<tlX('21h'))?'YT · Disney+':'YT');
+    }
+  });
+  quadra.forEach(function(ev){
+    if(ev.n.includes('Brasil')||ev.n.includes('🇧🇷')){
+      pushNoar(ev.a,ev.b,ev.n,'quadra','⚽ Jogo + narração',
+        (tlX(ev.a)>=tlX('17h')&&tlX(ev.b)<=tlX('21h'))?'YT · Disney+':'YT');
+    }
+  });
+
+  // Marcar ESPN na faixa dist
+  var espnSegs=[];
+  estudio.forEach(function(ev){if(ev.n.includes('ESPN')&&ev.n.includes('Especial'))espnSegs.push({a:ev.a,b:ev.b,l:'RESENHA'});});
+
+  return {estudio:estudio,palco:palco,quadra:quadra,gamer:gamer,fenomeno:fenomeno,noar:noarBlocs,espnSegs:espnSegs,day:dayObj};
+}
+
+function renderTimeline(){
+  var epgEl=document.getElementById('tlEpg');
+  var nowMi=getMiamiNow();
+
+  /* Descobrir dia atual na grade */
+  var _wd=["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"],_ms=["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+  var today=new Date(nowMi.getFullYear(),nowMi.getMonth(),nowMi.getDate());
+  var todayLbl=_wd[today.getDay()]+' · '+today.getDate()+' de '+_ms[today.getMonth()];
+  var allDays=[];
+  DATA.grade.forEach(function(p){if(p.id!=='pre')p.days.forEach(function(d){allDays.push(d);});});
+  var start=new Date(2026,5,11);
+  var diff=Math.round((today-start)/86400000);
+  var dayObj=diff>=0&&diff<allDays.length?allDays[diff]:null;
+  if(!dayObj){
+    document.getElementById('tlRows').innerHTML='<div style="padding:20px;color:rgba(255,255,255,.5);font-family:Barlow Condensed,sans-serif;font-size:13px">Sem programação para hoje.</div>';
+    return;
+  }
+
+  document.getElementById('tlDayLbl').textContent=dayObj.d+' · Miami (ET)';
+
+  var tl=tlBuildDay(dayObj);
+  var nowMin=nowMi.getHours()*60+nowMi.getMinutes();
+  var nowH=nowMi.getHours()+(nowMi.getHours()<6?24:0);
+  var nowX=tlX(nowH+'h'+(nowMi.getMinutes()||''));
+
+  /* régua 13h→26h */
+  var rh='';for(var h=13;h<=26;h++){var lbl=h%24;rh+='<div class="tl-tick" style="width:'+TL_HW+'px">'+lbl+'h</div>';}
+  document.getElementById('tlRuler').innerHTML=rh;
+  document.getElementById('tlInner').style.width='calc(88px + '+(TL_HW*13)+'px)';
+
+  /* largura total */
+  var totalW=88+TL_HW*13;
+
+  /* disney zone */
+  var dz=document.getElementById('tlDisney');
+  dz.style.left=(88+tlX('17h'))+'px';
+  dz.style.width=tlSpan('17h','21h')+'px';
+
+  /* agora */
+  var nowEl=document.getElementById('tlNow');
+  nowEl.style.left=(88+nowX)+'px';
+  nowEl.style.display=(nowX>0&&nowX<TL_HW*13)?'block':'none';
+
+  /* trilhas de dist */
+  var distDef=JSON.parse(JSON.stringify(TL_DIST_DEF));
+  distDef[2].segs=tl.espnSegs;
+  var dh='';
+  distDef.forEach(function(d){
+    var segs='';
+    d.segs.forEach(function(s){
+      var left=tlX(s.a),w=tlSpan(s.a,s.b||s.b)-2;
+      var bg=d.bc?'background:'+d.c+';border:1px solid '+d.bc:'background:'+d.c;
+      segs+='<div class="tl-dseg" style="left:'+left+'px;width:'+w+'px;'+bg+'">'+s.l+'</div>';
+    });
+    dh+='<div class="tl-dist"><div class="tl-dlbl"><span class="tdi">'+d.di+'</span><span class="tdn">'+d.dn+'</span></div><div class="tl-dtrk">'+segs+'</div></div>';
+  });
+  document.getElementById('tlDist').innerHTML=dh;
+
+  /* linhas */
+  var espacoData={noar:tl.noar,estudio:tl.estudio,palco:tl.palco,quadra:tl.quadra,gamer:tl.gamer,fenomeno:tl.fenomeno};
+  var rhtml='';
+  TL_ESPACOS_DEF.forEach(function(esp){
+    var cor=TL_CORES[esp.k]||'#888';
+    var blocos=espacoData[esp.k]||[];
+    var blks='';
+    blocos.forEach(function(b){
+      var left=tlX(b.a), w=(b.b?tlSpan(b.a,b.b):TL_HW)-4;
+      if(w<4)return;
+      var isNoar=esp.k==='noar';
+      var nowInside=nowX>=left&&nowX<left+(b.b?tlSpan(b.a,b.b):TL_HW);
+      var cc=isNoar?(b.sc||cor):cor;
+      var info=JSON.stringify({t:b.t||b.n,tm:(b.a||'')+'–'+(b.b||''),body:isNoar?('Fonte: '+(b.src||'')+' · Distribuição: '+(b.dest||'YT')):(b.s||''),c:cc});
+      if(isNoar){
+        blks+='<div class="tl-blk'+(nowInside?' tl-live':'')+'" style="left:'+left+'px;width:'+w+'px;--c:'+cc+'" onclick="tlModal('+JSON.stringify(info).replace(/</g,'&lt;')+')">'
+          +'<div class="tl-bt">'+(b.t||b.n)+'</div>'
+          +'<div class="tl-src">'+(b.src||'')+'</div>'
+          +'<div class="tl-dest">📡 '+(b.dest||'YT')+'</div></div>';
+      } else {
+        blks+='<div class="tl-blk" style="left:'+left+'px;width:'+w+'px;--c:'+cc+'" onclick="tlModal('+JSON.stringify(info).replace(/</g,'&lt;')+')">'
+          +'<div class="tl-bt">'+(b.t||b.n)+'</div>'
+          +(b.s?'<div class="tl-bs">'+b.s+'</div>':'')
+          +'<div class="tl-btime">'+(b.a||'')+(b.b?'–'+b.b:'')+'</div></div>';
+      }
+    });
+    rhtml+='<div class="tl-row '+(esp.cls||'')+'"><div class="tl-lbl"><span class="tl-lic">'+esp.ic+'</span><span class="tl-lnm">'+esp.nm+'</span><span class="tl-lsb">'+esp.sub+'</span></div><div class="tl-trk">'+blks+'</div></div>';
+  });
+  document.getElementById('tlRows').innerHTML=rhtml;
+
+  /* legenda */
+  var legs=[['#ef4444','No ar'],['#2563eb','Estúdio'],['#c49500','Palco'],['#16a34a','Quadra/Jogos'],['#7c3aed','Gamer'],['#d4a017','Externo']];
+  document.getElementById('tlLegend').innerHTML=legs.map(function(l){return '<span class="tl-lg"><i style="background:'+l[0]+'"></i>'+l[1]+'</span>';}).join('');
+
+  /* scroll para 30min antes do agora (ou 17h) */
+  setTimeout(function(){
+    var sc=Math.max(0,nowX-60);
+    document.getElementById('tlEpg').scrollLeft=sc>0?sc:tlX('17h');
+  },80);
+}
+
+function tlModal(s){
+  var d=JSON.parse(s);
+  var mc=document.getElementById('modalBody');
+  mc.innerHTML='<div class="mprog-tag">Timeline · Programa</div><h2>'+d.t+'</h2><div class="mt">🕐 '+d.tm+' · Miami ET</div>'+(d.body?'<div class="mr mr-left" style="margin-top:10px">'+d.body+'</div>':'');
+  document.getElementById('modal').classList.add('on');
+}
+
+function setView(v){
+  var lista=document.getElementById('viewLista'), epg=document.getElementById('viewEpg');
+  var vl=document.getElementById('vtLista'), vt=document.getElementById('vtTimeline');
+  if(v==='lista'){lista.classList.add('on');epg.classList.remove('on');vl.classList.add('on');vt.classList.remove('on');}
+  else{lista.classList.remove('on');epg.classList.add('on');vl.classList.remove('on');vt.classList.add('on');renderTimeline();}
+}
+
+/* atualizar linha AGORA a cada 30s quando timeline visível */
+setInterval(function(){
+  var epg=document.getElementById('viewEpg');
+  if(epg&&epg.classList.contains('on')){
+    var nowMi=getMiamiNow();
+    var nowH=nowMi.getHours()+(nowMi.getHours()<6?24:0);
+    var nowX=tlX(nowH+'h'+(nowMi.getMinutes()||''));
+    var el=document.getElementById('tlNow');
+    if(el)el.style.left=(88+nowX)+'px';
+  }
+},30000);
 </script></body></html>
