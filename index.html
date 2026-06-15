@@ -1271,26 +1271,39 @@ function tlBuildDay(dayObj){
     else{estudio.push({a:t,b:bb,n:n,s:s,raw:ev});}
   });
 
-  // Palco do PALCO_MAP (show noturno)
-  if(palcoToday){
-    palco.push({a:palcoToday.ts||'13h',b:palcoToday.t,n:palcoToday.n,s:'Palco · show'});
+  // Palco do PALCO_MAP — só se NÃO houver show de palco vindo dos eventos (evita duplicar/conflitar)
+  var temShowEvento=palco.some(function(b){return !b.isJogo&&!b.isNarr;});
+  if(palcoToday&&!temShowEvento){
+    palco.push({a:palcoToday.ts||'20h',b:palcoToday.t||'22h',n:palcoToday.n,s:'Palco · show'});
   }
 
   // Gamer
-  if(dayObj.g&&dayObj.g.f){
-    gamer.push({a:'13h',b:'20h',n:dayObj.g.f,s:dayObj.g.t||''});
-  }
+  if(dayObj.g&&dayObj.g.f){ gamer.push({a:'13h',b:'20h',n:dayObj.g.f,s:dayObj.g.t||''}); }
 
-  // Inferir ends (próximo start ou fim fixo)
-  function inferEnd(arr, defaultEnd){
+  // Quadra ESPN — desafios diários (meia quadra poliesportiva)
+  quadra.push({a:'14h',b:'20h',n:'Desafios da Quadra ESPN',s:'Competições e atividades · meia quadra poliesportiva'});
+
+  // ordenar cronologicamente (tlX já trata madrugada como +24h)
+  function sortT(arr){arr.sort(function(a,b){return tlX(a.a)-tlX(b.a);});}
+  [estudio,palco,quadra,gamer,fenomeno].forEach(sortT);
+
+  // posição x → rótulo "Hh" / "Hhmm"
+  function fromX(x){var t=x/TL_HW+TL_T0;var h=Math.floor(t+0.0001);var mm=Math.round((t-h)*60);if(mm===60){h++;mm=0;}var hh=h>=24?h-24:h;return hh+'h'+(mm>0?(mm<10?'0'+mm:''+mm):'');}
+
+  // inferir fim: próximo início (já ordenado) limitado à duração padrão; sempre span positivo
+  function inferEnd(arr,durPx){
     for(var i=0;i<arr.length;i++){
-      if(!arr[i].b){
-        arr[i].b=i+1<arr.length?arr[i+1].a:defaultEnd;
+      var ax=tlX(arr[i].a), bx=arr[i].b?tlX(arr[i].b):null;
+      if(bx===null||bx<=ax){
+        var nxt=(i+1<arr.length)?tlX(arr[i+1].a):null;
+        var cap=ax+durPx;
+        var end=(nxt&&nxt>ax)?Math.min(nxt,cap):cap;
+        arr[i].b=fromX(end);
       }
     }
   }
-  inferEnd(estudio,'22h'); inferEnd(palco,'23h30'); inferEnd(quadra,'26h');
-  inferEnd(fenomeno,'17h'); inferEnd(gamer,'20h');
+  inferEnd(estudio,2*TL_HW); inferEnd(palco,2*TL_HW); inferEnd(quadra,6*TL_HW);
+  inferEnd(fenomeno,2*TL_HW); inferEnd(gamer,7*TL_HW);
 
   // Construir NO AR (sequência editorial lógica)
   // Regras: estudio é a base; palco substitui quando tem show; quadra substitui durante jogo
@@ -1336,6 +1349,14 @@ function tlBuildDay(dayObj){
   var espnSegs=[];
   estudio.forEach(function(ev){if(ev.n.includes('ESPN')&&ev.n.includes('Especial'))espnSegs.push({a:ev.a,b:ev.b,l:'RESENHA'});});
 
+  // NO AR é um feed único: ordenar e cortar sobreposições (cada bloco termina quando o próximo começa)
+  noarBlocs.sort(function(a,b){return tlX(a.a)-tlX(b.a);});
+  for(var i=0;i<noarBlocs.length-1;i++){
+    if(tlX(noarBlocs[i].b)>tlX(noarBlocs[i+1].a)){
+      noarBlocs[i]=Object.assign({},noarBlocs[i],{b:noarBlocs[i+1].a});
+    }
+  }
+  noarBlocs=noarBlocs.filter(function(b){return tlX(b.b)>tlX(b.a);});
   return {estudio:estudio,palco:palco,quadra:quadra,gamer:gamer,fenomeno:fenomeno,noar:noarBlocs,espnSegs:espnSegs,day:dayObj};
 }
 
