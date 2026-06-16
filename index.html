@@ -1305,7 +1305,7 @@ var TL_ESPACOS_DEF=[
   {k:'palco',ic:'🎤',nm:'PALCO',sub:'Shows'},
   {k:'quadra',ic:'⚽',nm:'QUADRA',sub:'Jogos · telões'},
   {k:'gamer',ic:'🎮',nm:'GAMER',sub:'EA Sports'},
-  {k:'fenomeno',ic:'⭐',nm:'EXTERNO',sub:'Feuripe · F50'},
+  {k:'fenomeno',ic:'⭐',nm:'EXTERNO',sub:'Influenciador · Jornalista · Externo'},
 ];
 var TL_DIST_DEF=[
   {di:'📺',dn:'YouTube',c:'rgba(255,0,51,.18)',bc:'rgba(255,0,51,.4)',segs:[{a:'13h',b:'25h',l:'AO VIVO'}]},
@@ -1414,7 +1414,7 @@ function tlBuildDay(dayObj){
   // Feuripe (externo) entra no ar quando marcado "No ar" no subtítulo
   fenomeno.forEach(function(ev){
     if(ev.s&&ev.s.indexOf('No ar')>=0){
-      pushNoar(ev.a,ev.b,ev.n,'fenomeno','⭐ Externo · Feuripe',destFor(ev.a,ev.b));
+      pushNoar(ev.a,ev.b,ev.n,'fenomeno','⭐ Externo',destFor(ev.a,ev.b));
     }
   });
 
