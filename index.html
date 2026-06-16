@@ -658,9 +658,9 @@ body.inside .wrap{background:transparent!important}
 <!-- GRADE COMPLETA -->
 <section class="page" id="page-grade"><div class="wrap">
   <div class="sec-head"><h1>Programação</h1><p>Estúdio · Palco · Games — dia a dia</p></div>
-  <div class="view-toggle"><button class="vtab" id="vtLista" onclick="setView('lista')">📋 Lista</button><button class="vtab on" id="vtTimeline" onclick="setView('timeline')">⏱ Timeline</button></div>
-  <div class="view-list" id="viewLista"><div class="grade-tabs" id="gradeTabs"></div><div id="gradeDays"></div></div>
-  <div class="view-epg on" id="viewEpg"><div class="tl-legend" id="tlLegend"></div><div class="tl-day-lbl" id="tlDayLbl"></div><div class="tl-epg" id="tlEpg"><div class="tl-inner" id="tlInner"><div class="tl-ruler" id="tlRuler"></div><div id="tlDist"></div><div class="tl-dsep"></div><div class="tl-disney-zone" id="tlDisney"></div><div class="tl-now" id="tlNow"></div><div class="tl-rows" id="tlRows"></div></div></div><div class="tl-hint">← arraste para ver a programação toda →</div></div>
+  <div class="view-toggle"><button class="vtab on" id="vtLista" onclick="setView('lista')">📋 Lista</button><button class="vtab" id="vtTimeline" onclick="setView('timeline')">⏱ Timeline</button></div>
+  <div class="view-list on" id="viewLista"><div class="grade-tabs" id="gradeTabs"></div><div id="gradeDays"></div></div>
+  <div class="view-epg" id="viewEpg"><div class="tl-legend" id="tlLegend"></div><div class="tl-day-lbl" id="tlDayLbl"></div><div class="tl-epg" id="tlEpg"><div class="tl-inner" id="tlInner"><div class="tl-ruler" id="tlRuler"></div><div id="tlDist"></div><div class="tl-dsep"></div><div class="tl-disney-zone" id="tlDisney"></div><div class="tl-now" id="tlNow"></div><div class="tl-rows" id="tlRows"></div></div></div><div class="tl-hint">← arraste para ver a programação toda →</div></div>
 </div></section>
 
 <!-- ESTÚDIO -->
@@ -860,7 +860,20 @@ function go(id){
   document.querySelectorAll('.tab').forEach(function(b){b.classList.toggle('on',b.dataset.tab===id)});
   window.scrollTo(0,0);
   if(id==='agora')renderAgora();
-  if(id==='grade'){renderGrade();renderTimeline();}
+  if(id==='grade'){
+    renderGrade();renderTimeline();
+    // Scroll para o dia de hoje na lista
+    setTimeout(function(){
+      var pg=document.getElementById('page-grade');
+      var el=document.querySelector('#gradeDays .gday.open');
+      if(el&&pg){
+        var top=el.getBoundingClientRect().top-(pg.getBoundingClientRect?pg.getBoundingClientRect().top:0)+pg.scrollTop-60;
+        pg.scrollTo({top:top,behavior:'smooth'});
+      } else if(el){
+        el.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    },250);
+  }
   if(id==='elenco')renderCastTabs();
   if(id==='equipe')renderEquipe();
 }
@@ -1526,7 +1539,14 @@ function tlModal(s){
 function setView(v){
   var lista=document.getElementById('viewLista'), epg=document.getElementById('viewEpg');
   var vl=document.getElementById('vtLista'), vt=document.getElementById('vtTimeline');
-  if(v==='lista'){lista.classList.add('on');epg.classList.remove('on');vl.classList.add('on');vt.classList.remove('on');}
+  if(v==='lista'){lista.classList.add('on');epg.classList.remove('on');vl.classList.add('on');vt.classList.remove('on');
+    setTimeout(function(){
+      var pg=document.getElementById('page-grade');
+      var el=document.querySelector('#gradeDays .gday.open');
+      if(el&&pg){var top=el.getBoundingClientRect().top-(pg.getBoundingClientRect?pg.getBoundingClientRect().top:0)+pg.scrollTop-60;pg.scrollTo({top:top,behavior:'smooth'});}
+      else if(el){el.scrollIntoView({behavior:'smooth',block:'start'});}
+    },80);
+  }
   else{lista.classList.remove('on');epg.classList.add('on');vl.classList.remove('on');vt.classList.add('on');renderTimeline();}
 }
 
