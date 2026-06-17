@@ -614,6 +614,9 @@ body.inside .wrap{background:transparent!important}
 .gphase-sep span{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.06em;color:var(--gold);white-space:nowrap}
 .gphase-sep::before{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(245,178,0,.35))}
 .gphase-sep::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(245,178,0,.35),transparent)}
+
+.gprog-rot{display:inline-block;font-family:'Inter',-apple-system,sans-serif;font-size:9px;font-weight:600;letter-spacing:.04em;background:var(--gold);color:#000;padding:2px 7px;border-radius:5px;vertical-align:middle;margin-left:2px}
+.grow-prog.has-rot{border-left:2px solid var(--gold)}
 </style><!-- updated:1780343078 --></head><body><div class="bg" id="bgA"></div>
 <div class="bg" id="bgB"></div>
 <div class="bg-ov"></div>
@@ -1155,7 +1158,7 @@ function renderGrade(){
   var todayEl=document.querySelector('#gradeDays .gday.open');
   if(todayEl)setTimeout(function(){todayEl.scrollIntoView({behavior:'smooth',block:'start'});},180);
 }
-function row(r,est){var pk=PROGMAP[r.n];if(pk){var gStr=(r.n==='Modo Raipe'||r.n==='Hora do Raipe')&&_gday.length?'<span class="gs gs-guests">'+_gday.join(' · ')+'</span>':'';var _rk=(r.rot&&typeof _curDay!=='undefined')?pk+'|'+_curDay.d:'';return '<div class="grow grow-prog" data-prog="'+pk+(_rk?' data-rot-key="'+_rk+'"':'')+' onclick="showProg(this)"><span class="gt">'+r.t+'</span><div><b>'+r.n+' <span class="gprog-i">ⓘ</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+gStr+'</div><span class="gbrt">'+calcBRT(r.t)+'</span></div>';}if(ROTEIRO&&ROTEIRO[r.n]){return '<div class="grow grow-roteiro" onclick="showRoteiro(\''+r.n.replace(/\x27/g,"\\\'")+'\')"><span class="gt">'+r.t+'</span><div><b>'+r.n+'</b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+
+function row(r,est){var pk=PROGMAP[r.n];if(pk){var gStr=(r.n==='Modo Raipe'||r.n==='Hora do Raipe')&&_gday.length?'<span class="gs gs-guests">'+_gday.join(' · ')+'</span>':'';var _rk=(r.rot&&typeof _curDay!=='undefined')?pk+'|'+_curDay.d:'';var ind=_rk?'<span class="gprog-rot">📋 Roteiro</span>':'<span class="gprog-i">ⓘ</span>';return '<div class="grow grow-prog'+(_rk?' has-rot':'')+'" data-prog="'+pk+(_rk?' data-rot-key="'+_rk+'"':'')+' onclick="showProg(this)"><span class="gt">'+r.t+'</span><div><b>'+r.n+' '+ind+'</b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+gStr+'</div><span class="gbrt">'+calcBRT(r.t)+'</span></div>';}if(ROTEIRO&&ROTEIRO[r.n]){return '<div class="grow grow-roteiro" onclick="showRoteiro(\''+r.n.replace(/\x27/g,"\\\'")+'\')"><span class="gt">'+r.t+'</span><div><b>'+r.n+'</b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+
 '</div><span class="gbrt">'+calcBRT(r.t)+'</span></div>';}
 if(est&&(/ x /.test(r.n)||/^🏆|^🥉/.test(r.n))){return '<div class="grow grow-game" data-t="'+r.t+'" data-n="'+r.n+'" data-s="'+(r.s||'')+'" onclick="showGame(this)"><span class="gt">'+r.t+'</span><div><b>'+r.n+' <span class="ggame-i">›</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div><span class="gbrt">'+calcBRT(r.t)+'</span></div>';}return '<div class="grow"><span class="gt">'+r.t+'</span><div><b>'+r.n+'</b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div><span class="gbrt">'+calcBRT(r.t)+'</span></div>';}
 function gradePhase(i,btn){if(btn){document.querySelectorAll('.gtab').forEach(function(b){b.classList.remove('on')});btn.classList.add('on');}
