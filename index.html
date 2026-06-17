@@ -625,7 +625,7 @@ body.inside .wrap{background:transparent!important}
 <div class="appbar"><button class="tb-back" onclick="go('home')">‹</button>
   <img class="logo-img" src="https://raw.githubusercontent.com/brunodeluca-alt/casa-rede-ronaldo/main/fotos/icons/rr.png" alt="RR"><span class="logo">CASA RR</span><span class="tb-title" id="tbTitle"></span></div>
 
-<section class="page on" id="page-home">
+<section class="page" id="page-home">
   <div class="home-over" style="padding-top:8px">
     <div class="event-glass" style="text-align:left;padding-bottom:4px">
       <h1>Casa Rede Ronaldo</h1>
@@ -660,7 +660,7 @@ body.inside .wrap{background:transparent!important}
 </section>
 
 <!-- GRADE COMPLETA -->
-<section class="page" id="page-grade"><div class="wrap">
+<section class="page on" id="page-grade"><div class="wrap">
   <div class="sec-head"><h1>Programação</h1><p>Estúdio · Palco · Games — dia a dia</p></div>
   <div class="view-toggle"><button class="vtab on" id="vtLista" onclick="setView('lista')">📋 Lista</button><button class="vtab" id="vtTimeline" onclick="setView('timeline')">⏱ Timeline</button></div>
   <div class="view-list on" id="viewLista"><div class="grade-tabs" id="gradeTabs"></div><div id="gradeDays"></div></div>
@@ -833,7 +833,7 @@ body.inside .wrap{background:transparent!important}
 
 </div>
 
-<nav class="tabbar" id="tabbar"><button class="tab on" data-tab="home" onclick="go('home')"><span class="ti">⌂</span><span class="tl">Início</span></button><button class="tab" data-tab="estudio" onclick="go('estudio')"><span class="ti">▶</span><span class="tl">Estúdio</span></button><button class="tab tab-live" data-tab="agora" onclick="go('agora')"><span class="ti">🔴</span><span class="tl">Agora</span></button><button class="tab" data-tab="gamer" onclick="go('gamer')"><span class="ti">◉</span><span class="tl">Gamer</span></button><button class="tab" data-tab="palco" onclick="go('palco')"><span class="ti">♪</span><span class="tl">Palco</span></button></nav>
+<nav class="tabbar" id="tabbar"><button class="tab" data-tab="home" onclick="go('home')"><span class="ti">⌂</span><span class="tl">Início</span></button><button class="tab" data-tab="estudio" onclick="go('estudio')"><span class="ti">▶</span><span class="tl">Estúdio</span></button><button class="tab tab-live" data-tab="agora" onclick="go('agora')"><span class="ti">🔴</span><span class="tl">Agora</span></button><button class="tab" data-tab="gamer" onclick="go('gamer')"><span class="ti">◉</span><span class="tl">Gamer</span></button><button class="tab" data-tab="palco" onclick="go('palco')"><span class="ti">♪</span><span class="tl">Palco</span></button></nav>
 
 <div class="modal" id="modal"><div class="modal-bg" onclick="closeModal()"></div>
   <div class="modal-card"><button class="modal-close" onclick="closeModal()">✕</button><div id="modalBody"></div></div></div>
@@ -1555,6 +1555,15 @@ function setView(v){
 }
 
 /* atualizar linha AGORA a cada 30s quando timeline visível */
+// Inicializar grade ao carregar
+renderGrade();renderTimeline();
+setTimeout(function(){
+  var pg=document.getElementById('page-grade');
+  var el=document.querySelector('#gradeDays .gday.open');
+  if(el&&pg){var top=el.getBoundingClientRect().top-pg.getBoundingClientRect().top+pg.scrollTop-60;pg.scrollTo({top:top,behavior:'smooth'});}
+  else if(el){el.scrollIntoView({behavior:'smooth',block:'start'});}
+},300);
+
 setInterval(function(){
   var epg=document.getElementById('viewEpg');
   if(epg&&epg.classList.contains('on')){
