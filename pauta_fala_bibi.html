@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PAUTA — FALA BIBI! | 18 JUN 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+  :root {
+    --verde: #00A651;
+    --amarelo: #FFDF00;
+    --azul: #002776;
+    --branco: #FFFFFF;
+    --fundo: #F7F6F2;
+    --texto: #1A1A1A;
+    --cinza: #888;
+    --linha: #E0DFD9;
+    --destaque-bg: #FFF9E6;
+    --alerta: #E8003D;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--azul);
+    color: white;
+    padding: 28px 32px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 280px; height: 100%;
+    background: linear-gradient(135deg, var(--verde) 0%, var(--amarelo) 100%);
+    clip-path: polygon(60px 0, 100% 0, 100% 100%, 0 100%);
+    opacity: .18;
+  }
+  .header-badge {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--amarelo);
+    margin-bottom: 8px;
+  }
+  .header-titulo {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 6px;
+  }
+  .header-titulo span {
+    color: var(--amarelo);
+  }
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,.75);
+    font-weight: 500;
+    letter-spacing: .5px;
+  }
+  .header-meta strong {
+    color: white;
+    font-weight: 700;
+  }
+  .header-meta .pill {
+    background: var(--amarelo);
+    color: var(--azul);
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+  }
+
+  /* WRAPPER */
+  .wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+  }
+
+  /* ALERTA TOPO */
+  .alerta-box {
+    background: var(--alerta);
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .3px;
+  }
+  .alerta-box .icone { font-size: 18px; flex-shrink: 0; }
+
+  /* BLOCO */
+  .bloco {
+    margin-top: 28px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  .bloco-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    background: var(--azul);
+    color: white;
+  }
+  .bloco-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--amarelo);
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .bloco-titulo {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .bloco-subtitulo {
+    font-size: 11px;
+    color: rgba(255,255,255,.65);
+    margin-top: 2px;
+    letter-spacing: .5px;
+  }
+  .bloco-body {
+    padding: 20px;
+  }
+
+  /* PILL colorido no header */
+  .bloco-header.verde  { background: var(--verde); }
+  .bloco-header.amarelo-dark { background: #B8960A; }
+  .bloco-header.escuro  { background: #1A1A2E; }
+  .bloco-header.vermelho { background: #C0392B; }
+
+  /* FATOS */
+  .fatos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .fato {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 11px 14px;
+    background: var(--fundo);
+    border-radius: 8px;
+    border-left: 3px solid var(--verde);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .fato.alerta { border-left-color: var(--alerta); background: #FFF5F5; }
+  .fato.ouro { border-left-color: var(--amarelo); background: var(--destaque-bg); }
+  .fato.azul { border-left-color: var(--azul); background: #F0F4FF; }
+  .fato-emoji { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .fato strong { color: var(--azul); }
+
+  /* PERGUNTAS */
+  .perguntas {
+    margin-top: 14px;
+    border-top: 1px solid var(--linha);
+    padding-top: 14px;
+  }
+  .perguntas-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cinza);
+    margin-bottom: 10px;
+  }
+  .perguntas-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pergunta {
+    padding: 10px 14px;
+    background: #F0F4FF;
+    border-radius: 7px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #1A1A2E;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    line-height: 1.5;
+  }
+  .pergunta::before {
+    content: '→';
+    color: var(--verde);
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ESCALAÇÃO GRID */
+  .escalacao {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .escalacao-coluna h4 {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cinza);
+    margin-bottom: 8px;
+  }
+  .jogador {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  .jogador.entra { background: #E8F9EE; color: var(--verde); }
+  .jogador.sai   { background: #FFF0F0; color: #C0392B; text-decoration: line-through; opacity: .7; }
+  .jogador-pos   { font-size: 10px; font-weight: 500; opacity: .7; margin-left: auto; }
+
+  /* STAT CARDS */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .stat-card {
+    background: var(--fundo);
+    border-radius: 8px;
+    padding: 14px 12px;
+    text-align: center;
+    border: 1px solid var(--linha);
+  }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--azul);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-num.verde { color: var(--verde); }
+  .stat-num.alerta { color: var(--alerta); }
+  .stat-label {
+    font-size: 10.5px;
+    color: var(--cinza);
+    font-weight: 600;
+    letter-spacing: .5px;
+  }
+
+  /* LINHA DO TEMPO */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .tl-item {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--linha);
+  }
+  .tl-item:last-child { border-bottom: none; }
+  .tl-data {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--cinza);
+    width: 50px;
+    flex-shrink: 0;
+    padding-top: 2px;
+    letter-spacing: .5px;
+  }
+  .tl-texto { font-size: 13.5px; line-height: 1.5; }
+  .tl-texto strong { color: var(--azul); }
+  .tl-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-left: 6px;
+    letter-spacing: .5px;
+    vertical-align: middle;
+  }
+  .badge-ok  { background: #E8F9EE; color: var(--verde); }
+  .badge-no  { background: #FFF0F0; color: var(--alerta); }
+  .badge-wait{ background: var(--destaque-bg); color: #B8960A; }
+
+  /* DESTAQUE HISTÓRICO */
+  .caixa-historia {
+    background: var(--azul);
+    color: white;
+    border-radius: 10px;
+    padding: 22px;
+    margin-top: 14px;
+  }
+  .caixa-historia h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--amarelo);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .caixa-historia p { font-size: 14px; line-height: 1.7; margin-bottom: 10px; color: rgba(255,255,255,.9); }
+  .caixa-historia p:last-child { margin-bottom: 0; }
+  .caixa-historia strong { color: white; }
+
+  /* CONEXÃO CASA */
+  .conexao {
+    background: linear-gradient(135deg, var(--verde), #006633);
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    margin-top: 14px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .conexao-icone { font-size: 28px; flex-shrink: 0; }
+  .conexao h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .conexao p { font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,.9); }
+
+  /* TABELA DO GRUPO */
+  .grupo-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  .grupo-table th {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--cinza);
+    padding: 6px 8px;
+    text-align: left;
+    border-bottom: 2px solid var(--linha);
+  }
+  .grupo-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid var(--linha);
+    vertical-align: middle;
+  }
+  .grupo-table tr:last-child td { border-bottom: none; }
+  .grupo-table tr.brasil-row { background: #F0FFF4; font-weight: 600; }
+  .grupo-table .pts {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--azul);
+  }
+  .grupo-table .team-name { font-weight: 600; }
+  .grupo-table .nota { font-size: 11px; color: var(--cinza); margin-left: 4px; font-weight: 400; }
+
+  /* DICA BIBIANA */
+  .dica-bibi {
+    background: var(--destaque-bg);
+    border: 1.5px solid var(--amarelo);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-top: 10px;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .dica-bibi strong {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #B8960A;
+    font-weight: 800;
+    margin-bottom: 5px;
+  }
+
+  /* RODAPÉ */
+  .rodape {
+    margin-top: 40px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid var(--linha);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .rodape-info { flex: 1; min-width: 200px; }
+  .rodape h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--azul);
+    margin-bottom: 6px;
+  }
+  .rodape p { font-size: 12.5px; color: var(--cinza); line-height: 1.6; }
+
+  @media (max-width: 580px) {
+    .escalacao { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .header { padding: 20px 16px; }
+    .bloco-body { padding: 16px; }
+    .wrapper { padding: 0 12px 40px; }
+  }
+
+  /* Print */
+  @media print {
+    body { background: white; }
+    .wrapper { padding: 0 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-badge">Casa Rede Ronaldo · Miami</div>
+  <div class="header-titulo">PAUTA — <span>FALA BIBI!</span></div>
+  <div class="header-meta">
+    <span><strong>Apresentação:</strong> Bibiana Bolson</span>
+    <span><strong>Data:</strong> Qui, 18 Jun 2026</span>
+    <span><strong>Horário:</strong> 15h30–16h50 ET</span>
+    <span class="pill">D-1 🇧🇷</span>
+  </div>
+</div>
+
+<!-- ALERTA -->
+<div class="alerta-box">
+  <span class="icone">🚨</span>
+  <span>BRASIL NUNCA FOI CAMPEÃO DO MUNDO SEM VENCER NA PRIMEIRA RODADA — hoje é a véspera da segunda chance de Ancelotti.</span>
+</div>
+
+<div class="wrapper">
+
+<!-- SITUAÇÃO DO GRUPO -->
+<div class="bloco">
+  <div class="bloco-header">
+    <div>
+      <div class="bloco-num">Bloco 1</div>
+      <div class="bloco-titulo">Onde o Brasil está no Grupo C</div>
+      <div class="bloco-subtitulo">Abertura do programa — contexto de jogo</div>
+    </div>
+  </div>
+  <div class="bloco-body">
+
+    <table class="grupo-table">
+      <thead>
+        <tr>
+          <th>Seleção</th>
+          <th>Pts</th>
+          <th>J</th>
+          <th>V</th>
+          <th>E</th>
+          <th>D</th>
+          <th>SG</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="team-name">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Escócia</td>
+          <td class="pts">3</td>
+          <td>1</td><td>1</td><td>0</td><td>0</td><td>+1</td>
+        </tr>
+        <tr>
+          <td class="team-name">🇲🇦 Marrocos</td>
+          <td class="pts">1</td>
+          <td>1</td><td>0</td><td>1</td><td>0</td><td>0</td>
+        </tr>
+        <tr class="brasil-row">
+          <td class="team-name">🇧🇷 Brasil <span class="nota">(atrás por amarelos)</span></td>
+          <td class="pts">1</td>
+          <td>1</td><td>0</td><td>1</td><td>0</td><td>0</td>
+        </tr>
+        <tr>
+          <td class="team-name">🇭🇹 Haiti</td>
+          <td class="pts">0</td>
+          <td>1</td><td>0</td><td>0</td><td>1</td><td>-1</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="fatos" style="margin-top:16px">
+      <div class="fato alerta">
+        <span class="fato-emoji">⚠️</span>
+        <span>Brasil está em <strong>3º lugar</strong> — atrás do Marrocos pelo critério de cartões amarelos (Brasil tem 2, Marrocos tem 0).</span>
+      </div>
+      <div class="fato alerta">
+        <span class="fato-emoji">📊</span>
+        <span>Na estreia, o Brasil trocou <strong>514 passes</strong> contra 486 do Marrocos — mas nos primeiros 30 min, os marroquinos já tinham 12 finalizações. "Temos que melhorar", disse Ancelotti.</span>
+      </div>
+      <div class="fato ouro">
+        <span class="fato-emoji">🏆</span>
+        <span>Amanhã, <strong>sexta-feira (19/6)</strong>, às <strong>21h30 BRT / 20h30 ET</strong>, no Lincoln Financial Field, Filadélfia. Uma vitória deixa o Brasil muito perto da classificação.</span>
+      </div>
+    </div>
+
+    <div class="perguntas">
+      <div class="perguntas-label">Ganchos para a câmera</div>
+      <div class="perguntas-lista">
+        <div class="pergunta">Bibiana, você está em Nova Jersey com a seleção. A sensação lá no CT é de urgência ou de tranquilidade?</div>
+        <div class="pergunta">Como o Ancelotti falou com a imprensa depois do empate? Foi incômodo ou sereno?</div>
+        <div class="pergunta">O Brasil precisa ganhar amanhã para evitar depender de outros resultados — esse peso já se sente no treino?</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ANCELOTTI REVOLUCIONA -->
+<div class="bloco">
+  <div class="bloco-header verde">
+    <div>
+      <div class="bloco-num">Bloco 2</div>
+      <div class="bloco-titulo">A Revolução de Ancelotti</div>
+      <div class="bloco-subtitulo">5 mudanças possíveis no time titular</div>
+    </div>
+  </div>
+  <div class="bloco-body">
+
+    <div class="fatos">
+      <div class="fato azul">
+        <span class="fato-emoji">🔄</span>
+        <span>Ancelotti ensaiou na quarta (17/6) um time com <strong>5 novidades</strong> em relação ao jogo contra o Marrocos — maior rotatividade desde que assumiu a seleção.</span>
+      </div>
+    </div>
+
+    <div class="escalacao" style="margin-top:16px">
+      <div class="escalacao-coluna">
+        <h4>Prováveis Entradas</h4>
+        <div class="jogador entra">✅ Danilo <span class="jogador-pos">Lateral D</span></div>
+        <div class="jogador entra">✅ Léo Pereira <span class="jogador-pos">Zaga</span></div>
+        <div class="jogador entra">✅ Fabinho <span class="jogador-pos">Volante</span></div>
+        <div class="jogador entra">✅ Martinelli <span class="jogador-pos">Meia</span></div>
+        <div class="jogador entra">✅ Luiz Henrique <span class="jogador-pos">Ataque</span></div>
+      </div>
+      <div class="escalacao-coluna">
+        <h4>Prováveis Saídas</h4>
+        <div class="jogador sai">Ibañez <span class="jogador-pos">Lateral D</span></div>
+        <div class="jogador sai">Gab. Magalhães <span class="jogador-pos">Zaga</span></div>
+        <div class="jogador sai">Casemiro <span class="jogador-pos">Volante</span></div>
+        <div class="jogador sai">Raphinha <span class="jogador-pos">Meia</span></div>
+        <div class="jogador sai">Lucas Paquetá <span class="jogador-pos">Meia</span></div>
+      </div>
+    </div>
+
+    <div class="fatos" style="margin-top:14px">
+      <div class="fato ouro">
+        <span class="fato-emoji">🏗️</span>
+        <span>Imagem do quadro tático: <strong>Ancelotti voltaria ao 4-2-4</strong> — o esquema com quatro atacantes que ele mais gosta e já usou no Real Madrid.</span>
+      </div>
+      <div class="fato">
+        <span class="fato-emoji">💛</span>
+        <span>Raphinha e Gabriel Magalhães fizeram <strong>controle de carga</strong> no treino de terça — provavelmente ficarão fora amanhã como precaução para a Escócia (dia 24).</span>
+      </div>
+    </div>
+
+    <div class="dica-bibi">
+      <strong>💡 Dica de entrada ao vivo</strong>
+      "Ancelotti já avisou que pode mudar. Mas mudar o que exatamente? Esquema ou jogadores? Nós vimos no treino desta quarta-feira que ele ensaiou até o sistema de jogo. Pode ser que o Brasil amanhã seja um time diferente — mais agressivo, mais rápido, com quatro na frente."
+    </div>
+
+    <div class="perguntas">
+      <div class="perguntas-label">Perguntas para a pauta</div>
+      <div class="perguntas-lista">
+        <div class="pergunta">Casemiro foi substituído no intervalo contra o Marrocos — foi tática ou poupança por cartão? O próprio Casemiro negou que foi físico.</div>
+        <div class="pergunta">Luiz Henrique tem tudo para jogar. Por que ele ainda não é titular absoluto? O que ele precisa mostrar amanhã?</div>
+        <div class="pergunta">Voltando ao 4-2-4 — Ancelotti abre mão de um volante para colocar mais velocidade. É arriscado contra um Haiti que surpreendeu a Escócia no 1x1?</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NEYMAR NOVELA -->
+<div class="bloco">
+  <div class="bloco-header vermelho">
+    <div>
+      <div class="bloco-num">Bloco 3</div>
+      <div class="bloco-titulo">Neymar: A Novela Continua</div>
+      <div class="bloco-subtitulo">Voltou ao campo — mas não joga amanhã</div>
+    </div>
+  </div>
+  <div class="bloco-body">
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-data">13 Jun</div>
+        <div class="tl-texto">Estreia contra Marrocos. Neymar no banco, <strong>sem uniforme de jogo</strong>. Ficou ao lado dos companheiros. <span class="tl-badge badge-no">Não relacionado</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-data">15 Jun</div>
+        <div class="tl-texto">3º exame de imagem confirma <strong>boa evolução</strong> da lesão grau 2 na panturrilha. Família visita a concentração — único dia autorizado. <span class="tl-badge badge-ok">Evolução boa</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-data">16 Jun</div>
+        <div class="tl-texto">Neymar a campo pela <strong>primeira vez em 30 dias</strong>. Participa normalmente do bobinho. Recebido pelos companheiros em corredor polonês. <span class="tl-badge badge-ok">1º treino</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-data">17 Jun</div>
+        <div class="tl-texto"><strong>Segunda atividade em campo</strong> (ontem). Continua evoluindo. Lesão saiu de um edema de 2mm (panturrilha) para grau 2 diagnosticado. <span class="tl-badge badge-wait">Em evolução</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-data">19 Jun</div>
+        <div class="tl-texto">Brasil x Haiti. <strong>Neymar NÃO joga.</strong> Ainda em fase inicial de recuperação. <span class="tl-badge badge-no">Fora</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-data">24 Jun</div>
+        <div class="tl-texto">Brasil x Escócia. <strong>Meta da comissão:</strong> Neymar pelo menos relacionado. Comissão não descarta preservá-lo para o mata-mata. <span class="tl-badge badge-wait">Meta</span></div>
+      </div>
+    </div>
+
+    <div class="fatos" style="margin-top:14px">
+      <div class="fato ouro">
+        <span class="fato-emoji">🔢</span>
+        <span>Dado revelador: <strong>sem Neymar, o aproveitamento do Brasil em Copas cai de 71,8% para 26,7%.</strong> O número explica a ansiedade da torcida.</span>
+      </div>
+    </div>
+
+    <div class="perguntas">
+      <div class="perguntas-label">Ângulos para a Bibi explorar</div>
+      <div class="perguntas-lista">
+        <div class="pergunta">Como é a vibe de Neymar dentro da concentração — ele está animando o grupo ou a lesão cria um silêncio constrangedor?</div>
+        <div class="pergunta">Ancelotti disse: "quando o convocamos, não foi só pela qualidade técnica, mas pela experiência e pelo exemplo". O que isso significa na prática no dia a dia?</div>
+        <div class="pergunta">Neymar treinou ontem (17/6). É a segunda atividade em campo. Na sua avaliação, ele chega em condições para Escócia ou o mais provável é o mata-mata?</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ENDRICK -->
+<div class="bloco">
+  <div class="bloco-header amarelo-dark">
+    <div>
+      <div class="bloco-num">Bloco 4</div>
+      <div class="bloco-titulo">Endrick: o Clamor Popular vs. a Paciência de Ancelotti</div>
+      <div class="bloco-subtitulo">O maior debate da seleção — e amanhã pode ser o dia</div>
+    </div>
+  </div>
+  <div class="bloco-body">
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-num alerta">17</div>
+        <div class="stat-label">Jogos pela Seleção</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">534</div>
+        <div class="stat-label">Minutos em campo</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num verde">4</div>
+        <div class="stat-label">Gols marcados</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">34</div>
+        <div class="stat-label">Média de minutos/jogo</div>
+      </div>
+    </div>
+
+    <div class="fatos">
+      <div class="fato">
+        <span class="fato-emoji">⚽</span>
+        <span>Em 17 jogos, Endrick foi <strong>titular apenas 2 vezes</strong>. Em uma, foi substituído no intervalo. Em 13 escalações de Ancelotti, nunca foi o primeiro nome no ataque.</span>
+      </div>
+      <div class="fato azul">
+        <span class="fato-emoji">💬</span>
+        <span><strong>Danilo (ontem, 17/6):</strong> "Endrick é um jogador muito importante, uma joia rara que a gente tem no futebol brasileiro."</span>
+      </div>
+      <div class="fato alerta">
+        <span class="fato-emoji">📊</span>
+        <span>O motivo real da cautela: <strong>participação defensiva baixa</strong>. Em 24 jogos no Lyon: 18 desarmes e 4 interceptações. Raphinha, no mesmo período: 30 desarmes e 9 interceptações. Ancelotti quer atacantes que também pressionam.</span>
+      </div>
+      <div class="fato ouro">
+        <span class="fato-emoji">🎯</span>
+        <span>Matheus Cunha (Manchester United) é hoje o <strong>atacante brasileiro mais ativo defensivamente</strong>: 1,3 desarme e 0,5 interceptação por jogo — e está na fila para entrar amanhã.</span>
+      </div>
+    </div>
+
+    <div class="dica-bibi" style="margin-top:14px">
+      <strong>💡 Ângulo quente para a Bibi</strong>
+      "A pergunta não é 'Endrick é bom?' — todo mundo sabe que sim. A pergunta é: 'Num sistema onde o atacante precisa ser o primeiro a pressionar, Endrick está pronto para isso?' Ancelotti já falou isso na França, e o treinador Paulo Fonseca cobrou isso no Lyon. É uma questão de filosofia de jogo — não de talento."
+    </div>
+
+    <div class="perguntas">
+      <div class="perguntas-label">Para entrar na câmera</div>
+      <div class="perguntas-lista">
+        <div class="pergunta">Você está no CT com eles. Qual é a leitura interna sobre o Endrick — há pressão dentro do grupo para que ele jogue?</div>
+        <div class="pergunta">Ancelotti teve Endrick no Real Madrid. E lá também demorou. Será que para Ancelotti "a hora certa" é diferente da hora que a torcida quer?</div>
+        <div class="pergunta">Se o Brasil vencer fácil amanhã, Endrick vai entrar nos minutos finais. Se a situação apertar, vai entrar antes. O que você espera?</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUEM É O HAITI -->
+<div class="bloco">
+  <div class="bloco-header escuro">
+    <div>
+      <div class="bloco-num">Bloco 5</div>
+      <div class="bloco-titulo">Quem é o Haiti? 🇭🇹</div>
+      <div class="bloco-subtitulo">O adversário que parou a Escócia sem conseguir vencer</div>
+    </div>
+  </div>
+  <div class="bloco-body">
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-num alerta">52</div>
+        <div class="stat-label">Anos fora da Copa</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num verde">54%</div>
+        <div class="stat-label">Posse vs Escócia</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">15</div>
+        <div class="stat-label">Finalizações na estreia</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">80+</div>
+        <div class="stat-label">Jogos de Nazon pela seleção</div>
+      </div>
+    </div>
+
+    <div class="fatos">
+      <div class="fato ouro">
+        <span class="fato-emoji">🏴</span>
+        <span><strong>"Les Grenadiers"</strong> — nome vem dos soldados que lançavam granadas na Revolução Haitiana. O nome carrega a identidade de um povo que luta contra tudo.</span>
+      </div>
+      <div class="fato">
+        <span class="fato-emoji">📈</span>
+        <span>Vs Escócia (13/6): mais posse, mais finalizações, <strong>perdeu 1x0 num gol contra acidental</strong> de Bellegarde. O meia saiu do campo SORRINDO: "precisamos manter o pensamento positivo, podemos competir neste nível."</span>
+      </div>
+      <div class="fato azul">
+        <span class="fato-emoji">⚽</span>
+        <span><strong>Jean-Ricner Bellegarde</strong> (Wolverhampton, Inglaterra) — motor do time. 84 ações com a bola vs Escócia. Autor involuntário do gol contra.</span>
+      </div>
+      <div class="fato">
+        <span class="fato-emoji">🎯</span>
+        <span><strong>Duckens Nazon</strong> — artilheiro da classificação. Hat-trick contra a Costa Rica. Nasceu na Europa, se naturalizou haitiano. 44 gols em mais de 80 jogos pela seleção.</span>
+      </div>
+      <div class="fato alerta">
+        <span class="fato-emoji">🧠</span>
+        <span>Técnico <strong>Sébastien Migné</strong> é francês e <strong>nunca trabalhou em território haitiano</strong>. Assumiu em 2024 e conduziu toda a classificação de fora.</span>
+      </div>
+    </div>
+
+    <div class="perguntas">
+      <div class="perguntas-label">Como apresentar o Haiti na câmera</div>
+      <div class="perguntas-lista">
+        <div class="pergunta">Haiti teve MAIS posse e MAIS chutes que a Escócia — e perdeu. Isso significa que o Brasil não pode subestimar, mas também que os haitianos têm dificuldade de converter.</div>
+        <div class="pergunta">O atacante Nazon marcou um hat-trick nas eliminatórias. Ele é a principal ameaça? Como a defesa do Brasil deve se posicionar?</div>
+        <div class="pergunta">Bibiana pode jogar: "Você sabia que o técnico do Haiti é francês e nunca pisou em solo haitiano?"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JOGO DA PAZ -->
+<div class="bloco">
+  <div class="bloco-header">
+    <div>
+      <div class="bloco-num">Bloco 6</div>
+      <div class="bloco-titulo">O Jogo que Parou uma Guerra</div>
+      <div class="bloco-subtitulo">Agosto de 2004 · Porto Príncipe · A história que une os dois países</div>
+    </div>
+  </div>
+  <div class="bloco-body">
+
+    <div class="caixa-historia">
+      <h4>🕊️ O Jogo da Paz — 18 de agosto de 2004</h4>
+      <p>O Haiti vivia uma crise política brutal. O Brasil, que liderava a missão de paz da ONU no país, decidiu levar a seleção para um amistoso em Porto Príncipe como símbolo de paz.</p>
+      <p>A delegação chegou em <strong>veículos blindados da ONU</strong> — uma espécie de tanque de guerra. Milhares de haitianos foram às ruas para ver a passagem dos jogadores. Carlos Alberto Parreira convocou <strong>Ronaldo, Ronaldinho Gaúcho, Roberto Carlos e Adriano.</strong></p>
+      <p>"Eles conheciam todos os jogadores, chamavam pelo nome — Ronaldo, Ronaldinho, não paravam. Naquele momento, naquelas horas, <strong>o país esqueceu a guerra</strong>", lembrou Parreira.</p>
+      <p>Brasil venceu <strong>6 a 0</strong>. Ronaldinho Gaúcho marcou 3 gols. A torcida haitiana vibrou a <em>cada gol brasileiro</em> — e foi o maior símbolo de que futebol pode ser mais do que um jogo.</p>
+    </div>
+
+    <div class="conexao">
+      <div class="conexao-icone">🔗</div>
+      <div>
+        <h4>Conexão direta com a Casa Rede Ronaldo</h4>
+        <p><strong>Ronaldo Fenômeno</strong> jogou o Jogo da Paz em Porto Príncipe em 2004. Os haitianos gritavam seu nome nas ruas. Amanhã, 22 anos depois, o Brasil enfrenta o Haiti numa Copa do Mundo — e quem está aqui em Miami é a Casa construída pelo filho do ídolo que eles adoravam. Essa história não é por acaso.</p>
+      </div>
+    </div>
+
+    <div class="fatos" style="margin-top:14px">
+      <div class="fato">
+        <span class="fato-emoji">💚</span>
+        <span>Por anos, o Haiti foi <strong>um dos países onde a torcida pelo Brasil era mais calorosa</strong>. Haitianos pintavam as ruas de verde e amarelo a cada Copa do Mundo.</span>
+      </div>
+      <div class="fato">
+        <span class="fato-emoji">🌎</span>
+        <span>Após o terremoto de 2010, que matou 200 mil pessoas (incluindo <strong>18 militares brasileiros</strong> em missão de paz), o Brasil facilitou a entrada de haitianos em seu território.</span>
+      </div>
+    </div>
+
+    <div class="perguntas">
+      <div class="perguntas-label">Como falar isso no programa</div>
+      <div class="perguntas-lista">
+        <div class="pergunta">Bibi pode abrir o bloco: "Antes de falar de escalação, eu preciso te contar uma história que passa por aqui, pela Casa Rede Ronaldo, e chega até amanhã."</div>
+        <div class="pergunta">A conexão com o Ronaldo Fenômeno é ouro: os haitianos gritavam o nome dele pelas ruas de Porto Príncipe. O filho do Ronaldo está aqui em Miami. É poesia pura.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NÚMERO HISTÓRICO -->
+<div class="bloco">
+  <div class="bloco-header verde">
+    <div>
+      <div class="bloco-num">Bloco 7</div>
+      <div class="bloco-titulo">O 50º Adversário do Brasil em Copas</div>
+      <div class="bloco-subtitulo">A marca histórica que ninguém está falando direito</div>
+    </div>
+  </div>
+  <div class="bloco-body">
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-num verde">50</div>
+        <div class="stat-label">Adversários diferentes</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">116º</div>
+        <div class="stat-label">Jogo do Brasil em Copas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num verde">76</div>
+        <div class="stat-label">Vitórias históricas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">238</div>
+        <div class="stat-label">Gols marcados no total</div>
+      </div>
+    </div>
+
+    <div class="fatos">
+      <div class="fato ouro">
+        <span class="fato-emoji">🏅</span>
+        <span>Haiti será o <strong>50º adversário diferente do Brasil</strong> em Copas do Mundo. Único país presente em todas as 23 edições — o Brasil já enfrentou seleções de todos os continentes.</span>
+      </div>
+      <div class="fato">
+        <span class="fato-emoji">🥇</span>
+        <span>Maior rival histórico: <strong>Suécia</strong>, com 7 jogos. Brasil venceu 5 e empatou 2. Foi contra a Suécia que veio o primeiro título (1958, 5x2 na final) e a maior goleada (7x1 em 1950).</span>
+      </div>
+      <div class="fato azul">
+        <span class="fato-emoji">📚</span>
+        <span>Histórico Brasil x Haiti: <strong>3 jogos, 3 vitórias, 17 gols marcados, 0 sofridos.</strong> 4x0 (1974 amistoso), 6x0 (2004 Jogo da Paz), 7x1 (Copa América Centenário 2016).</span>
+      </div>
+      <div class="fato alerta">
+        <span class="fato-emoji">⚡</span>
+        <span>No único jogo official anterior, na Copa América 2016, o Brasil goleou por <strong>7x1</strong>. Neymar, Coutinho e Firmino brilharam. Mas eram outros tempos e outro Brasil.</span>
+      </div>
+    </div>
+
+    <div class="dica-bibi" style="margin-top:14px">
+      <strong>💡 Número para usar na abertura ou na saída do bloco</strong>
+      "Amanhã, quando o juiz apitar, o Brasil vai entrar em campo para o seu 116º jogo em Copa do Mundo — e o Haiti vai ser o nosso 50º adversário diferente em toda a história dos Mundiais. Único país a participar de TODAS as Copas. E estamos aqui, na Casa construída pelo maior artilheiro da história da Copa, esperando o hexa."
+    </div>
+
+  </div>
+</div>
+
+<!-- RODAPÉ -->
+<div class="rodape">
+  <div class="rodape-info">
+    <h4>🎙️ Fala Bibi! · 18 Jun 2026</h4>
+    <p>Pauta produzida com informações até a manhã de 18 de junho de 2026. Verificar sempre updates do CT da seleção no perfil da CBF e do Karoline Lima (NJ) antes de ir ao ar.</p>
+  </div>
+  <div class="rodape-info">
+    <h4>⏱ Duração sugerida por bloco</h4>
+    <p>
+      B1 Grupo C — 5 min · B2 Ancelotti — 15 min · B3 Neymar — 12 min · B4 Endrick — 15 min · B5 Haiti — 12 min · B6 Jogo da Paz — 10 min · B7 Nº Histórico — 11 min
+    </p>
+  </div>
+</div>
+
+</div><!-- /wrapper -->
+</body>
+</html>
