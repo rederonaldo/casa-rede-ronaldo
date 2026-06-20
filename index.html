@@ -917,7 +917,7 @@ function showPerson(key,i){var m=DATA.cast[key][i];var img=m.k?'<img class="mph"
   document.getElementById('modal').classList.add('on');}
 function closeModal(){document.getElementById('modal').classList.remove('on')}
 var GRADE=DATA.grade;
-var PROGMAP={'Melhor Resenha do Mundo':'Melhor Resenha do Mundo','Modo Raipe':'Modo Raipe','As Embaixadoras':'As Embaixadoras','Hora do Raipe':'Hora do Raipe','Hora do Raipe · Especial Brasil':'Hora do Raipe - Edição Especial Brasil','Cavaco Futebol Clube':'Cavaco Futebol Clube','ESPN · Resenha da Copa':'ESPN | Resenha da Copa','ESPN · Resenha (Especial)':'ESPN | Resenha da Copa (Especial)','Onde Está o FEURIPE':'Onde Está o FEURIPE','Fala Bibi!':'Fala Bibi!'};
+var PROGMAP={'Melhor Resenha do Mundo':'Melhor Resenha do Mundo','Modo Raipe':'Modo Raipe','As Embaixadoras':'As Embaixadoras','Hora do Raipe':'Hora do Raipe','Hora do Raipe · Especial Brasil':'Hora do Raipe - Edição Especial Brasil','Cavaco Futebol Clube':'Cavaco Futebol Clube','ESPN · Resenha da Copa':'ESPN | Resenha da Copa','ESPN · Resenha (Especial)':'ESPN | Resenha da Copa (Especial)','Onde Está o FEURIPE':'Onde Está o FEURIPE','Fala Bibi!':'Fala Bibi!','Chat com a Cath':'Chat com a Cath'};
 var ROTEIRO={
   'Pré-Jogo · Brasil x Egito':{
     title:'Pré-Jogo · Brasil × Egito',
@@ -982,7 +982,24 @@ var ROTEIRO={
     blocos:[
       {t:'~17h',nome:'ESPA\u00c7O GAMER \u00b7 AO VIVO',quem:'Urso',txt:'Urso apresenta ao vivo do Espa\u00e7o Gamer da Casa Rede Ronaldo. O Espa\u00e7o Gamer \u00e9 um universo pr\u00f3prio de games dentro da Casa: 10 PCs na arena e baias de console, com torneios todos os dias. Neste slot: cobertura ao vivo da Sele\u00e7\u00e3o Brasileira \u2014 \u00faltimas not\u00edcias, treino, escala\u00e7\u00e3o e expectativas para o pr\u00f3ximo jogo do Brasil, tudo apresentado por Urso direto da Arena PC.'}
     ]
-  }
+  },
+  'Chat com a Cath':{
+    title:'Chat com a Cath · Brasil 3×0 Haiti',
+    sub:'20h · Casa Rede Ronaldo, Wynwood · Ao vivo',
+    cast:[{n:'Cath Scala',k:'cath'}],
+    blocos:[
+      {t:'20h00',nome:'ABERTURA + CHAT',quem:'Cath · Estúdio',txt:'Cath entra direto, sem enrolação: “Gente, que noite foi essa. Brasil 3 a 0, três gols todos no primeiro tempo — e ainda assim tem muita coisa pra debater.” | Pede pro chat dizer de onde estão acompanhando. | Lança a pergunta: “SIM ou NÃO: você saiu satisfeito com o Brasil ontem?”'},
+      {t:'20h05',nome:'BRASIL 3×0 HAITI — VISÃO GERAL',quem:'Cath · Estúdio',txt:'Resultado: dois gols de Matheus Cunha e um de Vinicius Júnior, todos no primeiro tempo — aos 23min, 36min e 45min. | Brasil resolveu antes do intervalo e administrou no segundo. | O jogo foi controlado, mas não foi brilhante — e isso importa quando a fase knock-out chegar. | Chat: “Esse desempenho te convence pra fase mata-mata?”'},
+      {t:'20h10',nome:'VINI JR — O MELHOR EM CAMPO',quem:'Cath · Estúdio',txt:'Vini eleito o melhor em campo. Fez o gol, criou espaços, pressionou a defesa haitiana. | Mas teve momentos em que sumiu do jogo. | “O Vini que a gente precisa nessa Copa é o que tira o torcedor da cadeira — não o que administra.” | Chat: “O Vini te convenceu ou ainda está devendo?”'},
+      {t:'20h16',nome:'MATHEUS CUNHA — A SURPRESA DA NOITE',quem:'Cath · Estúdio',txt:'“Dois gols. Matheus Cunha. Quem apostava nisso antes do jogo, coloca aqui no chat.” | Em alto nível no Wolverhampton, mostrou personalidade quando o jogo precisava. | Com o Cunha em campo, o que muda taticamente? Ele entra de vez na briga pela titularidade? | “Isso mexe com a cabeça do Ancelotti — e com a da torcida.”'},
+      {t:'20h23',nome:'RAYAN — ENTROU FRIO NUMA COPA DO MUNDO',quem:'Cath · Estúdio',txt:'“Rayan entrou aos 40min do primeiro tempo, sem aquecimento adequado, numa Copa do Mundo, depois de uma lesão do lado.” | Revelado pelo Vasco, hoje no Bournemouth. | A história do garoto vale uma pausa. | Deu conta da pressão? O que a entrada dele mostrou pra Ancelotti? | Chat: “Rayan merece uma chance como titular contra a Escócia?”'},
+      {t:'20h30',nome:'ENDRICK — O MOMENTO DELE CHEGA?',quem:'Cath · Estúdio',txt:'Endrick entrou no segundo tempo. Ainda busca o ritmo dentro da Copa. | “Cada Copa tem um jovem que explode. O Endrick pode ser essa história do Brasil em 2026?” | Chat: “Endrick vai ser a surpresa ou ainda não chegou a hora?”'},
+      {t:'20h36',nome:'RAPHINHA — O SUSTO',quem:'Cath · Estúdio',txt:'“Isso aqui preocupa muito.” | Raphinha saiu aos 40min com dores na coxa direita. Lesão muscular confirmada pela CBF — sem prazo de recuperação definido. | Histórico: três lesões na coxa só nessa temporada. | Ponto crítico: se for cortado, o Brasil não pode substituí-lo. É a regra da FIFA. | Ancelotti: “Raphinha será avaliado amanhã. Neste momento, não sabemos o que aconteceu.” | Chat: “Você acredita que o Raphinha recupera a tempo da Escócia?”'},
+      {t:'20h44',nome:'NEYMAR — A BOMBA DO ANCELOTTI',quem:'Cath · Estúdio',txt:'“Depois do susto com o Raphinha, chegou a notícia que a torcida esperava.” | Ancelotti confirmou: “Neymar vai treinar amanhã individualmente e, na segunda-feira, com o restante do grupo. Ele estará à disposição contra a Escócia.” | Neymar perdeu as duas primeiras rodadas com lesão na panturrilha. | Brasil x Escócia: quarta-feira, 24 de junho — última rodada do Grupo C. | “Se o Raphinha não joga, o Neymar entra no onze. Isso muda tudo.” | Chat: “Neymar titular contra a Escócia — SIM ou NÃO?”'},
+      {t:'20h51',nome:'OUTROS JOGOS — RESUMO RÁPIDO',quem:'Cath · Estúdio',txt:'Escócia 0×1 Marrocos: gol do Marrocos no 2º minuto. Escócia terminou sem uma única finalização no gol em 90 minutos. | Turquia 0×1 Paraguai: Paraguai marcou logo no 2º min, levou cartão vermelho no intervalo, jogou o segundo tempo inteiro com 10. Turquia teve 78% de posse e 33 chutes. Não marcou. | Holanda 5×1 Suécia: demolição. Gols aos 5min, 17min, 47min, 54min e 89min. A Holanda está assustando. | Alemanha 1×1 Costa do Marfim: Alemanha não passou do empate. | Chat: “Qual desses resultados mais te surpreendeu?”'},
+      {t:'20h58',nome:'ENCERRAMENTO',quem:'Cath · Estúdio',txt:'“Brasil vai pra terceira rodada diferente de como entrou: Cunha em alta, Vini confirmado, Rayan revelado, Endrick crescendo, Raphinha em dúvida e Neymar voltando.” | Brasil x Escócia: quarta-feira, 24 de junho. | Marca alguém no chat que precisa ver esse programa. | “A gente se vê na próxima.”'}
+    ]
+  },
 };
 function showRoteiro(name){
   var r=ROTEIRO[name];if(!r)return;
