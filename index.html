@@ -264,6 +264,7 @@ footer{text-align:center;padding:24px 20px;color:var(--gray2);font-size:11px;lin
 .grow-game{cursor:pointer;border-radius:8px;margin:0 -8px;padding:7px 8px}
 .grow-game:active{background:var(--bg)}
 .ggame-i{font-size:13px;color:var(--gray2);font-weight:400}
+.gs-split{font-size:10.5px;color:rgba(255,210,60,.75);display:block;margin-top:2px;font-style:italic}
 .grow-roteiro{cursor:pointer;border-radius:8px;margin:0 -8px;padding:7px 8px;border-left:3px solid rgba(245,178,0,.55);padding-left:10px;margin-left:-10px}
 .grow-roteiro:active{background:rgba(245,178,0,.06)}
 .grow-roteiro b{color:var(--ink)}
@@ -1301,7 +1302,7 @@ function renderGrade(){
 }
 function row(r,est){var pk=PROGMAP[r.n];if(pk){var gStr=(r.n==='Modo Raipe'||r.n==='Hora do Raipe')&&_gday.length?'<span class="gs gs-guests">'+_gday.join(' · ')+'</span>':'';var _rk=(r.rot&&typeof _curDay!=='undefined')?pk+'|'+r.t+'|'+_curDay.d:'';var ind=_rk?'<span class="gprog-rot">📋 Roteiro</span>':'<span class="gprog-i">ⓘ</span>';return '<div class="grow grow-prog'+(_rk?' has-rot':'')+'" data-prog="'+pk+'"'+(_rk?' data-rot-key="'+_rk+'"':'')+' onclick="showProg(this)"><span class="gt">'+r.t+'</span><div><b>'+r.n+' '+ind+'</b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+gStr+'</div><span class="gbrt">'+calc(r.t)+'</span></div>';}if(ROTEIRO&&ROTEIRO[r.n]){return '<div class="grow grow-roteiro" onclick="showRoteiro(\''+r.n.replace(/\x27/g,"\\\'")+'\')"><span class="gt">'+r.t+'</span><div><b>'+r.n+'</b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+
 '</div><span class="gbrt">'+calc(r.t)+'</span></div>';}
-if(est&&(/ x /.test(r.n)||/^🏆|^🥉/.test(r.n))){return '<div class="grow grow-game" data-t="'+r.t+'" data-n="'+r.n+'" data-s="'+(r.s||'')+'" onclick="showGame(this)"><span class="gt">'+r.t+'</span><div><b>'+r.n+' <span class="ggame-i">›</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div><span class="gbrt">'+calc(r.t)+'</span></div>';}return '<div class="grow"><span class="gt">'+r.t+'</span><div><b>'+r.n+'</b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div><span class="gbrt">'+calc(r.t)+'</span></div>';}
+if(est&&(/ x /.test(r.n)||/^🏆|^🥉/.test(r.n))){return '<div class="grow grow-game" data-t="'+r.t+'" data-n="'+r.n+'" data-s="'+(r.s||'')+'" onclick="showGame(this)"><span class="gt">'+r.t+'</span><div><b>'+r.n+' <span class="ggame-i">›</span></b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'<span class="gs gs-split">📺 Tela dividida · programa ao vivo + reação da casa</span></div><span class="gbrt">'+calc(r.t)+'</span></div>';}return '<div class="grow"><span class="gt">'+r.t+'</span><div><b>'+r.n+'</b>'+(r.s?'<span class="gs">'+r.s+'</span>':'')+'</div><span class="gbrt">'+calc(r.t)+'</span></div>';}
 function gradePhase(i,btn){if(btn){document.querySelectorAll('.gtab').forEach(function(b){b.classList.remove('on')});btn.classList.add('on');}
   var p=GRADE[i],html='<div class="gphase-range">'+p.r+'</div>';
   p.days.forEach(function(d){_gday=getGuests(d.d);
