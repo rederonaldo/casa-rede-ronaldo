@@ -920,6 +920,21 @@ function closeModal(){document.getElementById('modal').classList.remove('on')}
 var GRADE=DATA.grade;
 var PROGMAP={'Melhor Resenha do Mundo':'Melhor Resenha do Mundo','Modo Raipe':'Modo Raipe','As Embaixadoras':'As Embaixadoras','Hora do Raipe':'Hora do Raipe','Hora do Raipe · Especial Brasil':'Hora do Raipe - Edição Especial Brasil','Cavaco Futebol Clube':'Cavaco Futebol Clube','ESPN · Resenha da Copa':'ESPN | Resenha da Copa','ESPN · Resenha (Especial)':'ESPN | Resenha da Copa (Especial)','Onde Está o FEURIPE':'Onde Está o FEURIPE','Fala Bibi!':'Fala Bibi!','Chat com a Cath':'Chat com a Cath'};
 var ROTEIRO={
+  'Melhor Resenha':{
+    title:'A Melhor Resenha do Mundo',
+    sub:'19h–20h ET · Qui 25/jun · com Edilson Capetinha',
+    cast:[{n:'Edilson Capetinha',k:'edilson_capetinha'},{n:'Convidados'},{n:'Qymira'}],
+    blocos:[
+      {t:'0–5',nome:'1 · INTRODUÇÃO',quem:'Edilson',txt:'Frase de abertura do programa. Citar os temas da noite: "Programa no ar e hoje vamos falar sobre Brasil, a briga pela artilharia, e teremos ainda algumas dinâmicas, como o nosso quadro Discordo Craque, além de lançamento musical." Apresentação dos convidados.'},
+      {t:'5–20',nome:'2.1 · ENTREVISTA COM OS CONVIDADOS',quem:'Edilson + convidados',txt:'Primeiro bloco — Seleção Brasileira. Papo de apresentação e entrevista com os convidados.'},
+      {t:'20–55',nome:'2.2 · BRASIL x ESCÓCIA',quem:'Mesa',txt:'Comentar um pouco da partida de ontem e a entrada do Neymar. Falar dos possíveis adversários do Brasil — provavelmente o Japão; os jogos que definem isso acontecem simultaneamente com o programa. Japão e Holanda empataram e deve ser decidido no saldo, caso não aconteça nenhuma zebra. O Japão enfrenta a Suécia (jogo mais difícil) e a Holanda enfrenta a Tunísia (que já sofreu 9 gols no campeonato), então a expectativa é o Brasil pegar o Japão, que deve passar em segundo do grupo. Dar nota aos jogadores (arte com a escalação da Seleção pra dar nota à participação de cada um). Depois, passar o vídeo de qual jogador tem mais camisas no jogo de ontem. Encerrar o assunto Seleção.'},
+      {t:'55–1:05',nome:'2.3 · LANÇAMENTO QYMIRA',quem:'Edilson + Qymira',txt:'Apresentar a artista. Papo rápido com ela. Passar o vídeo do lançamento.'},
+      {t:'1:05–1:15',nome:'3 · INTERVALO · DESAFIO DO CAPETINHA',quem:'Edilson',txt:'Explicar o desafio. Passar o vídeo do desafio da cadeira. Na volta do intervalo, explicar rapidamente a ativação nas redes sociais: quem fizer o desafio, postar e usar a #, tem chance de ganhar uma camisa autografada do Edilson — quem fizer o desafio com a maior dificuldade ganha.'},
+      {t:'1:15–1:25',nome:'4.1 · ARTILHARIA',quem:'Mesa',txt:'Segundo bloco. Mostrar a arte com a lista de artilheiros da Copa e comentar um pouco de cada um.'},
+      {t:'1:25–1:50',nome:'4.2 · DISCORDO CRAQUE',quem:'Mesa',txt:'Apresentar o quadro: "E agora vamos para o quadro Discordo Craque — nesse quadro serão ditas algumas afirmações e nós teremos que dizer se concordamos ou discordamos." Afirmações: 1) O churrasco gaúcho é o melhor do mundo. 2) Jogadores da Premier League estragam a Seleção. 3) O futebol do Ancelotti é chato. 4) O Rayan, no último jogo, fez mais que o Raphinha nos outros dois. 5) O Vini Jr. vai ser o artilheiro da Copa. 6) O Matheus Cunha é a melhor opção de nove da Seleção. 7) O Neymar tem que ser titular no mata-mata.'},
+      {t:'1:50–2:00',nome:'5 · ENCERRAMENTO · PERGUNTAS DOS SEGUIDORES',quem:'Edilson',txt:'Responder algumas perguntas que os seguidores mandaram na caixinha de pergunta: "Agora já estamos chegando ao final do programa, mas vamos responder algumas perguntas de vocês." Agradecer os convidados e encerrar.'}
+    ]
+  },
   'Fala Bibi!':{
     title:'Fala Bibi!',
     sub:'20h–22h ET · Qui 25/jun · Cath, Qymira e Thiago Rosinhole',
