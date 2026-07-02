@@ -1277,6 +1277,12 @@ function gtoggle(el){el.parentNode.classList.toggle('open');}
 
 /* ── AGORA ─────────────────────────────────────────── */
 function getMiamiNow(){return new Date(new Date().toLocaleString("en-US",{timeZone:"America/New_York"}));}
+function getEffectiveTodayDate(){
+  var now=getMiamiNow();
+  var d=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  if(now.getHours()>=22){d.setDate(d.getDate()+1);}
+  return d;
+}
 function calc(t){return '';}
 function parseT(t){var m=(t||'').replace(/~/g,'').match(/(\d+)h(\d*)/);return m?parseInt(m[1])*60+(m[2]?parseInt(m[2]):0):null;}
 function getCurNext(evs,nowM){
@@ -1305,7 +1311,7 @@ function renderAgora(){
   var now=getMiamiNow();
   var hh=String(now.getHours()).padStart(2,'0'),mm=String(now.getMinutes()).padStart(2,'0');
   if(clkEl)var bhh=String((now.getHours()+1)%24).padStart(2,'0');clkEl.textContent=hh+':'+mm;
-  var start=new Date(2026,5,11),today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  var start=new Date(2026,5,11),today=getEffectiveTodayDate();
   var diff=Math.round((today-start)/86400000);
   var allDays=[];DATA.grade.forEach(function(p){if(p.id!=='pre')p.days.forEach(function(d){allDays.push(d);});});
   var PRE_COPA={"Sáb · 6 de Junho":[{"t":"17h","n":"Pré-Jogo · Brasil x Egito","s":"Fábio Stefanini · Luan Fiuza · Taty Meyer"},{"t":"18h","n":"⚽ 🇧🇷 Brasil x 🇪🇬 Egito","s":"Transmissão ao vivo"},{"t":"20h","n":"Pós-Jogo · Brasil x Egito","s":"Análise e repercussão"}]};
@@ -1413,7 +1419,7 @@ function getGuests(dStr){
 }
 var _gday=[];var _todayLbl='';
 function renderGrade(){
-  var now=new Date();
+  var now=getEffectiveTodayDate();
   var _wd=["Dom","Seg","Ter","Qua","Qui","Sex","S\u00e1b"],_ms=["Janeiro","Fevereiro","Mar\u00e7o","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
   var todayLbl=_wd[now.getDay()]+' \u00b7 '+now.getDate()+' de '+_ms[now.getMonth()];
   _todayLbl=todayLbl;
@@ -1732,7 +1738,7 @@ function renderTimeline(){
 
   /* Descobrir dia atual na grade */
   var _wd=["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"],_ms=["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
-  var today=new Date(nowMi.getFullYear(),nowMi.getMonth(),nowMi.getDate());
+  var today=getEffectiveTodayDate();
   var todayLbl=_wd[today.getDay()]+' · '+today.getDate()+' de '+_ms[today.getMonth()];
   var allDays=[];
   DATA.grade.forEach(function(p){if(p.id!=='pre')p.days.forEach(function(d){allDays.push(d);});});
