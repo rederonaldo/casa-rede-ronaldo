@@ -920,6 +920,61 @@ function closeModal(){document.getElementById('modal').classList.remove('on')}
 var GRADE=DATA.grade;
 var PROGMAP={'Melhor Resenha do Mundo':'Melhor Resenha do Mundo','Modo Raipe':'Modo Raipe','As Embaixadoras':'As Embaixadoras','Hora do Raipe':'Hora do Raipe','Hora do Raipe · Especial Brasil':'Hora do Raipe - Edição Especial Brasil','Cavaco Futebol Clube':'Cavaco Futebol Clube','ESPN · Resenha da Copa':'ESPN | Resenha da Copa','ESPN · Resenha (Especial)':'ESPN | Resenha da Copa (Especial)','Onde Está o FEURIPE':'Onde Está o FEURIPE','Fala Bibi!':'Fala Bibi!','Chat com a Cath':'Chat com a Cath'};
 var ROTEIRO={
+
+  'Abertura Especial · A Casa Foi Pro Hostel':{
+    title:'Abertura Especial · A Casa Foi Pro Hostel',
+    sub:'Ter 7/07 · 17h-17h15 · ao vivo do Hostel OQP, Wynwood · Casa fechada pela chuva · Disney+ e YouTube · elenco suj. a alteracao',
+    cast:[{n:'Gabriel Cacella',k:'gabriel_cacella'},{n:'Dodo',k:'dodo_mendonca'},{n:'Daniela Cacella',k:'daniela_cacella'},{n:'Bernardo',k:'bernardo_cacella'},{n:'Cath',k:'cath_scala'},{n:'Isa'},{n:'Belle Rigobelle',k:'belle_semile'}],
+    blocos:[
+      {t:'5 min',nome:'CHOVEU NA CASA, A CASA MUDOU',quem:'Gabriel e Dodo abrem',txt:'Abertura com deboche institucional: choveu, a Casa fechou, mas a Rede Ronaldo nao tira ferias. Tour rapido pelo OQP mostrando o cenario improvisado com orgulho — quanto mais gambiarra aparecer, melhor. Bordao da noite: a Casa foi pro hostel.'},
+      {t:'5 min',nome:'APRESENTACAO DO SQUAD E DOS TIMES',quem:'Gabriel apresenta um por um · camera fechada nas reacoes',txt:'Escalacao anunciada como convocacao de Copa: Time Cacella (Daniela, Be, Isa) x Time Casa (Gabriel, Dodo, Cath). Belle Rigobelle apresentada como a narradora oficial da noite — a voz dos eSports agora narra torta na cara.'},
+      {t:'5 min',nome:'LINE-UP E REGRAS DA GINCANA',quem:'Belle assume o microfone de narradora',txt:'Belle narra o line-up como se fosse escalacao de final: Stop da Copa, Mimica da Casa, Torta na Cara no modo Passa ou Repassa, e as 19h o Samba do Fabio Brazza. Placar acumulado o dia inteiro — o time perdedor enfrenta a Rodada da Vergonha.'}
+    ]
+  },
+  'Stop da Copa':{
+    title:'Stop da Copa · Adedonha Sarcastica',
+    sub:'Ter 7/07 · 17h15-18h · Hostel OQP · letra na roleta, 45 segundos por rodada, resposta repetida vale zero · juri popular: os hospedes do hostel gritam se resposta duvidosa vale ou nao · Belle confere as respostas em modo revisao de VAR',
+    cast:[{n:'Belle Rigobelle',k:'belle_semile'},{n:'Daniela Cacella',k:'daniela_cacella'},{n:'Bernardo',k:'bernardo_cacella'},{n:'Isa'},{n:'Gabriel Cacella',k:'gabriel_cacella'},{n:'Dodo',k:'dodo_mendonca'},{n:'Cath',k:'cath_scala'}],
+    blocos:[
+      {t:'3 min',nome:'MECANICA',quem:'Belle explica narrando',txt:'Roleta sorteia a letra. 45 segundos no cronometro. Resposta repetida = zero. Resposta absurda vai pro juri popular do hostel. Belle confere tudo como VAR: demora de proposito, desenha linha imaginaria, e anuncia o veredito.'},
+      {t:'20 min',nome:'RODADAS 1 A 4',quem:'Times alternam · Belle narra',txt:'Categorias: 1. Jogador que caiu mais do que jogou · 2. Desculpa de tecnico eliminado · 3. Coisa que o Neymar faz melhor do que jogar bola · 4. Selecao que so veio pra Copa passear. CORTE ENGENHEIRADO: na categoria 3, Daniela responde por ultimo — sem filtro e com camera fechada.'},
+      {t:'18 min',nome:'RODADAS 5 A 8',quem:'Times alternam · juri popular ativado',txt:'Categorias: 5. Comida de estadio que destroi seu intestino · 6. Grito de narrador · 7. Pais que ta na Copa mas ninguem sabe apontar no mapa · 8. Nome de goleiro que parece nome de remedio. Na categoria 6 todo mundo tem que gritar a resposta — o hostel inteiro vira arquibancada.'},
+      {t:'4 min',nome:'PLACAR E PROVOCACAO',quem:'Belle anuncia · perdedores reagem',txt:'Belle fecha o placar parcial no tom de intervalo de final de Copa e ja planta a tensao: quem perder a gincana no placar geral enfrenta a Rodada da Vergonha na Torta na Cara.'}
+    ]
+  },
+  'Mímica da Casa':{
+    title:'Mimica da Casa · Lances Historicos',
+    sub:'Ter 7/07 · 18h-18h30 · Hostel OQP · 1 minuto por carta · mesmos times do Stop · placar acumulado · Belle narra cada mimica como lance de jogo',
+    cast:[{n:'Belle Rigobelle',k:'belle_semile'},{n:'Daniela Cacella',k:'daniela_cacella'},{n:'Bernardo',k:'bernardo_cacella'},{n:'Isa'},{n:'Gabriel Cacella',k:'gabriel_cacella'},{n:'Dodo',k:'dodo_mendonca'},{n:'Cath',k:'cath_scala'}],
+    blocos:[
+      {t:'2 min',nome:'MECANICA',quem:'Belle explica',txt:'Uma carta, um mimico, 1 minuto. Time acerta = ponto. Belle narra a mimica em tempo real como se fosse lance de jogo, sem revelar a resposta — o que dobra a comedia.'},
+      {t:'12 min',nome:'CARTAS 1 A 5',quem:'Times alternam',txt:'1. Neymar rolando contra o Mexico em 2018 · 2. Haaland comemorando no modo robo · 3. O SIUUU · 4. Goleiro tomando frango de bobeira · 5. VAR anulando gol por meio dedao.'},
+      {t:'10 min',nome:'CARTAS 6 A 9',quem:'Times alternam · camera nas reacoes',txt:'6. Torcedor brasileiro vendo o jogo contra a Noruega — autodepreciacao, a ferida ta aberta, o corte se faz sozinho · 7. Tecnico sendo demitido por telefone · 8. Cavadinha perdida no penalti decisivo · 9. Zagueiro dando carrinho e acertando so a canela. CORTE ENGENHEIRADO: na carta 6, camera fechada em quem adivinha — a reacao vale mais que a mimica.'},
+      {t:'4 min',nome:'CARTA DOURADA · VALE DOBRO',quem:'Um mimico por time tenta',txt:'R9 driblando o goleiro em 2002. Reverencia ao dono da Casa valendo pontuacao dupla. Belle narra no tom epico de final de Copa. Fecha com placar acumulado atualizado.'}
+    ]
+  },
+  'Torta na Cara':{
+    title:'Torta na Cara · Modo Passa ou Repassa',
+    sub:'Ter 7/07 · 18h30-19h · Hostel OQP · campainha na mesa · errou = torta · PASSA: o outro time e obrigado a responder · REPASSA: volta pro primeiro com torta dupla em jogo · Belle narra cada torta em camera lenta',
+    cast:[{n:'Belle Rigobelle',k:'belle_semile'},{n:'Daniela Cacella',k:'daniela_cacella'},{n:'Bernardo',k:'bernardo_cacella'},{n:'Isa'},{n:'Gabriel Cacella',k:'gabriel_cacella'},{n:'Dodo',k:'dodo_mendonca'},{n:'Cath',k:'cath_scala'}],
+    blocos:[
+      {t:'3 min',nome:'MECANICA · HERANCA DO PASSA OU REPASSA',quem:'Belle explica no tom raiz',txt:'Campainha na mesa, dois representantes por rodada. Errou = torta. Gritou PASSA, o adversario e obrigado a responder. Gritou REPASSA, volta pro primeiro com torta dupla. Homenagem declarada ao classico da TV brasileira.'},
+      {t:'18 min',nome:'PERGUNTAS 1 A 7',quem:'Belle pergunta e narra',txt:'1. Quantas Copas do Mundo o Cristiano Ronaldo tem? (zero — mesma quantidade que voce) · 2. Quantos minutos o Neymar passou deitado no gramado na Copa de 2018? (14 minutos, estatistica real) · 3. Quem tem mais Bola de Ouro: o Messi sozinho ou a Noruega inteira na historia? · 4. Qual pais eliminou o Brasil dessa Copa? (quem hesitar por trauma leva torta) · 5. Haaland e humano, robo ou viking? (qualquer resposta certa, torta em quem duvidar) · 6. Complete: ole, ole, ole, ola... · 7. PEGADINHA RAIZ: pergunta ridicula de facil (quantos jogadores tem um time em campo?) — a obviedade induz o REPASSA e alguem toma torta dupla numa pergunta de crianca.'},
+      {t:'6 min',nome:'RODADA DO BE',quem:'Bernardo assume as perguntas',txt:'Inversao total: o Be faz 3 perguntas faceis pros adultos. Adulto que errar toma torta aplicada pelo proprio Be. Crianca tortando adulto = o corte mais compartilhavel da noite. Be sempre acompanhado de Daniela ou Gabriel.'},
+      {t:'3 min',nome:'RODADA DA VERGONHA',quem:'Belle narra a escalacao',txt:'Time perdedor do placar geral (Stop + Mimica + Torta) leva 3 tortas seguidas. Belle anuncia os nomes um por um como escalacao de final de Copa. Encerra chamando o Samba do Fabio Brazza.'}
+    ]
+  },
+  '🎶 Samba do Fábio Brazza':{
+    title:'Samba do Fabio Brazza · Ao Vivo do OQP',
+    sub:'Ter 7/07 · 19h-21h · Hostel OQP, Wynwood · som do palco plugado direto na mesa de transmissao · squad na roda · encerramento da live as 21h',
+    cast:[{n:'Fabio Brazza'},{n:'Gabriel Cacella',k:'gabriel_cacella'},{n:'Daniela Cacella',k:'daniela_cacella'},{n:'Dodo',k:'dodo_mendonca'},{n:'Cath',k:'cath_scala'},{n:'Isa'},{n:'Belle Rigobelle',k:'belle_semile'}],
+    blocos:[
+      {t:'10 min',nome:'CHAMADA E ENTRADA DO BRAZZA',quem:'Belle e Gabriel chamam',txt:'Transicao da gincana pro show: elenco ainda com resto de torta na cara recebe o Brazza — o contraste e a imagem da noite. Apresentacao no tom de anuncio de atracao principal.'},
+      {t:'50 min',nome:'BLOCO 1 · SAMBA E IMPROVISO',quem:'Fabio Brazza · squad na roda',txt:'Primeira metade do show. Brazza pode improvisar rimas com os nomes do elenco e os acontecimentos da gincana — producao passa pra ele os melhores momentos (quem tomou mais torta, resposta mais absurda do Stop).'},
+      {t:'50 min',nome:'BLOCO 2 · A RODA CRESCE',quem:'Fabio Brazza · hospedes do hostel entram',txt:'Segunda metade com o hostel inteiro na roda. Camera circula entre elenco e publico. Momento de clipe: improviso do Brazza sobre a Casa ter fechado pela chuva e a festa ter melhorado.'},
+      {t:'10 min',nome:'ENCERRAMENTO 21h',quem:'Gabriel agradece · Belle fecha narrando',txt:'Agradecimento ao OQP, ao Brazza e ao publico. Belle encerra a transmissao narrando o resumo da noite como pos-jogo. Cartela de encerramento e fim do simulcast Disney+ as 21h.'}
+    ]
+  },
   'Copa dos Looks com Karoline Lima':{
     title:'Copa dos Looks · Ranking Argentina (piloto)',
     sub:'HOJE Sáb 4/07 · 19h05-19h25 · segmento dentro da Hora do Raipe · Karoline Lima ao vivo de New Jersey (link remoto) · votação roda hoje das 14h às 18h30 no @RedeRonaldo: Reel collab + slider de nota nos Stories · produção fecha as notas às 18h30 e manda o ranking pro GC e pra Karoline até 18h45 · teste de link 18h40 · o ranking sai 100% do voto do público — Karoline NÃO escolhe, só comenta o resultado · elenco suj. a alteração',
